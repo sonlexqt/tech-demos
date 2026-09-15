@@ -18,7 +18,7 @@ bun install
 bun run dev
 ```
 
-See `apps/README.md` for layout conventions.
+See `apps/README.md` for layout conventions. Each app has its own `apps/<slug>/README.md` with run steps and notes for **manual testing**.
 
 ## For cloud agents
 

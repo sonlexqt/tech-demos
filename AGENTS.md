@@ -18,13 +18,23 @@ This repository is the **single sticky monorepo** for daily X-bookmark tech demo
 - Each demo is **self-contained**: from `apps/<slug>/`, `bun install && bun run dev` must start the app.
 - Prefer **Bun** for package management and scripts.
 - Keep apps **independently runnable** (own `package.json`, dependencies, and dev script).
+- Every demo **must** include **`apps/<slug>/README.md`** with clear instructions and notes for **manual testing**. Cover at least:
+  - how to run (`bun install && bun run dev`);
+  - what to click / try;
+  - WebMCP flag notes if relevant;
+  - expected Agent panel behavior if relevant;
+  - any other setup a reviewer needs to verify the demo.
 
 ## Pull requests
 
-- Every **demo** PR must include **both**:
-  - at least **one screenshot** of the running app, and
-  - at least **one video** of the running app.
-- Scaffold-only or docs-only PRs are exempt unless the task says otherwise.
+**Mandatory for every demo PR:** attach **both** of the following. A screenshot without a video is incomplete; a video without a screenshot is incomplete.
+
+- at least **one screenshot** of the running app, **and**
+- at least **one video** of the running app.
+
+Also required on the demo PR: `apps/<slug>/README.md` (run steps + manual test notes).
+
+Scaffold-only or docs-only PRs are exempt from screenshot/video unless the task says otherwise.
 
 ## Tracking
 
