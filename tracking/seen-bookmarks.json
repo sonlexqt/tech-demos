@@ -1,5 +1,21 @@
 {
-  "proposed": [],
+  "proposed": [
+    {
+      "id": "user-request-webmcp-pdf-viewer",
+      "title": "WebMCP + PDF.js viewer",
+      "url": "https://mozilla.github.io/pdf.js/",
+      "date": "2026-09-15",
+      "notes": "User-requested tweak from WebMCP todos pitch"
+    }
+  ],
   "skipped": [],
-  "built": []
+  "built": [
+    {
+      "id": "user-request-webmcp-pdf-viewer",
+      "title": "WebMCP + PDF.js viewer",
+      "url": "https://mozilla.github.io/pdf.js/",
+      "date": "2026-09-15",
+      "notes": "User-requested tweak from WebMCP todos pitch; slug webmcp-pdf-viewer"
+    }
+  ]
 }
