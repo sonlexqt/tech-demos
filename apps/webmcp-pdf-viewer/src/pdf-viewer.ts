@@ -1,5 +1,5 @@
 import * as pdfjsLib from "pdfjs-dist";
-import type { PDFDocumentProxy } from "pdfjs-dist";
+import type { PDFDocumentProxy, PDFPageProxy, RenderTask } from "pdfjs-dist";
 import type {
   DocumentInfo,
   PageTextResult,
@@ -21,9 +21,11 @@ export class PdfViewer {
   private zoom: ZoomMode = 1;
   private canvas: HTMLCanvasElement;
   private wrap: HTMLElement;
-  private renderTask: ReturnType<
-    pdfjsLib.PDFPageProxy["render"]
-  > | null = null;
+  private renderTask: RenderTask | null = null;
+  /** Serializes canvas resize + render; never reject so the queue stays alive. */
+  private renderChain: Promise<void> = Promise.resolve();
+  /** Bumps on each request so in-flight work can cancel / skip stale jobs. */
+  private renderEpoch = 0;
   private listeners = new Set<ViewerListener>();
 
   constructor(canvas: HTMLCanvasElement, wrap: HTMLElement) {
@@ -46,6 +48,10 @@ export class PdfViewer {
     this.currentPage = 1;
     await this.renderCurrentPage();
     this.notify();
+  }
+
+  hasDocument(): boolean {
+    return this.doc !== null;
   }
 
   getPageCount(): number {
@@ -149,27 +155,60 @@ export class PdfViewer {
     return { query: q, matchCount: matches.length, matches };
   }
 
-  private async resolveScale(
-    page: pdfjsLib.PDFPageProxy,
-  ): Promise<number> {
+  private resolveScale(page: PDFPageProxy, zoom: ZoomMode): number {
     const viewport1 = page.getViewport({ scale: 1 });
     const padding = 32;
-    if (this.zoom === "fit-width") {
+    if (zoom === "fit-width") {
       const w = Math.max(this.wrap.clientWidth - padding, 200);
       return w / viewport1.width;
     }
-    if (this.zoom === "fit-page") {
+    if (zoom === "fit-page") {
       const w = Math.max(this.wrap.clientWidth - padding, 200);
       const h = Math.max(this.wrap.clientHeight - padding, 200);
       return Math.min(w / viewport1.width, h / viewport1.height);
     }
-    return this.zoom;
+    return zoom;
   }
 
-  private async renderCurrentPage(): Promise<void> {
-    if (!this.doc) return;
-    const page = await this.doc.getPage(this.currentPage);
-    const scale = await this.resolveScale(page);
+  private renderCurrentPage(): Promise<void> {
+    const epoch = ++this.renderEpoch;
+    const pageNum = this.currentPage;
+    const zoom = this.zoom;
+    this.renderTask?.cancel();
+
+    const job = this.renderChain.then(() =>
+      this.runSerializedRender(epoch, pageNum, zoom),
+    );
+    this.renderChain = job.then(
+      () => undefined,
+      () => undefined,
+    );
+    return job;
+  }
+
+  private async runSerializedRender(
+    epoch: number,
+    pageNum: number,
+    zoom: ZoomMode,
+  ): Promise<void> {
+    if (!this.doc || epoch !== this.renderEpoch) return;
+
+    if (this.renderTask) {
+      this.renderTask.cancel();
+      try {
+        await this.renderTask.promise;
+      } catch {
+        /* cancelled or failed */
+      }
+      this.renderTask = null;
+    }
+
+    if (!this.doc || epoch !== this.renderEpoch) return;
+
+    const page = await this.doc.getPage(pageNum);
+    if (epoch !== this.renderEpoch) return;
+
+    const scale = this.resolveScale(page, zoom);
     const viewport = page.getViewport({ scale });
     const ctx = this.canvas.getContext("2d");
     if (!ctx) return;
@@ -177,18 +216,19 @@ export class PdfViewer {
     this.canvas.width = Math.floor(viewport.width);
     this.canvas.height = Math.floor(viewport.height);
 
-    if (this.renderTask) {
-      try {
-        await this.renderTask.promise;
-      } catch {
-        /* cancelled */
-      }
-    }
-
     this.renderTask = page.render({
       canvasContext: ctx,
       viewport,
     });
-    await this.renderTask.promise;
+    try {
+      await this.renderTask.promise;
+    } catch {
+      if (epoch !== this.renderEpoch) return;
+      throw new Error("PDF page render failed");
+    } finally {
+      if (this.renderTask) {
+        this.renderTask = null;
+      }
+    }
   }
 }

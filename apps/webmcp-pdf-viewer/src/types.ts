@@ -28,6 +28,7 @@ export interface ToolDefinition {
   description: string;
   inputSchema: Record<string, unknown>;
   defaultArgs: Record<string, unknown>;
+  readOnlyHint?: boolean;
 }
 
 /** Early-preview WebMCP shapes (not in lib.dom yet). */

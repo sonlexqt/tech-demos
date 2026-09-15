@@ -36,7 +36,7 @@ export async function registerWebMCPTools(
       title: def.name,
       description: def.description,
       inputSchema: def.inputSchema,
-      annotations: { readOnlyHint: true },
+      annotations: { readOnlyHint: def.readOnlyHint === true },
       execute: async (input) => {
         const result = await run(def.name, input ?? {});
         return typeof result === "string" ? result : JSON.stringify(result);

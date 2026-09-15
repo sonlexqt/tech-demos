@@ -95,6 +95,7 @@ export function createAgentApi(viewer: PdfViewer): {
         required: ["query"],
       },
       defaultArgs: { query: "Trace" },
+      readOnlyHint: true,
     },
     {
       name: "get_page_text",
@@ -109,12 +110,14 @@ export function createAgentApi(viewer: PdfViewer): {
         },
       },
       defaultArgs: {},
+      readOnlyHint: true,
     },
     {
       name: "get_document_info",
       description: "Page count, title if available, current page, and zoom.",
       inputSchema: { type: "object", properties: {} },
       defaultArgs: {},
+      readOnlyHint: true,
     },
   ];
 

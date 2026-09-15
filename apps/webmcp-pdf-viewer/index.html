@@ -14,14 +14,14 @@
           <span id="webmcp-badge" class="badge badge--unknown">Checking WebMCP…</span>
         </div>
         <div class="toolbar" id="viewer-toolbar">
-          <button type="button" id="btn-prev" title="Previous page">← Prev</button>
+          <button type="button" id="btn-prev" title="Previous page" disabled>← Prev</button>
           <label class="page-control">
             Page
-            <input type="number" id="page-input" min="1" value="1" />
+            <input type="number" id="page-input" min="1" value="1" disabled />
             <span id="page-count">/ —</span>
           </label>
-          <button type="button" id="btn-next" title="Next page">Next →</button>
-          <select id="zoom-select" aria-label="Zoom">
+          <button type="button" id="btn-next" title="Next page" disabled>Next →</button>
+          <select id="zoom-select" aria-label="Zoom" disabled>
             <option value="fit-width">Fit width</option>
             <option value="fit-page">Fit page</option>
             <option value="0.75">75%</option>

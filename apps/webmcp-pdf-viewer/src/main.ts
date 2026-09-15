@@ -35,6 +35,13 @@ function syncChrome(): void {
 
 viewer.onChange(syncChrome);
 
+function setNavEnabled(enabled: boolean): void {
+  btnPrev.disabled = !enabled;
+  btnNext.disabled = !enabled;
+  pageInput.disabled = !enabled;
+  zoomSelect.disabled = !enabled;
+}
+
 function setBadge(active: boolean, detail?: string): void {
   if (active) {
     badge.textContent = "WebMCP active";
@@ -88,12 +95,20 @@ async function runAgentTool(): Promise<void> {
 
 runBtn.addEventListener("click", () => void runAgentTool());
 
-btnPrev.addEventListener("click", () => void viewer.prevPage().then(syncChrome));
-btnNext.addEventListener("click", () => void viewer.nextPage().then(syncChrome));
+btnPrev.addEventListener("click", () => {
+  if (!viewer.hasDocument()) return;
+  void viewer.prevPage().then(syncChrome);
+});
+btnNext.addEventListener("click", () => {
+  if (!viewer.hasDocument()) return;
+  void viewer.nextPage().then(syncChrome);
+});
 pageInput.addEventListener("change", () => {
+  if (!viewer.hasDocument()) return;
   void viewer.goToPage(Number(pageInput.value)).then(syncChrome);
 });
 zoomSelect.addEventListener("change", () => {
+  if (!viewer.hasDocument()) return;
   const v = zoomSelect.value;
   const scale =
     v === "fit-width" || v === "fit-page" ? v : Number.parseFloat(v);
@@ -101,10 +116,12 @@ zoomSelect.addEventListener("change", () => {
 });
 
 window.addEventListener("resize", () => {
+  if (!viewer.hasDocument()) return;
   void viewer.setZoom(viewer.getZoom()).then(syncChrome);
 });
 
 async function bootstrap(): Promise<void> {
+  setNavEnabled(false);
   try {
     await viewer.loadFromUrl("/sample.pdf");
     const info = await viewer.getDocumentInfo();
@@ -112,6 +129,7 @@ async function bootstrap(): Promise<void> {
       ? `Loaded: ${info.title} (${info.pageCount} pages)`
       : `Loaded sample PDF (${info.pageCount} pages)`;
     syncChrome();
+    setNavEnabled(true);
 
     if (isWebMCPAvailable()) {
       const names = await registerWebMCPTools(api.tools, api.run);
@@ -123,6 +141,7 @@ async function bootstrap(): Promise<void> {
       setBadge(false);
     }
   } catch (err) {
+    setNavEnabled(false);
     statusLine.textContent = `Failed to load PDF: ${
       err instanceof Error ? err.message : String(err)
     }`;
