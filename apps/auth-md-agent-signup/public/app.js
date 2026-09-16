@@ -233,11 +233,15 @@ async function playWalkthrough() {
   }
   log("Waiting on the human claim desk…", true, "Approve the 6-digit code, then this agent will pick up the token.");
   state.polling = true;
-  for (let i = 0; i < 30 && state.polling; i += 1) {
+  for (let i = 0; i < 150 && state.polling; i += 1) {
     const result = await pollOnce();
     if (result.ok) {
       await getNotes();
       await postNote();
+      state.polling = false;
+      return;
+    }
+    if (result.data?.error === "access_denied") {
       state.polling = false;
       return;
     }
