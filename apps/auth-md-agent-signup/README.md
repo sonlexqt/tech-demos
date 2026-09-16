@@ -45,7 +45,7 @@ Optional: switch the method to **service_auth**, reset, and repeat. There is no 
 
 ## Notes for reviewers
 
-- [Owner research notes (PDF)](./owner-findings.pdf)
+- [Owner research notes (PDF)](./auth-md-explained.pdf)
 - Tokens are obviously fake (`at_demo_…`, `demo-jag.…unsigned`) and never leave this process.
 - In-memory only: restarting the server wipes state.
 - `identity_assertion` / ID-JAG is intentionally unimplemented (would need a trusted provider).
