@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harbor Notes · auth.md playground</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <img src="/favicon.svg" alt="" width="28" height="28" />
+        <div>
+          <h1>Harbor Notes</h1>
+          <p class="tag">auth.md agent registration playground</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill pill-warn">Mock only — no production APIs</span>
+        <a class="link" href="/auth.md" target="_blank" rel="noreferrer">Open /auth.md</a>
+        <button type="button" id="btn-reset">Reset demo</button>
+      </div>
+    </header>
+
+    <p class="lede">
+      A mock agent discovers this app via <code>auth.md</code>, registers, and waits. You play the
+      human: claim the workspace with a 6-digit code. Credentials are fake
+      <code>at_demo_</code> tokens kept in memory.
+    </p>
+
+    <ol class="rail" id="step-rail" aria-label="Protocol steps">
+      <li data-step="discover">Discover</li>
+      <li data-step="register">Register</li>
+      <li data-step="scopes">Scopes</li>
+      <li data-step="claim">Claim</li>
+      <li data-step="token">Credentials</li>
+    </ol>
+
+    <main class="grid">
+      <section class="panel" aria-labelledby="agent-title">
+        <header class="panel-h">
+          <h2 id="agent-title">Mock agent</h2>
+          <span class="muted">Walks the protocol</span>
+        </header>
+
+        <label class="field">
+          Agent source
+          <input id="agent-name" value="intern-agent" autocomplete="off" />
+        </label>
+
+        <fieldset class="seg">
+          <legend>Registration method</legend>
+          <label><input type="radio" name="method" value="anonymous" checked /> anonymous</label>
+          <label><input type="radio" name="method" value="service_auth" /> service_auth</label>
+        </fieldset>
+
+        <label class="field">
+          Login hint / claim email
+          <input id="login-hint" value="ada@harbor.local" autocomplete="off" />
+        </label>
+
+        <fieldset class="seg">
+          <legend>Requested scopes</legend>
+          <label><input type="checkbox" name="scope" value="notes.read" checked /> notes.read</label>
+          <label><input type="checkbox" name="scope" value="notes.write" checked /> notes.write</label>
+        </fieldset>
+
+        <div class="btn-row">
+          <button type="button" class="primary" id="btn-walk">Play through claim</button>
+        </div>
+        <div class="btn-row wrap">
+          <button type="button" id="btn-discover">1. Discover</button>
+          <button type="button" id="btn-register">2. Register</button>
+          <button type="button" id="btn-exchange">3. Exchange token</button>
+          <button type="button" id="btn-get-notes">4. GET /api/notes</button>
+          <button type="button" id="btn-write">5. POST note</button>
+          <button type="button" id="btn-claim">6. Start claim</button>
+          <button type="button" id="btn-poll">7. Poll token</button>
+        </div>
+
+        <div class="code-card" id="user-code-card" hidden>
+          <p class="muted">Show this to the human. They type it on the claim desk, not here.</p>
+          <p class="user-code" id="user-code">————</p>
+          <a id="verify-link" class="link" href="/claim">verification_uri</a>
+        </div>
+
+        <dl class="kv" id="agent-creds">
+          <div><dt>access_token</dt><dd id="access-token">—</dd></div>
+          <div><dt>scope</dt><dd id="access-scope">—</dd></div>
+          <div><dt>phase</dt><dd id="access-phase">—</dd></div>
+        </dl>
+
+        <h3>Agent log</h3>
+        <ol class="log" id="agent-log"></ol>
+      </section>
+
+      <section class="panel panel-claim" aria-labelledby="claim-title">
+        <header class="panel-h">
+          <h2 id="claim-title">Human claim desk</h2>
+          <span class="muted">You are the user</span>
+        </header>
+
+        <p class="claim-copy">
+          An agent started a Harbor workspace before you created an account. Review the scopes and
+          claim it with the 6-digit code the agent is showing.
+        </p>
+
+        <label class="field">
+          Signed in as
+          <input
+            id="owner-email"
+            type="email"
+            value="ada@harbor.local"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
+        </label>
+        <p class="muted" id="signin-hint">
+          Any email works. Play through claim binds the ceremony to this address.
+        </p>
+
+        <div id="pending-claims" class="claims"></div>
+
+        <form id="claim-form" class="claim-form">
+          <label class="field">
+            6-digit user_code
+            <input
+              id="claim-code"
+              inputmode="numeric"
+              pattern="[0-9]{6}"
+              maxlength="6"
+              placeholder="000000"
+              autocomplete="one-time-code"
+            />
+          </label>
+          <div class="btn-row">
+            <button type="submit" class="primary" id="btn-approve">Approve &amp; claim</button>
+            <button type="button" id="btn-deny">Deny</button>
+          </div>
+          <p class="form-msg" id="claim-msg" role="status"></p>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="status-title">
+        <header class="panel-h">
+          <h2 id="status-title">Status</h2>
+          <span class="muted">In-memory only</span>
+        </header>
+        <h3>Registrations</h3>
+        <div id="reg-list" class="stack"></div>
+        <h3>Issued credentials</h3>
+        <div id="token-list" class="stack"></div>
+        <h3>Notes API</h3>
+        <div id="note-list" class="stack"></div>
+      </section>
+    </main>
+
+    <details class="doc">
+      <summary>Live <code>/auth.md</code> (what an agent would read)</summary>
+      <pre id="auth-md-preview">Loading…</pre>
+    </details>
+
+    <footer class="foot">
+      Protocol-shaped demo of
+      <a href="https://workos.com/auth-md">WorkOS auth.md</a>
+      · source bookmark
+      <a href="https://x.com/grinich/status/2098125592352931866">@grinich</a>
+    </footer>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
