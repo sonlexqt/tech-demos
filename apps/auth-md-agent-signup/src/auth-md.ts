@@ -3,7 +3,7 @@ export function renderAuthMd(origin: string): string {
 
 You are an agent. **Harbor Notes** supports **agentic registration**: discover → register → (claim if needed) → exchange for an access_token → call API.
 
-This is a **local demo** of the [auth.md](https://workos.com/auth-md) protocol shape. Hosts below are this process, not WorkOS or Neon production.
+This is a **local demo** of the [auth.md](https://workos.com/auth-md) protocol shape. Hosts below are this process, not a production identity provider.
 
 - Resource server / API: \`${origin}/\`
 - Authorization server: \`${origin}/\`
@@ -49,7 +49,7 @@ This demo implements **anonymous** and **service_auth** only. There is no ID-JAG
 ## Step 2 — Pick a method
 
 1. You have only the user's email → \`service_auth\` (claim ceremony required before any token).
-2. You have neither a session nor an email → \`anonymous\` (Claimable Neon–style). Limited \`pre_claim_scopes\` now; a human claims later to unlock \`post_claim_scopes\`.
+2. You have neither a session nor an email → \`anonymous\`. Limited \`pre_claim_scopes\` now; a human claims later to unlock \`post_claim_scopes\`.
 
 ## Step 3 — Register
 
@@ -107,7 +107,7 @@ Content-Type: application/json
 > Open this link and enter this 6-digit code: **123456**
 > ${origin}/claim?claim_attempt_token=…
 
-They sign in on the Harbor claim desk (this demo uses a mock identity picker) and submit the code there — not back to you.
+They sign in on the Harbor claim desk (this demo uses an editable mock email) and submit the code there — not back to you.
 
 ### 4c. Poll for completion
 
@@ -163,7 +163,7 @@ Authorization: Bearer at_demo_…
 
 ## Demo notes
 
-Harbor Notes is educational. Credentials are in-memory only. Restarting the server wipes registrations. Do not call \`api.workos.com\` or \`claimable.neon.tech\` from this app.
+Harbor Notes is educational. Credentials are in-memory only. Restarting the server wipes registrations. This process never calls production identity APIs.
 `;
 }
 

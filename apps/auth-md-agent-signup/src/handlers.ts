@@ -1,6 +1,7 @@
 import { authorizationServerMetadata, protectedResourceMetadata, renderAuthMd } from "./auth-md";
 import {
   demoAssertion,
+  emailsMatch,
   json,
   oauthError,
   originFromRequest,
@@ -265,9 +266,12 @@ export async function handleApi(req: Request, url: URL): Promise<Response | null
     const body = await parseBody(req);
     const attemptToken = str(body, "claim_attempt_token");
     const userCode = str(body, "user_code")?.replace(/\s/g, "");
-    const ownerEmail = str(body, "owner_email") ?? "ada@harbor.local";
+    const ownerEmail = str(body, "owner_email");
     if (!attemptToken || !userCode) {
       return oauthError(400, "invalid_request", "claim_attempt_token and user_code are required.");
+    }
+    if (!ownerEmail) {
+      return oauthError(400, "invalid_request", "owner_email is required. Use Signed in as on the claim desk.");
     }
     const reg = store.byClaimAttemptToken(attemptToken);
     if (!reg?.claimAttempt) {
@@ -279,11 +283,11 @@ export async function handleApi(req: Request, url: URL): Promise<Response | null
     if (reg.claimAttempt.userCode !== userCode) {
       return json({ error: "invalid_user_code", error_description: "That code does not match. Try again." }, 400);
     }
-    if (reg.loginHint && reg.loginHint !== ownerEmail) {
+    if (reg.loginHint && !emailsMatch(reg.loginHint, ownerEmail)) {
       return json(
         {
           error: "wrong_user",
-          error_description: `This claim is bound to ${reg.loginHint}. Sign in as that user.`,
+          error_description: `This claim is bound to ${reg.loginHint}. Enter that address in Signed in as, or click “Sign in as this email” on the pending card.`,
         },
         403,
       );
@@ -307,6 +311,23 @@ export async function handleApi(req: Request, url: URL): Promise<Response | null
     if (!reg) return json({ error: "not_found", error_description: "No pending claim." }, 404);
     reg.status = "denied";
     return json({ ok: true, registration_id: reg.id, status: "denied" });
+  }
+
+  if (method === "POST" && path === "/demo/claim/rebind") {
+    const body = await parseBody(req);
+    const attemptToken = str(body, "claim_attempt_token");
+    const email = str(body, "email");
+    const reg = attemptToken ? store.byClaimAttemptToken(attemptToken) : undefined;
+    if (!reg || reg.status !== "pending") {
+      return json({ error: "not_found", error_description: "No pending claim to rebind." }, 404);
+    }
+    if (!email) return oauthError(400, "invalid_request", "email is required.");
+    reg.loginHint = email.trim();
+    return json({
+      ok: true,
+      registration_id: reg.id,
+      login_hint: reg.loginHint,
+    });
   }
 
   return null;

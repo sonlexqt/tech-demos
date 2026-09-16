@@ -23,6 +23,21 @@ function scopes() {
   return [...document.querySelectorAll('input[name="scope"]:checked')].map((el) => el.value);
 }
 
+function normalizeEmail(value) {
+  return (value ?? "").trim().toLowerCase();
+}
+
+function claimEmail() {
+  return $("owner-email").value.trim() || $("login-hint").value.trim() || "ada@harbor.local";
+}
+
+function syncClaimEmail(value) {
+  const email = (value || claimEmail()).trim();
+  $("login-hint").value = email;
+  $("owner-email").value = email;
+  return email;
+}
+
 function mark(step, kind = "done") {
   if (kind === "done") state.steps.add(step);
   for (const li of document.querySelectorAll(".rail li")) {
@@ -104,12 +119,13 @@ async function discover() {
 
 async function register() {
   mark("register", "now");
+  const email = syncClaimEmail();
   const body = {
     type: method(),
     source: $("agent-name").value.trim() || "intern-agent",
     scopes: scopes(),
   };
-  if (body.type === "service_auth") body.login_hint = $("login-hint").value.trim();
+  if (body.type === "service_auth") body.login_hint = email;
   const { res, data } = await api("/agent/identity", { method: "POST", body });
   log(`POST /agent/identity (${body.type})`, res.ok, data);
   if (!res.ok) return;
@@ -171,17 +187,12 @@ async function startClaim() {
     log("Start claim", false, "Register first.");
     return;
   }
-  if (method() === "service_auth" && state.registration?.claim) {
-    showCode(state.registration.claim);
-    log("Claim materials already on the registration response", true, state.registration.claim);
-    mark("claim");
-    return;
-  }
+  const email = syncClaimEmail();
   const { res, data } = await api("/agent/identity/claim", {
     method: "POST",
     body: {
       claim_token: state.claimToken,
-      email: $("login-hint").value.trim(),
+      email,
     },
   });
   log("POST /agent/identity/claim", res.ok, data);
@@ -221,6 +232,7 @@ async function playWalkthrough() {
   logEl.replaceChildren();
   state.steps = new Set();
   setCreds(null, "", "");
+  syncClaimEmail();
   await discover();
   await register();
   if (method() === "anonymous") {
@@ -332,6 +344,8 @@ function renderPending(regs) {
   const focus = new URLSearchParams(location.search).get("claim_attempt_token");
   if (!pending.length) {
     root.innerHTML = `<p class="empty">No pending ceremony. Start a claim from the mock agent.</p>`;
+    state.pending = [];
+    updateEmailHint([]);
     return;
   }
   root.replaceChildren(
@@ -345,17 +359,63 @@ function renderPending(regs) {
         <p class="muted">${r.type} · requested ${escapeHtml(r.postClaimScopes.join(", "))}</p>
         <p class="muted">Currently holding ${escapeHtml(r.preClaimScopes.join(", ") || "no token yet")}</p>
         ${r.loginHint ? `<p class="muted">Bound to ${escapeHtml(r.loginHint)}</p>` : ""}
-        <button type="button" data-pick="${r.claimAttempt.claimAttemptToken}">Use this claim</button>
+        <div class="btn-row wrap">
+          <button type="button" data-signin>Sign in as this email</button>
+          <button type="button" data-rebind>Bind claim to signed-in email</button>
+        </div>
       `;
-      el.querySelector("button").addEventListener("click", () => {
+      el.querySelector("[data-signin]").addEventListener("click", () => {
         state.activeAttempt = r.claimAttempt.claimAttemptToken;
-        $("claim-msg").textContent = `Selected ${r.agentName}. Enter the code the agent is showing.`;
+        if (r.loginHint) $("owner-email").value = r.loginHint;
+        $("login-hint").value = $("owner-email").value.trim();
+        claimMsg.className = "form-msg ok";
+        claimMsg.textContent = `Signed in as ${$("owner-email").value}. Enter the code the agent is showing.`;
+        updateEmailHint(pending);
+      });
+      el.querySelector("[data-rebind]").addEventListener("click", async () => {
+        state.activeAttempt = r.claimAttempt.claimAttemptToken;
+        const email = $("owner-email").value.trim();
+        if (!email) {
+          claimMsg.className = "form-msg err";
+          claimMsg.textContent = "Enter an email in Signed in as first.";
+          return;
+        }
+        const { res, data } = await api("/demo/claim/rebind", {
+          method: "POST",
+          body: { claim_attempt_token: r.claimAttempt.claimAttemptToken, email },
+        });
+        claimMsg.className = `form-msg ${res.ok ? "ok" : "err"}`;
+        claimMsg.textContent = res.ok
+          ? `Claim rebound to ${email}.`
+          : data.error_description || "Rebind failed";
+        $("login-hint").value = email;
+        await refreshStatus();
       });
       return el;
     }),
   );
   if (focus) state.activeAttempt = focus;
   if (!state.activeAttempt && pending[0]) state.activeAttempt = pending[0].claimAttempt.claimAttemptToken;
+  state.pending = pending;
+  updateEmailHint(pending);
+}
+
+function updateEmailHint(pending) {
+  const hint = $("signin-hint");
+  if (!hint) return;
+  const signed = $("owner-email").value.trim();
+  const bound = pending.find((r) => r.claimAttempt?.claimAttemptToken === state.activeAttempt)?.loginHint
+    ?? pending[0]?.loginHint;
+  if (bound && signed && normalizeEmail(bound) !== normalizeEmail(signed)) {
+    hint.textContent = `This claim is bound to ${bound}. Signed in as must match — click “Sign in as this email”, or bind the claim to your signed-in address.`;
+    hint.classList.add("err");
+  } else if (bound) {
+    hint.textContent = `Bound to ${bound}. Edit Signed in as if you need a different address, then bind the claim to it.`;
+    hint.classList.remove("err");
+  } else {
+    hint.textContent = "Any email works. Play through claim binds the ceremony to this address.";
+    hint.classList.remove("err");
+  }
 }
 
 function escapeHtml(s) {
@@ -408,7 +468,7 @@ $("claim-form").addEventListener("submit", async (e) => {
     body: {
       claim_attempt_token: attempt,
       user_code: $("claim-code").value.trim(),
-      owner_email: $("owner-email").value,
+      owner_email: $("owner-email").value.trim(),
     },
   });
   claimMsg.className = `form-msg ${res.ok ? "ok" : "err"}`;
@@ -434,3 +494,8 @@ mark("discover", "now");
 discover();
 refreshStatus();
 setInterval(refreshStatus, 1500);
+$("owner-email").addEventListener("input", () => updateEmailHint(state.pending ?? []));
+$("login-hint").addEventListener("change", () => {
+  if ($("login-hint").value.trim()) $("owner-email").value = $("login-hint").value.trim();
+  updateEmailHint(state.pending ?? []);
+});

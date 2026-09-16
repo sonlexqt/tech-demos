@@ -108,6 +108,11 @@ export function oauthError(status: number, error: string, description: string): 
   return json({ error, error_description: description }, status);
 }
 
+export function emailsMatch(a?: string, b?: string): boolean {
+  if (!a || !b) return false;
+  return a.trim().toLowerCase() === b.trim().toLowerCase();
+}
+
 export function parseScopesField(raw?: string): unknown {
   if (!raw) return undefined;
   try {

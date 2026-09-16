@@ -399,6 +399,14 @@ button.primary {
   color: var(--bad);
 }
 
+#signin-hint {
+  margin: -0.35rem 0 0.8rem;
+}
+
+#signin-hint.err {
+  color: var(--bad);
+}
+
 .form-msg.ok {
   color: var(--ok);
 }

@@ -17,16 +17,16 @@
         </div>
       </div>
       <div class="top-actions">
-        <span class="pill pill-warn">Mock only — no WorkOS or Neon APIs</span>
+        <span class="pill pill-warn">Mock only — no production APIs</span>
         <a class="link" href="/auth.md" target="_blank" rel="noreferrer">Open /auth.md</a>
         <button type="button" id="btn-reset">Reset demo</button>
       </div>
     </header>
 
     <p class="lede">
-      A mock agent discovers this app, registers, and waits. You play the human: claim the workspace
-      with a 6-digit code (Claimable Neon–style). Credentials are fake <code>at_demo_</code> tokens
-      kept in memory.
+      A mock agent discovers this app via <code>auth.md</code>, registers, and waits. You play the
+      human: claim the workspace with a 6-digit code. Credentials are fake
+      <code>at_demo_</code> tokens kept in memory.
     </p>
 
     <ol class="rail" id="step-rail" aria-label="Protocol steps">
@@ -103,16 +103,22 @@
 
         <p class="claim-copy">
           An agent started a Harbor workspace before you created an account. Review the scopes and
-          claim it — the same ownership handoff as Claimable Neon, without calling Neon.
+          claim it with the 6-digit code the agent is showing.
         </p>
 
         <label class="field">
           Signed in as
-          <select id="owner-email">
-            <option value="ada@harbor.local">Ada Lovelace — ada@harbor.local</option>
-            <option value="sam@harbor.local">Sam Harbor — sam@harbor.local</option>
-          </select>
+          <input
+            id="owner-email"
+            type="email"
+            value="ada@harbor.local"
+            placeholder="you@example.com"
+            autocomplete="email"
+          />
         </label>
+        <p class="muted" id="signin-hint">
+          Any email works. Play through claim binds the ceremony to this address.
+        </p>
 
         <div id="pending-claims" class="claims"></div>
 
@@ -158,8 +164,6 @@
     <footer class="foot">
       Protocol-shaped demo of
       <a href="https://workos.com/auth-md">WorkOS auth.md</a>
-      · inspired by
-      <a href="https://neon.com/claimable-neon">Claimable Neon</a>
       · source bookmark
       <a href="https://x.com/grinich/status/2098125592352931866">@grinich</a>
     </footer>
