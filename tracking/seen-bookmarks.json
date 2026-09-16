@@ -6,6 +6,13 @@
       "url": "https://mozilla.github.io/pdf.js/",
       "date": "2026-09-15",
       "notes": "User-requested tweak from WebMCP todos pitch"
+    },
+    {
+      "id": "2098125592352931866",
+      "title": "WorkOS auth.md — agent registration protocol",
+      "url": "https://x.com/grinich/status/2098125592352931866",
+      "date": "2026-09-16",
+      "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
     }
   ],
   "skipped": [],
