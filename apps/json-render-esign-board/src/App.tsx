@@ -8,12 +8,11 @@ import { getActionLog, subscribeActionLog } from "./action-log";
 import { CATALOG_ACTION_NAMES, CATALOG_COMPONENT_NAMES, catalog } from "./catalog";
 import { PRESET_PROMPTS, SIGNATURE_REQUESTS } from "./data/requests";
 import { generateSpecFromPrompt } from "./generate/buildSpec";
-import { streamFromLiveApi, streamSpecProgressively } from "./generate/streamSpec";
+import { fetchComposeStatus, streamJevCompose, type ComposeStatus } from "./generate/jevStream";
+import { streamSpecProgressively } from "./generate/streamSpec";
 import { recordRemind } from "./action-log";
 import { registry } from "./registry";
 import type { ActionLogEntry } from "./types";
-
-const LIVE_API = import.meta.env.VITE_JSON_RENDER_API;
 
 function collectTypes(spec: Spec | null): string[] {
   if (!spec) return [];
@@ -28,13 +27,21 @@ export function App() {
   const [patchInfo, setPatchInfo] = useState<{ applied: number; total: number; last: string } | null>(
     null,
   );
-  const [mode, setMode] = useState<"offline" | "live">(LIVE_API ? "live" : "offline");
+  const [engine, setEngine] = useState<ComposeStatus>({
+    available: false,
+    engine: "fixture",
+    model: null,
+  });
   const [specOpen, setSpecOpen] = useState(false);
   const [log, setLog] = useState<ActionLogEntry[]>(getActionLog);
   const [toast, setToast] = useState<ActionLogEntry | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => subscribeActionLog(setLog), []);
+
+  useEffect(() => {
+    void fetchComposeStatus().then(setEngine);
+  }, []);
 
   useEffect(() => {
     if (log[0]) {
@@ -66,19 +73,21 @@ export function App() {
     setIsStreaming(true);
     setSpec(null);
     setPatchInfo(null);
-    setMode(LIVE_API ? "live" : "offline");
 
     try {
-      if (LIVE_API) {
-        await streamFromLiveApi(
-          LIVE_API,
+      const live = await fetchComposeStatus();
+      setEngine(live);
+      if (live.available) {
+        await streamJevCompose(
           nextPrompt,
           (progress) => {
             setSpec(progress.spec);
             setPatchInfo({
-              applied: progress.applied,
-              total: progress.total,
-              last: progress.lastPatch,
+              applied: progress.step,
+              total: progress.step,
+              last: progress.stopReason
+                ? `Jev ${progress.stopReason}`
+                : `Jev composition snapshot ${progress.step}`,
             });
           },
           controller.signal,
@@ -120,8 +129,19 @@ export function App() {
           <h1>Signature request board</h1>
           <p className="lede">
             Prompts become a guardrailed Spec — not HTML. Custom e-sign components plus a few
-            shadcn layout primitives. SpecStream applies RFC 6902 patches live.
+            shadcn layout primitives. Offline SpecStream fixtures, or live TypeSafe Jev
+            composition when a server key is set.
           </p>
+          <span
+            className={`engine-badge ${engine.engine === "jev" ? "is-jev" : "is-fixture"}`}
+            title={
+              engine.engine === "jev"
+                ? `experimental_composeSpec via ${engine.model}`
+                : "No server JEV_API_KEY — using catalog-constrained fixtures"
+            }
+          >
+            {engine.engine === "jev" ? "Live Jev" : "Fixture SpecStream"}
+          </span>
         </div>
         <div className="catalog-pills" aria-label="Allowed catalog types">
           {CATALOG_COMPONENT_NAMES.map((name) => (
@@ -184,13 +204,22 @@ export function App() {
             </div>
             <div className="prompt-actions">
               <button type="submit" className="primary" disabled={isStreaming || !prompt.trim()}>
-                {isStreaming ? "Streaming Spec…" : "Generate / stream"}
+                {isStreaming
+                  ? engine.engine === "jev"
+                    ? "Composing with Jev…"
+                    : "Streaming Spec…"
+                  : "Generate / stream"}
               </button>
-              <p className="mode-note">
-                {mode === "live"
-                  ? `Live endpoint ${LIVE_API}`
-                  : "Offline mock + fixtures · no API key"}
-              </p>
+              <span
+                className={`engine-badge ${engine.engine === "jev" ? "is-jev" : "is-fixture"}`}
+                title={
+                  engine.engine === "jev"
+                    ? `experimental_composeSpec via ${engine.model}`
+                    : "No server JEV_API_KEY — using catalog-constrained fixtures"
+                }
+              >
+                {engine.engine === "jev" ? "Live Jev" : "Fixture SpecStream"}
+              </span>
             </div>
           </form>
 
@@ -201,8 +230,11 @@ export function App() {
               <h2>Live board</h2>
               {patchInfo ? (
                 <span className="stream-meter">
-                  SpecStream {patchInfo.applied}/{patchInfo.total} patches
-                  {isStreaming ? " · applying" : " · settled"}
+                  {engine.engine === "jev"
+                    ? `Jev snapshot ${patchInfo.applied}${isStreaming ? " · composing" : " · settled"}`
+                    : `SpecStream ${patchInfo.applied}/${patchInfo.total} patches${
+                        isStreaming ? " · applying" : " · settled"
+                      }`}
                 </span>
               ) : (
                 <span className="stream-meter">Waiting for a prompt</span>

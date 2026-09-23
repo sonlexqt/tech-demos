@@ -8,10 +8,11 @@ Lumin-style **signature-request ops board**. You type a natural-language prompt;
 - Custom e-sign types are the star: `RequestCard`, `SignerChip`, `StatusBadge`, `RemindButton`.
 - A few layout primitives come from **`@json-render/shadcn`**: `Stack`, `Heading`, `Card`, `Button`, `Text`.
 - **`defineRegistry`** maps those names to React implementations. `RemindButton` emits `press`; the catalog action `remind_signer` writes an in-page log (no email).
-- **SpecStream** (`createSpecStreamCompiler` + RFC 6902 JSONL patches via `diffToPatches`) applies the Spec progressively so the board paints as patches arrive.
+- **Default / offline:** SpecStream (`createSpecStreamCompiler` + RFC 6902 JSONL patches) applies a fixture or keyword mock so the board paints progressively. **No API key required.**
+- **Optional live Jev:** when a server key is present, Vite middleware runs json-render’s experimental composer (`experimental_composeSpec` + `experimental_createEvaluator` with model `typesafe-ai/jev`) against the same e-sign catalog and atomic candidates. Jev only *selects and places* prepared elements — it cannot invent HTML or extra component types.
 - `catalog.validate` checks the finished Spec against the catalog.
 
-Default path is **offline**: preset fixtures plus a keyword mock over 10 seed rows. No API key required.
+The prompt bar shows a badge: **Fixture SpecStream** (default) or **Live Jev**.
 
 ## Run
 
@@ -25,24 +26,29 @@ Open the Vite URL (default `http://localhost:5173/`).
 
 ## Manual test
 
-1. Load the page. Confirm the catalog pills (`RequestCard`, `SignerChip`, `StatusBadge`, `RemindButton`, plus shadcn layout types) and the 10-row seed ledger.
-2. Click **Overdue counsel** (or paste `Show overdue external-counsel requests needing a remind`) and **Generate / stream**. Request cards should appear progressively. SpecStream patch counts increment.
+1. Load the page. Confirm the catalog pills (`RequestCard`, `SignerChip`, `StatusBadge`, `RemindButton`, plus shadcn layout types), the 10-row seed ledger, and the **Fixture SpecStream** badge (unless you set a Jev key).
+2. Click **Overdue counsel** (or paste `Show overdue external-counsel requests needing a remind`) and **Generate / stream**. Request cards should appear progressively. SpecStream patch counts increment on the fixture path.
 3. Click **APAC countersign**, then **Declined → re-sent**. Each board should stay on catalog types only.
 4. Click a gold **Remind** control. A toast and the Action log should record `remind_signer` for that request id. Nothing is emailed.
 5. Expand **Spec JSON peek**. Every `type` should be a catalog name. `catalog.validate: success` should show. There is no raw HTML string in the Spec.
 6. Optional: type a looser prompt such as `void` or `EMEA counsel`. The local mock still emits only catalog components.
 
-## Optional live LLM
+## Optional live Jev (TypeSafe)
 
-`bun run dev` never needs secrets.
+`bun run dev` never needs secrets. This environment records evidence on the fixture path.
 
-If you already have an endpoint that streams SpecStream JSONL (the format `useUIStream` expects), set:
+To flip to live composition locally (do **not** commit the key, do **not** use a `VITE_` prefix):
 
 ```bash
-# .env.local — not committed
-VITE_JSON_RENDER_API=https://your-generate-endpoint
+# apps/json-render-esign-board/.env.local  — gitignored
+JEV_API_KEY=your-typesafe-jev-or-ai-gateway-key
 ```
 
-Then Generate will POST `{ prompt }` to that URL and compile the stream with the same SpecStream compiler. Leave the variable unset to keep the offline mock.
+Accepted aliases (same server resolver, matching [json-render Jev docs](https://json-render.dev/docs/jev) / playground):
 
-See `.env.example`.
+- `JEV_AI_GATEWAY_API_KEY`
+- `AI_GATEWAY_API_KEY`
+
+Restart `bun run dev`. The badge should read **Live Jev**. Generate then streams `experimental_composeSpec` snapshots from `/api/compose` (server-only evaluator, model `typesafe-ai/jev`). The key stays on the Vite server and is never sent to the browser.
+
+See `.env.example` for the blank template.

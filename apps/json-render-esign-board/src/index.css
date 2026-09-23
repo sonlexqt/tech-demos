@@ -109,6 +109,10 @@ h1 {
   line-height: 1.5;
 }
 
+.top-bar .engine-badge {
+  margin-top: 12px;
+}
+
 .catalog-pills {
   display: flex;
   flex-wrap: wrap;
@@ -281,6 +285,28 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.engine-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 5px 11px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.engine-badge.is-fixture {
+  background: var(--secondary);
+  color: #5b6573;
+  border: 1px solid var(--border);
+}
+
+.engine-badge.is-jev {
+  background: #0f6c6c;
+  color: #f7f3ea;
 }
 
 .mode-note,

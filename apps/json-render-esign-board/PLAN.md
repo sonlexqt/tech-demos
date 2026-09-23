@@ -7,13 +7,13 @@
 - Docs: https://json-render.dev
 
 ## Goal (single-user MVP)
-A Lumin-style signature-request ops board: the user types (or clicks) a natural-language prompt, and a **catalog-guardrailed** json-render Spec is streamed onto the page via SpecStream (RFC 6902 JSONL patches). Custom e-sign components — `RequestCard`, `SignerChip`, `StatusBadge`, `RemindButton` — are the only domain vocabulary the generator can emit. Clicking Remind fires the catalog action `remind_signer` (inline log / toast, no email). The default path works offline with preset fixtures plus a local mock generator; no API key is required.
+A Lumin-style signature-request ops board: the user types (or clicks) a natural-language prompt, and a **catalog-guardrailed** json-render Spec is streamed onto the page. Custom e-sign components — `RequestCard`, `SignerChip`, `StatusBadge`, `RemindButton` — are the only domain vocabulary the generator can emit. Clicking Remind fires the catalog action `remind_signer` (inline log / toast, no email). Default path: offline fixtures + SpecStream (no API key). When `JEV_API_KEY` (or documented Gateway aliases) is set on the **server**, generation uses `experimental_composeSpec` / `experimental_createEvaluator` (`typesafe-ai/jev`) against the same catalog and atomic candidates. The UI badge shows Fixture SpecStream vs Live Jev.
 
 ## Out of scope
 - Real email, DocuSign/Lumin APIs, or identity
 - Auth, multi-user, persistence, deploy
 - Unbounded HTML / markdown generation
-- Required live LLM (optional env-gated hook only)
+- Required live Jev (optional server env key only; never `VITE_`)
 
 ## Stack
 - Runtime/tooling: Bun
@@ -34,8 +34,14 @@ Seed 8–10 fake signature-request rows as background context the generated Spec
 ## Offline generate path
 1. Match one of three fixture prompts when the text is close enough, else run a keyword mock that filters seed rows and builds a Spec using **only** catalog types.
 2. Validate with `catalog.validate`.
-3. Diff empty spec → target spec with `diffToPatches`, then apply via `createSpecStreamCompiler` so the board paints progressively (SpecStream).
-4. Optional: if `VITE_JSON_RENDER_API` is set, `useUIStream` can hit that endpoint instead. Never required for `bun run dev`.
+3. Apply via `createSpecStreamCompiler` (one RFC 6902 patch per element) so the board paints progressively.
+
+## Optional live Jev path
+1. Vite middleware `GET /api/compose/status` and `POST /api/compose` (server-only).
+2. Read `JEV_API_KEY`, else `JEV_AI_GATEWAY_API_KEY`, else `AI_GATEWAY_API_KEY`. Never `VITE_*`.
+3. `experimental_createEvaluator({ model: "typesafe-ai/jev", apiKey })` + `experimental_composeSpec` with catalog-constrained candidates built from the seed ledger.
+4. Client applies full spec snapshots from the NDJSON stream. Badge: **Live Jev**.
+5. If the key is missing, status reports fixture and Generate stays on SpecStream. Never required for `bun run dev`.
 
 ## Manual testing / README
 `apps/json-render-esign-board/README.md` must tell a reviewer:
@@ -44,7 +50,7 @@ Seed 8–10 fake signature-request rows as background context the generated Spec
 - Try 2–3 prompts: overdue external-counsel remind, APAC countersign, declined-then-resent this week
 - Click Remind → action log, no real email
 - Spec JSON peek shows only catalog component types (no raw HTML)
-- Optional live LLM env note
+- Optional live Jev env note (`JEV_API_KEY`, no `VITE_` prefix, do not commit keys)
 
 ## Acceptance criteria
 - [ ] `cd apps/json-render-esign-board && bun install && bun run dev` works
@@ -53,7 +59,8 @@ Seed 8–10 fake signature-request rows as background context the generated Spec
 - [ ] Demo PR includes at least one video of the running app
 - [ ] Prompt box + generate/stream + live board + spec peek are visible
 - [ ] Custom e-sign catalog components render; Remind fires `remind_signer` safely
-- [ ] Offline default (no API key); optional LLM gated and documented
+- [ ] Offline default (no API key); optional Jev gated on the server and documented
+- [ ] UI badge distinguishes Live Jev vs Fixture SpecStream
 - [ ] Tracking updated in the same PR for bookmark `2101831273224311035` (and optional skipped `2100679300756435135`)
 
 ## Validation (PR)

@@ -62,6 +62,8 @@ export const catalog = defineCatalog(schema, {
       }),
       description:
         "Safe remind control. Bind on.press to the remind_signer action with the same requestId. Never send real email.",
+      // Jev composition requires declared events; the React catalog schema type omits this field.
+      ...({ events: ["press"] } as { events?: string[] }),
     },
   },
   actions: {
