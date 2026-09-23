@@ -9,7 +9,8 @@ import { CATALOG_ACTION_NAMES, CATALOG_COMPONENT_NAMES, catalog } from "./catalo
 import { PRESET_PROMPTS, SIGNATURE_REQUESTS } from "./data/requests";
 import { generateSpecFromPrompt } from "./generate/buildSpec";
 import { streamFromLiveApi, streamSpecProgressively } from "./generate/streamSpec";
-import { handlers as createActionHandlers, registry } from "./registry";
+import { recordRemind } from "./action-log";
+import { registry } from "./registry";
 import type { ActionLogEntry } from "./types";
 
 const LIVE_API = import.meta.env.VITE_JSON_RENDER_API;
@@ -47,11 +48,13 @@ export function App() {
   const usedTypes = useMemo(() => collectTypes(spec), [spec]);
   const validation = spec ? catalog.validate(spec) : null;
   const actionHandlers = useMemo(
-    () =>
-      createActionHandlers(
-        () => undefined,
-        () => ({}),
-      ),
+    () => ({
+      remind_signer: (params: Record<string, unknown>) => {
+        const requestId = typeof params.requestId === "string" ? params.requestId : "unknown";
+        const label = typeof params.label === "string" ? params.label : null;
+        recordRemind(requestId, label);
+      },
+    }),
     [],
   );
 

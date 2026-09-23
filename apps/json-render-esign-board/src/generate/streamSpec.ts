@@ -1,8 +1,4 @@
-import {
-  createSpecStreamCompiler,
-  diffToPatches,
-  type Spec,
-} from "@json-render/core";
+import { createSpecStreamCompiler, type Spec, type UIElement } from "@json-render/core";
 
 function wait(ms: number, signal?: AbortSignal): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -38,9 +34,9 @@ export async function streamSpecProgressively(
   target: Spec,
   onProgress: (progress: StreamProgress) => void,
   signal?: AbortSignal,
-  delayMs = 55,
+  delayMs = 80,
 ): Promise<Spec> {
-  const patches = diffToPatches({}, target as unknown as Record<string, unknown>);
+  const patches = specToElementPatches(target);
   const compiler = createSpecStreamCompiler<Spec>();
   let latest: Spec = { root: "", elements: {} };
 
@@ -111,4 +107,28 @@ export async function streamFromLiveApi(
   }
 
   return compiler.getResult();
+}
+
+/** One RFC 6902 line per element so the board paints progressively. */
+function specToElementPatches(spec: Spec): Array<{ op: "add"; path: string; value: unknown }> {
+  const patches: Array<{ op: "add"; path: string; value: unknown }> = [
+    { op: "add", path: "/root", value: spec.root },
+    { op: "add", path: "/elements", value: {} },
+  ];
+  if (spec.state) {
+    patches.push({ op: "add", path: "/state", value: spec.state });
+  }
+  const keys = Object.keys(spec.elements);
+  const ordered =
+    spec.root && keys.includes(spec.root)
+      ? [spec.root, ...keys.filter((key) => key !== spec.root)]
+      : keys;
+  for (const key of ordered) {
+    patches.push({
+      op: "add",
+      path: `/elements/${key}`,
+      value: spec.elements[key] as UIElement,
+    });
+  }
+  return patches;
 }

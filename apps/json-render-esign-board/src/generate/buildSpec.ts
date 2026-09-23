@@ -12,6 +12,7 @@ function text(
   return {
     type: "Text",
     props: { text: value, variant },
+    children: [],
   };
 }
 
@@ -19,6 +20,7 @@ function heading(value: string, level: "h1" | "h2" | "h3" | "h4"): UIElement {
   return {
     type: "Heading",
     props: { text: value, level },
+    children: [],
   };
 }
 
@@ -67,6 +69,7 @@ function addRequestBlock(
         region: signer.region ?? null,
         status: signer.status,
       },
+      children: [],
     };
     return id;
   });
@@ -79,6 +82,7 @@ function addRequestBlock(
     elements[remindId] = {
       type: "RemindButton",
       props: { requestId: request.id, label },
+      children: [],
       on: remindOn(request.id, label),
     };
     childIds.push(remindId);
@@ -123,6 +127,17 @@ function buildBoard(
     addRequestBlock(elements, request, `row-${index}`),
   );
 
+  const statuses = [...new Set(rows.map((row) => row.status))];
+  const legendIds = statuses.map((status, index) => {
+    const id = `legend-${index}`;
+    elements[id] = {
+      type: "StatusBadge",
+      props: { status },
+      children: [],
+    };
+    return id;
+  });
+  elements.legend = stack(legendIds, { direction: "horizontal", gap: "sm" });
   elements.headline = heading(headline, "h2");
   elements.summary = text(summary, "muted");
   elements.list = stack(cardIds, { direction: "vertical", gap: "md" });
@@ -135,7 +150,7 @@ function buildBoard(
       centered: false,
       className: "board-card",
     },
-    children: ["headline", "summary", "list"],
+    children: ["headline", "summary", "legend", "list"],
   };
 
   return { root: "root", elements };
