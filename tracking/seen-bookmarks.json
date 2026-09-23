@@ -13,9 +13,24 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "2101831273224311035",
+      "title": "Vercel Labs json-render",
+      "url": "https://x.com/Pluvio9yte/status/2101831273224311035",
+      "date": "2026-09-22",
+      "notes": "approved; slug json-render-esign-board; docs https://json-render.dev"
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "id": "2100679300756435135",
+      "title": "pg-jev request filter",
+      "url": "https://x.com/iam_zachi/status/2100679300756435135",
+      "date": "2026-09-23",
+      "notes": "widget dismissed 2026-09-23; slug would have been pg-jev-request-filter"
+    }
+  ],
   "built": [
     {
       "id": "user-request-webmcp-pdf-viewer",
@@ -30,6 +45,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "2101831273224311035",
+      "title": "Vercel Labs json-render",
+      "url": "https://x.com/Pluvio9yte/status/2101831273224311035",
+      "date": "2026-09-22",
+      "notes": "slug json-render-esign-board"
     }
   ]
 }
