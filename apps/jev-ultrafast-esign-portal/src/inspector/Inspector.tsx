@@ -1,6 +1,5 @@
 import type { Decision, HistoryItem, JevElement, ModeInfo } from "../types";
 import { OPERATIONS } from "../types";
-import { formatElementRow } from "../portal/elements";
 
 type Props = {
   goal: string;
@@ -89,9 +88,6 @@ export function Inspector({
           ))}
         </tbody>
       </table>
-      <p className="hint" style={{ marginTop: "0.45rem" }}>
-        {elements.map(formatElementRow).join("\n")}
-      </p>
 
       <h3>Action probabilities</h3>
       {OPERATIONS.map((op) => (
