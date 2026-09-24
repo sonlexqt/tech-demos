@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "2101831273224311035-jev-ultrafast",
+      "title": "Jev Ultrafast e-sign portal playground",
+      "url": "https://x.com/Pluvio9yte/status/2101831273224311035",
+      "date": "2026-09-24",
+      "notes": "Jev list item #1 (same tweet as json-render); slug jev-ultrafast-esign-portal; distinct from json-render-esign-board / PR #6"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "2101831273224311035-jev-ultrafast",
+      "title": "Jev Ultrafast e-sign portal playground",
+      "url": "https://x.com/Pluvio9yte/status/2101831273224311035",
+      "date": "2026-09-24",
+      "notes": "Built demo at apps/jev-ultrafast-esign-portal; Jev list item #1; distinct from json-render-esign-board / PR #6"
     }
   ]
 }
