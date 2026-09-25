@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "2101476399488160013",
+      "title": "Jaste — TypeSafe Jev smart copy/paste",
+      "url": "https://x.com/marcus_lowe/status/2101476399488160013",
+      "date": "2026-09-25",
+      "notes": "Marcus Lowe / Jaste beta; playground slug jev-jaste-esign-clipboard (not the OS product)"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "2101476399488160013",
+      "title": "Jaste — TypeSafe Jev smart copy/paste",
+      "url": "https://x.com/marcus_lowe/status/2101476399488160013",
+      "date": "2026-09-25",
+      "notes": "Built demo at apps/jev-jaste-esign-clipboard; Jaste / Marcus Lowe smart copy-paste; not the OS product"
     }
   ]
 }
