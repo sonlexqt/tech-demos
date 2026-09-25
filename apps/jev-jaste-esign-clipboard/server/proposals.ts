@@ -1,6 +1,5 @@
-import type { Candidates, ClassifyResponse, Intent, Proposal } from "../src/types";
-import { isBillingEmail, isCcEmail } from "./extract";
-import { NONE } from "./questions";
+import type { Candidates, ClassifyResponse, Intent, Proposal, SignerVerification } from "../src/types";
+import { NONE } from "./extract";
 
 type ChoiceAnswer = {
   type?: string;
@@ -21,10 +20,19 @@ export type Judgment = {
   paste_fit: ScoreAnswer;
   primary_target?: ChoiceAnswer;
   signer_email?: ChoiceAnswer;
-  notice_email?: ChoiceAnswer;
-  company_span?: ChoiceAnswer;
-  address_span?: ChoiceAnswer;
-  clause_span?: ChoiceAnswer;
+  viewer_email?: ChoiceAnswer;
+  title_span?: ChoiceAnswer;
+  expire_span?: ChoiceAnswer;
+  signing_type?: ChoiceAnswer;
+  subject_span?: ChoiceAnswer;
+};
+
+const VC: SignerVerification = {
+  method: "vc",
+  payload: {
+    doc_type: "driver_license",
+    claims: ["given_name", "family_name"],
+  },
 };
 
 function clamp01(n: number) {
@@ -42,12 +50,8 @@ function confidence(answer: ChoiceAnswer | ScoreAnswer | undefined, fallback: nu
   return typeof value === "number" && Number.isFinite(value) ? clamp01(value) : fallback;
 }
 
-function nameForEmail(candidates: Candidates, email: string) {
-  return candidates.signers.find((s) => s.email.toLowerCase() === email.toLowerCase())?.name;
-}
-
 export function composeProposals(
-  clipboard: string,
+  _clipboard: string,
   candidates: Candidates,
   judgment: Judgment,
 ): Proposal[] {
@@ -56,124 +60,179 @@ export function composeProposals(
   const fit = typeof judgment.paste_fit.score === "number" ? judgment.paste_fit.score : 0;
   const fitNorm = clamp01(fit / 3);
   const proposals: Proposal[] = [];
+  const primary = judgment.primary_target?.choice;
 
   const push = (proposal: Omit<Proposal, "id">) => {
     if (!proposal.value.trim()) return;
-    if (proposals.some((row) => row.target === proposal.target && row.value === proposal.value)) {
-      return;
-    }
+    if (proposals.some((row) => row.target === proposal.target && row.value === proposal.value)) return;
     proposals.push({ ...proposal, id: `${proposal.target}-${proposals.length + 1}` });
   };
 
-  const signerEmails = new Set<string>();
-  const named = candidates.signers.filter((s) => !isCcEmail(clipboard, s.email));
-  const pickedSigner = pick(judgment.signer_email);
+  const wantSigners = intent === "signer_list" || intent === "mixed" || primary === "signer";
+  const wantViewers = intent === "viewer_list" || intent === "mixed" || primary === "viewer";
+  const wantMeta = intent === "request_meta" || intent === "mixed" || primary === "title" || primary === "expires_at" || primary === "signing_type" || primary === "custom_email";
 
-  if (intent === "signer_list" || intent === "mixed" || judgment.primary_target?.choice === "signer") {
-    for (const row of named) {
+  const signerEmails = new Set<string>();
+  if (wantSigners) {
+    for (const row of candidates.people.filter((p) => p.kind === "signer")) {
       signerEmails.add(row.email.toLowerCase());
       push({
         target: "signer",
-        label: "Signer chip",
+        path: "signers[]",
+        label: `signers[]${row.group != null ? ` · group ${row.group}` : ""}`,
         value: row.email,
         name: row.name,
-        role: "signer",
-        confidence: clamp01(
-          Math.max(intentP.signer_list ?? 0, intentP.mixed ?? 0, 0.72) *
-            Math.max(fitNorm, 0.75) *
-            confidence(judgment.signer_email, 0.9),
-        ),
-        reason: `Named person ${row.name} looks like an envelope signer.`,
+        group: row.group,
+        confidence: clamp01(Math.max(intentP.signer_list ?? 0, intentP.mixed ?? 0, 0.74) * Math.max(fitNorm, 0.72)),
+        reason:
+          row.group != null
+            ? `${row.name} → email_address + group ${row.group} (signing_type ORDER).`
+            : `${row.name} looks like a signer (name + email_address).`,
       });
+      if (row.verify) {
+        push({
+          target: "verification",
+          path: "signers[].verification",
+          label: "signers[].verification",
+          value: row.email,
+          name: row.name,
+          group: row.group,
+          verification: VC,
+          confidence: 0.7,
+          reason: "Paste mentioned ID/VC. Requires a Digital Trust workspace license in production.",
+        });
+      }
     }
-    if (pickedSigner && !signerEmails.has(pickedSigner.toLowerCase()) && !isCcEmail(clipboard, pickedSigner)) {
-      signerEmails.add(pickedSigner.toLowerCase());
+    const picked = pick(judgment.signer_email);
+    if (picked && !signerEmails.has(picked.toLowerCase())) {
+      const named = candidates.people.find((p) => p.email.toLowerCase() === picked.toLowerCase());
+      if (!named || named.kind === "signer") {
+        push({
+          target: "signer",
+          path: "signers[]",
+          label: "signers[]",
+          value: picked,
+          name: named?.name,
+          group: named?.group,
+          confidence: confidence(judgment.signer_email, 0.68),
+          reason: "Choice head picked this email among pre-parsed candidates.",
+        });
+      }
+    }
+  }
+
+  if (wantViewers) {
+    const viewers = candidates.people.filter((p) => p.kind === "viewer");
+    for (const row of viewers) {
       push({
-        target: "signer",
-        label: "Signer chip",
-        value: pickedSigner,
-        name: nameForEmail(candidates, pickedSigner),
-        role: "signer",
-        confidence: confidence(judgment.signer_email, 0.7) * Math.max(fitNorm, 0.65),
-        reason: "Choice head picked this email as a signer among pre-parsed candidates.",
+        target: "viewer",
+        path: "viewers[]",
+        label: "viewers[]",
+        value: row.email,
+        name: row.name,
+        confidence: clamp01(Math.max(intentP.viewer_list ?? 0, intentP.mixed ?? 0, 0.8) * 0.95),
+        reason: `${row.name} is visibility-only (not a signer).`,
       });
+    }
+    const picked = pick(judgment.viewer_email);
+    if (picked && !viewers.some((v) => v.email.toLowerCase() === picked.toLowerCase())) {
+      const named = candidates.people.find((p) => p.email.toLowerCase() === picked.toLowerCase());
+      if (named?.kind !== "signer" && named?.kind !== "cc") {
+        push({
+          target: "viewer",
+          path: "viewers[]",
+          label: "viewers[]",
+          value: picked,
+          name: named?.name,
+          confidence: confidence(judgment.viewer_email, 0.64),
+          reason: "Choice head selected this as viewers[].",
+        });
+      }
     }
   }
 
-  const notice = pick(judgment.notice_email);
-  if (
-    notice &&
-    !signerEmails.has(notice.toLowerCase()) &&
-    (intent === "email_field" ||
-      intent === "mixed" ||
-      intent === "address_block" ||
-      isBillingEmail(clipboard, notice) ||
-      judgment.primary_target?.choice === "email")
-  ) {
-    push({
-      target: "email",
-      label: "Notice email",
-      value: notice,
-      confidence: clamp01(
-        Math.max(intentP.email_field ?? 0, intentP.mixed ?? 0, 0.6) *
-          confidence(judgment.notice_email, 0.8),
-      ),
-      reason: isBillingEmail(clipboard, notice)
-        ? "Looks like a billing / notice mailbox, not a person who signs."
-        : "Choice head selected this as the notice / routing email.",
-    });
-  } else if (intent === "email_field" && candidates.emails[0]) {
-    const only = candidates.emails.find((e) => !/gmail\.com$/i.test(e)) ?? candidates.emails[0];
-    if (!signerEmails.has(only.toLowerCase())) {
+  if (wantMeta) {
+    const title = pick(judgment.title_span) ?? candidates.titles[0];
+    if (title) {
       push({
-        target: "email",
-        label: "Notice email",
-        value: only,
-        confidence: clamp01((intentP.email_field ?? 0.8) * Math.max(fitNorm, 0.7)),
-        reason: "Clipboard is a single notice mailbox.",
+        target: "title",
+        path: "title",
+        label: "title",
+        value: title,
+        confidence: clamp01(Math.max(intentP.request_meta ?? 0, 0.82) * confidence(judgment.title_span, 0.9)),
+        reason: "Extracted request title (1–255 chars).",
       });
     }
-  }
 
-  const company = pick(judgment.company_span) ?? (intent === "address_block" ? candidates.companies[0] : undefined);
-  if (company && (intent === "address_block" || intent === "mixed" || judgment.primary_target?.choice === "company")) {
-    push({
-      target: "company",
-      label: "Company / legal name",
-      value: company,
-      confidence: clamp01(
-        Math.max(intentP.address_block ?? 0, intentP.mixed ?? 0, 0.7) *
-          confidence(judgment.company_span, 0.85),
-      ),
-      reason: "Legal-entity span extracted from the clipboard.",
-    });
-  }
+    const expireLabel = pick(judgment.expire_span);
+    const expire = candidates.expires.find((e) => e.label === expireLabel) ?? candidates.expires[0];
+    if (expire) {
+      push({
+        target: "expires_at",
+        path: "expires_at",
+        label: "expires_at",
+        value: String(expire.ms),
+        confidence: 0.86,
+        reason: `${expire.label} → unix epoch milliseconds (${expire.ms}).`,
+      });
+    }
 
-  const address = pick(judgment.address_span) ?? (intent !== "junk" ? candidates.addresses[0] : undefined);
-  if (address && (intent === "address_block" || intent === "mixed" || judgment.primary_target?.choice === "address")) {
-    push({
-      target: "address",
-      label: "Notice address",
-      value: address,
-      confidence: clamp01(
-        Math.max(intentP.address_block ?? 0, intentP.mixed ?? 0, 0.74) *
-          confidence(judgment.address_span, 0.88),
-      ),
-      reason: "Street + city/ZIP block matched a notice-address target.",
-    });
-  }
+    const signing = pick(judgment.signing_type) ?? candidates.signingTypes[0];
+    if (signing === "ORDER" || signing === "SAME_TIME") {
+      push({
+        target: "signing_type",
+        path: "signing_type",
+        label: "signing_type",
+        value: signing,
+        confidence: 0.88,
+        reason:
+          signing === "ORDER"
+            ? "Ordered countersign — signers[].group starts at 1."
+            : "Parallel signing (API default).",
+      });
+    }
 
-  const clause = pick(judgment.clause_span) ?? (intent === "clause" || intent === "mixed" ? candidates.clauses[0] : undefined);
-  if (clause && (intent === "clause" || intent === "mixed" || judgment.primary_target?.choice === "clause")) {
-    push({
-      target: "clause",
-      label: "Clause block",
-      value: clause,
-      confidence: clamp01(
-        Math.max(intentP.clause ?? 0, intentP.mixed ?? 0, 0.78) * confidence(judgment.clause_span, 0.9),
-      ),
-      reason: "Legal paragraph selected for the document clause field.",
-    });
+    const subject = pick(judgment.subject_span) ?? candidates.subjects[0];
+    if (subject) {
+      push({
+        target: "custom_email.subject_name",
+        path: "custom_email.subject_name",
+        label: "custom_email.subject_name",
+        value: subject,
+        confidence: 0.84,
+        reason: "Thread asked for a custom signer-email subject.",
+      });
+    }
+    if (candidates.emailTitles[0]) {
+      push({
+        target: "custom_email.title",
+        path: "custom_email.title",
+        label: "custom_email.title",
+        value: candidates.emailTitles[0],
+        confidence: 0.8,
+        reason: "Email body title for the signer notification.",
+      });
+    }
+    if (candidates.senderEmails[0]) {
+      push({
+        target: "custom_email.sender_email",
+        path: "custom_email.sender_email",
+        label: "custom_email.sender_email",
+        value: candidates.senderEmails[0],
+        confidence: 0.78,
+        reason: "Sender mailbox mentioned in the thread.",
+      });
+    }
+    if (candidates.textTags) {
+      push({
+        target: "use_text_tags",
+        path: "use_text_tags",
+        label: "use_text_tags",
+        value: "true",
+        confidence: 0.77,
+        reason: "Clip asked to parse text tags on the PDF.",
+      });
+    }
   }
 
   return proposals

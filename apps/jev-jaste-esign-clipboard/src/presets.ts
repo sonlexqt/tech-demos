@@ -8,65 +8,57 @@ export type Preset = {
 export const PRESETS: Preset[] = [
   {
     id: "signers",
-    label: "Signer list",
-    hint: "Messy Slack dump of people to add",
-    text: `hey can you add these to the envelope??
+    label: "Ordered signers",
+    hint: "Slack dump with ORDER groups + a CC",
+    text: `hey can you wire the MSA countersign in Lumin? ORDER not same-time
 
-Maya Chen <maya.chen@acme.io> — signer
-Jordan Hale — jordan.hale@acme.io (needs to sign too)
+1. Marcus Chen <marcus.chen@harborlegal.com> — external counsel (signs FIRST)
+2. Priya Patel <priya.patel@acme.io> — Customer
+3. Dana Okonkwo <dana.okonkwo@luminpdf.com> — internal VP (ID verify — driver_license)
+
 cc: legal@acme.io pls don't add as signer
 
 thanks!!`,
   },
   {
-    id: "address",
-    label: "Address block",
-    hint: "Notice / HQ address with chatter",
-    text: `Ship / notice address (pls use this one not the old HQ):
+    id: "thread",
+    label: "Thread + expiry",
+    hint: "Title, October expiry, email subject, text tags",
+    text: `Re: Acme Robotics — Master Services Agreement (FY26)
 
-Acme Robotics, Inc.
-447 Market Street, Suite 1200
-San Francisco, CA 94105
-United States
+Can we send this today? Title should be Acme Robotics — Master Services Agreement (FY26)
 
-attn: legal ops`,
-  },
-  {
-    id: "clause",
-    label: "Clause paragraph",
-    hint: "Indemnification blob from email",
-    text: `Drop this into Indemnification (we marked it up last night):
+please expire end of October
+signing order: counsel → customer → VP (ORDER)
 
-Each party shall indemnify, defend, and hold harmless the other party and its officers, directors, employees, and agents from and against any third-party claims arising out of the indemnifying party's material breach of this Agreement or gross negligence, provided that the indemnified party gives prompt written notice. Cap is twelve months of fees.
+email subject: Please countersign the FY26 MSA
+email title: FY26 MSA ready for signature
+sender: contracts@luminpdf.com
 
-THIS IS NOT CONFIDENTIAL — okay to paste into the workspace clause block.
-
-— sent from my phone`,
+use text tags on the PDF`,
   },
   {
     id: "mixed",
     label: "Mixed junk",
-    hint: "Signers + address + clause + noise",
+    hint: "Wifi + calendar noise; maybe one signer",
     text: `slack dump — ignore the gif
 
-Priya Nair priya.nair@northwind.co signer
-billing email: accounts@northwind.co
-HQ: 88 Pier Avenue, Floor 4, Oakland, CA 94607
+also the wifi is hunter2-demo do NOT put that in the request
+calendar: https://calendar.google.com/calendar/event?eid=abc123
 
-lol also can we use this limitation of liability:
+oh and loop Priya Patel priya.patel@acme.io as customer signer if she isn't already
 
-IN NO EVENT SHALL EITHER PARTY BE LIABLE FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, EVEN IF ADVISED OF THE POSSIBILITY THEREOF, EXCEPT FOR BREACH OF CONFIDENTIALITY OR INDEMNIFICATION OBLIGATIONS.
-
-also someone pasted a wifi password: hunter2-demo (do not apply)`,
+random: someone said "expire never" lol no`,
   },
   {
-    id: "email",
-    label: "Notice email",
-    hint: "Single counterparty mailbox",
-    text: `FYI the counterparty notice email is:
+    id: "viewer",
+    label: "Viewer only",
+    hint: "Deal desk visibility, not a signer",
+    text: `FYI loop in finance as viewer only — they should not sign
 
-  contracts+msa@harborlegal.com
+Sam Rivera <finance@acme.io> — deal desk / viewer
+(not a signer)
 
-(not the personal gmail from last thread — ignore dana.personal@gmail.com)`,
+also maybe cc dana.personal@gmail.com — ignore that one`,
   },
 ];

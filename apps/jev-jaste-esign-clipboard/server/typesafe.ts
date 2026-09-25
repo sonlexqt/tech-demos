@@ -53,8 +53,8 @@ export async function liveClassify(clipboard: string, candidates: Candidates) {
     model: provider.model,
     state: {
       clipboard,
-      workspace:
-        "Mock Lumin Sign envelope: signer chips, company, notice address, notice email, clause block.",
+      endpoint: "POST /v1/signature_request/send",
+      dto: "SignatureRequestDTO: title, signers[], expires_at (ms), optional viewers[], signing_type, custom_email, use_text_tags, file_url",
       candidates,
     },
     questions,
@@ -86,10 +86,11 @@ export async function liveClassify(clipboard: string, candidates: Candidates) {
     paste_fit: asScore(answers.paste_fit),
     primary_target: answers.primary_target ? asChoice(answers.primary_target) : undefined,
     signer_email: answers.signer_email ? asChoice(answers.signer_email) : undefined,
-    notice_email: answers.notice_email ? asChoice(answers.notice_email) : undefined,
-    company_span: answers.company_span ? asChoice(answers.company_span) : undefined,
-    address_span: answers.address_span ? asChoice(answers.address_span) : undefined,
-    clause_span: answers.clause_span ? asChoice(answers.clause_span) : undefined,
+    viewer_email: answers.viewer_email ? asChoice(answers.viewer_email) : undefined,
+    title_span: answers.title_span ? asChoice(answers.title_span) : undefined,
+    expire_span: answers.expire_span ? asChoice(answers.expire_span) : undefined,
+    signing_type: answers.signing_type ? asChoice(answers.signing_type) : undefined,
+    subject_span: answers.subject_span ? asChoice(answers.subject_span) : undefined,
   };
 
   return {

@@ -1,5 +1,4 @@
 import type { Candidates, Intent } from "../src/types";
-import { isBillingEmail, isCcEmail } from "./extract";
 import { INTENT_CRITERIA } from "./questions";
 import { composeProposals, type Judgment } from "./proposals";
 
@@ -24,50 +23,33 @@ function concentratedConfidence(probabilities: Record<string, number>) {
 
 function guessIntent(clipboard: string, candidates: Candidates): Record<string, number> {
   const text = clipboard.toLowerCase();
-  const signerSignal = candidates.signers.length * 1.4 + (/\bsigner\b/.test(text) ? 0.6 : 0);
-  const addressSignal = candidates.addresses.length * 1.5 + (/\b(hq|notice address|suite)\b/.test(text) ? 0.4 : 0);
-  const clauseSignal = candidates.clauses.length * 1.6;
-  const emailOnly =
-    candidates.emails.length >= 1 &&
-    candidates.signers.length === 0 &&
-    candidates.addresses.length === 0 &&
-    candidates.clauses.length === 0;
-  const distinctKinds = [
-    candidates.signers.length > 0,
-    candidates.addresses.length > 0,
-    candidates.clauses.length > 0,
-    emailOnly || (candidates.emails.length > candidates.signers.length && /\b(billing|notice email|counterparty)\b/.test(text)),
-  ].filter(Boolean).length;
+  const signers = candidates.people.filter((p) => p.kind === "signer").length;
+  const viewers = candidates.people.filter((p) => p.kind === "viewer").length;
+  const meta =
+    candidates.titles.length +
+    candidates.expires.length +
+    candidates.signingTypes.length +
+    candidates.subjects.length +
+    (candidates.textTags ? 1 : 0);
+  const junkOnly = /\b(wifi|hunter2|calendar\.google|ignore the gif)\b/.test(text);
+  const kinds = [signers > 0, viewers > 0, meta > 0].filter(Boolean).length;
 
   return {
-    signer_list: signerSignal + (/\b(envelope|add these|needs to sign)\b/.test(text) ? 0.5 : 0),
-    address_block: addressSignal,
-    email_field: emailOnly ? 2.2 : /\b(notice email|counterparty notice|billing email)\b/.test(text) ? 1.1 : 0.1,
-    clause: clauseSignal,
-    mixed: distinctKinds >= 2 ? 2.4 + distinctKinds * 0.3 : 0.08,
-    junk: /\b(wifi password|hunter2|ignore the gif)\b/.test(text) && distinctKinds === 0 ? 2 : 0.12,
+    signer_list: signers * 1.5 + (/\b(order|group|counsel|signer)\b/.test(text) ? 0.4 : 0),
+    request_meta: meta * 1.3 + (/\b(title should be|expire|email subject|text tags)\b/.test(text) ? 0.6 : 0),
+    viewer_list: viewers * 2.2 + (/\bviewer only\b/.test(text) ? 0.8 : 0),
+    mixed: kinds >= 2 ? 2.2 + kinds * 0.25 : junkOnly && signers === 1 && meta === 0 ? 1.6 : 0.08,
+    junk: junkOnly && kinds === 0 ? 2.4 : junkOnly && kinds === 1 ? 0.35 : 0.1,
   };
-}
-
-function pickBest(candidates: string[], fallback?: string | null) {
-  return candidates[0] ?? fallback ?? "none";
 }
 
 export function fixtureJudge(clipboard: string, candidates: Candidates): Judgment {
   const weights = guessIntent(clipboard, candidates);
   const probabilities = softmaxLike(weights);
   const intent = Object.entries(probabilities).sort((a, b) => b[1] - a[1])[0]?.[0] as Intent;
-
-  const signerEmail =
-    candidates.signers.find((s) => !isCcEmail(clipboard, s.email))?.email ??
-    candidates.emails.find((e) => !isCcEmail(clipboard, e) && !isBillingEmail(clipboard, e)) ??
-    "none";
-  const noticeEmail =
-    candidates.emails.find((e) => isBillingEmail(clipboard, e) || /harborlegal|contracts\+|accounts@/i.test(e)) ??
-    (intent === "email_field" ? candidates.emails[0] : "none");
-
-  const fit =
-    intent === "junk" ? 0.2 : intent === "mixed" ? 2.35 : intent === "email_field" ? 2.1 : 2.75;
+  const signer = candidates.people.find((p) => p.kind === "signer");
+  const viewer = candidates.people.find((p) => p.kind === "viewer");
+  const fit = intent === "junk" ? 0.25 : intent === "mixed" ? 2.2 : 2.7;
 
   return {
     intent: {
@@ -79,7 +61,7 @@ export function fixtureJudge(clipboard: string, candidates: Candidates): Judgmen
     paste_fit: {
       type: "score",
       score: fit,
-      confidence: intent === "junk" ? 0.7 : 0.91,
+      confidence: intent === "junk" ? 0.68 : 0.92,
       probabilities: {
         "0": fit < 0.8 ? 0.7 : 0.02,
         "1": fit >= 0.8 && fit < 1.6 ? 0.7 : 0.06,
@@ -92,41 +74,36 @@ export function fixtureJudge(clipboard: string, candidates: Candidates): Judgmen
       choice:
         intent === "signer_list"
           ? "signer"
-          : intent === "address_block"
-            ? "address"
-            : intent === "email_field"
-              ? "email"
-              : intent === "clause"
-                ? "clause"
-                : intent === "mixed"
-                  ? "signer"
-                  : "none",
+          : intent === "viewer_list"
+            ? "viewer"
+            : intent === "request_meta"
+              ? "title"
+              : intent === "mixed"
+                ? "signer"
+                : "none",
       confidence: 0.84,
     },
-    signer_email: {
+    signer_email: { type: "choice", choice: signer?.email ?? "none", confidence: signer ? 0.93 : 0.6 },
+    viewer_email: { type: "choice", choice: viewer?.email ?? "none", confidence: viewer ? 0.94 : 0.6 },
+    title_span: {
       type: "choice",
-      choice: signerEmail,
-      confidence: signerEmail === "none" ? 0.7 : 0.93,
+      choice: candidates.titles[0] ?? "none",
+      confidence: candidates.titles.length ? 0.95 : 0.55,
     },
-    notice_email: {
+    expire_span: {
       type: "choice",
-      choice: noticeEmail ?? "none",
-      confidence: noticeEmail && noticeEmail !== "none" ? 0.9 : 0.62,
+      choice: candidates.expires[0]?.label ?? "none",
+      confidence: candidates.expires.length ? 0.9 : 0.55,
     },
-    company_span: {
+    signing_type: {
       type: "choice",
-      choice: pickBest(candidates.companies, "none"),
-      confidence: candidates.companies.length ? 0.94 : 0.6,
+      choice: candidates.signingTypes[0] ?? "none",
+      confidence: candidates.signingTypes.length ? 0.91 : 0.55,
     },
-    address_span: {
+    subject_span: {
       type: "choice",
-      choice: pickBest(candidates.addresses, "none"),
-      confidence: candidates.addresses.length ? 0.95 : 0.6,
-    },
-    clause_span: {
-      type: "choice",
-      choice: pickBest(candidates.clauses, "none"),
-      confidence: candidates.clauses.length ? 0.96 : 0.6,
+      choice: candidates.subjects[0] ?? "none",
+      confidence: candidates.subjects.length ? 0.9 : 0.55,
     },
   };
 }

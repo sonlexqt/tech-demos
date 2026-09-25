@@ -1,4 +1,4 @@
-import type { Candidates } from "../src/types";
+import type { Candidates, ExpireHint, PersonCandidate, SigningType } from "../src/types";
 
 const EMAIL_RE = /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g;
 const NAME_EMAIL_ANGLE =
@@ -7,23 +7,29 @@ const NAME_THEN_EMAIL =
   /([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+)+)\s*[—–\-:,]\s*([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
 const NAME_SPACE_EMAIL =
   /([A-Z][A-Za-z.'-]+(?:\s+[A-Z][A-Za-z.'-]+)+)\s+([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/g;
-const COMPANY_RE =
-  /\b([A-Z][A-Za-z0-9&.' ]{1,60},?\s*(?:Inc\.|LLC|Ltd\.|LLP|Corp\.|Corporation|Company))(?=\s|$|[^A-Za-z])/g;
-const STREET_RE =
-  /\b\d{1,5}\s+[A-Za-z0-9.'-]+(?:\s+[A-Za-z0-9.'-]+){0,6}\s+(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Way|Court|Ct\.?|Place|Pl\.?|Pier)\b/i;
-const CITY_ZIP_RE = /\b[A-Z][a-zA-Z .]+,\s*[A-Z]{2}\s+\d{5}(?:-\d{4})?\b/;
-const LEGAL_HINT =
-  /\b(indemnif|liable|liability|hereby|shall|agreement|consequential|hold harmless|party|damages|confidential)\b/i;
 
-const CC_HINT = /\b(cc:|don't add as signer|do not add as signer|pls don't add)\b/i;
-const BILLING_HINT = /\b(billing|accounts@|noreply|wifi|password|hunter2)\b/i;
+const MONTHS: Record<string, number> = {
+  january: 0,
+  february: 1,
+  march: 2,
+  april: 3,
+  may: 4,
+  june: 5,
+  july: 6,
+  august: 7,
+  september: 8,
+  october: 9,
+  november: 10,
+  december: 11,
+};
+
 const NONE = "none";
 
-function unique(values: string[], flatten = true): string[] {
+function unique(values: string[]): string[] {
   const seen = new Set<string>();
   const out: string[] = [];
   for (const raw of values) {
-    const value = (flatten ? raw.replace(/\s+/g, " ") : raw.replace(/[ \t]+/g, " ")).trim();
+    const value = raw.replace(/\s+/g, " ").trim();
     const key = value.toLowerCase();
     if (!value || seen.has(key)) continue;
     seen.add(key);
@@ -32,23 +38,70 @@ function unique(values: string[], flatten = true): string[] {
   return out;
 }
 
-function emailsIn(text: string): string[] {
-  return unique(text.match(EMAIL_RE) ?? []);
+function lineFor(clipboard: string, email: string): string {
+  return (
+    clipboard
+      .split(/\r?\n/)
+      .find((row) => row.toLowerCase().includes(email.toLowerCase())) ?? ""
+  );
 }
 
-function signersIn(text: string): Array<{ name: string; email: string }> {
-  const found: Array<{ name: string; email: string }> = [];
+function isJunkEmail(email: string, line: string): boolean {
+  const blob = `${email} ${line}`.toLowerCase();
+  return (
+    /\b(wifi|password|hunter2|calendar\.google|noreply@)\b/.test(blob) ||
+    /ignore that one|do not put that/.test(blob)
+  );
+}
+
+function isCcLine(line: string): boolean {
+  return /^\s*cc\s*:/i.test(line) || /\b(don't add as signer|do not add as signer|pls don't add)\b/i.test(line);
+}
+
+function isViewerLine(line: string): boolean {
+  return /\b(viewer|deal desk|visibility|should not sign|not a signer|viewer only)\b/i.test(line);
+}
+
+function inferGroup(line: string, leading?: number): number | undefined {
+  if (leading && leading >= 1 && leading <= 10) return leading;
+  if (/\b(counsel|harborlegal|signs first|first)\b/i.test(line)) return 1;
+  if (/\b(customer|acme\.io)\b/i.test(line)) return 2;
+  if (/\b(vp|internal)\b/i.test(line)) return 3;
+  return undefined;
+}
+
+function wantsVerification(line: string): boolean {
+  return /\b(id verify|driver_license|digital trust|\bvc\b|verifiable credential|photo_id)\b/i.test(
+    line,
+  );
+}
+
+function peopleIn(clipboard: string): PersonCandidate[] {
+  const found: PersonCandidate[] = [];
   const patterns = [NAME_EMAIL_ANGLE, NAME_THEN_EMAIL, NAME_SPACE_EMAIL];
   for (const pattern of patterns) {
     pattern.lastIndex = 0;
-    for (const match of text.matchAll(pattern)) {
+    for (const match of clipboard.matchAll(pattern)) {
       const name = match[1]?.trim();
       const email = match[2]?.trim();
       if (!name || !email) continue;
-      if (CC_HINT.test(match[0]) || BILLING_HINT.test(match[0])) continue;
-      found.push({ name, email });
+      const line = lineFor(clipboard, email);
+      if (isJunkEmail(email, line)) continue;
+      const numbered = line.match(/^\s*(\d+)[.)]\s*/);
+      const leading = numbered ? Number(numbered[1]) : undefined;
+      let kind: PersonCandidate["kind"] = "signer";
+      if (isCcLine(line)) kind = "cc";
+      else if (isViewerLine(line)) kind = "viewer";
+      found.push({
+        name,
+        email,
+        kind,
+        group: kind === "signer" ? inferGroup(line, leading) : undefined,
+        verify: kind === "signer" && wantsVerification(line),
+      });
     }
   }
+
   const seen = new Set<string>();
   return found.filter((row) => {
     const key = row.email.toLowerCase();
@@ -58,89 +111,94 @@ function signersIn(text: string): Array<{ name: string; email: string }> {
   });
 }
 
-function companiesIn(text: string): string[] {
-  return unique([...text.matchAll(COMPANY_RE)].map((m) => m[1] ?? m[0]));
+function emailsIn(text: string): string[] {
+  return unique(text.match(EMAIL_RE) ?? []).filter((email) => {
+    const line = lineFor(text, email);
+    return !isJunkEmail(email, line);
+  });
 }
 
-function addressesIn(text: string): string[] {
-  const lines = text.split(/\r?\n/).map((line) => line.trim());
+function titlesIn(text: string): string[] {
   const hits: string[] = [];
-
-  for (let i = 0; i < lines.length; i++) {
-    if (!STREET_RE.test(lines[i])) continue;
-    const chunk = [lines[i]];
-    for (let j = i + 1; j < Math.min(i + 3, lines.length); j++) {
-      if (!lines[j]) break;
-      if (/^(attn|thanks|hey|lol|slack|drop this|fyi|ship \/)/i.test(lines[j])) break;
-      chunk.push(lines[j]);
-      if (CITY_ZIP_RE.test(lines[j])) break;
-    }
-    const cleaned = chunk
-      .join("\n")
-      .replace(/^(?:HQ|Address|Notice address)\s*:\s*/i, "")
-      .trim();
-    hits.push(cleaned);
-  }
-
-  if (!hits.length) {
-    const inline = text.match(
-      /\b\d{1,5}\s+[A-Za-z0-9.'-]+(?:\s+[A-Za-z0-9.'-]+){0,8},\s*[A-Z][a-zA-Z .]+,\s*[A-Z]{2}\s+\d{5}(?:-\d{4})?\b/,
-    );
-    if (inline) hits.push(inline[0]);
-  }
-
-  return unique(hits, false);
+  const titled = text.match(/title should be\s+([^\n]+)/i);
+  if (titled?.[1]) hits.push(titled[1].replace(/[.“”"]/g, "").trim());
+  const re = text.match(/^\s*Re:\s*(.+)$/im);
+  if (re?.[1]) hits.push(re[1].trim());
+  const msa = text.match(/Acme Robotics\s+[—–-]\s+Master Services Agreement[^\n]*/i);
+  if (msa) hits.push(msa[0].trim());
+  return unique(hits).filter((t) => t.length >= 8 && t.length <= 255);
 }
 
-function clausesIn(text: string): string[] {
-  const blocks = text
-    .split(/\n\s*\n/)
-    .map((block) => block.trim())
-    .filter(Boolean);
-  const longLines = text
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter((line) => line.length >= 140 && LEGAL_HINT.test(line));
-
-  return unique(
-    [...blocks, ...longLines].filter(
-      (block) => block.length >= 120 && LEGAL_HINT.test(block) && !/wifi password/i.test(block),
-    ),
-  );
+function endOfMonth(monthIndex: number, from = new Date()): number {
+  const year = from.getUTCFullYear();
+  const month = from.getUTCMonth() <= monthIndex ? monthIndex : monthIndex;
+  const useYear = from.getUTCMonth() > monthIndex ? year + 1 : year;
+  return Date.UTC(useYear, month + 1, 0, 23, 59, 59, 0);
 }
 
-export function extractCandidates(clipboard: string): Candidates {
+function expiresIn(text: string, now = Date.now()): ExpireHint[] {
+  const hints: ExpireHint[] = [];
+  const endMonth = text.match(/end of\s+(january|february|march|april|may|june|july|august|september|october|november|december)/i);
+  if (endMonth?.[1]) {
+    const label = `end of ${endMonth[1].toLowerCase()}`;
+    hints.push({ label, ms: endOfMonth(MONTHS[endMonth[1].toLowerCase()], new Date(now)) });
+  }
+  const days = text.match(/expir\w+\s+(?:in\s+)?(\d+)\s+days/i);
+  if (days) {
+    const n = Number(days[1]);
+    hints.push({ label: `${n} days`, ms: now + n * 24 * 60 * 60 * 1000 });
+  }
+  const iso = text.match(/expir\w+[^\n]*(\d{4}-\d{2}-\d{2})/i);
+  if (iso?.[1]) {
+    hints.push({ label: iso[1], ms: Date.parse(`${iso[1]}T23:59:59.000Z`) });
+  }
+  return hints.filter((h) => Number.isFinite(h.ms) && h.ms > now);
+}
+
+function signingTypesIn(text: string): SigningType[] {
+  const types: SigningType[] = [];
+  if (/\b(ORDER|signing order|counsel\s*→|signs FIRST|not same-time)\b/i.test(text)) {
+    types.push("ORDER");
+  }
+  if (/\bSAME_TIME|same[- ]time|parallel sign/i.test(text)) types.push("SAME_TIME");
+  return unique(types) as SigningType[];
+}
+
+function afterLabel(text: string, labels: RegExp): string[] {
+  const hits: string[] = [];
+  for (const match of text.matchAll(labels)) {
+    const value = match[1]?.trim().replace(/^[:—–-]\s*/, "");
+    if (value) hits.push(value);
+  }
+  return unique(hits);
+}
+
+export function extractCandidates(clipboard: string, now = Date.now()): Candidates {
   return {
     emails: emailsIn(clipboard),
-    signers: signersIn(clipboard),
-    companies: companiesIn(clipboard),
-    addresses: addressesIn(clipboard),
-    clauses: clausesIn(clipboard),
+    people: peopleIn(clipboard),
+    titles: titlesIn(clipboard),
+    expires: expiresIn(clipboard, now),
+    signingTypes: signingTypesIn(clipboard),
+    subjects: afterLabel(clipboard, /(?:email subject|subject(?:_name)?)\s*[:—–-]?\s*([^\n]+)/gi),
+    emailTitles: afterLabel(clipboard, /(?:email title)\s*[:—–-]?\s*([^\n]+)/gi),
+    senderEmails: unique(
+      (clipboard.match(/sender:\s*([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})/gi) ?? []).map(
+        (row) => row.replace(/^sender:\s*/i, ""),
+      ),
+    ),
+    textTags: /\buse text tags\b/i.test(clipboard),
   };
 }
 
 export function isCcEmail(clipboard: string, email: string): boolean {
-  const line =
-    clipboard
-      .split(/\r?\n/)
-      .find((row) => row.toLowerCase().includes(email.toLowerCase())) ?? "";
-  return CC_HINT.test(line) || /^cc:/i.test(line.trim());
-}
-
-export function isBillingEmail(clipboard: string, email: string): boolean {
-  const line =
-    clipboard
-      .split(/\r?\n/)
-      .find((row) => row.toLowerCase().includes(email.toLowerCase())) ?? "";
-  return BILLING_HINT.test(line) || BILLING_HINT.test(email);
+  return isCcLine(lineFor(clipboard, email));
 }
 
 export function choiceCriteria(candidates: string[]): Record<string, string | null> {
   const criteria: Record<string, string | null> = {};
-  for (const value of candidates) {
-    criteria[value] = null;
-  }
-  criteria[NONE] = "None of these spans belongs in the Lumin Sign workspace.";
+  for (const value of candidates) criteria[value] = null;
+  criteria[NONE] = "None of these spans belongs on SignatureRequestDTO.";
   return criteria;
 }
 
