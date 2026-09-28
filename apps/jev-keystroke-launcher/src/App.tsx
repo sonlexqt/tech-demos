@@ -63,10 +63,7 @@ export function App() {
       const ranked = await rankQuery(nextQuery);
       if (id !== requestId.current) return;
       setResult(ranked);
-      setSelectedId((current) => {
-        if (current && ranked.items.some((item) => item.id === current)) return current;
-        return ranked.items[0]?.id ?? null;
-      });
+      setSelectedId(ranked.items[0]?.id ?? null);
     } catch {
       if (id !== requestId.current) return;
     } finally {
