@@ -324,7 +324,7 @@ Production Lumin APIs, real file I/O, auth, deploy, tracking JSON edits, copying
 
 ## Self-review (2026-09-28)
 
-- Placeholders: none. Debounce locked to 100ms; catalog size locked to 16; #1 ids locked.
+- Placeholders: none. Debounce locked to 100ms; catalog size locked to 16; every item has pinned ISO timestamps; #1 ids locked.
 - Consistency: live and fixture share `RankedHit`; badge vs fallback note distinguished.
 - Scope: one demo app; one implementation plan.
 - Ambiguity resolved: chips skip debounce; empty query is generic recency; live failures keep Live Jev badge and show a note; MSA template must lose to `msa-northwind`.
