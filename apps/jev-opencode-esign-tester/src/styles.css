@@ -49,30 +49,37 @@ a {
 }
 
 .app-shell {
-  min-height: 100vh;
-  padding: 20px 22px 28px;
+  height: 100vh;
+  padding: 12px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .masthead {
-  margin: 0 0 16px;
-  font-size: 13px;
+  margin: 0 0 10px;
+  font-size: 12px;
   letter-spacing: 0.01em;
   color: #b7c7be;
   max-width: 1100px;
+  flex: 0 0 auto;
 }
 
 .layout {
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-  gap: 18px;
-  align-items: start;
+  gap: 14px;
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
 }
 
 .sign-surface,
 .runner {
-  border-radius: 18px;
+  border-radius: 16px;
   overflow: hidden;
-  min-height: 720px;
+  min-height: 0;
+  height: 100%;
 }
 
 .sign-surface {
@@ -89,7 +96,8 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  padding: 18px 22px;
+  padding: 12px 16px;
+  flex: 0 0 auto;
 }
 
 .sign-topbar {
@@ -125,14 +133,17 @@ a {
 .runner h2 {
   margin: 2px 0 0;
   font-family: var(--serif);
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
 }
 
 .sign-body {
-  padding: 18px 22px 8px;
+  padding: 12px 16px 8px;
   display: grid;
-  gap: 14px;
+  gap: 10px;
+  overflow: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .field,
@@ -228,13 +239,13 @@ a {
 
 .paper {
   position: relative;
-  min-height: 180px;
+  min-height: 132px;
 }
 
 .paper h2 {
   margin: 0 0 8px;
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 22px;
 }
 
 .paper p {
@@ -382,10 +393,11 @@ button:disabled {
   background: var(--panel);
   color: var(--mist);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-  padding: 18px 18px 20px;
-  display: grid;
-  gap: 14px;
-  align-content: start;
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
 }
 
 .runner-head {
@@ -393,6 +405,7 @@ button:disabled {
   justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
+  flex: 0 0 auto;
 }
 
 .runner .brand-kicker,
@@ -448,6 +461,7 @@ button:disabled {
   border-color: #2a4a3d;
   display: grid;
   gap: 8px;
+  flex: 0 0 auto;
 }
 
 .plan-select select {
@@ -466,11 +480,13 @@ button:disabled {
 .controls {
   display: flex;
   gap: 8px;
+  flex: 0 0 auto;
 }
 
 .runner .primary,
 .runner .ghost {
   color: #f4efe4;
+  padding-left: 14px;
 }
 
 .runner .ghost {
@@ -501,6 +517,9 @@ kbd {
   padding: 0;
   display: grid;
   gap: 6px;
+  overflow: auto;
+  flex: 0 1 auto;
+  min-height: 0;
 }
 
 .step-item {
@@ -552,6 +571,12 @@ kbd {
   border-color: #2a4a3d;
 }
 
+.log {
+  overflow: auto;
+  flex: 1 1 140px;
+  min-height: 120px;
+}
+
 .decision p,
 .log p {
   margin: 0 0 6px;
@@ -599,12 +624,18 @@ kbd {
 }
 
 @media (max-width: 960px) {
+  .app-shell {
+    height: auto;
+    overflow: auto;
+  }
+
   .layout {
     grid-template-columns: 1fr;
+    height: auto;
   }
 
   .sign-surface,
   .runner {
-    min-height: 0;
+    height: auto;
   }
 }
