@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "2104534255636513268",
+      "title": "PageIndex (VectifyAI) — vectorless tree-index RAG",
+      "url": "https://x.com/oliviscusAI/status/2104534255636513268",
+      "date": "2026-09-30",
+      "notes": "Daily scout pick; slug pageindex-contract-qa; upstream https://github.com/VectifyAI/PageIndex"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "2104534255636513268",
+      "title": "PageIndex (VectifyAI) — vectorless tree-index RAG",
+      "url": "https://x.com/oliviscusAI/status/2104534255636513268",
+      "date": "2026-09-30",
+      "notes": "Daily scout pick; slug pageindex-contract-qa; upstream https://github.com/VectifyAI/PageIndex"
     }
   ]
 }
