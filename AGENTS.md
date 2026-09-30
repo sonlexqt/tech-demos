@@ -24,6 +24,7 @@ This repository is the **single sticky monorepo** for daily X-bookmark tech demo
   - WebMCP flag notes if relevant;
   - expected Agent panel behavior if relevant;
   - any other setup a reviewer needs to verify the demo.
+- Every demo **must** include a brief **`apps/<slug>/HOW_IT_WORKS.md`** (app root, next to the README) that explains the **underlying technology** in concept terms: what it is, how it differs from the obvious alternative, and how this demo maps to it. Diagrams (mermaid or ASCII) are welcome. Link it from the demo README. This is a standing owner preference.
 
 ## Pull requests
 
@@ -32,7 +33,10 @@ This repository is the **single sticky monorepo** for daily X-bookmark tech demo
 - at least **one screenshot** of the running app, **and**
 - at least **one video** of the running app.
 
-Also required on the demo PR: `apps/<slug>/README.md` (run steps + manual test notes).
+Also required on the demo PR:
+
+- `apps/<slug>/README.md` (run steps + manual test notes);
+- `apps/<slug>/HOW_IT_WORKS.md` (concepts + optional diagrams), linked from that README.
 
 Scaffold-only or docs-only PRs are exempt from screenshot/video unless the task says otherwise.
 
