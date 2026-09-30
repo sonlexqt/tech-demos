@@ -4,6 +4,8 @@ Lumin Sign–flavored **contract Q&A** demo of [VectifyAI/PageIndex](https://git
 
 This app ships a **long fixture MSA** (Lumin Sign, Inc. × Acme Holdings LLC, 25 pages) plus a **prebuilt PageIndex-style JSON tree**. The happy path is a **deterministic tree walk** so `bun install && bun run dev` works **offline with no API keys**.
 
+How the tree walk differs from vector RAG: **[HOW_IT_WORKS.md](./HOW_IT_WORKS.md)**.
+
 ## Run
 
 ```bash
