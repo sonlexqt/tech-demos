@@ -1,0 +1,17 @@
+{
+  "title": "Lumin Sign, Inc. × Acme Holdings LLC — pre-signature package",
+  "documents": [
+    {
+      "id": "doc-msa",
+      "title": "Master Services Agreement",
+      "filename": "lumin-acme-msa.md",
+      "pages": 8
+    },
+    {
+      "id": "doc-nda",
+      "title": "Mutual Nondisclosure Agreement",
+      "filename": "lumin-acme-nda.md",
+      "pages": 4
+    }
+  ]
+}
