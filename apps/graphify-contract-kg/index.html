@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumin Sign — Contract knowledge graph</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="topbar">
+        <div class="brand">
+          <svg class="mark" viewBox="0 0 34 34" aria-hidden="true">
+            <circle cx="17" cy="17" r="16" fill="#0f3d3a" stroke="#7dcdc4" />
+            <path d="M11 23V11h5.2c2.8 0 4.5 1.5 4.5 3.8 0 1.5-.8 2.7-2.1 3.2 1.6.5 2.6 1.8 2.6 3.5 0 2.5-2 3.5-5.1 3.5H11zm3.1-7.2h1.8c1.2 0 1.9-.6 1.9-1.5s-.7-1.5-1.9-1.5h-1.8v3zm0 5.5h2.2c1.4 0 2.2-.6 2.2-1.7s-.8-1.6-2.2-1.6h-2.2v3.3z" fill="#e8c36a" />
+          </svg>
+          <div>
+            <p class="brand-kicker">Lumin Sign · Review before send</p>
+            <h1>Contract knowledge graph</h1>
+          </div>
+        </div>
+        <div class="topbar-meta">
+          <span><strong>Lumin Sign, Inc.</strong> × <strong>Acme Holdings LLC</strong></span>
+          <span>MSA + mutual NDA · envelope ENV-FIX-MSA-2026-10</span>
+          <span>Effective 1 Oct 2026</span>
+        </div>
+        <div class="topbar-actions">
+          <span id="mode-badge" class="badge badge-fixture">Fixture mode</span>
+          <div class="mode-toggle" role="group" aria-label="Graph source">
+            <button type="button" class="mode-btn is-on" id="mode-fixture">Fixture</button>
+            <button type="button" class="mode-btn" id="mode-live" disabled>Live</button>
+          </div>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <section class="pane pane-ask">
+          <div class="pane-head">
+            <h2>Ask the graph</h2>
+            <p class="pane-sub">Canned path walks — every edge explains itself</p>
+          </div>
+          <form class="ask-form" id="ask-form">
+            <label class="sr-only" for="ask">Clause question</label>
+            <textarea id="ask" name="ask" placeholder="Who owes what? How does liability relate to indemnity?"></textarea>
+            <div class="ask-row">
+              <button class="btn-primary" type="submit">Walk path</button>
+              <button class="btn-ghost" type="button" id="clear">Clear</button>
+            </div>
+          </form>
+          <div id="chips" class="chips"></div>
+          <p class="section-label">God nodes</p>
+          <div id="god-nodes" class="god-nodes"></div>
+          <p class="section-label">Node kinds</p>
+          <div id="legend" class="legend"></div>
+          <div class="package">
+            <strong>Fixture package</strong>
+            <div>lumin-acme-msa.md · 8 pp</div>
+            <div>lumin-acme-nda.md · 4 pp</div>
+          </div>
+          <p id="live-note" class="live-note" hidden></p>
+          <p class="footnote">
+            Demo of
+            <a href="https://github.com/Graphify-Labs/graphify">Graphify-Labs/graphify</a>
+            — fixture graph, no API keys, no CLI required.
+            <a href="./HOW_IT_WORKS.md">How it works</a>.
+          </p>
+        </section>
+
+        <section class="pane pane-graph">
+          <div class="pane-head">
+            <div>
+              <h2>Explained-edge graph</h2>
+              <p class="pane-sub">Parties · clauses · obligations · terms · exhibits — not a vector index</p>
+            </div>
+            <p id="graph-stats" class="graph-stats"></p>
+          </div>
+          <div class="graph-wrap">
+            <svg id="graph" viewBox="0 0 1200 700" role="img" aria-label="Contract knowledge graph"></svg>
+          </div>
+        </section>
+
+        <section class="pane pane-inspect">
+          <div class="pane-head">
+            <h2>Why this edge</h2>
+            <p class="pane-sub">EXTRACTED / INFERRED / AMBIGUOUS + plain English</p>
+          </div>
+          <div id="inspector" class="inspect-scroll"></div>
+          <ol id="walk-log" class="walk-log"></ol>
+          <div id="answer" class="answer-card is-empty">
+            <h3>Ask the graph</h3>
+            <p>Pick a chip. The walker highlights a path and shows each edge’s plain-English why — not a vector hit list.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+    </style>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

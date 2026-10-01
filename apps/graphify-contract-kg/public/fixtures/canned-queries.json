@@ -1,0 +1,202 @@
+[
+  {
+    "id": "who-owes-what",
+    "chip": "Who owes what",
+    "question": "Who owes what under this package?",
+    "answer": "Lumin (Provider) owes: perform the Services, IP indemnity, protect CI, return/destroy CI, and Exhibit B insurance. Acme (Customer) owes: pay Fees in 30 days, Customer Data indemnity, protect CI, 90-day convenience notice, and return/destroy CI. Every “owes” edge is EXTRACTED from a shall-sentence.",
+    "steps": [
+      {
+        "nodeId": "party-lumin",
+        "note": "Start at Provider."
+      },
+      {
+        "edgeId": "e-lumin-owes-svc",
+        "nodeId": "obl-lumin-services",
+        "note": "Lumin shall perform the Services."
+      },
+      {
+        "edgeId": "e-lumin-owes-ip",
+        "nodeId": "obl-lumin-ip-indem",
+        "note": "Lumin shall indemnify for unmodified-Services IP claims."
+      },
+      {
+        "nodeId": "party-acme",
+        "note": "Cross to Customer."
+      },
+      {
+        "edgeId": "e-acme-owes-fees",
+        "nodeId": "obl-acme-fees",
+        "note": "Acme shall pay Fees within 30 days."
+      },
+      {
+        "edgeId": "e-acme-owes-data",
+        "nodeId": "obl-acme-data-indem",
+        "note": "Acme shall indemnify for Customer Data claims."
+      }
+    ]
+  },
+  {
+    "id": "liability-indem",
+    "chip": "Liability ↔ indemnification",
+    "question": "How does the liability cap relate to indemnification?",
+    "answer": "§9 caps each Party’s aggregate liability at Fees paid/payable in the 12 months before the first claim — but it expressly carves out §8.1 IP indemnity and §6 confidentiality breaches. The related_to edge is INFERRED from that cross-cite; the carves_out edges are EXTRACTED from the except-clause.",
+    "steps": [
+      {
+        "nodeId": "clause-msa-8",
+        "note": "Open indemnification."
+      },
+      {
+        "edgeId": "e-msa8-indem-term",
+        "nodeId": "term-indemnified",
+        "note": "Indemnified Claim is defined only by §8."
+      },
+      {
+        "edgeId": "e-obl-ip-clause",
+        "nodeId": "obl-lumin-ip-indem",
+        "note": "Provider’s IP indemnity is the carve-out that matters."
+      },
+      {
+        "nodeId": "clause-msa-9",
+        "note": "Walk to limitation of liability."
+      },
+      {
+        "edgeId": "e-9-related-8",
+        "nodeId": "clause-msa-8",
+        "note": "§9 names §8.1 as an exception — inferred neighbor."
+      },
+      {
+        "edgeId": "e-9-carves-ip",
+        "nodeId": "obl-lumin-ip-indem",
+        "note": "EXTRACTED: IP indemnity sits outside the 12-month cap."
+      }
+    ]
+  },
+  {
+    "id": "term-ci",
+    "chip": "“Confidential Information”",
+    "question": "Where is Confidential Information defined and used?",
+    "answer": "Two definitions: MSA §1 (marked or reasonably confidential) and NDA §2 (broader — oral, unmarked, inspections). MSA §6.3 says the NDA wins for pre-signature diligence. The term is used in MSA §6 (5-year survival), NDA §5 (return/destroy), and — inferred — NDA §4’s three-year clock.",
+    "steps": [
+      {
+        "nodeId": "term-ci",
+        "note": "God node: Confidential Information."
+      },
+      {
+        "edgeId": "e-msa1-ci",
+        "nodeId": "clause-msa-1",
+        "note": "MSA §1 prints the commercial definition."
+      },
+      {
+        "edgeId": "e-nda2-ci",
+        "nodeId": "clause-nda-2",
+        "note": "NDA §2 prints the broader diligence definition."
+      },
+      {
+        "edgeId": "e-ci-used-msa6",
+        "nodeId": "clause-msa-6",
+        "note": "MSA §6 uses the term; §6.3 defers to the NDA."
+      },
+      {
+        "edgeId": "e-ci-used-nda5",
+        "nodeId": "clause-nda-5",
+        "note": "NDA §5’s return/destroy object is CI."
+      }
+    ]
+  },
+  {
+    "id": "termination-notice",
+    "chip": "Termination → notice",
+    "question": "What notice is required to terminate, and what follows?",
+    "answer": "After the 12-month Initial Term, either Party may terminate for convenience on 90 days’ written notice (§10.2). Termination triggers return or secure destruction of Confidential Information within 30 days (MSA §10.4) and the NDA’s 15-day certify-destruction rule.",
+    "steps": [
+      {
+        "nodeId": "clause-msa-10",
+        "note": "Term & termination."
+      },
+      {
+        "edgeId": "e-term-requires-notice",
+        "nodeId": "clause-msa-10-2",
+        "note": "§10.1 points at notice under §10.2."
+      },
+      {
+        "edgeId": "e-obl-notice-clause",
+        "nodeId": "obl-acme-notice",
+        "note": "90-day written notice is the obligation."
+      },
+      {
+        "edgeId": "e-term-triggers-return",
+        "nodeId": "obl-return-ci",
+        "note": "§10.4: upon termination, return or destroy CI."
+      },
+      {
+        "edgeId": "e-return-nda5",
+        "nodeId": "clause-nda-5",
+        "note": "NDA §5 adds a 15-day destruction certificate."
+      }
+    ]
+  },
+  {
+    "id": "lumin-acme",
+    "chip": "Lumin ↔ Acme",
+    "question": "How are Lumin Sign and Acme related across the package?",
+    "answer": "They are the only named counterparties on both instruments: Provider/Customer on the MSA and mutual parties on the NDA. Affiliates inherit duties (INFERRED — no named-affiliate schedule). The MSA incorporates the NDA at §6.3.",
+    "steps": [
+      {
+        "nodeId": "party-lumin",
+        "note": "Provider."
+      },
+      {
+        "edgeId": "e-lumin-acme",
+        "nodeId": "party-acme",
+        "note": "INFERRED counterpart pair — same two entities on both docs."
+      },
+      {
+        "edgeId": "e-acme-msa",
+        "nodeId": "doc-msa",
+        "note": "Acme is Customer on the MSA."
+      },
+      {
+        "edgeId": "e-msa-nda",
+        "nodeId": "doc-nda",
+        "note": "MSA §6.3 keeps the NDA in force."
+      },
+      {
+        "edgeId": "e-lumin-nda",
+        "nodeId": "party-lumin",
+        "note": "Lumin is also an NDA Party — the loop closes."
+      }
+    ]
+  },
+  {
+    "id": "customer-data-dpa",
+    "chip": "Customer Data / Exhibit E",
+    "question": "What governs Customer Data and who indemnifies it?",
+    "answer": "Customer Data is defined in MSA §1, owned by Acme under §5.2, processed under Exhibit E (DPA + 30-day subprocessor notice), and is the predicate of Acme’s §8.2 indemnity. The fuels edge is INFERRED from “arising from Customer Data.”",
+    "steps": [
+      {
+        "nodeId": "term-cdata",
+        "note": "Defined term: Customer Data."
+      },
+      {
+        "edgeId": "e-msa1-cdata",
+        "nodeId": "clause-msa-1",
+        "note": "§1 defines files and signer attributes."
+      },
+      {
+        "edgeId": "e-exhe-cdata",
+        "nodeId": "exh-e",
+        "note": "Exhibit E governs processing and subprocessors."
+      },
+      {
+        "edgeId": "e-cdata-indem",
+        "nodeId": "obl-acme-data-indem",
+        "note": "INFERRED: Customer Data fuels Acme’s indemnity."
+      },
+      {
+        "edgeId": "e-obl-data-clause",
+        "nodeId": "clause-msa-8",
+        "note": "The duty is stated in §8.2."
+      }
+    ]
+  }
+]
