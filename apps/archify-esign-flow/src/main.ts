@@ -308,8 +308,15 @@ function applyStepHighlight(step: Scenario["steps"][number]) {
 }
 
 function applyScenarioPreview(scenario: Scenario) {
-  const last = scenario.steps[scenario.steps.length - 1];
-  applyStepHighlight(last);
+  if (kind === "workflow") {
+    const last = scenario.steps[scenario.steps.length - 1];
+    applyStepHighlight(last);
+  } else {
+    pathNodes = new Set(scenario.steps.flatMap((step) => step.pathParticipants));
+    pathRels = new Set(scenario.steps.flatMap((step) => step.pathMessages));
+    focusId = null;
+    applyHighlight();
+  }
   story.textContent = `${scenario.title}. ${scenario.blurb} Press Play to walk it.`;
 }
 

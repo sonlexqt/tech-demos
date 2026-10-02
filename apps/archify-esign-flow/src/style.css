@@ -239,7 +239,7 @@ button:not(.primary):hover {
 }
 
 .canvas-panel {
-  min-height: 36rem;
+  min-height: 44rem;
 }
 
 .panel-h {
@@ -273,7 +273,7 @@ button:not(.primary):hover {
     linear-gradient(180deg, color-mix(in srgb, var(--bg) 40%, transparent), transparent 40%),
     var(--bg-2);
   border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
-  min-height: 32rem;
+  min-height: 42rem;
 }
 
 .diagram {
@@ -344,7 +344,7 @@ button:not(.primary):hover {
 }
 
 .node.is-dim {
-  opacity: 0.32;
+  opacity: 0.5;
 }
 
 .node-label {
@@ -391,6 +391,7 @@ button:not(.primary):hover {
 .variant-dashed,
 .variant-return {
   stroke-dasharray: 5 4;
+  stroke-width: 1.7;
 }
 
 .variant-return {
@@ -411,13 +412,14 @@ button:not(.primary):hover {
 
 .edge.is-dim,
 .message.is-dim {
-  opacity: 0.18;
+  opacity: 0.42;
 }
 
 .edge-label,
 .msg-label {
-  fill: #b7c3da;
-  font-size: 10px;
+  fill: #d5def0;
+  font-size: 11px;
+  font-weight: 600;
   text-anchor: middle;
 }
 
