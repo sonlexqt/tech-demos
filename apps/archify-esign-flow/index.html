@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Archify · Lumin Sign MSA countersign</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <img src="/favicon.svg" alt="" width="32" height="32" />
+        <div>
+          <p class="eyebrow">Lumin Sign · Review the request</p>
+          <h1>MSA countersign explorer</h1>
+          <p class="tag">Archify-shaped typed JSON IR → interactive workflow + sequence</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill" data-testid="ir-badge">Fixture IR · offline</span>
+        <span class="pill pill-muted" data-testid="validate-badge">Checking IR…</span>
+        <a class="link" href="https://github.com/tt-a1i/archify" target="_blank" rel="noreferrer">Real Archify</a>
+      </div>
+    </header>
+
+    <p class="lede">
+      Envelope <code>env_msa_northwind_01</code> · Acme Holdings LLC → Northwind Vendor, Inc.
+      Sequential order: Acme GC, then Vendor counsel. This viewer reads checked-in JSON IR.
+      It does not call the Archify CLI or any e-sign API.
+    </p>
+
+    <section class="toolbar" aria-label="Explorer controls">
+      <div class="seg" role="group" aria-label="Diagram type">
+        <button type="button" class="is-on" data-testid="diagram-workflow" data-diagram="workflow">Workflow</button>
+        <button type="button" data-testid="diagram-sequence" data-diagram="sequence">Sequence</button>
+      </div>
+      <div class="scenarios" role="group" aria-label="Canned scenarios">
+        <button type="button" class="chip is-on" data-testid="scenario-complete" data-scenario="complete">
+          Send → view → sign order → complete
+        </button>
+        <button type="button" class="chip" data-testid="scenario-decline" data-scenario="decline">
+          Decline → recover
+        </button>
+        <button type="button" class="primary" data-testid="play-scenario" id="play-scenario">Play scenario</button>
+        <button type="button" data-testid="clear" id="clear-btn">Clear</button>
+      </div>
+    </section>
+
+    <p class="story" data-testid="story" id="story">
+      Pick a canned scenario or probe two endpoints. Highlights follow authored edges only.
+    </p>
+
+    <main class="layout">
+      <section class="canvas-panel">
+        <header class="panel-h">
+          <h2 id="canvas-title">Workflow</h2>
+          <span class="muted" id="canvas-meta">lanes · columns · mainPath</span>
+        </header>
+        <div class="canvas" data-testid="canvas" id="canvas"></div>
+      </section>
+
+      <aside class="side">
+        <section class="panel" aria-labelledby="probe-title">
+          <header class="panel-h">
+            <h2 id="probe-title">Path-probe</h2>
+            <span class="muted">authored routes only</span>
+          </header>
+          <p class="hint">
+            Resolve exactly two endpoints over directed IR relationships. Fail closed if no route.
+          </p>
+          <div class="presets" id="probe-presets" data-testid="probe-presets"></div>
+          <label class="field">
+            From
+            <select data-testid="probe-from" id="probe-from"></select>
+          </label>
+          <label class="field">
+            To
+            <select data-testid="probe-to" id="probe-to"></select>
+          </label>
+          <button type="button" class="primary wide" data-testid="probe-run" id="probe-run">Probe path</button>
+          <div class="probe-result" data-testid="probe-result" id="probe-result">No probe yet.</div>
+        </section>
+
+        <section class="panel" aria-labelledby="card-title">
+          <header class="panel-h">
+            <h2 id="card-title">Node card</h2>
+            <span class="muted">Semantic passport lite</span>
+          </header>
+          <div class="node-card" data-testid="node-card" id="node-card">
+            <p class="muted">Click a node (or a sequence message) to inspect typed IR facts.</p>
+          </div>
+        </section>
+
+        <section class="panel cards-panel" aria-labelledby="ir-cards-title">
+          <header class="panel-h">
+            <h2 id="ir-cards-title">IR cards</h2>
+            <span class="muted">from the fixture</span>
+          </header>
+          <div id="ir-cards"></div>
+        </section>
+      </aside>
+    </main>
+
+    <details class="ir-drawer" data-testid="ir-drawer">
+      <summary>Show fixture JSON IR</summary>
+      <div class="ir-grid">
+        <section>
+          <h3>Workflow</h3>
+          <pre data-testid="ir-workflow" id="ir-workflow"></pre>
+        </section>
+        <section>
+          <h3>Sequence</h3>
+          <pre data-testid="ir-sequence" id="ir-sequence"></pre>
+        </section>
+      </div>
+    </details>
+
+    <footer class="foot">
+      Demo of <a href="https://github.com/tt-a1i/archify">tt-a1i/archify</a> concepts — not the Archify compiler.
+      Distinct from Graphify KG. See <a href="/HOW_IT_WORKS.md">HOW_IT_WORKS.md</a>.
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

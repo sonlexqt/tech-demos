@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Lumin Sign MSA countersign sequence",
+    "subtitle": "API calls for send, sequential sign, complete, and decline recovery",
+    "output": "reports/msa-countersign.sequence.html",
+    "viewBox": [1120, 820],
+    "column_fit": "spread",
+    "animation": "trace",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase"
+  },
+  "participants": [
+    { "id": "sender", "type": "frontend", "label": "Sender UI", "sublabel": "Acme contract ops" },
+    { "id": "api", "type": "backend", "label": "Sign API", "sublabel": "request handler" },
+    { "id": "mail", "type": "messagebus", "label": "Notify", "sublabel": "email / inbox" },
+    { "id": "acme", "type": "external", "label": "Acme GC", "sublabel": "signer 1" },
+    { "id": "vendor", "type": "external", "label": "Vendor counsel", "sublabel": "countersigner" },
+    { "id": "store", "type": "database", "label": "Audit store", "sublabel": "events + CoC" }
+  ],
+  "segments": [
+    { "from": 150, "to": 248, "label": "Send" },
+    { "from": 252, "to": 400, "label": "Order 1 · Acme" },
+    { "from": 404, "to": 548, "label": "Order 2 · countersign" },
+    { "from": 552, "to": 620, "label": "Complete" },
+    { "from": 628, "to": 790, "label": "Decline recovery" }
+  ],
+  "messages": [
+    { "id": "open-composer", "from": "sender", "to": "api", "y": 168, "label": "GET /drafts/msa", "variant": "default" },
+    { "id": "place-fields", "from": "sender", "to": "api", "y": 198, "label": "PUT fields + sign order", "variant": "emphasis" },
+    { "id": "create-envelope", "from": "sender", "to": "api", "y": 228, "label": "POST /requests", "variant": "emphasis" },
+    { "id": "notify-acme", "from": "api", "to": "mail", "y": 268, "label": "email signer #1", "variant": "default" },
+    { "id": "acme-opens", "from": "acme", "to": "api", "y": 298, "label": "GET /packets/:id", "variant": "default" },
+    { "id": "packet-acme", "from": "api", "to": "acme", "y": 328, "label": "document + fields", "variant": "return" },
+    { "id": "acme-signs", "from": "acme", "to": "api", "y": 358, "label": "POST /sign", "variant": "security" },
+    { "id": "record-acme", "from": "api", "to": "store", "y": 388, "label": "event: signed #1", "variant": "dashed" },
+    { "id": "notify-vendor", "from": "api", "to": "mail", "y": 418, "label": "email countersigner", "variant": "emphasis" },
+    { "id": "vendor-opens", "from": "vendor", "to": "api", "y": 448, "label": "GET /packets/:id", "variant": "default" },
+    { "id": "packet-vendor", "from": "api", "to": "vendor", "y": 478, "label": "document + fields", "variant": "return" },
+    { "id": "vendor-signs", "from": "vendor", "to": "api", "y": 508, "label": "POST /sign", "variant": "security" },
+    { "id": "record-vendor", "from": "api", "to": "store", "y": 538, "label": "event: countersigned", "variant": "dashed" },
+    { "id": "seal-complete", "from": "api", "to": "store", "y": 572, "label": "seal PDF + CoC", "variant": "emphasis" },
+    { "id": "status-done", "from": "api", "to": "sender", "y": 602, "label": "status: completed", "variant": "return" },
+    { "id": "acme-declines", "from": "acme", "to": "api", "y": 648, "label": "POST /decline", "variant": "security", "note": "alternate after view; not on the complete path" },
+    { "id": "record-decline", "from": "api", "to": "store", "y": 678, "label": "event: declined", "variant": "dashed" },
+    { "id": "notify-sender", "from": "api", "to": "mail", "y": 708, "label": "decline notice", "variant": "security" },
+    { "id": "sender-revise", "from": "sender", "to": "api", "y": 738, "label": "PATCH packet + resend", "variant": "dashed" },
+    { "id": "resend-notify", "from": "api", "to": "mail", "y": 768, "label": "email signer #1 again", "variant": "dashed" }
+  ],
+  "activations": [
+    { "participant": "sender", "from": 164, "to": 236, "type": "frontend" },
+    { "participant": "sender", "from": 734, "to": 746, "type": "frontend" },
+    { "participant": "api", "from": 168, "to": 610, "type": "backend" },
+    { "participant": "api", "from": 644, "to": 776, "type": "backend" },
+    { "participant": "mail", "from": 264, "to": 280, "type": "messagebus" },
+    { "participant": "mail", "from": 414, "to": 430, "type": "messagebus" },
+    { "participant": "mail", "from": 704, "to": 776, "type": "messagebus" },
+    { "participant": "acme", "from": 294, "to": 366, "type": "external" },
+    { "participant": "acme", "from": 644, "to": 656, "type": "external" },
+    { "participant": "vendor", "from": 444, "to": 516, "type": "external" },
+    { "participant": "store", "from": 384, "to": 580, "type": "database" },
+    { "participant": "store", "from": 674, "to": 686, "type": "database" }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Happy path",
+      "items": [
+        "Sender → API creates the envelope; Notify fans out in sign order",
+        "Return messages (packet, status) stay quieter than forward calls"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Security marks",
+      "items": [
+        "POST /sign and POST /decline are security-colored binding events",
+        "Vendor is not messaged until the order-1 sign is recorded"
+      ]
+    },
+    {
+      "dot": "orange",
+      "title": "Audit + recovery",
+      "items": [
+        "Store writes are dashed and do not invent extra topology",
+        "Decline recovery is a later authored segment, not a guessed shortcut"
+      ]
+    }
+  ]
+}

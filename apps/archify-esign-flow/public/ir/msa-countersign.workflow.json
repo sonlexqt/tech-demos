@@ -1,0 +1,193 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Lumin Sign MSA countersign workflow",
+    "subtitle": "Signature-request lifecycle with sequential sign order and decline recovery",
+    "output": "reports/msa-countersign.workflow.html",
+    "animation": "trace",
+    "visual_preset": "signal-flow",
+    "quality_profile": "showcase"
+  },
+  "lanes": [
+    { "id": "sender", "label": "Sender workspace" },
+    { "id": "request", "label": "Signature request" },
+    { "id": "acme", "label": "Signer 1 · Acme GC" },
+    { "id": "vendor", "label": "Signer 2 · Vendor counsel" },
+    { "id": "policy", "label": "Decline & recover", "variant": "exception" }
+  ],
+  "phases": [
+    { "id": "prepare", "label": "Prepare", "fromCol": 0, "toCol": 1 },
+    { "id": "dispatch", "label": "Send", "fromCol": 2, "toCol": 2, "variant": "emphasis" },
+    { "id": "signOrder", "label": "View → sign order", "fromCol": 3, "toCol": 4, "variant": "emphasis" },
+    { "id": "close", "label": "Close", "fromCol": 5, "toCol": 5, "variant": "dashed" }
+  ],
+  "groups": [
+    { "id": "acmeTurn", "label": "Order 1", "lane": "acme", "fromCol": 3, "toCol": 4, "variant": "emphasis" },
+    { "id": "vendorTurn", "label": "Order 2 · countersign", "lane": "vendor", "fromCol": 4, "toCol": 5, "variant": "emphasis" },
+    { "id": "recoveryPath", "label": "Human recovery", "lane": "policy", "fromCol": 3, "toCol": 5, "variant": "security" }
+  ],
+  "mainPath": [
+    "draft",
+    "fields",
+    "send",
+    "viewAcme",
+    "signAcme",
+    "viewVendor",
+    "signVendor",
+    "complete"
+  ],
+  "semanticChecks": {
+    "allowedRoots": ["draft"],
+    "allowedTerminals": ["complete"],
+    "requiredEdges": [
+      { "from": "signAcme", "to": "viewVendor" },
+      { "from": "viewAcme", "to": "decline" }
+    ],
+    "requiredPaths": [
+      { "from": "draft", "to": "complete" },
+      { "from": "viewAcme", "to": "revise" },
+      { "from": "decline", "to": "complete" }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "draft",
+      "lane": "sender",
+      "col": 0,
+      "type": "frontend",
+      "label": "Draft MSA",
+      "sublabel": "Acme × Northwind",
+      "tag": "composer",
+      "width": 148
+    },
+    {
+      "id": "fields",
+      "lane": "sender",
+      "col": 1,
+      "type": "frontend",
+      "label": "Fields + order",
+      "sublabel": "Acme first, then vendor",
+      "tag": "routing",
+      "width": 148
+    },
+    {
+      "id": "send",
+      "lane": "request",
+      "col": 2,
+      "type": "backend",
+      "label": "Send request",
+      "sublabel": "create envelope + notify",
+      "tag": "POST /requests",
+      "width": 148
+    },
+    {
+      "id": "viewAcme",
+      "lane": "acme",
+      "col": 3,
+      "type": "frontend",
+      "label": "Acme views",
+      "sublabel": "packet + signature fields",
+      "tag": "order 1",
+      "width": 148
+    },
+    {
+      "id": "signAcme",
+      "lane": "acme",
+      "col": 4,
+      "type": "security",
+      "label": "Acme signs",
+      "sublabel": "apply /s/ + consent",
+      "tag": "binding",
+      "width": 148
+    },
+    {
+      "id": "viewVendor",
+      "lane": "vendor",
+      "col": 4,
+      "type": "frontend",
+      "label": "Vendor views",
+      "sublabel": "unlocked after order 1",
+      "tag": "order 2",
+      "width": 148
+    },
+    {
+      "id": "signVendor",
+      "lane": "vendor",
+      "col": 5,
+      "type": "security",
+      "label": "Vendor countersigns",
+      "sublabel": "second binding mark",
+      "tag": "countersign",
+      "width": 148
+    },
+    {
+      "id": "complete",
+      "lane": "sender",
+      "col": 5,
+      "type": "backend",
+      "label": "Completed MSA",
+      "sublabel": "sealed PDF + CoC",
+      "tag": "terminal",
+      "width": 148
+    },
+    {
+      "id": "decline",
+      "lane": "policy",
+      "col": 3,
+      "type": "security",
+      "label": "Decline",
+      "sublabel": "reason + notify sender",
+      "tag": "exception",
+      "width": 148
+    },
+    {
+      "id": "revise",
+      "lane": "policy",
+      "col": 5,
+      "type": "messagebus",
+      "label": "Revise & resend",
+      "sublabel": "edit packet, new request",
+      "tag": "recovery",
+      "width": 148
+    }
+  ],
+  "edges": [
+    { "id": "draft-fields", "from": "draft", "to": "fields", "label": "place fields", "variant": "default", "role": "main" },
+    { "id": "fields-send", "from": "fields", "to": "send", "label": "create request", "variant": "emphasis", "role": "main" },
+    { "id": "send-view", "from": "send", "to": "viewAcme", "label": "notify #1", "variant": "emphasis", "role": "main" },
+    { "id": "view-sign-acme", "from": "viewAcme", "to": "signAcme", "label": "apply signature", "variant": "default", "role": "main" },
+    { "id": "unlock-vendor", "from": "signAcme", "to": "viewVendor", "label": "unlock #2", "variant": "emphasis", "role": "main" },
+    { "id": "view-sign-vendor", "from": "viewVendor", "to": "signVendor", "label": "countersign", "variant": "default", "role": "main" },
+    { "id": "vendor-complete", "from": "signVendor", "to": "complete", "label": "all signed", "variant": "emphasis", "role": "main" },
+    { "id": "view-decline", "from": "viewAcme", "to": "decline", "label": "decline", "variant": "security", "role": "error" },
+    { "id": "decline-revise", "from": "decline", "to": "revise", "label": "recover", "variant": "dashed", "role": "branch" },
+    { "id": "revise-fields", "from": "revise", "to": "fields", "label": "edit packet", "variant": "dashed", "role": "return", "route": "return-left" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Compiler contract",
+      "items": [
+        "Lanes and columns place every node; edges are authored, not inferred from geometry",
+        "mainPath is the complete countersign story; decline is an explicit branch"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Sign order",
+      "items": [
+        "Vendor cannot view until Acme signs — unlock #2 is a required edge",
+        "Decline from Acme view never invents a hop to Vendor"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Recovery",
+      "items": [
+        "Decline → revise → fields is authored, so path-probe can reach complete again",
+        "A reverse probe (complete → draft) fails closed — no authored route"
+      ]
+    }
+  ]
+}
