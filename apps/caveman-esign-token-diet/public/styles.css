@@ -95,6 +95,10 @@ h1 {
   color: var(--muted);
 }
 
+.live-toggle[hidden] {
+  display: none;
+}
+
 .link {
   color: var(--text);
   text-decoration: none;

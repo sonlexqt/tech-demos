@@ -190,46 +190,32 @@ function renderReplies() {
   $("focus-meta").textContent = `${fmt(runs[focus].tokens.output)} out · ${money(runs[focus].costUsd)} · ${runs[focus].source}`;
 }
 
-function tokens(text) {
-  return text.split(/(\s+)/).filter((part) => part.length);
+function sentences(text) {
+  return text
+    .split(/\n+/)
+    .map((line) => line.trim())
+    .filter(Boolean);
 }
 
-function wordDiff(a, b) {
-  const left = tokens(a);
-  const right = tokens(b);
-  const n = left.length;
-  const m = right.length;
-  const dp = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
-  for (let i = n - 1; i >= 0; i--) {
-    for (let j = m - 1; j >= 0; j--) {
-      dp[i][j] = left[i] === right[j] ? dp[i + 1][j + 1] + 1 : Math.max(dp[i + 1][j], dp[i][j + 1]);
-    }
+function blockDiff(a, b) {
+  const left = sentences(a);
+  const right = sentences(b);
+  const rightSet = new Set(right);
+  const leftSet = new Set(left);
+  const removed = left.filter((line) => !rightSet.has(line));
+  const added = right.filter((line) => !leftSet.has(line));
+  const kept = right.filter((line) => leftSet.has(line));
+  const parts = [];
+  if (removed.length) {
+    parts.push(removed.map((line) => `<span class="del">${escapeHtml(line)}</span>`).join("\n"));
   }
-  const out = [];
-  let i = 0;
-  let j = 0;
-  while (i < n && j < m) {
-    if (left[i] === right[j]) {
-      out.push(escapeHtml(left[i]));
-      i += 1;
-      j += 1;
-    } else if (dp[i + 1][j] >= dp[i][j + 1]) {
-      if (left[i].trim()) out.push(`<span class="del">${escapeHtml(left[i])}</span>`);
-      i += 1;
-    } else {
-      if (right[j].trim()) out.push(`<span class="ins">${escapeHtml(right[j])}</span>`);
-      j += 1;
-    }
+  if (kept.length) {
+    parts.push(kept.map((line) => escapeHtml(line)).join("\n"));
   }
-  while (i < n) {
-    if (left[i].trim()) out.push(`<span class="del">${escapeHtml(left[i])}</span>`);
-    i += 1;
+  if (added.length) {
+    parts.push(added.map((line) => `<span class="ins">${escapeHtml(line)}</span>`).join("\n"));
   }
-  while (j < m) {
-    if (right[j].trim()) out.push(`<span class="ins">${escapeHtml(right[j])}</span>`);
-    j += 1;
-  }
-  return out.join("");
+  return parts.join("\n\n");
 }
 
 function escapeHtml(value) {
@@ -249,7 +235,7 @@ function renderDiff() {
     );
     return;
   }
-  $("diff-view").innerHTML = wordDiff(runs.normal.output, runs[focus].output);
+  $("diff-view").innerHTML = blockDiff(runs.normal.output, runs[focus].output);
 }
 
 function setMode(mode) {
