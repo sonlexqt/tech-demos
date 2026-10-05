@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Caveman × Lumin Sign · token diet</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <img src="/favicon.svg" alt="" width="36" height="36" />
+        <div>
+          <p class="kicker">Lumin Sign ops agent replay</p>
+          <h1>Caveman token diet</h1>
+        </div>
+      </div>
+      <div class="top-meta">
+        <span class="pill" id="source-pill">Offline fixtures</span>
+        <label class="live-toggle" id="live-wrap" hidden>
+          <input type="checkbox" id="live-toggle" />
+          Use live model
+        </label>
+        <a class="link" href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noreferrer">Real Caveman</a>
+      </div>
+    </header>
+
+    <section class="honest" aria-label="Honest numbers">
+      <div>
+        <h2>Two rocks, two claims</h2>
+        <p>
+          <strong>Author (JuliusBrussee/caveman):</strong> the output skill makes agents answer in short blunt lines
+          while leaving IDs, paths, and errors verbatim. A newer <em>local proxy</em> shrinks what the agent
+          <em>reads</em>. CaveBench reports <em>33.2% fewer provider input tokens</em> on a pinned Claude Code suite
+          (18/18 exact answers). That is the author's published benchmark, not an independent audit.
+        </p>
+        <p>
+          <strong>Skeptic:</strong> coding agents typically <em>read 5–10× more than they write</em>. Output-only
+          trimming (the viral skill) cannot move most of the bill. Caveman's own
+          <a href="https://github.com/JuliusBrussee/caveman/blob/main/docs/HONEST-NUMBERS.md" target="_blank" rel="noreferrer">HONEST-NUMBERS.md</a>
+          says the skill adds input, can go net-negative, and that a “be concise” control already captures most of
+          the output cut. HTML in CaveBench got <em>worse</em>. Treat 33% as one measured mix, not a guarantee.
+        </p>
+      </div>
+      <aside>
+        <p class="aside-label">This demo</p>
+        <p>
+          Same three e-sign questions, four diets. Token counts here use a local estimator, not provider billing.
+          Cost is an illustrative $3 / $15 per 1M tokens.
+        </p>
+      </aside>
+    </section>
+
+    <main class="layout">
+      <nav class="rail" aria-label="Tasks">
+        <h2>Tasks</h2>
+        <p class="muted">Fixture-driven. Sample audit trails + webhook logs, Lumin-shaped.</p>
+        <div id="task-list" class="task-list"></div>
+      </nav>
+
+      <section class="workspace">
+        <div class="runbar">
+          <div>
+            <p class="kicker" id="task-kicker">Pick a task</p>
+            <h2 id="task-title">Replay</h2>
+            <p class="muted" id="task-blurb">Four modes: normal, Caveman output, proxy input, both.</p>
+          </div>
+          <div class="run-actions">
+            <button type="button" class="primary" id="btn-run">Replay all four modes</button>
+            <p class="tiny" id="run-status"></p>
+          </div>
+        </div>
+
+        <div class="modes" id="mode-switch" role="tablist" aria-label="Diet">
+          <button type="button" data-mode="normal" class="mode on">Normal</button>
+          <button type="button" data-mode="caveman" class="mode">Caveman output</button>
+          <button type="button" data-mode="proxy" class="mode">Proxy input</button>
+          <button type="button" data-mode="both" class="mode">Both</button>
+        </div>
+
+        <section class="panel" id="token-panel">
+          <header class="panel-h">
+            <h3>Token + cost comparison</h3>
+            <span class="muted" id="rate-label"></span>
+          </header>
+          <div class="table-wrap">
+            <table class="nums">
+              <thead>
+                <tr>
+                  <th>Mode</th>
+                  <th>Input</th>
+                  <th>Output</th>
+                  <th>Est. cost</th>
+                  <th>vs normal</th>
+                </tr>
+              </thead>
+              <tbody id="token-rows">
+                <tr><td colspan="5" class="muted">Run a task to fill this table.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="bars" id="token-bars" hidden></div>
+        </section>
+
+        <section class="panel" id="fact-panel">
+          <header class="panel-h">
+            <h3>Fact survival</h3>
+            <span class="muted">Did names, envelope IDs, and reasons survive the diet?</span>
+          </header>
+          <div id="fact-table" class="facts">
+            <p class="muted">Facts appear after a replay.</p>
+          </div>
+        </section>
+
+        <section class="split">
+          <article class="panel reply">
+            <header class="panel-h">
+              <h3>Normal reply</h3>
+              <span class="muted" id="normal-meta"></span>
+            </header>
+            <pre id="out-normal" class="prose">Waiting for replay…</pre>
+          </article>
+          <article class="panel reply">
+            <header class="panel-h">
+              <h3 id="focus-title">Caveman output</h3>
+              <span class="muted" id="focus-meta"></span>
+            </header>
+            <pre id="out-focus" class="prose">Select a diet after replay.</pre>
+          </article>
+        </section>
+
+        <section class="panel">
+          <header class="panel-h">
+            <h3>Response diff</h3>
+            <span class="muted">Normal vs selected diet. Green = added, rust = removed.</span>
+          </header>
+          <pre id="diff-view" class="diff">Run a task, then pick a mode.</pre>
+        </section>
+
+        <section class="panel">
+          <header class="panel-h">
+            <h3>What the model reads</h3>
+            <div class="tabs">
+              <button type="button" class="tab on" data-input="raw">Raw dump</button>
+              <button type="button" class="tab" data-input="trimmed">Proxy-trimmed</button>
+            </div>
+          </header>
+          <p class="tiny" id="input-meta">Webhook retries, HMAC, edge-pop, health lines — typical ops noise.</p>
+          <pre id="input-view" class="dump">Select a task.</pre>
+        </section>
+      </section>
+    </main>
+
+    <footer class="foot">
+      Demo of
+      <a href="https://github.com/JuliusBrussee/caveman" target="_blank" rel="noreferrer">JuliusBrussee/caveman</a>
+      on Lumin Sign-shaped fixtures. Not the real proxy.
+      Skill:
+      <a href="https://github.com/JuliusBrussee/caveman/blob/main/skills/caveman/SKILL.md" target="_blank" rel="noreferrer">SKILL.md</a>
+      · Proxy:
+      <a href="https://github.com/JuliusBrussee/caveman#big-rock-the-proxy" target="_blank" rel="noreferrer">local engine</a>
+      ·
+      <a href="https://github.com/JuliusBrussee/caveman/blob/main/docs/HONEST-NUMBERS.md" target="_blank" rel="noreferrer">Honest numbers</a>
+    </footer>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
