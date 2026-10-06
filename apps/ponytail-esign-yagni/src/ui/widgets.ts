@@ -36,7 +36,10 @@ function calendarGrid(selected: string): string {
       `<button type="button" data-date="${iso}" class="${on ? "is-on" : ""}" ${future ? "disabled" : ""}>${d}</button>`,
     );
   }
-  return `<div class="cal-grid">${cells.join("")}</div>`;
+  const heads = ["S", "M", "T", "W", "T", "F", "S"]
+    .map((day) => `<span class="dow">${day}</span>`)
+    .join("");
+  return `<div class="cal-grid">${heads}${cells.join("")}</div>`;
 }
 
 export function renderPreview(ticketId: string, side: "normal" | "pony", widgets: WidgetState): string {

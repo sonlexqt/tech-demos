@@ -1,4 +1,4 @@
-import { createState, type AppState } from "./state";
+import { createState, ENVELOPE, type AppState } from "./state";
 import { render } from "./ui/render";
 import type { LlmStatus, ReviewResult } from "./types";
 import "./styles.css";
@@ -74,8 +74,10 @@ function onInput(event: Event) {
   const target = event.target as HTMLInputElement;
   if (target.matches("[data-initials]")) {
     state.widgets.initials = target.value.slice(0, 4);
-    const marks = document.querySelectorAll(".mark-preview");
-    marks.forEach((el) => {
+    document.querySelectorAll<HTMLInputElement>("[data-initials]").forEach((el) => {
+      if (el !== target) el.value = state.widgets.initials;
+    });
+    document.querySelectorAll(".mark-preview").forEach((el) => {
       el.textContent = state.widgets.initials || "—";
     });
     return;
@@ -160,9 +162,7 @@ function syncFlipClock() {
   if (!node) return;
 
   const tick = () => {
-    const target = new Date();
-    target.setDate(target.getDate() + 4);
-    target.setHours(17, 0, 0, 0);
+    const target = new Date(ENVELOPE.expiresAt);
     const ms = Math.max(0, target.getTime() - Date.now());
     const s = Math.floor(ms / 1000);
     const days = Math.floor(s / 86400);

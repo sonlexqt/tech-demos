@@ -400,16 +400,30 @@ blockquote {
 .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
-  padding: 0.4rem;
+  gap: 3px;
+  padding: 0.45rem;
 }
 
 .cal-grid button, .cal-grid span {
-  aspect-ratio: 1;
+  height: 1.7rem;
   border: 0;
   background: #1a1511;
   border-radius: 4px;
   font-size: 0.72rem;
+}
+
+input[type="color"] {
+  width: 3rem;
+  height: 2rem;
+  padding: 0.15rem;
+  cursor: pointer;
+}
+
+.cal-grid .dow {
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
 }
 
 .cal-grid button.is-on { background: var(--gold); color: var(--gold-ink); }
