@@ -1,0 +1,21 @@
+{
+	"name": "document-ocr-triage-lab",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "bun server.ts",
+		"test": "bun test",
+		"typecheck": "tsc --noEmit",
+		"lint": "biome check .",
+		"fixtures": "python3 scripts/fixtures.py"
+	},
+	"dependencies": {
+		"@xberg-io/xberg": "1.3.5"
+	},
+	"devDependencies": {
+		"@types/bun": "1.4.2",
+		"typescript": "7.0.2",
+		"@biomejs/biome": "2.5.15",
+		"playwright": "1.63.0"
+	}
+}

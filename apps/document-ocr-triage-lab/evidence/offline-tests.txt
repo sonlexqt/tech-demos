@@ -1,0 +1,14 @@
+Verified: IPv4/IPv6 socket creation denied (EPERM); inherited by test process.
+bun test v1.4.2 (744846f84)
+
+tests.test.ts:
+(pass) native fields survive both modes [11.15ms]
+(pass) image scan recovers fields beyond disabled OCR baseline [561.54ms]
+(pass) Bates-only text is not completeness; degraded missing total counted [447.57ms]
+(pass) malformed PDF produces explicit error [1.20ms]
+(pass) field evaluation requires exact labeled values [0.05ms]
+
+ 5 pass
+ 0 fail
+ 11 expect() calls
+Ran 5 tests across 1 file. [1034.00ms]

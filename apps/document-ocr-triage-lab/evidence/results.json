@@ -1,0 +1,1487 @@
+{
+  "versions": {
+    "bun": "1.4.2",
+    "xberg": "1.3.5"
+  },
+  "runs": [
+    {
+      "fixture": "native",
+      "native": {
+        "elapsedMs": 4.2,
+        "document": {
+          "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 174,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": false
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0,
+              "scannedPages": [],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "outputFormat": "plain",
+            "ocrUsed": false,
+            "additional": {
+              "extraction_method": "native",
+              "source_kind": "bytes",
+              "final_uri": "synthetic.pdf",
+              "source_index": 0,
+              "source_uri": "synthetic.pdf"
+            }
+          },
+          "extractionMethod": "native",
+          "tables": [],
+          "counts": {
+            "pages": 1,
+            "tables": 0,
+            "images": 0
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042",
+              "tables": [],
+              "imageIndices": [],
+              "hierarchy": {
+                "blockCount": 9,
+                "blocks": [
+                  {
+                    "text": "SYNTHETIC / DEMO ONLY",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "NORTHSTAR PAPER CO",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "INVOICE: INV-2048",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "DATE: 2026-10-01",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "CUSTOMER: Cedar Studio",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "Subtotal: 1200.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "Tax: 120.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "TOTAL: USD 1320.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 12,
+                    "level": "body"
+                  }
+                ]
+              },
+              "isBlank": false
+            }
+          ],
+          "qualityScore": 1,
+          "processingWarnings": [
+            {
+              "source": "ocr",
+              "message": "No page of this document holds enough prose to read, so the language check for a wrong glyph-to-Unicode mapping could not judge any of the 1 page(s) it examined (issue #1709). An empty `implausible_text_pages` reports here that the check did not run, not that the text layer is correct. If the text looks wrong, extract the document again with OCR forced."
+            }
+          ],
+          "extractionConfidence": {
+            "textCoverage": 1,
+            "schemaCompliance": "all_valid",
+            "combined": 1
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "Unknown — no page OCR confidence",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "Engine warnings require inspection"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": true,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "automatic": {
+        "elapsedMs": 1.2,
+        "document": {
+          "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 174,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": false
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0,
+              "scannedPages": [],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "outputFormat": "plain",
+            "ocrUsed": false,
+            "additional": {
+              "final_uri": "synthetic.pdf",
+              "source_index": 0,
+              "source_kind": "bytes",
+              "extraction_method": "native",
+              "source_uri": "synthetic.pdf"
+            }
+          },
+          "extractionMethod": "native",
+          "tables": [],
+          "counts": {
+            "pages": 1,
+            "tables": 0,
+            "images": 0
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042",
+              "tables": [],
+              "imageIndices": [],
+              "hierarchy": {
+                "blockCount": 9,
+                "blocks": [
+                  {
+                    "text": "SYNTHETIC / DEMO ONLY",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "NORTHSTAR PAPER CO",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "INVOICE: INV-2048",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "DATE: 2026-10-01",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "CUSTOMER: Cedar Studio",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "Subtotal: 1200.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "Tax: 120.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "TOTAL: USD 1320.00",
+                    "fontSize": 12,
+                    "level": "body"
+                  },
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 12,
+                    "level": "body"
+                  }
+                ]
+              },
+              "isBlank": false
+            }
+          ],
+          "qualityScore": 1,
+          "processingWarnings": [
+            {
+              "source": "ocr",
+              "message": "No page of this document holds enough prose to read, so the language check for a wrong glyph-to-Unicode mapping could not judge any of the 1 page(s) it examined (issue #1709). An empty `implausible_text_pages` reports here that the check did not run, not that the text layer is correct. If the text looks wrong, extract the document again with OCR forced."
+            }
+          ],
+          "extractionConfidence": {
+            "textCoverage": 1,
+            "schemaCompliance": "all_valid",
+            "combined": 1
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "Unknown — no page OCR confidence",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "Engine warnings require inspection"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": false,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "native": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": "INV-2048",
+              "match": true
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": "2026-10-01",
+              "match": true
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": "Cedar Studio",
+              "match": true
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": "1200.00",
+              "match": true
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": "120.00",
+              "match": true
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": "USD 1320.00",
+              "match": true
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": "DEMO-000042",
+              "match": true
+            }
+          ],
+          "recovered": 7,
+          "missing": 0,
+          "total": 7
+        },
+        "automatic": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": "INV-2048",
+              "match": true
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": "2026-10-01",
+              "match": true
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": "Cedar Studio",
+              "match": true
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": "1200.00",
+              "match": true
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": "120.00",
+              "match": true
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": "USD 1320.00",
+              "match": true
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": "DEMO-000042",
+              "match": true
+            }
+          ],
+          "recovered": 7,
+          "missing": 0,
+          "total": 7
+        }
+      }
+    },
+    {
+      "fixture": "clean",
+      "native": {
+        "elapsedMs": 1.2,
+        "document": {
+          "content": "",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 0,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": true
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0.8500000238418579,
+              "scannedPages": [
+                1
+              ],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "outputFormat": "plain",
+            "ocrUsed": false,
+            "additional": {
+              "extraction_method": "native",
+              "source_uri": "synthetic.pdf",
+              "final_uri": "synthetic.pdf",
+              "source_index": 0,
+              "source_kind": "bytes"
+            }
+          },
+          "extractionMethod": "native",
+          "tables": [],
+          "counts": {
+            "pages": 1,
+            "tables": 0,
+            "images": 0
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "",
+              "tables": [],
+              "imageIndices": [],
+              "isBlank": true
+            }
+          ],
+          "qualityScore": 0,
+          "processingWarnings": [],
+          "extractionConfidence": {
+            "textCoverage": 0,
+            "schemaCompliance": "all_valid",
+            "combined": 0.4000000059604645
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "Unknown — no page OCR confidence",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "No text recovered",
+            "Sparse text (demo threshold: 80 characters)"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": true,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "automatic": {
+        "elapsedMs": 498.6,
+        "document": {
+          "content": "INVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042\n\nSYNTHETIC / DEMO ONLY \nNORTHSTAR PAPER CO",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 200,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": false
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0.8500000238418579,
+              "scannedPages": [
+                1
+              ],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "imagePreprocessing": {
+              "originalDimensions": {
+                "width": 1275,
+                "height": 1650
+              },
+              "originalDpi": {
+                "horizontal": 150,
+                "vertical": 150
+              },
+              "targetDpi": 300,
+              "scaleFactor": 2,
+              "autoAdjusted": false,
+              "finalDpi": 300,
+              "resampleMethod": "CATMULLROM",
+              "dimensionClamped": false,
+              "skippedResize": false,
+              "newDimensions": {
+                "width": 2550,
+                "height": 3300
+              },
+              "calculatedDpi": 300
+            },
+            "outputFormat": "plain",
+            "ocrUsed": true,
+            "additional": {
+              "ocr_page_segmentation_modes": [
+                {
+                  "page_number": 1,
+                  "psm": 11
+                }
+              ],
+              "source_uri": "synthetic.pdf",
+              "extraction_method": "ocr",
+              "final_uri": "synthetic.pdf",
+              "source_index": 0,
+              "source_kind": "bytes"
+            }
+          },
+          "extractionMethod": "ocr",
+          "tables": [
+            {
+              "cells": [
+                [
+                  "SYNTHETIC / DEMO ONLY",
+                  ""
+                ],
+                [
+                  "NORTHSTAR",
+                  "PAPER CO"
+                ]
+              ],
+              "markdown": "| SYNTHETIC / DEMO ONLY |  |\n| --- | --- |\n| NORTHSTAR | PAPER CO |\n",
+              "pageNumber": 1,
+              "boundingBox": {
+                "x0": 112.32,
+                "y0": 552.96,
+                "x1": 559.68,
+                "y1": 698.88
+              },
+              "tableId": "table-1",
+              "cellStyles": [],
+              "columns": [
+                "SYNTHETIC / DEMO ONLY",
+                ""
+              ]
+            }
+          ],
+          "counts": {
+            "pages": 1,
+            "tables": 1,
+            "images": 1
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "| SYNTHETIC / DEMO ONLY |  |\n| --- | --- |\n| NORTHSTAR | PAPER CO |\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCedar Studio CUSTOMER:\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USD 1320.00\n\nBATES: DEMO-000042",
+              "tables": [
+                {
+                  "cells": [
+                    [
+                      "SYNTHETIC / DEMO ONLY",
+                      ""
+                    ],
+                    [
+                      "NORTHSTAR",
+                      "PAPER CO"
+                    ]
+                  ],
+                  "markdown": "| SYNTHETIC / DEMO ONLY |  |\n| --- | --- |\n| NORTHSTAR | PAPER CO |\n",
+                  "pageNumber": 1,
+                  "boundingBox": {
+                    "x0": 112.32,
+                    "y0": 552.96,
+                    "x1": 559.68,
+                    "y1": 698.88
+                  },
+                  "tableId": "table-1",
+                  "cellStyles": [],
+                  "columns": [
+                    "SYNTHETIC / DEMO ONLY",
+                    ""
+                  ]
+                }
+              ],
+              "imageIndices": [],
+              "imagePreprocessing": {
+                "originalDimensions": {
+                  "width": 1275,
+                  "height": 1650
+                },
+                "originalDpi": {
+                  "horizontal": 150,
+                  "vertical": 150
+                },
+                "targetDpi": 300,
+                "scaleFactor": 2,
+                "autoAdjusted": false,
+                "finalDpi": 300,
+                "resampleMethod": "CATMULLROM",
+                "dimensionClamped": false,
+                "skippedResize": false,
+                "newDimensions": {
+                  "width": 2550,
+                  "height": 3300
+                },
+                "calculatedDpi": 300
+              },
+              "hierarchy": {
+                "blockCount": 7,
+                "blocks": [
+                  {
+                    "text": "INVOICE: INV-2048",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 236,
+                      "top": 2552,
+                      "right": 926,
+                      "bottom": 2606
+                    }
+                  },
+                  {
+                    "text": "DATE: 2026-10-01",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 236,
+                      "top": 2302,
+                      "right": 904,
+                      "bottom": 2356
+                    }
+                  },
+                  {
+                    "text": "CUSTOMER: Cedar Studio",
+                    "fontSize": 15,
+                    "level": "body",
+                    "bbox": {
+                      "left": 233,
+                      "top": 2052,
+                      "right": 1182,
+                      "bottom": 2108
+                    }
+                  },
+                  {
+                    "text": "Subtotal: 1200.00",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 234,
+                      "top": 1802,
+                      "right": 897,
+                      "bottom": 1858
+                    }
+                  },
+                  {
+                    "text": "Tax: 120.00",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 229,
+                      "top": 1552,
+                      "right": 660,
+                      "bottom": 1606
+                    }
+                  },
+                  {
+                    "text": "TOTAL: USD 1320.00",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 229,
+                      "top": 1302,
+                      "right": 1005,
+                      "bottom": 1356
+                    }
+                  },
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 17,
+                    "level": "body",
+                    "bbox": {
+                      "left": 236,
+                      "top": 1052,
+                      "right": 1053,
+                      "bottom": 1106
+                    }
+                  }
+                ]
+              },
+              "isBlank": false,
+              "ocrConfidence": {
+                "score": 0.94,
+                "wordCount": 23,
+                "backend": "tesseract"
+              }
+            }
+          ],
+          "qualityScore": 0.9399999999999998,
+          "processingWarnings": [],
+          "extractionConfidence": {
+            "textCoverage": 1,
+            "schemaCompliance": "all_valid",
+            "combined": 0.9819999933242798,
+            "ocrAggregate": 0.9399999976158142
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "OCR observed",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "OCR observed: inspect critical values"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": false,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "native": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": null,
+              "match": false
+            }
+          ],
+          "recovered": 0,
+          "missing": 7,
+          "total": 7
+        },
+        "automatic": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": "INV-2048",
+              "match": true
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": "2026-10-01",
+              "match": true
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": "Cedar Studio",
+              "match": true
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": "1200.00",
+              "match": true
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": "120.00",
+              "match": true
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": "USD 1320.00",
+              "match": true
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": "DEMO-000042",
+              "match": true
+            }
+          ],
+          "recovered": 7,
+          "missing": 0,
+          "total": 7
+        }
+      }
+    },
+    {
+      "fixture": "degraded",
+      "native": {
+        "elapsedMs": 3.5,
+        "document": {
+          "content": "BATES: DEMO-000042",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 18,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": false
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0.8500000238418579,
+              "scannedPages": [
+                1
+              ],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "outputFormat": "plain",
+            "ocrUsed": false,
+            "additional": {
+              "source_index": 0,
+              "extraction_method": "native",
+              "final_uri": "synthetic.pdf",
+              "source_kind": "bytes",
+              "source_uri": "synthetic.pdf"
+            }
+          },
+          "extractionMethod": "native",
+          "tables": [],
+          "counts": {
+            "pages": 1,
+            "tables": 0,
+            "images": 0
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "BATES: DEMO-000042",
+              "tables": [],
+              "imageIndices": [],
+              "hierarchy": {
+                "blockCount": 1,
+                "blocks": [
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 12,
+                    "level": "body"
+                  }
+                ]
+              },
+              "isBlank": false
+            }
+          ],
+          "qualityScore": 1,
+          "processingWarnings": [],
+          "extractionConfidence": {
+            "textCoverage": 1,
+            "schemaCompliance": "all_valid",
+            "combined": 1
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "Unknown — no page OCR confidence",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "Sparse text (demo threshold: 80 characters)"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": true,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "automatic": {
+        "elapsedMs": 400.1,
+        "document": {
+          "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USO 13\n\nBATES: DEMO-000042\n\nBATES: DEMO-000042",
+          "mimeType": "application/pdf",
+          "metadata": {
+            "title": "untitled",
+            "subject": "unspecified",
+            "authors": [
+              "anonymous"
+            ],
+            "createdAt": "2000-01-01T00:00:00Z",
+            "modifiedAt": "2000-01-01T00:00:00Z",
+            "createdBy": "anonymous",
+            "pages": {
+              "totalCount": 1,
+              "unitType": "page",
+              "boundaries": [
+                {
+                  "byteStart": 0,
+                  "byteEnd": 189,
+                  "pageNumber": 1
+                }
+              ],
+              "pages": [
+                {
+                  "number": 1,
+                  "hasVectorGraphics": false,
+                  "dimensions": {
+                    "width": 612,
+                    "height": 792
+                  },
+                  "isBlank": false
+                }
+              ]
+            },
+            "format": {
+              "implausibleTextPages": [],
+              "pdfVersion": "1.3",
+              "producer": "ReportLab PDF Library - (opensource)",
+              "isEncrypted": false,
+              "width": 612,
+              "height": 792,
+              "pageCount": 1,
+              "scannedConfidence": 0.8500000238418579,
+              "scannedPages": [
+                1
+              ],
+              "fabricatedTextPages": [],
+              "formatType": "pdf"
+            },
+            "imagePreprocessing": {
+              "originalDimensions": {
+                "width": 1275,
+                "height": 1650
+              },
+              "originalDpi": {
+                "horizontal": 150,
+                "vertical": 150
+              },
+              "targetDpi": 300,
+              "scaleFactor": 2,
+              "autoAdjusted": false,
+              "finalDpi": 300,
+              "resampleMethod": "CATMULLROM",
+              "dimensionClamped": false,
+              "skippedResize": false,
+              "newDimensions": {
+                "width": 2550,
+                "height": 3300
+              },
+              "calculatedDpi": 300
+            },
+            "outputFormat": "plain",
+            "ocrUsed": true,
+            "additional": {
+              "source_kind": "bytes",
+              "source_index": 0,
+              "ocr_page_segmentation_modes": [
+                {
+                  "page_number": 1,
+                  "psm": 11
+                }
+              ],
+              "extraction_method": "ocr",
+              "source_uri": "synthetic.pdf",
+              "final_uri": "synthetic.pdf"
+            }
+          },
+          "extractionMethod": "ocr",
+          "tables": [],
+          "counts": {
+            "pages": 1,
+            "tables": 0,
+            "images": 1
+          },
+          "pages": [
+            {
+              "pageNumber": 1,
+              "content": "SYNTHETIC / DEMO ONLY\n\nNORTHSTAR PAPER CO\n\nINVOICE: INV-2048\n\nDATE: 2026-10-01\n\nCUSTOMER: Cedar Studio\n\nSubtotal: 1200.00\n\nTax: 120.00\n\nTOTAL: USO 13\n\nBATES: DEMO-000042\n\nBATES: DEMO-000042",
+              "tables": [],
+              "imageIndices": [],
+              "imagePreprocessing": {
+                "originalDimensions": {
+                  "width": 1275,
+                  "height": 1650
+                },
+                "originalDpi": {
+                  "horizontal": 150,
+                  "vertical": 150
+                },
+                "targetDpi": 300,
+                "scaleFactor": 2,
+                "autoAdjusted": false,
+                "finalDpi": 300,
+                "resampleMethod": "CATMULLROM",
+                "dimensionClamped": false,
+                "skippedResize": false,
+                "newDimensions": {
+                  "width": 2550,
+                  "height": 3300
+                },
+                "calculatedDpi": 300
+              },
+              "hierarchy": {
+                "blockCount": 10,
+                "blocks": [
+                  {
+                    "text": "SYNTHETIC / DEMO ONLY",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 230,
+                      "top": 3043,
+                      "right": 1167,
+                      "bottom": 3110
+                    }
+                  },
+                  {
+                    "text": "NORTHSTAR PAPER CO",
+                    "fontSize": 19,
+                    "level": "body",
+                    "bbox": {
+                      "left": 232,
+                      "top": 2797,
+                      "right": 1080,
+                      "bottom": 2860
+                    }
+                  },
+                  {
+                    "text": "INVOICE: INV-2048",
+                    "fontSize": 19,
+                    "level": "body",
+                    "bbox": {
+                      "left": 232,
+                      "top": 2547,
+                      "right": 930,
+                      "bottom": 2610
+                    }
+                  },
+                  {
+                    "text": "DATE: 2026-10-01",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 232,
+                      "top": 2297,
+                      "right": 904,
+                      "bottom": 2360
+                    }
+                  },
+                  {
+                    "text": "CUSTOMER: Cedar Studio",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 229,
+                      "top": 2047,
+                      "right": 1186,
+                      "bottom": 2110
+                    }
+                  },
+                  {
+                    "text": "Subtotal: 1200.00",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 230,
+                      "top": 1797,
+                      "right": 901,
+                      "bottom": 1860
+                    }
+                  },
+                  {
+                    "text": "Tax: 120.00",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 228,
+                      "top": 1547,
+                      "right": 664,
+                      "bottom": 1610
+                    }
+                  },
+                  {
+                    "text": "TOTAL: USO 13",
+                    "fontSize": 19,
+                    "level": "body",
+                    "bbox": {
+                      "left": 228,
+                      "top": 1297,
+                      "right": 792,
+                      "bottom": 1360
+                    }
+                  },
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 20,
+                    "level": "body",
+                    "bbox": {
+                      "left": 232,
+                      "top": 1047,
+                      "right": 1056,
+                      "bottom": 1110
+                    }
+                  },
+                  {
+                    "text": "BATES: DEMO-000042",
+                    "fontSize": 12,
+                    "level": "body",
+                    "bbox": {
+                      "left": 233,
+                      "top": 166,
+                      "right": 752,
+                      "bottom": 202
+                    }
+                  }
+                ]
+              },
+              "isBlank": false,
+              "ocrConfidence": {
+                "score": 0.93,
+                "wordCount": 25,
+                "backend": "tesseract"
+              }
+            }
+          ],
+          "qualityScore": 0.93,
+          "processingWarnings": [],
+          "extractionConfidence": {
+            "textCoverage": 1,
+            "schemaCompliance": "all_valid",
+            "combined": 0.9789999723434448,
+            "ocrAggregate": 0.9300000071525574
+          },
+          "formulas": [],
+          "formFields": []
+        },
+        "ocrObservation": "OCR observed",
+        "review": {
+          "status": "Review suggested",
+          "reasons": [
+            "OCR observed: inspect critical values"
+          ]
+        },
+        "config": {
+          "useCache": false,
+          "enableQualityProcessing": true,
+          "disableOcr": false,
+          "forceOcr": false,
+          "pages": {
+            "extractPages": true
+          },
+          "extractionTimeoutSecs": 60,
+          "ocr": {
+            "backend": "tesseract",
+            "language": [
+              "eng"
+            ],
+            "tessdataPath": "/usr/share/tesseract-ocr/5/tessdata",
+            "vlmFallback": {
+              "mode": "disabled"
+            }
+          }
+        }
+      },
+      "evaluation": {
+        "native": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": null,
+              "match": false
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": "DEMO-000042",
+              "match": true
+            }
+          ],
+          "recovered": 1,
+          "missing": 6,
+          "total": 7
+        },
+        "automatic": {
+          "fields": [
+            {
+              "field": "invoice",
+              "expected": "INV-2048",
+              "actual": "INV-2048",
+              "match": true
+            },
+            {
+              "field": "date",
+              "expected": "2026-10-01",
+              "actual": "2026-10-01",
+              "match": true
+            },
+            {
+              "field": "customer",
+              "expected": "Cedar Studio",
+              "actual": "Cedar Studio",
+              "match": true
+            },
+            {
+              "field": "subtotal",
+              "expected": "1200.00",
+              "actual": "1200.00",
+              "match": true
+            },
+            {
+              "field": "tax",
+              "expected": "120.00",
+              "actual": "120.00",
+              "match": true
+            },
+            {
+              "field": "total",
+              "expected": "USD 1320.00",
+              "actual": "USO 13",
+              "match": false
+            },
+            {
+              "field": "bates",
+              "expected": "DEMO-000042",
+              "actual": "DEMO-000042",
+              "match": true
+            }
+          ],
+          "recovered": 6,
+          "missing": 1,
+          "total": 7
+        }
+      }
+    }
+  ]
+}

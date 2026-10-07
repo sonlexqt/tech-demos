@@ -1,0 +1,14 @@
+{
+  "desktop": "1440x1100",
+  "mobile": "390x844",
+  "pageErrors": [],
+  "checks": [
+    "Native 7/7 both",
+    "Clean 0/7 -> 7/7",
+    "Degraded 1/7 -> 6/7",
+    "Unknown fixture HTTP 400",
+    "No horizontal mobile overflow",
+    "Warnings and diagnostics expanded"
+  ],
+  "recording": "real Chromium browser session; overlay captions/cursor/key indicators"
+}
