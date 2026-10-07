@@ -1,0 +1,13 @@
+bun test v1.4.2 (744846f84)
+
+tests.test.ts:
+(pass) native fields survive both modes [6.48ms]
+(pass) image scan recovers fields beyond disabled OCR baseline [499.80ms]
+(pass) Bates-only text is not completeness; degraded missing total counted [408.63ms]
+(pass) malformed PDF produces explicit error [0.63ms]
+(pass) field evaluation requires exact labeled values [0.05ms]
+
+ 5 pass
+ 0 fail
+ 11 expect() calls
+Ran 5 tests across 1 file. [928.00ms]

@@ -1,0 +1,20 @@
+{
+  "sampleRateFps": 4,
+  "sampledFrames": 311,
+  "minimumGrayscaleStdDev": 14.320669740155854,
+  "keyboardIndicatorFrames": [
+    "0071.png",
+    "0072.png",
+    "0073.png",
+    "0074.png",
+    "0075.png",
+    "0165.png",
+    "0166.png",
+    "0167.png",
+    "0168.png",
+    "0169.png",
+    "0170.png"
+  ],
+  "cursorIndicatorFrameCount": 308,
+  "fullDecodeErrorsBytes": 0
+}

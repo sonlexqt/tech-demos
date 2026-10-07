@@ -1,0 +1,8 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+	"files": {
+		"includes": ["**/*.ts", "public/*.js", "*.json", "!fixtures", "!evidence"]
+	},
+	"formatter": { "enabled": true },
+	"linter": { "enabled": true, "rules": { "preset": "none" } }
+}

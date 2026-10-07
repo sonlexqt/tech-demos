@@ -1,0 +1,10 @@
+{
+  "reproducible": true,
+  "sha256": {
+    "fixtures/native.pdf": "3e4f6e57857a2738c499ca7158238c4bb76c5f3ab5f05eebe6eca7dda1e3136f",
+    "fixtures/clean.pdf": "3c74a2fd783cbf36f18ecf5c9d217ced477adeecfc46cb0034db25c7f51ae3ea",
+    "fixtures/degraded.pdf": "825b93befbfba1e1bd85a5c39305f21e6dae223991a52510a74fce49f4ca497d",
+    "fixtures/degraded.png": "87756dedc607e4e904738ac44badd2ffe645f851d12d9bcda006f1ef0ed7dc51",
+    "fixtures/clean.png": "5b9707ee19abbe2b2bf0714728c0d45376f677597d415aa09808269718d46cdc"
+  }
+}
