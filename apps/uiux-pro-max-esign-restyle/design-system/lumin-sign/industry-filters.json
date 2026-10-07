@@ -1,0 +1,37 @@
+{
+  "skill": "nextlevelbuilder/ui-ux-pro-max-skill",
+  "source": "src/ui-ux-pro-max/data/ui-reasoning.csv",
+  "note": "The generator already filters anti-patterns per product. These adjacent legal/finance rows show why purple-pink AI gradients are excluded for this industry.",
+  "rows": [
+    {
+      "id": 175,
+      "category": "E-signature / Document Workflow",
+      "pattern": "Enterprise Gateway",
+      "antiPatterns": [
+        "Confusing signing flow",
+        "weak audit trail",
+        "hidden consent"
+      ]
+    },
+    {
+      "id": 40,
+      "category": "Legal Services",
+      "pattern": "Trust & Authority + Minimal",
+      "antiPatterns": [
+        "Outdated design",
+        "Hidden credentials",
+        "AI purple/pink gradients"
+      ]
+    },
+    {
+      "id": 42,
+      "category": "Banking/Traditional Finance",
+      "pattern": "Trust & Authority + Feature",
+      "antiPatterns": [
+        "Playful design",
+        "Poor security UX",
+        "AI purple/pink gradients"
+      ]
+    }
+  ]
+}
