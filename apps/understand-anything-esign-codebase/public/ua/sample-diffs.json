@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "samples": [
+    {
+      "id": "reminder-cadence",
+      "title": "Slow reminder cadence to day 2 / 5 / 10",
+      "command": "/understand-diff",
+      "baseBranch": "main",
+      "changedFiles": ["src/reminders/scheduler.ts"],
+      "summary": "Legal asked to nag less often. The constant REMINDER_CADENCE_DAYS changes, so due-scan math, reminder webhooks, and audit actions shift.",
+      "patch": "export const REMINDER_CADENCE_DAYS = [1, 3, 7] as const;\n+export const REMINDER_CADENCE_DAYS = [2, 5, 10] as const;",
+      "riskNote": "Cross-layer: Service (scheduler) → Data (audit) → API-adjacent webhooks. Tests assert the old 1/3/7 list and a 4-day due count."
+    },
+    {
+      "id": "signer-order",
+      "title": "Allow same-group parallel inside ORDER",
+      "command": "/understand-diff",
+      "baseBranch": "main",
+      "changedFiles": ["src/signers/routing.ts"],
+      "summary": "Deal desk wants every signer in group 1 unlocked together, then group 2. resolveSigningOrder and nextEligibleSigner both encode the min-group rule.",
+      "patch": "const minGroup = Math.min(...request.signers.map((s) => s.group));\n+// also unlock same-group peers when any peer in the group has viewed",
+      "riskNote": "Create-request calls resolveSigningOrder on send. Field binding assumes signer ids stay stable. Routing tests pin the current handoff."
+    },
+    {
+      "id": "webhook-payload",
+      "title": "Add eventId to webhook deliveries",
+      "command": "/understand-diff",
+      "baseBranch": "main",
+      "changedFiles": ["src/webhooks/dispatch.ts"],
+      "summary": "Integrators need an idempotency key on signature_request.* payloads. emitWebhook writes the delivery row and the webhook.delivered audit payload.",
+      "patch": "appendAudit(request.id, \"webhook.delivered\", \"system\", { event, deliveryId });\n+appendAudit(request.id, \"webhook.delivered\", \"system\", { event, deliveryId, eventId });",
+      "riskNote": "Inbound handleInboundWebhook re-emits through emitWebhook. Reminder due-scan also triggers emit. Webhook + audit tests read the current shape."
+    }
+  ]
+}

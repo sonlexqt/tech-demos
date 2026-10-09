@@ -1,0 +1,17 @@
+{
+  "name": "understand-anything-esign-codebase",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "generate:graph": "bun run scripts/generate-graph.ts",
+    "test": "bun test"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3"
+  }
+}
