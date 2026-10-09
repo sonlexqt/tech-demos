@@ -1,0 +1,2194 @@
+{
+  "version": "1.0.0",
+  "kind": "codebase",
+  "project": {
+    "name": "lumin-sign-fixture",
+    "languages": [
+      "TypeScript"
+    ],
+    "frameworks": [
+      "Bun"
+    ],
+    "description": "Mini Lumin Sign e-sign core: create request, signer routing/order, field prep, reminders, webhooks, audit trail.",
+    "analyzedAt": "2026-10-09T00:00:00.000Z",
+    "gitCommitHash": "fixture-lumin-sign-ua-1"
+  },
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "lineRange": [
+        1,
+        26
+      ],
+      "summary": "Map of the fixture Lumin Sign e-sign core: create request, signer order, fields, reminders, webhooks, audit.",
+      "tags": [
+        "docs",
+        "onboarding"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/audit/trail.ts",
+      "type": "file",
+      "name": "trail.ts",
+      "filePath": "src/audit/trail.ts",
+      "lineRange": [
+        1,
+        27
+      ],
+      "summary": "Append-only audit API used by every state change in the send pipeline.",
+      "tags": [
+        "audit",
+        "compliance"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/audit/trail.ts:appendAudit",
+      "type": "function",
+      "name": "appendAudit",
+      "filePath": "src/audit/trail.ts",
+      "lineRange": [
+        4,
+        16
+      ],
+      "summary": "Stable wrapper that stamps id/at and writes the store.",
+      "tags": [
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/audit/trail.ts:listAudit",
+      "type": "function",
+      "name": "listAudit",
+      "filePath": "src/audit/trail.ts",
+      "lineRange": [
+        20,
+        32
+      ],
+      "summary": "Return the full trail for GET /v1/signature_request/:id/audit.",
+      "tags": [
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/audit/trail.ts:findAudit",
+      "type": "function",
+      "name": "findAudit",
+      "filePath": "src/audit/trail.ts",
+      "lineRange": [
+        24,
+        36
+      ],
+      "summary": "Filter the trail by action name (request.created, reminder.sent, …).",
+      "tags": [
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/fields/prep.ts",
+      "type": "file",
+      "name": "prep.ts",
+      "filePath": "src/fields/prep.ts",
+      "lineRange": [
+        1,
+        44
+      ],
+      "summary": "Places signature/date/initials per signer and binds each field to a real signer id.",
+      "tags": [
+        "fields",
+        "prep"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/fields/prep.ts:placeFields",
+      "type": "function",
+      "name": "placeFields",
+      "filePath": "src/fields/prep.ts",
+      "lineRange": [
+        5,
+        17
+      ],
+      "summary": "Create signature, date, and initials fields stacked per signer on page 1.",
+      "tags": [
+        "fields"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/fields/prep.ts:bindFieldsToSigners",
+      "type": "function",
+      "name": "bindFieldsToSigners",
+      "filePath": "src/fields/prep.ts",
+      "lineRange": [
+        24,
+        36
+      ],
+      "summary": "Fail closed if a field points at a missing signer id.",
+      "tags": [
+        "fields",
+        "validation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/fields/prep.ts:requiredFieldsFor",
+      "type": "function",
+      "name": "requiredFieldsFor",
+      "filePath": "src/fields/prep.ts",
+      "lineRange": [
+        34,
+        46
+      ],
+      "summary": "Required fields a signer must fill before their turn completes.",
+      "tags": [
+        "fields"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/fields/prep.ts:applyFieldValue",
+      "type": "function",
+      "name": "applyFieldValue",
+      "filePath": "src/fields/prep.ts",
+      "lineRange": [
+        38,
+        50
+      ],
+      "summary": "Write a captured signature / date / initials value onto a field.",
+      "tags": [
+        "fields"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/http/routes.ts",
+      "type": "file",
+      "name": "routes.ts",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        1,
+        25
+      ],
+      "summary": "HTTP-shaped entry: POST send, GET audit, POST inbound webhook.",
+      "tags": [
+        "api",
+        "http"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/http/routes.ts:sendSignatureRequest",
+      "type": "function",
+      "name": "sendSignatureRequest",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        7,
+        19
+      ],
+      "summary": "POST /v1/signature_request/send — thin wrap of createSignatureRequest.",
+      "tags": [
+        "api",
+        "send"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/http/routes.ts:getAuditTrail",
+      "type": "function",
+      "name": "getAuditTrail",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        11,
+        23
+      ],
+      "summary": "GET /v1/signature_request/:id/audit — 404-shaped throw if missing.",
+      "tags": [
+        "api",
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/http/routes.ts:receiveInboundWebhook",
+      "type": "function",
+      "name": "receiveInboundWebhook",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        17,
+        29
+      ],
+      "summary": "POST /v1/webhooks/inbound — load request and apply signer event.",
+      "tags": [
+        "api",
+        "webhooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/reminders/scheduler.ts",
+      "type": "file",
+      "name": "scheduler.ts",
+      "filePath": "src/reminders/scheduler.ts",
+      "lineRange": [
+        1,
+        43
+      ],
+      "summary": "Day 1 / 3 / 7 cadence. Due-scan emits reminder.sent audit + webhook.",
+      "tags": [
+        "reminders",
+        "cadence"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/reminders/scheduler.ts:scheduleReminders",
+      "type": "function",
+      "name": "scheduleReminders",
+      "filePath": "src/reminders/scheduler.ts",
+      "lineRange": [
+        23,
+        35
+      ],
+      "summary": "Write reminder.scheduled audit with the 1/3/7 cadence.",
+      "tags": [
+        "reminders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/reminders/scheduler.ts:dueReminders",
+      "type": "function",
+      "name": "dueReminders",
+      "filePath": "src/reminders/scheduler.ts",
+      "lineRange": [
+        30,
+        42
+      ],
+      "summary": "Cadence timestamps that are due and not completed/declined.",
+      "tags": [
+        "reminders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "type": "function",
+      "name": "sendDueReminders",
+      "filePath": "src/reminders/scheduler.ts",
+      "lineRange": [
+        34,
+        46
+      ],
+      "summary": "For each due slot, append reminder.sent and emit the reminder webhook.",
+      "tags": [
+        "reminders",
+        "webhooks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/reminders/scheduler.ts:ReminderScheduler",
+      "type": "class",
+      "name": "ReminderScheduler",
+      "filePath": "src/reminders/scheduler.ts",
+      "lineRange": [
+        8,
+        28
+      ],
+      "summary": "Holds cadence days and computes due timestamps from createdAt.",
+      "tags": [
+        "reminders",
+        "class"
+      ],
+      "complexity": "moderate",
+      "languageNotes": "Class + module-level singleton — typical scheduler wrapper."
+    },
+    {
+      "id": "file:src/requests/create-request.ts",
+      "type": "file",
+      "name": "create-request.ts",
+      "filePath": "src/requests/create-request.ts",
+      "lineRange": [
+        1,
+        60
+      ],
+      "summary": "Validates a send payload and orchestrates routing, field prep, persist, reminders, audit, and the sent webhook.",
+      "tags": [
+        "create",
+        "orchestrator",
+        "send"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "function:src/requests/create-request.ts:validatePayload",
+      "type": "function",
+      "name": "validatePayload",
+      "filePath": "src/requests/create-request.ts",
+      "lineRange": [
+        9,
+        21
+      ],
+      "summary": "Collect title, signer, expiry, and ORDER group errors before send.",
+      "tags": [
+        "validation",
+        "create"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/requests/create-request.ts:createSignatureRequest",
+      "type": "function",
+      "name": "createSignatureRequest",
+      "filePath": "src/requests/create-request.ts",
+      "lineRange": [
+        21,
+        33
+      ],
+      "summary": "Happy-path send: route → place fields → persist → schedule reminders → audit → sent webhook.",
+      "tags": [
+        "create",
+        "orchestrator"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:src/signers/routing.ts",
+      "type": "file",
+      "name": "routing.ts",
+      "filePath": "src/signers/routing.ts",
+      "lineRange": [
+        1,
+        48
+      ],
+      "summary": "ORDER unlocks the lowest unsigned group; PARALLEL marks every signer awaiting.",
+      "tags": [
+        "signers",
+        "order",
+        "routing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/signers/routing.ts:resolveSigningOrder",
+      "type": "function",
+      "name": "resolveSigningOrder",
+      "filePath": "src/signers/routing.ts",
+      "lineRange": [
+        3,
+        15
+      ],
+      "summary": "Set awaiting vs pending from signingType and group numbers.",
+      "tags": [
+        "routing",
+        "order"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/signers/routing.ts:nextEligibleSigner",
+      "type": "function",
+      "name": "nextEligibleSigner",
+      "filePath": "src/signers/routing.ts",
+      "lineRange": [
+        16,
+        28
+      ],
+      "summary": "After a signature, unlock the next ORDER group or remaining PARALLEL signers.",
+      "tags": [
+        "routing",
+        "handoff"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/signers/routing.ts:markSigned",
+      "type": "function",
+      "name": "markSigned",
+      "filePath": "src/signers/routing.ts",
+      "lineRange": [
+        32,
+        44
+      ],
+      "summary": "Record a signature; complete the request or advance ORDER.",
+      "tags": [
+        "routing",
+        "sign"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:src/store.ts",
+      "type": "file",
+      "name": "store.ts",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        1,
+        52
+      ],
+      "summary": "In-memory maps for requests, audit rows, and webhook deliveries. Reset between tests.",
+      "tags": [
+        "data",
+        "store"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:insertRequest",
+      "type": "function",
+      "name": "insertRequest",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        7,
+        19
+      ],
+      "summary": "Persist a new SignatureRequest in the in-memory map.",
+      "tags": [
+        "store",
+        "write"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:getRequest",
+      "type": "function",
+      "name": "getRequest",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        12,
+        24
+      ],
+      "summary": "Fetch a request by id, or undefined.",
+      "tags": [
+        "store",
+        "read"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:updateRequest",
+      "type": "function",
+      "name": "updateRequest",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        16,
+        28
+      ],
+      "summary": "Overwrite a stored request after routing or inbound events.",
+      "tags": [
+        "store",
+        "write"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:listRequests",
+      "type": "function",
+      "name": "listRequests",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        21,
+        33
+      ],
+      "summary": "Return every stored request (used by reminder due-scans in a fuller system).",
+      "tags": [
+        "store",
+        "read"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:appendAuditRow",
+      "type": "function",
+      "name": "appendAuditRow",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        25,
+        37
+      ],
+      "summary": "Push one audit event onto the per-request list.",
+      "tags": [
+        "store",
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:listAuditRows",
+      "type": "function",
+      "name": "listAuditRows",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        32,
+        44
+      ],
+      "summary": "Read the append-only audit list for a request.",
+      "tags": [
+        "store",
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:appendWebhookRow",
+      "type": "function",
+      "name": "appendWebhookRow",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        36,
+        48
+      ],
+      "summary": "Record a webhook delivery attempt.",
+      "tags": [
+        "store",
+        "webhooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:listWebhookRows",
+      "type": "function",
+      "name": "listWebhookRows",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        43,
+        55
+      ],
+      "summary": "List deliveries so retryFailed can find failed rows.",
+      "tags": [
+        "store",
+        "webhooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/store.ts:resetStore",
+      "type": "function",
+      "name": "resetStore",
+      "filePath": "src/store.ts",
+      "lineRange": [
+        47,
+        59
+      ],
+      "summary": "Clear maps between fixture tests.",
+      "tags": [
+        "store",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:src/types.ts",
+      "type": "file",
+      "name": "types.ts",
+      "filePath": "src/types.ts",
+      "lineRange": [
+        1,
+        77
+      ],
+      "summary": "Shared e-sign types: SignatureRequest, Signer, Field, WebhookEvent, AuditEvent.",
+      "tags": [
+        "types",
+        "domain"
+      ],
+      "complexity": "simple",
+      "languageNotes": "Type-only module — no runtime exports besides interfaces/aliases."
+    },
+    {
+      "id": "file:src/webhooks/dispatch.ts",
+      "type": "file",
+      "name": "dispatch.ts",
+      "filePath": "src/webhooks/dispatch.ts",
+      "lineRange": [
+        1,
+        67
+      ],
+      "summary": "Emits signature_request.* deliveries, retries failed rows, and applies inbound viewed/signed/declined.",
+      "tags": [
+        "webhooks",
+        "events"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "function",
+      "name": "emitWebhook",
+      "filePath": "src/webhooks/dispatch.ts",
+      "lineRange": [
+        45,
+        57
+      ],
+      "summary": "Create a delivered delivery row and webhook.delivered audit.",
+      "tags": [
+        "webhooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:src/webhooks/dispatch.ts:retryFailed",
+      "type": "function",
+      "name": "retryFailed",
+      "filePath": "src/webhooks/dispatch.ts",
+      "lineRange": [
+        49,
+        61
+      ],
+      "summary": "Retry failed deliveries up to three attempts.",
+      "tags": [
+        "webhooks",
+        "retry"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "type": "function",
+      "name": "handleInboundWebhook",
+      "filePath": "src/webhooks/dispatch.ts",
+      "lineRange": [
+        53,
+        65
+      ],
+      "summary": "Apply viewed/signed/declined to request status, then re-emit.",
+      "tags": [
+        "webhooks",
+        "inbound"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+      "type": "class",
+      "name": "WebhookDispatcher",
+      "filePath": "src/webhooks/dispatch.ts",
+      "lineRange": [
+        7,
+        27
+      ],
+      "summary": "Stateful emit/retry helper sitting under the function exports.",
+      "tags": [
+        "webhooks",
+        "class"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:tests/audit.test.ts",
+      "type": "file",
+      "name": "audit.test.ts",
+      "filePath": "tests/audit.test.ts",
+      "lineRange": [
+        1,
+        14
+      ],
+      "summary": "Pins append-only listAudit and findAudit by action.",
+      "tags": [
+        "test",
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/audit.test.ts:runAuditTests",
+      "type": "function",
+      "name": "runAuditTests",
+      "filePath": "tests/audit.test.ts",
+      "lineRange": [
+        4,
+        16
+      ],
+      "summary": "Assert append-only trail and action filter.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/create-request.test.ts",
+      "type": "file",
+      "name": "create-request.test.ts",
+      "filePath": "tests/create-request.test.ts",
+      "lineRange": [
+        1,
+        29
+      ],
+      "summary": "Pins validatePayload errors and ORDER create → awaiting group 1 + placed fields.",
+      "tags": [
+        "test",
+        "create"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/create-request.test.ts:runCreateRequestTests",
+      "type": "function",
+      "name": "runCreateRequestTests",
+      "filePath": "tests/create-request.test.ts",
+      "lineRange": [
+        6,
+        18
+      ],
+      "summary": "Assert invalid payload errors and ORDER create side effects.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/fields.test.ts",
+      "type": "file",
+      "name": "fields.test.ts",
+      "filePath": "tests/fields.test.ts",
+      "lineRange": [
+        1,
+        25
+      ],
+      "summary": "Pins placeFields + required signature/date vs optional initials.",
+      "tags": [
+        "test",
+        "fields"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/fields.test.ts:runFieldTests",
+      "type": "function",
+      "name": "runFieldTests",
+      "filePath": "tests/fields.test.ts",
+      "lineRange": [
+        5,
+        17
+      ],
+      "summary": "Assert required vs optional fields after placeFields.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/reminders.test.ts",
+      "type": "file",
+      "name": "reminders.test.ts",
+      "filePath": "tests/reminders.test.ts",
+      "lineRange": [
+        1,
+        28
+      ],
+      "summary": "Pins cadence 1/3/7 and due count after four days.",
+      "tags": [
+        "test",
+        "reminders"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/reminders.test.ts:runReminderTests",
+      "type": "function",
+      "name": "runReminderTests",
+      "filePath": "tests/reminders.test.ts",
+      "lineRange": [
+        5,
+        17
+      ],
+      "summary": "Assert cadence constants and due count after four days.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/routing.test.ts",
+      "type": "file",
+      "name": "routing.test.ts",
+      "filePath": "tests/routing.test.ts",
+      "lineRange": [
+        1,
+        35
+      ],
+      "summary": "Pins ORDER handoff after markSigned and PARALLEL unlock-all.",
+      "tags": [
+        "test",
+        "routing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/routing.test.ts:runRoutingTests",
+      "type": "function",
+      "name": "runRoutingTests",
+      "filePath": "tests/routing.test.ts",
+      "lineRange": [
+        21,
+        33
+      ],
+      "summary": "Assert ORDER handoff and PARALLEL unlock.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:tests/webhooks.test.ts",
+      "type": "file",
+      "name": "webhooks.test.ts",
+      "filePath": "tests/webhooks.test.ts",
+      "lineRange": [
+        1,
+        28
+      ],
+      "summary": "Pins inbound viewed → in_progress and retryFailed.",
+      "tags": [
+        "test",
+        "webhooks"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:tests/webhooks.test.ts:runWebhookTests",
+      "type": "function",
+      "name": "runWebhookTests",
+      "filePath": "tests/webhooks.test.ts",
+      "lineRange": [
+        5,
+        17
+      ],
+      "summary": "Assert inbound viewed and retryFailed.",
+      "tags": [
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:src/requests",
+      "type": "module",
+      "name": "requests",
+      "filePath": "src/requests",
+      "summary": "Create-and-send orchestration for a signature request.",
+      "tags": [
+        "module",
+        "create"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/signers",
+      "type": "module",
+      "name": "signers",
+      "filePath": "src/signers",
+      "summary": "Signing order and handoff.",
+      "tags": [
+        "module",
+        "routing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/fields",
+      "type": "module",
+      "name": "fields",
+      "filePath": "src/fields",
+      "summary": "Field placement and signer binding.",
+      "tags": [
+        "module",
+        "fields"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/reminders",
+      "type": "module",
+      "name": "reminders",
+      "filePath": "src/reminders",
+      "summary": "Reminder cadence and due-scan.",
+      "tags": [
+        "module",
+        "reminders"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/webhooks",
+      "type": "module",
+      "name": "webhooks",
+      "filePath": "src/webhooks",
+      "summary": "Outbound emit/retry and inbound signer events.",
+      "tags": [
+        "module",
+        "webhooks"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/audit",
+      "type": "module",
+      "name": "audit",
+      "filePath": "src/audit",
+      "summary": "Append-only compliance trail.",
+      "tags": [
+        "module",
+        "audit"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:src/http",
+      "type": "module",
+      "name": "http",
+      "filePath": "src/http",
+      "summary": "HTTP-shaped API surface.",
+      "tags": [
+        "module",
+        "api"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+      "type": "endpoint",
+      "name": "POST /v1/signature_request/send",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        7,
+        9
+      ],
+      "summary": "Requester send. Creates the request and fans out to routing, fields, reminders, audit, webhook.",
+      "tags": [
+        "api",
+        "send"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit",
+      "type": "endpoint",
+      "name": "GET /v1/signature_request/:id/audit",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        11,
+        15
+      ],
+      "summary": "Read the append-only trail for a request.",
+      "tags": [
+        "api",
+        "audit"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "endpoint:src/http/routes.ts:POST /v1/webhooks/inbound",
+      "type": "endpoint",
+      "name": "POST /v1/webhooks/inbound",
+      "filePath": "src/http/routes.ts",
+      "lineRange": [
+        17,
+        24
+      ],
+      "summary": "Signer-side viewed / signed / declined callbacks.",
+      "tags": [
+        "api",
+        "webhooks"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "function:src/audit/trail.ts:appendAudit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "function:src/audit/trail.ts:listAudit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "function:src/audit/trail.ts:findAudit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "function:src/fields/prep.ts:placeFields",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "function:src/fields/prep.ts:bindFieldsToSigners",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "function:src/fields/prep.ts:requiredFieldsFor",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "function:src/fields/prep.ts:applyFieldValue",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "function:src/http/routes.ts:sendSignatureRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "function:src/http/routes.ts:getAuditTrail",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "function:src/http/routes.ts:receiveInboundWebhook",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "file:src/audit/trail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "file:src/requests/create-request.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "file:src/webhooks/dispatch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "function:src/reminders/scheduler.ts:scheduleReminders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "function:src/reminders/scheduler.ts:dueReminders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "class:src/reminders/scheduler.ts:ReminderScheduler",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "file:src/audit/trail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "file:src/webhooks/dispatch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "function:src/requests/create-request.ts:validatePayload",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "function:src/requests/create-request.ts:createSignatureRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/audit/trail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/fields/prep.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/reminders/scheduler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/signers/routing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:src/webhooks/dispatch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/signers/routing.ts",
+      "target": "function:src/signers/routing.ts:resolveSigningOrder",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/signers/routing.ts",
+      "target": "function:src/signers/routing.ts:nextEligibleSigner",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/signers/routing.ts",
+      "target": "function:src/signers/routing.ts:markSigned",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/signers/routing.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:insertRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:getRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:updateRequest",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:listRequests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:appendAuditRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:listAuditRows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:appendWebhookRow",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:listWebhookRows",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "function:src/store.ts:resetStore",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/store.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "function:src/webhooks/dispatch.ts:retryFailed",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "file:src/audit/trail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:tests/audit.test.ts",
+      "target": "function:tests/audit.test.ts:runAuditTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/audit.test.ts",
+      "target": "file:src/audit/trail.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/audit.test.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/create-request.test.ts",
+      "target": "function:tests/create-request.test.ts:runCreateRequestTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/create-request.test.ts",
+      "target": "file:src/requests/create-request.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/create-request.test.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/fields.test.ts",
+      "target": "function:tests/fields.test.ts:runFieldTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/fields.test.ts",
+      "target": "file:src/fields/prep.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/fields.test.ts",
+      "target": "file:src/signers/routing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/fields.test.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:tests/reminders.test.ts",
+      "target": "function:tests/reminders.test.ts:runReminderTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/reminders.test.ts",
+      "target": "file:src/reminders/scheduler.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/reminders.test.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/reminders.test.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:tests/routing.test.ts",
+      "target": "function:tests/routing.test.ts:runRoutingTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/routing.test.ts",
+      "target": "file:src/signers/routing.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/routing.test.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "file:tests/webhooks.test.ts",
+      "target": "function:tests/webhooks.test.ts:runWebhookTests",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "file:tests/webhooks.test.ts",
+      "target": "file:src/webhooks/dispatch.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/webhooks.test.ts",
+      "target": "file:src/store.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.7
+    },
+    {
+      "source": "file:tests/webhooks.test.ts",
+      "target": "file:src/types.ts",
+      "type": "imports",
+      "direction": "forward",
+      "weight": 0.5,
+      "description": "Shared e-sign types."
+    },
+    {
+      "source": "module:src/requests",
+      "target": "file:src/requests/create-request.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/signers",
+      "target": "file:src/signers/routing.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/fields",
+      "target": "file:src/fields/prep.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/reminders",
+      "target": "file:src/reminders/scheduler.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/webhooks",
+      "target": "file:src/webhooks/dispatch.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/audit",
+      "target": "file:src/audit/trail.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "module:src/http",
+      "target": "file:src/http/routes.ts",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 0.9
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+      "target": "file:src/http/routes.ts",
+      "type": "routes",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit",
+      "target": "file:src/http/routes.ts",
+      "type": "routes",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "file:src/http/routes.ts",
+      "target": "endpoint:src/http/routes.ts:POST /v1/webhooks/inbound",
+      "type": "contains",
+      "direction": "forward",
+      "weight": 1
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:POST /v1/webhooks/inbound",
+      "target": "file:src/http/routes.ts",
+      "type": "routes",
+      "direction": "forward",
+      "weight": 0.8
+    },
+    {
+      "source": "document:README.md",
+      "target": "file:src/http/routes.ts",
+      "type": "documents",
+      "direction": "forward",
+      "weight": 0.4,
+      "description": "README points at the HTTP entry as the place to start."
+    },
+    {
+      "source": "function:src/http/routes.ts:sendSignatureRequest",
+      "target": "function:src/requests/create-request.ts:createSignatureRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Send route delegates to the create orchestrator."
+    },
+    {
+      "source": "function:src/http/routes.ts:getAuditTrail",
+      "target": "function:src/audit/trail.ts:listAudit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Audit route reads the trail."
+    },
+    {
+      "source": "function:src/http/routes.ts:getAuditTrail",
+      "target": "function:src/store.ts:getRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "404-shaped lookup before listing audit."
+    },
+    {
+      "source": "function:src/http/routes.ts:receiveInboundWebhook",
+      "target": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Inbound route applies the signer event."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/requests/create-request.ts:validatePayload",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Reject invalid title / signers / expiry before side effects."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/signers/routing.ts:resolveSigningOrder",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Unlock the first ORDER group or every PARALLEL signer."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/fields/prep.ts:placeFields",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Stamp default fields onto each signer."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/store.ts:insertRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Persist the request before reminders fire."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/reminders/scheduler.ts:scheduleReminders",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Schedule 1/3/7 cadence after send."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/audit/trail.ts:appendAudit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Write request.created."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Fan out signature_request.sent."
+    },
+    {
+      "source": "function:src/signers/routing.ts:markSigned",
+      "target": "function:src/signers/routing.ts:nextEligibleSigner",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Advance ORDER after a completed signature."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "target": "function:src/reminders/scheduler.ts:dueReminders",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Due-scan before emit."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "target": "function:src/audit/trail.ts:appendAudit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Each due slot writes reminder.sent."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "target": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Each due slot emits signature_request.reminder.sent."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:scheduleReminders",
+      "target": "function:src/audit/trail.ts:appendAudit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Cadence is recorded as reminder.scheduled."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "target": "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Function export forwards to the dispatcher singleton."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:retryFailed",
+      "target": "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+      "type": "depends_on",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Retry export forwards to the dispatcher."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "target": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Inbound events are re-emitted to subscribers."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "target": "function:src/audit/trail.ts:appendAudit",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Inbound events are audited as the signer."
+    },
+    {
+      "source": "function:src/audit/trail.ts:appendAudit",
+      "target": "function:src/store.ts:appendAuditRow",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Trail writes through the store."
+    },
+    {
+      "source": "function:src/audit/trail.ts:listAudit",
+      "target": "function:src/store.ts:listAuditRows",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Trail reads through the store."
+    },
+    {
+      "source": "function:src/audit/trail.ts:findAudit",
+      "target": "function:src/store.ts:listAuditRows",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Filter is applied on the stored rows."
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+      "target": "function:src/http/routes.ts:sendSignatureRequest",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Route handler for send."
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit",
+      "target": "function:src/http/routes.ts:getAuditTrail",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Route handler for audit GET."
+    },
+    {
+      "source": "endpoint:src/http/routes.ts:POST /v1/webhooks/inbound",
+      "target": "function:src/http/routes.ts:receiveInboundWebhook",
+      "type": "calls",
+      "direction": "forward",
+      "weight": 0.85,
+      "description": "Route handler for inbound webhooks."
+    },
+    {
+      "source": "file:src/requests/create-request.ts",
+      "target": "file:tests/create-request.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:createSignatureRequest",
+      "target": "file:tests/create-request.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/requests/create-request.ts:validatePayload",
+      "target": "file:tests/create-request.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "file:src/signers/routing.ts",
+      "target": "file:tests/routing.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/signers/routing.ts:resolveSigningOrder",
+      "target": "file:tests/routing.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/signers/routing.ts:nextEligibleSigner",
+      "target": "file:tests/routing.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/signers/routing.ts:markSigned",
+      "target": "file:tests/routing.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "file:src/fields/prep.ts",
+      "target": "file:tests/fields.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/fields/prep.ts:placeFields",
+      "target": "file:tests/fields.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "file:src/reminders/scheduler.ts",
+      "target": "file:tests/reminders.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:dueReminders",
+      "target": "file:tests/reminders.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "target": "file:tests/reminders.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "file:src/webhooks/dispatch.ts",
+      "target": "file:tests/webhooks.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+      "target": "file:tests/webhooks.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/webhooks/dispatch.ts:retryFailed",
+      "target": "file:tests/webhooks.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "file:src/audit/trail.ts",
+      "target": "file:tests/audit.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/audit/trail.ts:appendAudit",
+      "target": "file:tests/audit.test.ts",
+      "type": "tested_by",
+      "direction": "forward",
+      "weight": 0.9,
+      "description": "Fixture test pins this node."
+    },
+    {
+      "source": "function:src/reminders/scheduler.ts:sendDueReminders",
+      "target": "function:src/webhooks/dispatch.ts:emitWebhook",
+      "type": "triggers",
+      "direction": "forward",
+      "weight": 0.7,
+      "description": "Due reminders trigger reminder.sent webhooks."
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:api",
+      "name": "API",
+      "description": "HTTP-shaped entry points a requester or signer hits.",
+      "nodeIds": [
+        "file:src/http/routes.ts",
+        "function:src/http/routes.ts:sendSignatureRequest",
+        "function:src/http/routes.ts:getAuditTrail",
+        "function:src/http/routes.ts:receiveInboundWebhook",
+        "module:src/http",
+        "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+        "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit",
+        "endpoint:src/http/routes.ts:POST /v1/webhooks/inbound"
+      ]
+    },
+    {
+      "id": "layer:service",
+      "name": "Service",
+      "description": "Create, routing, fields, reminders, and webhook orchestration.",
+      "nodeIds": [
+        "file:src/fields/prep.ts",
+        "function:src/fields/prep.ts:placeFields",
+        "function:src/fields/prep.ts:bindFieldsToSigners",
+        "function:src/fields/prep.ts:requiredFieldsFor",
+        "function:src/fields/prep.ts:applyFieldValue",
+        "file:src/reminders/scheduler.ts",
+        "function:src/reminders/scheduler.ts:scheduleReminders",
+        "function:src/reminders/scheduler.ts:dueReminders",
+        "function:src/reminders/scheduler.ts:sendDueReminders",
+        "class:src/reminders/scheduler.ts:ReminderScheduler",
+        "file:src/requests/create-request.ts",
+        "function:src/requests/create-request.ts:validatePayload",
+        "function:src/requests/create-request.ts:createSignatureRequest",
+        "file:src/signers/routing.ts",
+        "function:src/signers/routing.ts:resolveSigningOrder",
+        "function:src/signers/routing.ts:nextEligibleSigner",
+        "function:src/signers/routing.ts:markSigned",
+        "file:src/webhooks/dispatch.ts",
+        "function:src/webhooks/dispatch.ts:emitWebhook",
+        "function:src/webhooks/dispatch.ts:retryFailed",
+        "function:src/webhooks/dispatch.ts:handleInboundWebhook",
+        "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+        "module:src/requests",
+        "module:src/signers",
+        "module:src/fields",
+        "module:src/reminders",
+        "module:src/webhooks"
+      ]
+    },
+    {
+      "id": "layer:data",
+      "name": "Data",
+      "description": "In-memory store and append-only audit trail.",
+      "nodeIds": [
+        "file:src/audit/trail.ts",
+        "function:src/audit/trail.ts:appendAudit",
+        "function:src/audit/trail.ts:listAudit",
+        "function:src/audit/trail.ts:findAudit",
+        "file:src/store.ts",
+        "function:src/store.ts:insertRequest",
+        "function:src/store.ts:getRequest",
+        "function:src/store.ts:updateRequest",
+        "function:src/store.ts:listRequests",
+        "function:src/store.ts:appendAuditRow",
+        "function:src/store.ts:listAuditRows",
+        "function:src/store.ts:appendWebhookRow",
+        "function:src/store.ts:listWebhookRows",
+        "function:src/store.ts:resetStore",
+        "module:src/audit"
+      ]
+    },
+    {
+      "id": "layer:utility",
+      "name": "Utility",
+      "description": "Shared types and the fixture README.",
+      "nodeIds": [
+        "document:README.md",
+        "file:src/types.ts"
+      ]
+    },
+    {
+      "id": "layer:test",
+      "name": "Test",
+      "description": "Fixture tests that /understand-diff would flag as the blast-radius suite.",
+      "nodeIds": [
+        "file:tests/audit.test.ts",
+        "function:tests/audit.test.ts:runAuditTests",
+        "file:tests/create-request.test.ts",
+        "function:tests/create-request.test.ts:runCreateRequestTests",
+        "file:tests/fields.test.ts",
+        "function:tests/fields.test.ts:runFieldTests",
+        "file:tests/reminders.test.ts",
+        "function:tests/reminders.test.ts:runReminderTests",
+        "file:tests/routing.test.ts",
+        "function:tests/routing.test.ts:runRoutingTests",
+        "file:tests/webhooks.test.ts",
+        "function:tests/webhooks.test.ts:runWebhookTests"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Start at the map",
+      "description": "The fixture README and shared types name the six e-sign modules. Understand Anything always starts a tour at the documents and domain types so you learn vocabulary before call graphs.",
+      "nodeIds": [
+        "document:README.md",
+        "file:src/types.ts"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "HTTP entry — send a request",
+      "description": "POST /v1/signature_request/send is the requester door. The route is a thin wrap; the interesting work lives one hop down in createSignatureRequest.",
+      "nodeIds": [
+        "file:src/http/routes.ts",
+        "endpoint:src/http/routes.ts:POST /v1/signature_request/send",
+        "function:src/http/routes.ts:sendSignatureRequest"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Create request orchestrates the send",
+      "description": "createSignatureRequest validates, then fans out to routing, field prep, the store, reminders, audit, and the sent webhook. This is the hub of the graph — change it and almost every layer lights up.",
+      "nodeIds": [
+        "file:src/requests/create-request.ts",
+        "function:src/requests/create-request.ts:createSignatureRequest",
+        "function:src/requests/create-request.ts:validatePayload"
+      ],
+      "languageLesson": "The function is an orchestrator: it calls collaborators instead of embedding their rules."
+    },
+    {
+      "order": 4,
+      "title": "Signer routing / order",
+      "description": "ORDER keeps group 2 pending until group 1 signs. PARALLEL marks every signer awaiting. nextEligibleSigner is what a countersign ceremony depends on.",
+      "nodeIds": [
+        "file:src/signers/routing.ts",
+        "function:src/signers/routing.ts:resolveSigningOrder",
+        "function:src/signers/routing.ts:nextEligibleSigner"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Field prep",
+      "description": "Each signer gets signature, date, and initials. bindFieldsToSigners fail-closes if a field points at a missing signer — important when routing ids change.",
+      "nodeIds": [
+        "file:src/fields/prep.ts",
+        "function:src/fields/prep.ts:placeFields",
+        "function:src/fields/prep.ts:bindFieldsToSigners"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Reminders",
+      "description": "Cadence is [1, 3, 7] days. sendDueReminders writes reminder.sent audit rows and triggers signature_request.reminder.sent webhooks. This is the sample change with the widest cross-layer blast radius.",
+      "nodeIds": [
+        "file:src/reminders/scheduler.ts",
+        "class:src/reminders/scheduler.ts:ReminderScheduler",
+        "function:src/reminders/scheduler.ts:sendDueReminders"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Webhooks",
+      "description": "Outbound emit + retry, plus inbound viewed/signed/declined. Completing a reminder or a sign always leaves a delivery row the audit trail can cite.",
+      "nodeIds": [
+        "file:src/webhooks/dispatch.ts",
+        "class:src/webhooks/dispatch.ts:WebhookDispatcher",
+        "function:src/webhooks/dispatch.ts:handleInboundWebhook"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Audit trail",
+      "description": "Every state change appends. GET audit is how ops and compliance reconstruct who did what. If a send-path module stops calling appendAudit, this layer goes quiet — and the test suite should fail.",
+      "nodeIds": [
+        "file:src/audit/trail.ts",
+        "function:src/audit/trail.ts:appendAudit",
+        "endpoint:src/http/routes.ts:GET /v1/signature_request/:id/audit"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Tests pin the blast radius",
+      "description": "/understand-diff follows tested_by edges from a changed file. The six fixture tests are the suite a reviewer should re-run after a reminder, routing, or webhook change.",
+      "nodeIds": [
+        "file:tests/create-request.test.ts",
+        "file:tests/routing.test.ts",
+        "file:tests/reminders.test.ts",
+        "file:tests/webhooks.test.ts"
+      ]
+    }
+  ]
+}
