@@ -1,0 +1,73 @@
+{
+  "evidence_id": "ev_7595c35b8dbea3899bda9c8f1274259f6160daad524c2c7c5767c293611548ad",
+  "subject": null,
+  "provider": {
+    "id": "rea-javascript-application-workflows",
+    "name": "REA JavaScript application workflows",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.application-feature-trace",
+  "operation": "trace_application_feature",
+  "parameters": {
+    "application_evidence_id": "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263",
+    "native_evidence_ids": [],
+    "seed": {
+      "kind": "string",
+      "value": "lumin-sign-flow:pdf-write",
+      "match": null,
+      "case_sensitive": false
+    },
+    "direction": "both"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "trace_id": "jatr_42368a73e29bd1b7f9b3366e65e4844697867e78d1e252cae94758ef996d9a62",
+    "source_evidence_id": "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263",
+    "source_graph_id": "jag_35810ce48d06604b08817b7df786c168782aee0c93bb5b17e37b111217bcefb4",
+    "seed": {
+      "kind": "string",
+      "value": "lumin-sign-flow:pdf-write",
+      "match": null,
+      "case_sensitive": false
+    },
+    "direction": "both",
+    "seed_matches": [],
+    "graph": null,
+    "paths": [],
+    "native_handoffs": [],
+    "summary": {
+      "matched_seeds": 0,
+      "traced_nodes": 0,
+      "traced_edges": 0,
+      "terminal_paths": 0,
+      "native_handoffs": 0,
+      "observed_facts": 0,
+      "inferred_facts": 0,
+      "unknown_facts": 0,
+      "unavailable_facts": 0
+    },
+    "coverage": {
+      "status": "no-match",
+      "source_graph_status": "complete",
+      "total_seed_matches": 0
+    },
+    "evidence_links": [
+      "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263"
+    ],
+    "limitations": [
+      "No graph entity matched the literal seed; this is not evidence that the feature is absent."
+    ]
+  },
+  "confidence": "inferred",
+  "authority": "analyst-inference",
+  "environment": null,
+  "limitations": [
+    "Artifact identity is unavailable for this observation.",
+    "No graph entity matched the literal seed; this is not evidence that the feature is absent."
+  ],
+  "locations": [],
+  "evidence_links": [
+    "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263"
+  ]
+}

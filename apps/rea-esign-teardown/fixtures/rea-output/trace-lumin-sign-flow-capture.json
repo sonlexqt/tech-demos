@@ -1,0 +1,73 @@
+{
+  "evidence_id": "ev_07e8469b44e26fac22579fdafe49bdb02962cfb062a69803ad7866a9e6748a9d",
+  "subject": null,
+  "provider": {
+    "id": "rea-javascript-application-workflows",
+    "name": "REA JavaScript application workflows",
+    "version": "1"
+  },
+  "analysis_profile": null,
+  "predicate_type": "rea.application-feature-trace",
+  "operation": "trace_application_feature",
+  "parameters": {
+    "application_evidence_id": "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263",
+    "native_evidence_ids": [],
+    "seed": {
+      "kind": "string",
+      "value": "lumin-sign-flow:capture",
+      "match": null,
+      "case_sensitive": false
+    },
+    "direction": "both"
+  },
+  "raw_result": null,
+  "normalized_result": {
+    "trace_id": "jatr_9244d1c57b37a469d9820c4e675722b4e48697fb4bf9f751bc03292816f3b807",
+    "source_evidence_id": "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263",
+    "source_graph_id": "jag_35810ce48d06604b08817b7df786c168782aee0c93bb5b17e37b111217bcefb4",
+    "seed": {
+      "kind": "string",
+      "value": "lumin-sign-flow:capture",
+      "match": null,
+      "case_sensitive": false
+    },
+    "direction": "both",
+    "seed_matches": [],
+    "graph": null,
+    "paths": [],
+    "native_handoffs": [],
+    "summary": {
+      "matched_seeds": 0,
+      "traced_nodes": 0,
+      "traced_edges": 0,
+      "terminal_paths": 0,
+      "native_handoffs": 0,
+      "observed_facts": 0,
+      "inferred_facts": 0,
+      "unknown_facts": 0,
+      "unavailable_facts": 0
+    },
+    "coverage": {
+      "status": "no-match",
+      "source_graph_status": "complete",
+      "total_seed_matches": 0
+    },
+    "evidence_links": [
+      "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263"
+    ],
+    "limitations": [
+      "No graph entity matched the literal seed; this is not evidence that the feature is absent."
+    ]
+  },
+  "confidence": "inferred",
+  "authority": "analyst-inference",
+  "environment": null,
+  "limitations": [
+    "Artifact identity is unavailable for this observation.",
+    "No graph entity matched the literal seed; this is not evidence that the feature is absent."
+  ],
+  "locations": [],
+  "evidence_links": [
+    "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "lumin-sign-signer-fixture",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Owned Lumin Sign–framed e-sign fixture for REA JS-bundle analysis. Not a third-party product.",
+  "main": "src/index.ts",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}
