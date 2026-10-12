@@ -1,0 +1,21 @@
+{
+  "name": "rea-esign-teardown",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:signer": "bun run scripts/build-signer.ts",
+    "capture:rea": "bun run scripts/capture-rea.ts",
+    "extract:rea": "bun run scripts/extract-evidence-index.ts"
+  },
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3"
+  }
+}

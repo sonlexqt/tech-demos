@@ -1,0 +1,627 @@
+{
+  "rea_package": "rea-agents@6.4.0",
+  "analyze_evidence_id": "ev_291adc3d042aab029eed33ac17e1f3ef324c552edbecacc3d1fb3476e24f2263",
+  "inspect_evidence_id": "ev_1fb8c8b35574a2b8a462c9fcf6ff90b498a85ac20ee5d65bedd95c5fb28a658c",
+  "operation": "analyze_javascript_application",
+  "provider": {
+    "id": "rea-javascript-application",
+    "name": "REA JavaScript application analyzer",
+    "version": "1"
+  },
+  "subject": {
+    "name": "signer-bundle",
+    "digest": {
+      "sha256": "5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1"
+    },
+    "format": "directory",
+    "architecture": null,
+    "local_path": "/workspace/apps/rea-esign-teardown/fixtures/signer-bundle"
+  },
+  "confidence": "derived",
+  "authority": "shipped-artifact",
+  "statistics": {
+    "relevant_files": 3,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 3756,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 1,
+    "visited_ast_nodes": 912,
+    "findings": 10,
+    "modules": 0,
+    "parse_failures": 0
+  },
+  "limitations": [
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ],
+  "graph": {
+    "schema": "JavaScriptApplicationGraph",
+    "graph_id": "jag_35810ce48d06604b08817b7df786c168782aee0c93bb5b17e37b111217bcefb4",
+    "coverage": {
+      "status": "complete",
+      "truncated": false,
+      "omitted_count": 0,
+      "limits": []
+    },
+    "node_count": 17,
+    "edge_count": 19,
+    "kinds": {
+      "javascript-module": 10,
+      "electron-renderer": 1,
+      "artifact": 3,
+      "javascript-asset": 1,
+      "electron-main": 1,
+      "package": 1
+    },
+    "exports": [
+      {
+        "node_id": "jag_node_23cd1802175abbaac21b2627da88c4df099d709efaaeb8dd3d7a1c0c09ccabe0",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"SIGN_FLOW_WRITE\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_393090d251ece9f2cf0454ce4508a845d6554316f086b872c1a6ab70a4049db3",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"SIGN_FLOW_PLACE\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "key": "5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1:signer.min.js",
+        "namespace": "source-module"
+      },
+      {
+        "node_id": "jag_node_9f9493bdbafb6cc9aa3bc56c7de17d1349eaaf8c862e5991942dd1d785b043bd",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"runSigningFlow\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_a1a89a51fdd3ea2226fbf190c58babb6417b88c8b1351924c3bf1eff83253e9b",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"placeSignatureField\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_a81601b0c93c3710f24685e3cbec42ccc35c13f5b2ea5c59e1c41a97004422b3",
+        "key": "static-import:pdf-lib",
+        "namespace": "unresolved-reference"
+      },
+      {
+        "node_id": "jag_node_daf97b6a58786a0ddb4dbc80f11592965b21552d1238bab375d2ae2b2f5f8386",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"SignatureCapture\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_dc04771cb046146c09c24cc91074c04b3a80474ce3524722cafa58a5fd52a8f7",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"writeSignatureOntoPdf\"]",
+        "namespace": "module-export"
+      },
+      {
+        "node_id": "jag_node_ef7f67c35edbc6b723f53c9b1f1e68a750435c9c6f916056d530bfe0806b8ff6",
+        "key": "external:pdf-lib",
+        "namespace": "unresolved-semantic-module"
+      },
+      {
+        "node_id": "jag_node_fa124c587708bb3b37fc141b40307b7fbd38abe45a3ffa0a7e279d79dc7fcff4",
+        "key": "[\"5d77394bbda9cd105aa552f0f470cca7e82cf381abde45a0194176d01b8a24a1\",\"signer.min.js\",\"SIGN_FLOW_CAPTURE\"]",
+        "namespace": "module-export"
+      }
+    ],
+    "edges": [
+      {
+        "source_node_id": "jag_node_740eb47cc4119e5ba648082c94ca9371d8e2ca1b37e0cecf809986f1eb99731e",
+        "target_node_id": "jag_node_7d12083b0cab1513ccd67bbd82d5757f424f7aee33eb138d8dd8a18da2aed9ef"
+      },
+      {
+        "source_node_id": "jag_node_33e83797bb3d9cb6fa677b937d93604c976a78631917d6e031843dac8b2779c0",
+        "target_node_id": "jag_node_d96d5717bc57560f13733c573d9d1736c68a2013be1514df315c579e4c802d37"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_a81601b0c93c3710f24685e3cbec42ccc35c13f5b2ea5c59e1c41a97004422b3"
+      },
+      {
+        "source_node_id": "jag_node_7d12083b0cab1513ccd67bbd82d5757f424f7aee33eb138d8dd8a18da2aed9ef",
+        "target_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_393090d251ece9f2cf0454ce4508a845d6554316f086b872c1a6ab70a4049db3"
+      },
+      {
+        "source_node_id": "jag_node_eb85ae03eead2be423b569ee08310f78d222f56d2ca28225973c671a035eff4c",
+        "target_node_id": "jag_node_a9c51fc731d469304a02a255e93a5eb1962cb067057255a9c0d1f7327ec6ae73"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_23cd1802175abbaac21b2627da88c4df099d709efaaeb8dd3d7a1c0c09ccabe0"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_dc04771cb046146c09c24cc91074c04b3a80474ce3524722cafa58a5fd52a8f7"
+      },
+      {
+        "source_node_id": "jag_node_eb85ae03eead2be423b569ee08310f78d222f56d2ca28225973c671a035eff4c",
+        "target_node_id": "jag_node_740eb47cc4119e5ba648082c94ca9371d8e2ca1b37e0cecf809986f1eb99731e"
+      },
+      {
+        "source_node_id": "jag_node_740eb47cc4119e5ba648082c94ca9371d8e2ca1b37e0cecf809986f1eb99731e",
+        "target_node_id": "jag_node_33e83797bb3d9cb6fa677b937d93604c976a78631917d6e031843dac8b2779c0"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_a1a89a51fdd3ea2226fbf190c58babb6417b88c8b1351924c3bf1eff83253e9b"
+      },
+      {
+        "source_node_id": "jag_node_33e83797bb3d9cb6fa677b937d93604c976a78631917d6e031843dac8b2779c0",
+        "target_node_id": "jag_node_7d12083b0cab1513ccd67bbd82d5757f424f7aee33eb138d8dd8a18da2aed9ef"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_daf97b6a58786a0ddb4dbc80f11592965b21552d1238bab375d2ae2b2f5f8386"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_ef7f67c35edbc6b723f53c9b1f1e68a750435c9c6f916056d530bfe0806b8ff6"
+      },
+      {
+        "source_node_id": "jag_node_a9c51fc731d469304a02a255e93a5eb1962cb067057255a9c0d1f7327ec6ae73",
+        "target_node_id": "jag_node_7d12083b0cab1513ccd67bbd82d5757f424f7aee33eb138d8dd8a18da2aed9ef"
+      },
+      {
+        "source_node_id": "jag_node_740eb47cc4119e5ba648082c94ca9371d8e2ca1b37e0cecf809986f1eb99731e",
+        "target_node_id": "jag_node_60ae8c2b6e44f8a4a12defaa9c0fbfd214c82711009d3a62ebed50f85db8c562"
+      },
+      {
+        "source_node_id": "jag_node_740eb47cc4119e5ba648082c94ca9371d8e2ca1b37e0cecf809986f1eb99731e",
+        "target_node_id": "jag_node_d96d5717bc57560f13733c573d9d1736c68a2013be1514df315c579e4c802d37"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_9f9493bdbafb6cc9aa3bc56c7de17d1349eaaf8c862e5991942dd1d785b043bd"
+      },
+      {
+        "source_node_id": "jag_node_5d14f743bec478b76de6fd63ee2dc68206f2abe933aa81ad974520bb1ad04b01",
+        "target_node_id": "jag_node_fa124c587708bb3b37fc141b40307b7fbd38abe45a3ffa0a7e279d79dc7fcff4"
+      }
+    ]
+  },
+  "semantic": {
+    "graph_id": "jsrg_23c8431c33461c18a1c49c78debd0ba41b5ad44ea9134bc3fc06e2b9b33633fb",
+    "node_count": 608,
+    "relation_count": 450,
+    "literals": [
+      {
+        "node_id": "jsrg_node_13feed87868a4f61e4c6bace514cdd9c6ad4753807b22020412a1b27f455b270",
+        "label": "string literal",
+        "value": "lumin-sign-capture-empty"
+      },
+      {
+        "node_id": "jsrg_node_18d450b17af50f86a0767f6cf78bd3d59658ace2fcf3e52457a346642a6141c4",
+        "label": "string literal",
+        "value": "lumin-sign-flow:capture"
+      },
+      {
+        "node_id": "jsrg_node_27db917f8823ae439fbddee94ade4e1e9b2a45f04d169101a17d4f02e7f45b26",
+        "label": "string literal",
+        "value": "lumin-sign-write:embedPng"
+      },
+      {
+        "node_id": "jsrg_node_39faf6845542da1a275cb225020fa1c0617e694477916ce9aac8db5e31fdfce2",
+        "label": "string literal",
+        "value": "data:image/png;base64,"
+      },
+      {
+        "node_id": "jsrg_node_4bf0f8ddde4cdc2f7dfa36e480ae7b89fe0b9e34f09759607c660b84c5916812",
+        "label": "string literal",
+        "value": "lumin-sign-flow:pdf-write"
+      },
+      {
+        "node_id": "jsrg_node_6d8cc38c83dbc7f961c3e540c167dbde301cf72f7a09c511ab08dc8af78a53fa",
+        "label": "\"pointerup\"",
+        "value": "pointerup"
+      },
+      {
+        "node_id": "jsrg_node_739042c57c2ae24ada26fb108670bd4a38e338f752555c481586d6d17bd628d3",
+        "label": "string literal",
+        "value": "lumin-sign-flow:pdf-write"
+      },
+      {
+        "node_id": "jsrg_node_95193f4d5ef1931e6c4fc39400544c0ceb787e8cd6f890bb5b50f9267d02413b",
+        "label": "string literal",
+        "value": "lumin-sign-field:signature"
+      },
+      {
+        "node_id": "jsrg_node_9dcbe0cd95a35eb80e4d75ec8857e44ebba01aa474d1a87c57d1f37c33271982",
+        "label": "string literal",
+        "value": "lumin-sign-flow:place-field"
+      },
+      {
+        "node_id": "jsrg_node_a0e85e626ee36687954c1e10f49f490f63d667ec1e8dd85158dc35837171302b",
+        "label": "string literal",
+        "value": "lumin-sign-page:points"
+      },
+      {
+        "node_id": "jsrg_node_b375b1e43331e5a0a67ea4b86799965d3cef0c9fe7f8386e696b0902d539a0ec",
+        "label": "string literal",
+        "value": "lumin-sign-flow:place-field"
+      },
+      {
+        "node_id": "jsrg_node_ca808cd634b9d0940a3c9ef7fa4fbec767e350533114faf1b2b72d5b318b03b5",
+        "label": "\"image/png\"",
+        "value": "image/png"
+      },
+      {
+        "node_id": "jsrg_node_d01e3d7f7a7ba1133fb2883d35fce2cc3a1c02f4db2e2cb606fb688af95b4989",
+        "label": "string literal",
+        "value": "lumin-sign-flow:capture"
+      },
+      {
+        "node_id": "jsrg_node_d1ed2f6ddde04f5741acf113f71f6d80506e1cdc0f561448f6fb62576780b699",
+        "label": "\"pointerdown\"",
+        "value": "pointerdown"
+      },
+      {
+        "node_id": "jsrg_node_e175a228c4dc5e52028cc997ffc5a9bc90aabb55b9a244f90d7e8adb9a8524d9",
+        "label": "\"pointermove\"",
+        "value": "pointermove"
+      }
+    ],
+    "functions": [
+      {
+        "node_id": "jsrg_node_1733de954c9d4e11dedc58bfe883c67e8113042ae02f98e36847172c8034c4f4",
+        "name": "clear"
+      },
+      {
+        "node_id": "jsrg_node_30899ec80743afd2a2404a5a5926fa823962ebcc9611e2f66308bf2d8848066c",
+        "name": "redraw"
+      },
+      {
+        "node_id": "jsrg_node_31d89c8a9e351758662144c1dbd1b16860501408e4b003ef588f56bbb917fb8e",
+        "name": "detach"
+      },
+      {
+        "node_id": "jsrg_node_380d14650e52fa57c63f5f9755137bda89340b4e318a187f957cd69649432363",
+        "name": "U"
+      },
+      {
+        "node_id": "jsrg_node_426f2d615c91c8a4f249dcf58d620ecb1209c02acef06de8442709d08571b60e",
+        "name": "m"
+      },
+      {
+        "node_id": "jsrg_node_4286443f2135729b26ab8be0fcd8e36075d667f002287ab1917c7f352033e7d2",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_51eec822e8d1acb1a956ade9b64a6cd3fc4b470d19cbcc5d882b2b5c93a3da6f",
+        "name": "E"
+      },
+      {
+        "node_id": "jsrg_node_636bc399160362a3086eb9f52cd2ed4848e8044de2fff3c3ed630256011c32ba",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_66d6be8f3ba0217e5680b1f901a9c6e664adc4ada33946d14b48908f16595907",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_6d61785e4ac804068ed019e7cc8b3ebd962119e679a4568e22822da08dad017d",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_7338d7a9f940bb9a8dd50f7ce03d1ea2fde26b78fabd8bee663a0cb82834f709",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_77de53d8a37c11122e165f1f16b34a5d2623150a52e4881a2132143b83fffe0a",
+        "name": null
+      },
+      {
+        "node_id": "jsrg_node_91cb95ef0dc938398c16142c3ad8a519caab9eed16873686f177296d5d1f82d2",
+        "name": "point"
+      },
+      {
+        "node_id": "jsrg_node_9c7ead07582936f451437459b2b444f71c15f09b8de64a003c6017f67da67f1c",
+        "name": "isEmpty"
+      },
+      {
+        "node_id": "jsrg_node_c34636b8030f24599e57cbd0e43587adc69d98eeac58f59dca6a7f96e6ca2ca1",
+        "name": "_"
+      },
+      {
+        "node_id": "jsrg_node_caa45834d6d98784e6d22b05071ea0d5061c36258fdf180bce6c712f66cf6c91",
+        "name": "attach"
+      },
+      {
+        "node_id": "jsrg_node_cc8d36ca68feec7def94bb707538614d74576c096b0602e7cb1f33ab6e8e68dd",
+        "name": "exportPng"
+      },
+      {
+        "node_id": "jsrg_node_d692724a995e403a75a7077eb77b378ce3f003291975b9c403344c55bde94d6c",
+        "name": "y"
+      },
+      {
+        "node_id": "jsrg_node_df29988af108213d1af78a704bae92c93eeef42953f4cfc9755daf2a230e0734",
+        "name": "constructor"
+      },
+      {
+        "node_id": "jsrg_node_f45cbd8e702a1afd7813bbb729feb8509d7765da3905ddb6322b48c8d6daa9e4",
+        "name": "getStrokes"
+      },
+      {
+        "node_id": "jsrg_node_f966301b4825c9b2a77088adaf39e72034524743b356464364833da6826823a7",
+        "name": "g"
+      }
+    ],
+    "property_slots": [
+      "width",
+      "clientY",
+      "height",
+      "attach",
+      "top",
+      "map",
+      "x",
+      "y",
+      "click",
+      "length",
+      "1",
+      "pointerId",
+      "startsWith",
+      "save",
+      "embedPng",
+      "pdfBytes",
+      "page",
+      "charCodeAt",
+      "canvas",
+      "drawImage",
+      "2",
+      "slice",
+      "pageIndex",
+      "left",
+      "getContext",
+      "exportPng",
+      "load",
+      "clientX",
+      "getPage",
+      "detach",
+      "0"
+    ],
+    "expression_labels": [
+      "E",
+      "Error",
+      "I",
+      "Math",
+      "P",
+      "S",
+      "U",
+      "Uint8Array",
+      "_",
+      "a",
+      "active",
+      "argument 0",
+      "argument 1",
+      "argument 2",
+      "argument 3",
+      "assignment",
+      "atob",
+      "attach",
+      "c",
+      "canvas",
+      "class",
+      "clear",
+      "constructor",
+      "ctx",
+      "d",
+      "detach",
+      "e",
+      "exportPng",
+      "function",
+      "g",
+      "getStrokes",
+      "h",
+      "i",
+      "import",
+      "isEmpty",
+      "l",
+      "m",
+      "n",
+      "o",
+      "onDown",
+      "onMove",
+      "onUp",
+      "p",
+      "parameter",
+      "point",
+      "r",
+      "read",
+      "read:/0/x",
+      "read:/0/y",
+      "read:/active",
+      "read:/active/push",
+      "read:/attach",
+      "read:/canvas",
+      "read:/canvas/addEventListener",
+      "read:/canvas/getBoundingClientRect",
+      "read:/canvas/height",
+      "read:/canvas/removeEventListener",
+      "read:/canvas/setPointerCapture",
+      "read:/canvas/toDataURL",
+      "read:/canvas/width",
+      "read:/charCodeAt",
+      "read:/click",
+      "read:/clientX",
+      "read:/clientY",
+      "read:/ctx/beginPath",
+      "read:/ctx/clearRect",
+      "read:/ctx/lineTo",
+      "read:/ctx/moveTo",
+      "read:/ctx/stroke",
+      "read:/detach",
+      "read:/drawImage",
+      "read:/embedPng",
+      "read:/exportPng",
+      "read:/getContext",
+      "read:/getPage",
+      "read:/height",
+      "read:/isEmpty",
+      "read:/left",
+      "read:/length",
+      "read:/load",
+      "read:/map",
+      "read:/max",
+      "read:/min",
+      "read:/onDown",
+      "read:/onMove",
+      "read:/onUp",
+      "read:/page",
+      "read:/pageIndex",
+      "read:/pdfBytes",
+      "read:/point",
+      "read:/pointerId",
+      "read:/redraw",
+      "read:/round",
+      "read:/save",
+      "read:/slice",
+      "read:/startsWith",
+      "read:/strokes",
+      "read:/strokes/every",
+      "read:/strokes/map",
+      "read:/strokes/push",
+      "read:/top",
+      "read:/width",
+      "read:/x",
+      "read:/y",
+      "redraw",
+      "s",
+      "spread:",
+      "strokes",
+      "t",
+      "u",
+      "v",
+      "variable",
+      "write",
+      "write:/active",
+      "write:/canvas",
+      "write:/canvas/dataset/luminSignFlow",
+      "write:/ctx",
+      "write:/ctx/lineCap",
+      "write:/ctx/lineJoin",
+      "write:/ctx/lineWidth",
+      "write:/ctx/strokeStyle",
+      "write:/strokes/length",
+      "x",
+      "y"
+    ]
+  },
+  "traces": [
+    {
+      "file": "trace-lumin-sign-field-signature.json",
+      "evidence_id": "ev_b16b808ef02589b43d48063ffb7dbd117ef4e9a92754cff3e3bf034b62a49519",
+      "seed": "lumin-sign-field:signature",
+      "coverage_status": "complete-within-source",
+      "seed_matches": 1,
+      "summary": {
+        "matched_seeds": 1,
+        "traced_nodes": 17,
+        "traced_edges": 19,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 18,
+        "inferred_facts": 22,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    },
+    {
+      "file": "trace-lumin-sign-flow-place-field.json",
+      "evidence_id": "ev_dd5c0f86da70d1369594eebde2d685c332890c965d517e151cd7e2d73f5a824f",
+      "seed": "lumin-sign-flow:place-field",
+      "coverage_status": "complete-within-source",
+      "seed_matches": 1,
+      "summary": {
+        "matched_seeds": 1,
+        "traced_nodes": 17,
+        "traced_edges": 19,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 18,
+        "inferred_facts": 22,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    },
+    {
+      "file": "trace-lumin-sign-flow-capture.json",
+      "evidence_id": "ev_07e8469b44e26fac22579fdafe49bdb02962cfb062a69803ad7866a9e6748a9d",
+      "seed": "lumin-sign-flow:capture",
+      "coverage_status": "no-match",
+      "seed_matches": 0,
+      "summary": {
+        "matched_seeds": 0,
+        "traced_nodes": 0,
+        "traced_edges": 0,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 0,
+        "inferred_facts": 0,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    },
+    {
+      "file": "trace-lumin-sign-flow-pdf-write.json",
+      "evidence_id": "ev_7595c35b8dbea3899bda9c8f1274259f6160daad524c2c7c5767c293611548ad",
+      "seed": "lumin-sign-flow:pdf-write",
+      "coverage_status": "no-match",
+      "seed_matches": 0,
+      "summary": {
+        "matched_seeds": 0,
+        "traced_nodes": 0,
+        "traced_edges": 0,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 0,
+        "inferred_facts": 0,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    },
+    {
+      "file": "trace-lumin-sign-write-embedPng.json",
+      "evidence_id": "ev_cab9289df9b1cadbd434efb6bd03621693422f65e91b19c5ecab9b649aad2845",
+      "seed": "lumin-sign-write:embedPng",
+      "coverage_status": "no-match",
+      "seed_matches": 0,
+      "summary": {
+        "matched_seeds": 0,
+        "traced_nodes": 0,
+        "traced_edges": 0,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 0,
+        "inferred_facts": 0,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    },
+    {
+      "file": "trace-pointerdown.json",
+      "evidence_id": "ev_744f5eb3c9521944781b10fa1edd1d53928ccd7d9818001b906080bcdad03dab",
+      "seed": "pointerdown",
+      "coverage_status": "no-match",
+      "seed_matches": 0,
+      "summary": {
+        "matched_seeds": 0,
+        "traced_nodes": 0,
+        "traced_edges": 0,
+        "terminal_paths": 0,
+        "native_handoffs": 0,
+        "observed_facts": 0,
+        "inferred_facts": 0,
+        "unknown_facts": 0,
+        "unavailable_facts": 0
+      }
+    }
+  ]
+}

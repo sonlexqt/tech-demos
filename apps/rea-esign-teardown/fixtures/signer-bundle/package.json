@@ -1,0 +1,11 @@
+{
+  "name": "lumin-sign-signer-bundle",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "Minified owned signer fixture for REA analyze-javascript-application.",
+  "main": "signer.min.js",
+  "dependencies": {
+    "pdf-lib": "^1.17.1"
+  }
+}

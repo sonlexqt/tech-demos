@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "gh-morluto-rea",
+      "title": "REA — Reverse Engineer Anything",
+      "url": "https://github.com/morluto/rea",
+      "date": "2026-10-12",
+      "notes": "GitHub trending; slug rea-esign-teardown; JS-bundle path only"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "gh-morluto-rea",
+      "title": "REA — Reverse Engineer Anything",
+      "url": "https://github.com/morluto/rea",
+      "date": "2026-10-12",
+      "notes": "Built demo at apps/rea-esign-teardown; GitHub trending; JS-bundle path only (no Ghidra/IDA/Hopper)"
     }
   ]
 }

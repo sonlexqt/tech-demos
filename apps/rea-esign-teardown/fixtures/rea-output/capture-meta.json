@@ -1,0 +1,13 @@
+{
+  "captured_at": "2026-10-12T09:21:39.050Z",
+  "rea_package": "rea-agents@6.4.0",
+  "commands": [
+    "npx -y rea-agents@6.4.0 analyze-javascript-application <abs>/fixtures/signer-bundle --json",
+    "npx -y rea-agents@6.4.0 inspect-analysis-view <tmp-input> --json",
+    "npx -y rea-agents@6.4.0 trace-application-feature <tmp-input> --json"
+  ],
+  "node": "v22.23.3",
+  "target": "fixtures/signer-bundle",
+  "live": false,
+  "notes": "Static JavaScript analysis only. No Ghidra/Hopper/IDA. No API keys. Default demo reads these committed files; REA_LIVE=1 re-runs the same CLI."
+}
