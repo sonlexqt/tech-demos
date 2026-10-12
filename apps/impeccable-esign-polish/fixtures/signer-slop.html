@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lumin Sign · Review &amp; Sign · MSA-2026-4412</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ai-purple: #7c3aed;
+        --ai-cyan: #22d3ee;
+      }
+
+      html,
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, sans-serif;
+        background: #0b1020;
+        color: #e2e8f0;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 20% 0%, rgba(124, 58, 237, 0.55), transparent 42%),
+          linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #083344 100%);
+        box-shadow: 0 0 80px rgba(34, 211, 238, 0.45);
+      }
+
+      .hero-title {
+        background: linear-gradient(90deg, #ff3399, #8833ff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 56px;
+        letter-spacing: -0.06em;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 999px;
+        background: #22d3ee;
+        color: #0b1020;
+        font-size: 11px;
+        text-transform: uppercase;
+      }
+
+      .glass-card {
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(18px);
+        border: 1px solid rgba(124, 58, 237, 0.6);
+        border-radius: 28px;
+        box-shadow: 0 0 40px rgba(124, 58, 237, 0.55);
+        padding: 8px;
+      }
+
+      .nested-inner {
+        background: #111827;
+        border-radius: 22px;
+        border: 1px solid #334155;
+        padding: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      .doc-card {
+        border-left: 4px solid #6366f1;
+        border-radius: 16px;
+        background: #111827;
+        padding: 16px;
+      }
+
+      .metric {
+        font-size: 64px;
+        font-weight: 700;
+        background: linear-gradient(90deg, #22d3ee, #a855f7);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .sign-btn {
+        background: linear-gradient(135deg, #7c3aed, #2563eb);
+        color: #9ca3af;
+        border: 0;
+        border-radius: 999px;
+        padding: 4px 10px;
+        font-family: Inter, sans-serif;
+        animation: pop 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 0 24px rgba(124, 58, 237, 0.8);
+      }
+
+      .decline {
+        padding: 4px 6px;
+        font-size: 11px;
+        color: #64748b;
+      }
+
+      .fine-print {
+        font-size: 11px;
+        line-height: 1.15;
+        color: #64748b;
+        max-width: 1100px;
+      }
+
+      .icon-tile {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #7c3aed, #22d3ee);
+        margin-bottom: 12px;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 16px;
+      }
+
+      .feature-card {
+        border-left: 4px solid #8b5cf6;
+        border-radius: 16px;
+        background: #0f172a;
+        padding: 16px;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.9);
+        }
+        70% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span class="eyebrow">AI-powered closing</span>
+      <h1 class="hero-title">Review &amp; Sign</h1>
+      <p>
+        Supercharge your agreements with world-class legal velocity — enterprise-grade
+        countersign in minutes — not a workflow. A platform.
+      </p>
+    </header>
+
+    <section class="glass-card">
+      <div class="nested-inner">
+        <div class="doc-card">
+          <h3>Master Service Agreement — Countersign</h3>
+          <p class="fine-print">
+            Envelope MSA-2026-4412 · Northwind Robotics ↔ Lumin Software · you are the
+            countersigner — click every field — then adopt your signature. This is not theater —
+            it is mission-critical closing infrastructure — built to future-proof your stack.
+          </p>
+          <img alt="Signer avatar" />
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-grid">
+      <article class="feature-card">
+        <div class="icon-tile"></div>
+        <h3>Secure</h3>
+        <p>Bank-grade encryption for every packet.</p>
+      </article>
+      <article class="feature-card">
+        <div class="icon-tile"></div>
+        <h3>Audit trail</h3>
+        <p>Bank-grade encryption for every packet.</p>
+      </article>
+      <article class="feature-card">
+        <div class="icon-tile"></div>
+        <h3>Instant</h3>
+        <p>Bank-grade encryption for every packet.</p>
+      </article>
+    </section>
+
+    <aside>
+      <div class="metric">99.9%</div>
+      <p>uptime</p>
+      <button class="sign-btn" type="button">Sign all remaining</button>
+      <button class="decline" type="button">Decline</button>
+    </aside>
+  </body>
+</html>
