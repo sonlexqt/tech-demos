@@ -1,0 +1,114 @@
+{
+  "schemaVersion": "trace-1",
+  "createdAt": "2026-10-13T05:35:08.640Z",
+  "payload": {
+    "actions": [
+      {
+        "name": "type",
+        "summary": "type \"Ada Lovelace\" into textbox \"Type your signature\"",
+        "target": {
+          "role": "textbox",
+          "name": "Type your signature"
+        },
+        "value": "Ada Lovelace"
+      },
+      {
+        "name": "tap",
+        "summary": "tap button \"Finish\"",
+        "target": {
+          "role": "button",
+          "name": "Finish"
+        }
+      }
+    ],
+    "executor": {
+      "name": "lumin-scripted",
+      "version": "1"
+    },
+    "recordedFor": {
+      "testId": "tests/envelope.e2e.ts::agent%20steps%20complete%20a%20two-signer%20envelope",
+      "targetId": "web",
+      "instructionDigest": "5449f0dd4f3f68f8aac719d82c7a9785fdb991e9d355079248c5febd07e6f32c",
+      "paramsDigest": "a27706c12b437cf795013a5271aeb547e98b36cb67fe87f807f2a5bb3877dd1c",
+      "callIndex": 0,
+      "agent": "default"
+    },
+    "summary": "Signed as Ada Lovelace.",
+    "startPath": "/sign/1",
+    "endPath": "/envelope",
+    "endAnchors": [
+      {
+        "role": "status",
+        "name": "Awaiting countersignature",
+        "testId": "envelope-status"
+      },
+      {
+        "text": "ENV-1001"
+      },
+      {
+        "role": "heading",
+        "name": "Acme × Harbor MSA"
+      },
+      {
+        "role": "listitem",
+        "name": "Ada Lovelace: Ada Lovelace"
+      },
+      {
+        "role": "listitem",
+        "name": "Bob Signer: —"
+      },
+      {
+        "role": "button",
+        "name": "Countersign as Bob Signer"
+      },
+      {
+        "role": "button",
+        "name": "Back to document"
+      },
+      {
+        "role": "button",
+        "name": "Home"
+      }
+    ],
+    "goneAnchors": [
+      {
+        "role": "status",
+        "name": "Awaiting first signature",
+        "testId": "envelope-status"
+      },
+      {
+        "text": "Acme × Harbor MSA · ENV-1001"
+      },
+      {
+        "role": "heading",
+        "name": "Sign as Ada Lovelace"
+      },
+      {
+        "text": "Type your signature"
+      },
+      {
+        "role": "textbox",
+        "name": "Type your signature"
+      },
+      {
+        "role": "button",
+        "name": "Finish"
+      },
+      {
+        "role": "button",
+        "name": "Back to envelope"
+      }
+    ],
+    "endWaitMs": 10105,
+    "keyedBy": {
+      "cacheSchema": "trace-1",
+      "policyVersion": "conservative/6",
+      "project": "8df0877fd402db01b7b11b9e0aed916f6475e240f9c7095898209393873d10f4",
+      "platform": "web",
+      "engineName": "web",
+      "engineSpiVersion": 1,
+      "appIdentity": "86be6698ff93a522ac3ab2cd1e1c503c88d496b8dba04e221a02f0846f264f9f",
+      "agentContextDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

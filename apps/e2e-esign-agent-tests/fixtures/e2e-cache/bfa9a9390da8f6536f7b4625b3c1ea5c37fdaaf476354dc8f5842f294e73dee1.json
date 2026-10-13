@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "trace-1",
+  "createdAt": "2026-10-13T05:38:11.540Z",
+  "payload": {
+    "actions": [
+      {
+        "name": "tap",
+        "summary": "tap button \"Open envelope\" in \"ENV-1001\"",
+        "target": {
+          "role": "button",
+          "name": "Open envelope",
+          "within": "ENV-1001"
+        }
+      },
+      {
+        "name": "tap",
+        "summary": "tap button \"Drop an ink stamp\"",
+        "target": {
+          "role": "button",
+          "name": "Drop an ink stamp"
+        }
+      },
+      {
+        "name": "tap",
+        "summary": "tap button \"Dispatch envelope\"",
+        "target": {
+          "role": "button",
+          "name": "Dispatch envelope"
+        }
+      }
+    ],
+    "executor": {
+      "name": "lumin-scripted",
+      "version": "1"
+    },
+    "recordedFor": {
+      "testId": "tests/drift.e2e.ts::replay%20detects%20UI%20drift%20and%20re-plans%3B%20hard%20assert%20catches%20the%20Completed%20bug",
+      "targetId": "web",
+      "instructionDigest": "be777907801f88c0fd4a2df236240ee8cba68d78c3203ebdf1afb22624d4d186",
+      "paramsDigest": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "callIndex": 0,
+      "agent": "default"
+    },
+    "summary": "Prepared the envelope and sent it.",
+    "startPath": "/#drift",
+    "endPath": "/sign/1#drift",
+    "endAnchors": [
+      {
+        "role": "status",
+        "name": "Awaiting first signature",
+        "testId": "envelope-status"
+      },
+      {
+        "text": "Acme × Harbor MSA · ENV-1001"
+      },
+      {
+        "role": "heading",
+        "name": "Sign as Ada Lovelace"
+      },
+      {
+        "text": "Write the adopted name"
+      },
+      {
+        "role": "textbox",
+        "name": "Write the adopted name"
+      },
+      {
+        "role": "button",
+        "name": "Apply signature"
+      },
+      {
+        "role": "button",
+        "name": "Back to envelope"
+      }
+    ],
+    "goneAnchors": [
+      {
+        "role": "status",
+        "name": "Draft",
+        "testId": "envelope-status"
+      },
+      {
+        "role": "heading",
+        "name": "Two-signer desk"
+      },
+      {
+        "text": "Place a field on the sample MSA, type Ada’s signature, then let Bob countersign. Cached e2e agent steps replay that path with no model."
+      },
+      {
+        "text": "ENV-1001"
+      },
+      {
+        "role": "heading",
+        "name": "Acme × Harbor MSA"
+      },
+      {
+        "text": "Ada Lovelace"
+      },
+      {
+        "text": "First signer"
+      },
+      {
+        "text": "Bob Signer"
+      }
+    ],
+    "endWaitMs": 10209,
+    "keyedBy": {
+      "cacheSchema": "trace-1",
+      "policyVersion": "conservative/6",
+      "project": "8df0877fd402db01b7b11b9e0aed916f6475e240f9c7095898209393873d10f4",
+      "platform": "web",
+      "engineName": "web",
+      "engineSpiVersion": 1,
+      "appIdentity": "86be6698ff93a522ac3ab2cd1e1c503c88d496b8dba04e221a02f0846f264f9f",
+      "agentContextDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

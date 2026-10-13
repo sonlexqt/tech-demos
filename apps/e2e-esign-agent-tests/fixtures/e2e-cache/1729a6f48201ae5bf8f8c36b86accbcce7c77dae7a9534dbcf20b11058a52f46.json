@@ -1,0 +1,89 @@
+{
+  "schemaVersion": "trace-1",
+  "createdAt": "2026-10-13T05:35:08.640Z",
+  "payload": {
+    "actions": [
+      {
+        "name": "tap",
+        "summary": "tap button \"Countersign as Bob Signer\" in \"ENV-1001\"",
+        "target": {
+          "role": "button",
+          "name": "Countersign as Bob Signer",
+          "within": "ENV-1001"
+        }
+      },
+      {
+        "name": "type",
+        "summary": "type \"Bob Signer\" into textbox \"Type your signature\"",
+        "target": {
+          "role": "textbox",
+          "name": "Type your signature"
+        },
+        "value": "Bob Signer"
+      },
+      {
+        "name": "tap",
+        "summary": "tap button \"Finish\"",
+        "target": {
+          "role": "button",
+          "name": "Finish"
+        }
+      }
+    ],
+    "executor": {
+      "name": "lumin-scripted",
+      "version": "1"
+    },
+    "recordedFor": {
+      "testId": "tests/envelope.e2e.ts::agent%20steps%20complete%20a%20two-signer%20envelope",
+      "targetId": "web",
+      "instructionDigest": "9457eeec37d461eb1409ff08bf95063579f8aeb985936e4d70289878e181754d",
+      "paramsDigest": "2cd2604b5bccce310c06b5570b56b94aaec60ea05475a9341456b98ef75bbd9a",
+      "callIndex": 0,
+      "agent": "default"
+    },
+    "summary": "Countersigned as Bob Signer.",
+    "startPath": "/envelope",
+    "endPath": "/envelope",
+    "endAnchors": [
+      {
+        "role": "status",
+        "name": "Completed",
+        "testId": "envelope-status"
+      },
+      {
+        "text": "Signed"
+      },
+      {
+        "role": "listitem",
+        "name": "Bob Signer: Bob Signer"
+      }
+    ],
+    "goneAnchors": [
+      {
+        "role": "status",
+        "name": "Awaiting countersignature",
+        "testId": "envelope-status"
+      },
+      {
+        "role": "listitem",
+        "name": "Bob Signer: —"
+      },
+      {
+        "role": "button",
+        "name": "Countersign as Bob Signer"
+      }
+    ],
+    "endWaitMs": 10104,
+    "keyedBy": {
+      "cacheSchema": "trace-1",
+      "policyVersion": "conservative/6",
+      "project": "8df0877fd402db01b7b11b9e0aed916f6475e240f9c7095898209393873d10f4",
+      "platform": "web",
+      "engineName": "web",
+      "engineSpiVersion": 1,
+      "appIdentity": "86be6698ff93a522ac3ab2cd1e1c503c88d496b8dba04e221a02f0846f264f9f",
+      "agentContextDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}

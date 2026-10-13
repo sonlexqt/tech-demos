@@ -1,0 +1,23 @@
+{
+  "label": "Cached replay",
+  "capturedAt": "2026-10-13T05:36:21.952Z",
+  "command": "E2E_TELEMETRY_DISABLED=1 E2E_EXPECT_REPLAY=1 e2e run tests/envelope.e2e.ts",
+  "durationMs": 1955,
+  "modelCalls": 0,
+  "tokens": 0,
+  "cache": {
+    "replayed": 3,
+    "handedOff": 0,
+    "missed": 0
+  },
+  "tests": [
+    {
+      "title": "agent steps complete a two-signer envelope",
+      "status": "passed",
+      "durationMs": 1253,
+      "modelCalls": 0,
+      "cacheMode": "self-finalized"
+    }
+  ],
+  "notes": "Committed fixtures/e2e-cache entries replayed each act. Zero model calls until the UI changes."
+}

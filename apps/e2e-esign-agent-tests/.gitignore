@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.e2e/logs/
+.e2e/output/
+.e2e/report.json
+.e2e/results/
+.e2e/*.log
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

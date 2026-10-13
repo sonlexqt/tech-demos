@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "gh-tester-army-e2e",
+      "title": "e2e by TesterArmy — agent steps on Playwright with cached replay",
+      "url": "https://github.com/tester-army/e2e",
+      "date": "2026-10-13",
+      "notes": "GitHub trending / Show HN; Apache-2.0 npm e2e (pre-1.0); slug e2e-esign-agent-tests"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "gh-tester-army-e2e",
+      "title": "e2e by TesterArmy — agent steps on Playwright with cached replay",
+      "url": "https://github.com/tester-army/e2e",
+      "date": "2026-10-13",
+      "notes": "Built demo at apps/e2e-esign-agent-tests; GitHub trending / Show HN; offline replay caches committed"
     }
   ]
 }

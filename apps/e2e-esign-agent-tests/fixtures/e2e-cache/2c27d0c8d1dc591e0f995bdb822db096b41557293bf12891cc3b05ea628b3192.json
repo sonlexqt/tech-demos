@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "trace-1",
+  "createdAt": "2026-10-13T05:38:11.542Z",
+  "payload": {
+    "actions": [
+      {
+        "name": "tap",
+        "summary": "tap button \"Countersign as Bob Signer\" in \"ENV-1001\"",
+        "target": {
+          "role": "button",
+          "name": "Countersign as Bob Signer",
+          "within": "ENV-1001"
+        }
+      },
+      {
+        "name": "type",
+        "summary": "type \"Bob Signer\" into textbox \"Write the adopted name\"",
+        "target": {
+          "role": "textbox",
+          "name": "Write the adopted name"
+        },
+        "value": "Bob Signer"
+      },
+      {
+        "name": "tap",
+        "summary": "tap button \"Apply signature\"",
+        "target": {
+          "role": "button",
+          "name": "Apply signature"
+        }
+      }
+    ],
+    "executor": {
+      "name": "lumin-scripted",
+      "version": "1"
+    },
+    "recordedFor": {
+      "testId": "tests/drift.e2e.ts::replay%20detects%20UI%20drift%20and%20re-plans%3B%20hard%20assert%20catches%20the%20Completed%20bug",
+      "targetId": "web",
+      "instructionDigest": "9457eeec37d461eb1409ff08bf95063579f8aeb985936e4d70289878e181754d",
+      "paramsDigest": "2cd2604b5bccce310c06b5570b56b94aaec60ea05475a9341456b98ef75bbd9a",
+      "callIndex": 0,
+      "agent": "default"
+    },
+    "summary": "Countersigned as Bob Signer.",
+    "startPath": "/envelope#drift",
+    "endPath": "/envelope#drift",
+    "endAnchors": [
+      {
+        "role": "listitem",
+        "name": "Bob Signer: Bob Signer"
+      }
+    ],
+    "goneAnchors": [
+      {
+        "role": "listitem",
+        "name": "Bob Signer: —"
+      }
+    ],
+    "endWaitMs": 10104,
+    "keyedBy": {
+      "cacheSchema": "trace-1",
+      "policyVersion": "conservative/6",
+      "project": "8df0877fd402db01b7b11b9e0aed916f6475e240f9c7095898209393873d10f4",
+      "platform": "web",
+      "engineName": "web",
+      "engineSpiVersion": 1,
+      "appIdentity": "86be6698ff93a522ac3ab2cd1e1c503c88d496b8dba04e221a02f0846f264f9f",
+      "agentContextDigest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
