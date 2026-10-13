@@ -1,0 +1,22 @@
+{
+  "label": "Cold (no cache)",
+  "capturedAt": "2026-10-13T05:36:19.081Z",
+  "command": "E2E_TELEMETRY_DISABLED=1 e2e run tests/envelope.e2e.ts --no-cache",
+  "durationMs": 2313,
+  "modelCalls": 0,
+  "tokens": 0,
+  "cache": {
+    "replayed": 0,
+    "handedOff": 0,
+    "missed": 0
+  },
+  "tests": [
+    {
+      "title": "agent steps complete a two-signer envelope",
+      "status": "passed",
+      "durationMs": 1602,
+      "modelCalls": 0
+    }
+  ],
+    "notes": "Scripted executor planned every agent.act. No model. --no-cache disables replay and recording, so cache.mode is absent."
+}

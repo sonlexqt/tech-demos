@@ -1,0 +1,23 @@
+{
+  "label": "UI drift",
+  "capturedAt": "2026-10-13T05:36:24.459Z",
+  "command": "E2E_TELEMETRY_DISABLED=1 E2E_VARIANT=drift e2e run tests/envelope.e2e.ts",
+  "durationMs": 46232,
+  "modelCalls": 0,
+  "tokens": 0,
+  "cache": {
+    "replayed": 0,
+    "handedOff": 2,
+    "missed": 1
+  },
+  "tests": [
+    {
+      "title": "agent steps complete a two-signer envelope",
+      "status": "passed",
+      "durationMs": 45520,
+      "modelCalls": 0,
+      "cacheMode": "agent-concluded"
+    }
+  ],
+  "notes": "Same test id and routes, renamed buttons. Replay handed off (or missed); the executor re-planned. Hard assertions still see Awaiting countersignature instead of Completed."
+}

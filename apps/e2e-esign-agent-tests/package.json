@@ -1,0 +1,32 @@
+{
+  "name": "e2e-esign-agent-tests",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test:e2e": "E2E_TELEMETRY_DISABLED=1 E2E_EXPECT_REPLAY=1 e2e run",
+    "test:e2e:cold": "E2E_TELEMETRY_DISABLED=1 e2e run --no-cache --reporter list --reporter json",
+    "test:e2e:replay": "E2E_TELEMETRY_DISABLED=1 E2E_EXPECT_REPLAY=1 e2e run --reporter list --reporter json",
+    "test:e2e:drift": "E2E_TELEMETRY_DISABLED=1 E2E_CACHE_MODE=read-only E2E_VARIANT=drift e2e run tests/envelope.e2e.ts",
+    "test:e2e:headed": "E2E_TELEMETRY_DISABLED=1 e2e run --headed",
+    "test:e2e:live": "E2E_TELEMETRY_DISABLED=1 E2E_LIVE_AGENT=1 e2e run --no-cache",
+    "test:bug": "E2E_TELEMETRY_DISABLED=1 E2E_RUN_BUG=1 E2E_CACHE_MODE=read-only e2e run tests/bug-completed.e2e.ts --reporter list --reporter json",
+    "cache:ls": "E2E_TELEMETRY_DISABLED=1 e2e cache ls",
+    "cache:stats": "E2E_TELEMETRY_DISABLED=1 e2e cache stats",
+    "capture-results": "E2E_TELEMETRY_DISABLED=1 bun run scripts/capture-results.ts",
+    "generate-pdf": "bun run scripts/generate-pdf.ts"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^4.10.38"
+  },
+  "devDependencies": {
+    "@e2e-dev/web": "^0.14.0",
+    "@types/node": "^24.5.2",
+    "e2e": "^0.20.0",
+    "typescript": "~5.9.2",
+    "vite": "^6.0.3"
+  }
+}
