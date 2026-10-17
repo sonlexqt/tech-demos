@@ -1,0 +1,15 @@
+xerj gain — counted from the node's audit log, no estimates
+
+  searches served   12   (100.0% found something; 0 zero-hit)
+  latency           p50 2ms · p95 2ms
+  recent            ████████████
+
+  busiest indices
+    esign-*                                  12 searches  (12 with hits)
+
+  (not counted as yours: 9 machine search(es) this window — 4 counting
+   probe(s) autoindex used to verify its own writes, 5 catalog
+   maintenance sweep(s). Nothing was thrown away; they are in the
+   audit log with everything else.)
+
+(the audit log keeps the last N entries; this reports that window, nothing more. █ = search with hits, · = zero-hit)

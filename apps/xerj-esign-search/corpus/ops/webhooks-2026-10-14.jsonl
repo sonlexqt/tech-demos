@@ -1,0 +1,6 @@
+{"ts":"2026-10-14T10:03:11Z","event":"envelope.sent","envelope_id":"ENV-NDA-NORTHWIND","dest":"https://hooks.lumin.example/sign","delivery_id":"wh_nda_sent","ok":true}
+{"ts":"2026-10-14T11:12:09Z","event":"reminder.failed","envelope_id":"ENV-NDA-NORTHWIND","dest":"https://hooks.lumin.example/sign","delivery_id":"wh_nda_550_failed","ok":true,"payload":{"smtp":550,"reason":"mailbox unavailable","signer":"jordan.hale@northwind.example","ticket":"SIGN-1888"}}
+{"ts":"2026-10-14T16:58:02Z","event":"envelope.sent","envelope_id":"ENV-MSA-7F2C91","dest":"https://hooks.harbor.example/lumin","delivery_id":"wh_msa_sent","ok":true}
+{"ts":"2026-10-14T17:05:13Z","event":"signer.completed","envelope_id":"ENV-MSA-7F2C91","signer":"ada.chen@lumin.example","next":"countersign"}
+{"ts":"2026-10-14T18:00:04Z","event":"signer.reminded","envelope_id":"ENV-MSA-7F2C91","dest":"https://hooks.harbor.example/lumin","delivery_id":"wh_msa_remind_ok","ok":true,"payload":{"result":"delivered","signer":"bob.alvarez@harbor-robotics.example"}}
+{"ts":"2026-10-14T18:00:05Z","event":"reminder.sent","envelope_id":"ENV-MSA-7F2C91","ok":true}

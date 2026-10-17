@@ -1,0 +1,47 @@
+{
+  "prefix": "esign",
+  "queries": [
+    {
+      "id": "countersign-block",
+      "label": "Where is the countersign block?",
+      "question": "Where is the countersign block for envelope ENV-MSA-7F2C91?",
+      "xerjSearch": "Where is the countersign block for envelope ENV-MSA-7F2C91?",
+      "grepPatterns": ["countersign", "sig-countersign-gc", "COUNTERSIGN BLOCK"]
+    },
+    {
+      "id": "parties",
+      "label": "Who are the parties?",
+      "question": "Who are the parties on envelope ENV-MSA-7F2C91?",
+      "xerjSearch": "Who are the parties on envelope ENV-MSA-7F2C91?",
+      "grepPatterns": ["Harbor Robotics", "ENV-MSA-7F2C91", "the Parties"]
+    },
+    {
+      "id": "expires",
+      "label": "When does it expire?",
+      "question": "When does envelope ENV-MSA-7F2C91 expire?",
+      "xerjSearch": "When does envelope ENV-MSA-7F2C91 expire?",
+      "grepPatterns": ["2026-11-15T23:59:59Z", "Expires", "expires_at"]
+    },
+    {
+      "id": "reminder-failed",
+      "label": "Which reminder failed?",
+      "question": "Which envelope's reminder failed?",
+      "xerjSearch": "Which envelope's reminder failed?",
+      "grepPatterns": ["reminder.failed", "mailbox unavailable", "ENV-NDA-NORTHWIND"]
+    },
+    {
+      "id": "msa-diff",
+      "label": "MSA v1 vs v2",
+      "question": "What changed between v1 and v2 of the Harbor Robotics MSA?",
+      "xerjSearch": "What changed between v1 and v2 of the Harbor Robotics MSA?",
+      "grepPatterns": ["VERSION MARKER", "twenty-four", "fifty thousand", "two hundred fifty", "does not auto-renew"]
+    },
+    {
+      "id": "liability-cap",
+      "label": "Liability cap (long MSA)",
+      "question": "What is the liability cap in the Lumin Sign × Acme Holdings long-form MSA (LUM-MSA-2026-1041)?",
+      "xerjSearch": "What is the liability cap in the Lumin Sign × Acme Holdings long-form MSA (LUM-MSA-2026-1041)?",
+      "grepPatterns": ["10.2.1 Cap on Damages", "TWELVE (12) MONTHS IMMEDIATELY PRECEDING", "LUM-MSA-2026-1041"]
+    }
+  ]
+}

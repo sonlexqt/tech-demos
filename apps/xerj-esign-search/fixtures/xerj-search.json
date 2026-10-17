@@ -1,0 +1,128 @@
+{
+  "countersign-block": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "Where is the countersign block for envelope ENV-MSA-7F2C91?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  },
+  "parties": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "Who are the parties on envelope ENV-MSA-7F2C91?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  },
+  "expires": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "When does envelope ENV-MSA-7F2C91 expire?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  },
+  "reminder-failed": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "Which envelope's reminder failed?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  },
+  "msa-diff": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "What changed between v1 and v2 of the Harbor Robotics MSA?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  },
+  "liability-cap": {
+    "command": [
+      "/home/ubuntu/.local/bin/xerj",
+      "search",
+      "--url",
+      "http://127.0.0.1:19200",
+      "--prefix",
+      "esign",
+      "-k",
+      "5",
+      "--full",
+      "800",
+      "--json",
+      "What is the liability cap in the Lumin Sign \u00d7 Acme Holdings long-form MSA (LUM-MSA-2026-1041)?"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "xerj search: query failed against http://127.0.0.1:19200/esign-*: search /esign-* HTTP 400 Bad Request: {\"error\":{\"root_cause\":[{\"type\":\"illegal_argument_exception\",\"reason\":\"unknown field `defs` in match_phrase clause; unknown field `name` in term clause. This target enforces strict_unknown_fields because ES's answer here \u2014 a silent 0-hit \u2014 is indistinguishable from an empty corpus. Unset index.query.strict_unknown_fields (or send ?strict_unknown_fields=false for one request) to restore that behaviour; `exists` on an unmapped field stays a truthful 0-hit either way. Searchable text fields here: body, text, title, impl\"}],\"type\":\"search_phase_execution_exception\",\"reason\":\"all shards failed\"},\"status\":400}\n(is the prefix right? `xerj autoindex` writes 'ax' by default \u2014 pass --prefix if you indexed under another.)\n",
+    "parsed": null,
+    "note": "xerj search targets defs/name (code). This docs/PDF corpus has body/title/text only, so the CLI returns HTTP 400. See xerj-es-passages.json for the working ES _search + _passage capture."
+  }
+}

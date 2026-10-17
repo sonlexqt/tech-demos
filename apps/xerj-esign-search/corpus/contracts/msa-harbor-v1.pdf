@@ -1,0 +1,865 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R] /Count 6 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Title (LUM-MSA-HARBOR-2026-V1) /Producer (xerj-esign-search fixture) >>
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 6 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 1997 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUMIN SIGN  ·  MASTER SERVICES AGREEMENT  ·  LUM-MSA-HARBOR-2026-V1) Tj
+T*
+() Tj
+T*
+(MASTER SERVICES AGREEMENT) Tj
+T*
+(Revision 1 ? circulated 2 October 2026) Tj
+T*
+(Envelope: ENV-MSA-7F2C91   \(Lumin Sign desk ? Harbor Robotics countersign\)) Tj
+T*
+() Tj
+T*
+(This Master Services Agreement \(the "Agreement"\) is entered into as of 6 October 2026 \(the) Tj
+T*
+("Effective Date"\), by and between Lumin Sign, Inc., a Delaware corporation with its principal) Tj
+T*
+(place of business at 548 Market Street, Suite 19024, San Francisco, California 94104 \("Provider") Tj
+T*
+(or "Lumin Sign"\), and Harbor Robotics LLC, a Delaware limited liability company with its) Tj
+T*
+(principal place of business at 88 Pier Avenue, Oakland, California 94607 \("Customer" or) Tj
+T*
+("Harbor"\). Provider and Customer are each a "Party" and together the "Parties.") Tj
+T*
+() Tj
+T*
+(Recitals. Provider operates an electronic signature and document-workflow platform. Customer) Tj
+T*
+(wishes to subscribe to the platform for procurement and legal operations, including sending this) Tj
+T*
+(Agreement itself for ordered signature \(counsel, then Harbor general counsel countersign\).) Tj
+T*
+() Tj
+T*
+(The Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are) Tj
+T*
+(Lumin Sign, Inc. \(Provider\) and Harbor Robotics LLC \(Customer\). Signers: Ada Chen, Counsel,) Tj
+T*
+(Lumin Sign \(group 1\) and Roberto "Bob" Alvarez, General Counsel, Harbor Robotics \(group 2,) Tj
+T*
+(countersign\).) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 1 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 1487 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUM-MSA-HARBOR-2026-V1  ·  Article 1 Definitions · Article 2 Services) Tj
+T*
+() Tj
+T*
+(Article 1 ? Definitions) Tj
+T*
+("Platform" means Provider's hosted document workflow and electronic signature software,) Tj
+T*
+(including APIs.) Tj
+T*
+("Customer Data" means documents, signature fields, audit events, and metadata submitted to the) Tj
+T*
+(Platform by or on behalf of Customer.) Tj
+T*
+("Envelope" means a signature request tracked by an envelope id such as ENV-MSA-7F2C91.) Tj
+T*
+("Countersign" means the second \(or later\) signature in an ordered signing ceremony, applied) Tj
+T*
+(after a prior signer has completed.) Tj
+T*
+() Tj
+T*
+(Article 2 ? Services) Tj
+T*
+(Provider shall provide the Platform in a professional and workmanlike manner. Customer's SKUs,) Tj
+T*
+(user band, and environments are set out on the Order Form attached as Exhibit A. Sandbox tenants) Tj
+T*
+(are for testing only and do not carry production uptime credits.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 2 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 1667 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUM-MSA-HARBOR-2026-V1  ·  Article 3 Fees · Article 4 Term) Tj
+T*
+() Tj
+T*
+(Article 3 ? Fees and Payment) Tj
+T*
+(Fees are as set forth on the Order Form. Invoices are due net thirty \(30\) days. Late amounts) Tj
+T*
+(accrue interest at one percent \(1%\) per month or the maximum permitted by law, whichever is) Tj
+T*
+(less.) Tj
+T*
+() Tj
+T*
+(Article 4 ? Term and Termination) Tj
+T*
+(4.1 Initial Term. The initial term of this Agreement is twelve \(12\) months beginning on the) Tj
+T*
+(Effective Date.) Tj
+T*
+(4.2 Renewal. This Agreement does not auto-renew. Any extension requires a signed amendment or a) Tj
+T*
+(new Order Form.) Tj
+T*
+(4.3 Termination for Convenience. After the Initial Term, either Party may terminate for) Tj
+T*
+(convenience by giving the other Party thirty \(30\) days prior written notice.) Tj
+T*
+(4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and) Tj
+T*
+(fails to cure within thirty \(30\) days after written notice.) Tj
+T*
+() Tj
+T*
+(VERSION MARKER: Harbor MSA v1. Term and notice values on this page are the ones an agent should) Tj
+T*
+(quote when asked what changed between v1 and v2.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 3 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 1356 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUM-MSA-HARBOR-2026-V1  ·  Article 5 IP · Article 6 Confidentiality) Tj
+T*
+() Tj
+T*
+(Article 5 ? Intellectual Property) Tj
+T*
+(Provider retains all right, title, and interest in the Platform. Customer retains all right,) Tj
+T*
+(title, and interest in Customer Data. Custom Deliverables identified in a Statement of Work are) Tj
+T*
+(owned by Customer upon payment.) Tj
+T*
+() Tj
+T*
+(Article 6 ? Confidentiality) Tj
+T*
+(Each Party shall protect the other Party's Confidential Information with at least the same care) Tj
+T*
+(it uses for its own, and no less than reasonable care, for five \(5\) years after disclosure.) Tj
+T*
+(Trade secrets are protected for so long as they remain trade secrets. Envelope contents, signer) Tj
+T*
+(emails, and audit hashes are Confidential Information.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 4 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 14 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+14 0 obj
+<< /Length 1893 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUM-MSA-HARBOR-2026-V1  ·  Article 7 Data · Article 8 Liability) Tj
+T*
+() Tj
+T*
+(Article 7 ? Data Protection) Tj
+T*
+(Provider shall process Personal Data only as described in the Data Processing Addendum.) Tj
+T*
+(Subprocessor changes require thirty \(30\) days' notice.) Tj
+T*
+() Tj
+T*
+(Article 8 ? Limitation of Liability) Tj
+T*
+(8.1 Disclaimer of Consequential Damages. Neither Party is liable for indirect, incidental,) Tj
+T*
+(special, consequential, or punitive damages, or lost profits, even if advised of the) Tj
+T*
+(possibility.) Tj
+T*
+(8.2 Cap on Damages. EXCEPT FOR THE CARVE-OUTS IN SECTION 8.3, EACH PARTY'S AGGREGATE LIABILITY) Tj
+T*
+(ARISING OUT OF THIS AGREEMENT SHALL NOT EXCEED fifty thousand United States dollars \(USD 50,000\)) Tj
+T*
+(or the fees paid or payable by Customer in the six \(6\) months immediately preceding the first) Tj
+T*
+(claim, whichever is less.) Tj
+T*
+(8.3 Carve-outs. The cap does not apply to a Party's indemnification obligations for third-party) Tj
+T*
+(IP claims, breach of confidentiality, fraud, or liability that cannot be limited under law.) Tj
+T*
+() Tj
+T*
+(VERSION MARKER: Harbor MSA v1 liability cap is stated in Section 8.2 on this page. Do not) Tj
+T*
+(confuse this cap with the Lumin Sign x Acme Holdings long-form MSA \(Agreement ID LUM-) Tj
+T*
+(MSA-2026-1041\), whose Article 10.2.1 uses a twelve-month fees formula with no dollar floor.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 5 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 16 0 R /Resources << /Font << /F1 3 0 R >> >> >>
+endobj
+16 0 obj
+<< /Length 1600 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+48 744 Td
+(LUM-MSA-HARBOR-2026-V1  ·  Article 9 Law · Signature block \(not the countersign certificate\)) Tj
+T*
+() Tj
+T*
+(Article 9 ? Governing Law) Tj
+T*
+(This Agreement is governed by the laws of the State of Delaware, without regard to conflict-of-) Tj
+T*
+(law rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.) Tj
+T*
+() Tj
+T*
+(Article 10 ? Miscellaneous) Tj
+T*
+(This Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments) Tj
+T*
+(must be in writing and signed by both Parties. Electronic signatures on the Platform are) Tj
+T*
+(original signatures.) Tj
+T*
+() Tj
+T*
+(IN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly) Tj
+T*
+(authorized representatives. The live countersign ceremony is recorded on the separate) Tj
+T*
+(certificate of completion for envelope ENV-MSA-7F2C91 \(file ENV-MSA-7F2C91-countersign.pdf\).) Tj
+T*
+(This signature block is the contract text only; the countersign block with field id sig-) Tj
+T*
+(countersign-gc lives on that certificate, page 3.) Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+() Tj
+T*
+(LUM-MSA-HARBOR-2026-V1  ·  page 6 of 6  ·  Confidential fixture ? not an offer) Tj
+ET
+endstream
+endobj
+xref
+0 17
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000154 00000 n 
+0000000224 00000 n 
+0000000315 00000 n 
+0000000441 00000 n 
+0000002489 00000 n 
+0000002615 00000 n 
+0000004153 00000 n 
+0000004280 00000 n 
+0000005999 00000 n 
+0000006127 00000 n 
+0000007535 00000 n 
+0000007663 00000 n 
+0000009608 00000 n 
+0000009736 00000 n 
+trailer << /Size 17 /Root 1 0 R /Info 4 0 R >>
+startxref
+11388
+%%EOF

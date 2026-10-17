@@ -1,0 +1,5 @@
+reminder-worker  2026-10-14T19:01:00Z  scan start
+  ENV-SOW-CONTOSO     skip   draft_not_sent
+  ENV-NDA-NORTHWIND   FAIL   last_error=550 mailbox unavailable  (this is the failed reminder)
+  ENV-MSA-7F2C91      ok     last_result=delivered  next_eligible=2026-10-16T18:00:00Z
+scan done  delivered=1 failed=1 skipped=1
