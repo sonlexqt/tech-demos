@@ -1,0 +1,31 @@
+{
+  "capturedAt": "2026-10-17T00:56:58Z",
+  "xerjVersion": "xerj v1.0.0-rc.96",
+  "url": "http://127.0.0.1:19200",
+  "prefix": "esign",
+  "autoindex": {
+    "files": 11,
+    "records": 44,
+    "datasets": [
+      "esign-docs",
+      "esign-ops"
+    ],
+    "embedder": "lexical (default, offline)"
+  },
+  "commands": {
+    "node": "xerj --insecure --data-dir <outside-corpus> --port 19200 --disable-feedback",
+    "index": "xerj autoindex ./corpus --url http://127.0.0.1:19200 --prefix esign --state-dir <outside> --progress plain --disable-feedback --json",
+    "search": "xerj search --url \u2026 --prefix esign -k 5 --full 800 --json --disable-feedback \"<q>\"",
+    "gain": "xerj gain --url \u2026 --json --disable-feedback",
+    "es": "POST /esign-*/_search with _source projection + fields:[\"_passage\"]"
+  },
+  "note": "No API keys. Node started with --insecure. Token estimates are bytes/4. xerj gain counts searches/hit rate/latency from the audit log \u2014 it does not print a token-savings dollar figure on this build. xerj search CLI is the code/defs client and 400s on this docs corpus; ranked passages are from POST /esign-*/_search with fields:['_passage'].",
+  "answerKeyIds": [
+    "countersign-block",
+    "parties",
+    "expires",
+    "reminder-failed",
+    "msa-diff",
+    "liability-cap"
+  ]
+}

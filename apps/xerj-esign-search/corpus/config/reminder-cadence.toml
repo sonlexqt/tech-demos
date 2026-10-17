@@ -1,0 +1,22 @@
+# Lumin Sign fixture — reminder cadence (not production)
+
+[default]
+enabled = true
+hours_after_send = [24, 72, 168]
+skip_weekends = true
+
+[envelopes.ENV-MSA-7F2C91]
+enabled = true
+hours_after_send = [2, 24, 72]
+expires_at = "2026-11-15T23:59:59Z"
+note = "Harbor countersign — aggressive first ping"
+
+[envelopes.ENV-NDA-NORTHWIND]
+enabled = true
+hours_after_send = [24]
+expires_at = "2026-10-20T23:59:59Z"
+note = "Reminder failed 2026-10-14 (SMTP 550). Do not auto-retry hard bounces."
+
+[envelopes.ENV-SOW-CONTOSO]
+enabled = false
+note = "Draft. Cadence ignored until send."

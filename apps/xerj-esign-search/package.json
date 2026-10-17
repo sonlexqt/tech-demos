@@ -1,0 +1,13 @@
+{
+  "name": "xerj-esign-search",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run src/server.ts",
+    "start": "bun run src/server.ts",
+    "corpus": "python3 scripts/generate_corpus.py",
+    "capture": "python3 scripts/capture.py && python3 scripts/assemble_demo.py",
+    "assemble": "python3 scripts/assemble_demo.py"
+  }
+}

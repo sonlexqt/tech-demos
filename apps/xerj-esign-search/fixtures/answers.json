@@ -1,0 +1,32 @@
+{
+  "countersign-block": {
+    "answer": "The live countersign block is on contracts/ENV-MSA-7F2C91-countersign.pdf page 3. Field id sig-countersign-gc; signer Bob Alvarez (Harbor GC). The MSA page-6 signature recital is contract text only.",
+    "mustIncludeAny": ["sig-countersign-gc", "COUNTERSIGN BLOCK", "page 3"],
+    "preferredFiles": ["ENV-MSA-7F2C91-countersign.pdf"]
+  },
+  "parties": {
+    "answer": "On ENV-MSA-7F2C91 the parties are Lumin Sign, Inc. (Provider; Ada Chen, counsel) and Harbor Robotics LLC (Customer; Bob Alvarez, GC). Do not answer with Acme Holdings — that is the separate long-form MSA.",
+    "mustIncludeAny": ["Harbor Robotics", "Lumin Sign"],
+    "preferredFiles": ["ENV-MSA-7F2C91-countersign.pdf", "msa-harbor-v2.pdf", "env-msa-7f2c91.md"]
+  },
+  "expires": {
+    "answer": "Envelope ENV-MSA-7F2C91 expires at 2026-11-15T23:59:59Z. That is an envelope void deadline, not the MSA Initial Term.",
+    "mustIncludeAny": ["2026-11-15T23:59:59Z", "2026-11-15"],
+    "preferredFiles": ["ENV-MSA-7F2C91-countersign.pdf", "env-msa-7f2c91.md", "reminder-cadence.toml"]
+  },
+  "reminder-failed": {
+    "answer": "ENV-NDA-NORTHWIND — reminder to jordan.hale@northwind.example failed with SMTP 550 mailbox unavailable (ticket SIGN-1888, webhook wh_nda_550_failed). ENV-MSA-7F2C91's Harbor reminder delivered.",
+    "mustIncludeAny": ["ENV-NDA-NORTHWIND", "550", "mailbox unavailable"],
+    "preferredFiles": ["audit-2026-10-14.txt", "webhooks-2026-10-14.jsonl", "reminder-worker.txt", "env-nda-northwind.md"]
+  },
+  "msa-diff": {
+    "answer": "Harbor MSA v2 vs v1: Initial Term 24 months (was 12); auto-renewal added (v1 did not auto-renew); convenience termination 90 days (was 30); liability cap USD 250,000 / 12-month fees (was USD 50,000 / 6-month fees).",
+    "mustIncludeAny": ["twenty-four", "250,000", "auto-renew", "ninety"],
+    "preferredFiles": ["msa-harbor-v1.pdf", "msa-harbor-v2.pdf", "env-msa-7f2c91.md"]
+  },
+  "liability-cap": {
+    "answer": "Article 10.2.1 Cap on Damages: aggregate liability shall not exceed the fees paid or payable in the twelve (12) months immediately preceding the first claim. No dollar floor. Tree path in the PageIndex demo: Article 10 → 10.2 → 10.2.1 → p.14. This is not the Harbor Robotics cap.",
+    "mustIncludeAny": ["TWELVE (12) MONTHS IMMEDIATELY PRECEDING", "10.2.1", "fees paid or payable"],
+    "preferredFiles": ["lumin-acme-msa.md"]
+  }
+}

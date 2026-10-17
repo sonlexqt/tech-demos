@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "gh-xerj-org-xerj",
+      "title": "XERJ — local AI search (autoindex, ranked passages, xerj gain)",
+      "url": "https://github.com/xerj-org/xerj",
+      "date": "2026-10-17",
+      "notes": "GitHub trending; Apache-2.0; slug xerj-esign-search"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "gh-xerj-org-xerj",
+      "title": "XERJ — local AI search (autoindex, ranked passages, xerj gain)",
+      "url": "https://github.com/xerj-org/xerj",
+      "date": "2026-10-17",
+      "notes": "Built demo at apps/xerj-esign-search; source https://github.com/xerj-org/xerj via GitHub trending"
     }
   ]
 }

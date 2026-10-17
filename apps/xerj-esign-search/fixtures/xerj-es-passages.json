@@ -1,0 +1,1051 @@
+{
+  "countersign-block": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "Where is the countersign block for envelope ENV-MSA-7F2C91?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "Where is the countersign block for envelope ENV-MSA-7F2C91?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 2,
+    "total": {
+      "value": 39,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 8.561595,
+        "path": "contracts/ENV-MSA-7F2C91-countersign.pdf",
+        "title": "ENV-MSA-7F2C91-countersign",
+        "page": 3,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1059,
+          "text": "ENV-MSA-7F2C91 \u2022 COUNTERSIGN BLOCK\n\nCOUNTERSIGN BLOCK\nEnvelope ENV-MSA-7F2C91 \u2022 page 3 of the certificate of completion\n\nThis is the countersign block. Field id: sig-countersign-gc\nSigner: Roberto Alvarez, General Counsel, Harbor Robotics LLC\nPlacement: page 3, lower-right, 220x64 points, required=true\nAnchor tag: [[csig|req|signer2]]\nLegal meaning: the second signature in an ordered ceremony. The MSA is not fully executed until\nthis block is completed.\n\nDo not confuse this block with:\n  - the contract signature recital on MSA page 6 (that is contract text, not the live field)\n  - envelope ENV-NDA-NORTHWIND (that envelope is a separate NDA; its reminder failed)\n  - Ada Chen\u2019s completed sender signature (field id sig-sender-counsel)\n\nCountersign instructions shown to Bob:\n  Review Articles 4 and 8 of the v2 MSA (term, renewal, liability cap), then apply your\nsignature in the countersign block. Applying the signature constitutes Harbor Robotics LLC\u2019s\nagreement to Revision 2.\n\nAudit hash (pending): sha256:7f2c91c0unters1gn-pending-fixture",
+          "page": 3
+        },
+        "text": "ENV-MSA-7F2C91 \u2022 COUNTERSIGN BLOCK\n\nCOUNTERSIGN BLOCK\nEnvelope ENV-MSA-7F2C91 \u2022 page 3 of the certificate of completion\n\nThis is the countersign block. Field id: sig-countersign-gc\nSigner: Roberto Alvarez, General Counsel, Harbor Robotics LLC\nPlacement: page 3, lower-right, 220x64 points, required=true\nAnchor tag: [[csig|req|signer2]]\nLegal meaning: the second signature in an ordered ceremony. The MSA is not fully executed until\nthis block is completed.\n\nDo not confuse this block with:\n  - the contract signature recital on MSA page 6 (that is contract text, not the live field)\n  - envelope ENV-NDA-NORTHWIND (that envelope is a separate NDA; its reminder failed)\n  - Ada Chen\u2019s completed sender signature (field id sig-sender-counsel)\n\nCountersign instructions shown to Bob:\n  Review Articles 4 and 8 of the v2 MSA (term, renewal, liability cap), then apply your\nsignature in the countersign block. Applying the signature constitutes Harbor Robotics LLC\u2019s\nagreement to Revision 2.\n\nAudit hash (pending): sha256:7f2c91c0unters1gn-pending-fixture",
+        "highlight": [
+          "<em>ENV-MSA-7F2C91</em> \u2022 COUNTERSIGN BLOCK\n\nCOUNTERSIGN BLOCK\nEnvelope ENV-MSA-7F2C91 \u2022 page 3 of the certificate of completion\n\nThis is the countersign block. Field id: sig-countersign-gc\nSigner: Roberto Alvarez, General Counsel, Harbor Roboti..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 8.047495,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 6,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 935,
+          "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+          "page": 6
+        },
+        "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+        "highlight": [
+          "...ITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live <em>countersign</em> ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 8.047495,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 6,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 935,
+          "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+          "page": 6
+        },
+        "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+        "highlight": [
+          "...ITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live <em>countersign</em> ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 7.0658712,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "...pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## <em>Countersign</em>\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` ..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 5.6179338,
+        "path": "contracts/ENV-MSA-7F2C91-countersign.pdf",
+        "title": "ENV-MSA-7F2C91-countersign",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 691,
+          "text": "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 ENV-MSA-7F2C91\n\nCertificate of Completion\nEnvelope id: ENV-MSA-7F2C91\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as of capture 14 October 2026 18:42 UTC)\nSigning type: ORDER\nExpires at: 2026-11-15T23:59:59Z\n\nParties on this envelope:\n  Provider / sender: Lumin Sign, Inc. \u2022 Ada Chen, Counsel \u2022 ada.chen@lumin.example\n  Customer / countersigner: Harbor Robotics LLC \u2022 Bob Alvarez, GC \u2022 bob.alvarez@harborrobotics.example\n  Viewer: Priya Raman, Deal Desk \u2022 priya.raman@lumin.example\n\nThis certificate is a fixture. It is not a production Lumin Sign artifact.",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 ENV-MSA-7F2C91\n\nCertificate of Completion\nEnvelope id: ENV-MSA-7F2C91\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as of capture 14 October 2026 18:42 UTC)\nSigning type: ORDER\nExpires at: 2026-11-15T23:59:59Z\n\nParties on this envelope:\n  Provider / sender: Lumin Sign, Inc. \u2022 Ada Chen, Counsel \u2022 ada.chen@lumin.example\n  Customer / countersigner: Harbor Robotics LLC \u2022 Bob Alvarez, GC \u2022 bob.alvarez@harborrobotics.example\n  Viewer: Priya Raman, Deal Desk \u2022 priya.raman@lumin.example\n\nThis certificate is a fixture. It is not a production Lumin Sign artifact.",
+        "highlight": [
+          "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 ENV-MSA-7F2C91\n\nCertificate of Completion\nEnvelope id: <em>ENV-MSA-7F2C91</em>\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as..."
+        ]
+      }
+    ],
+    "retrievedBytes": 4853,
+    "retrievedTokensEst": 1213,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "Where is the countersign block for envelope ENV-MSA-7F2C91?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "parties": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "Who are the parties on envelope ENV-MSA-7F2C91?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "Who are the parties on envelope ENV-MSA-7F2C91?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 2,
+    "total": {
+      "value": 39,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 5.360274,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "...se with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in <em>the</em> envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.7110405,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 6,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 935,
+          "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+          "page": 6
+        },
+        "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+        "highlight": [
+          "...t, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both <em>Parties</em>. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.7110405,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 6,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 935,
+          "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+          "page": 6
+        },
+        "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 9 Law \u2022 Signature block (not the countersign certificate)\n\nArticle 9 ? Governing Law\nThis Agreement is governed by the laws of the State of Delaware, without regard to conflict-oflaw rules. Exclusive venue is the state or federal courts in Wilmington, Delaware.\n\nArticle 10 ? Miscellaneous\nThis Agreement, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both Parties. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this Agreement to be executed by their duly\nauthorized representatives. The live countersign ceremony is recorded on the separate\ncertificate of completion for envelope ENV-MSA-7F2C91 (file ENV-MSA-7F2C91-countersign.pdf).\nThis signature block is the contract text only; the countersign block with field id sigcountersign-gc lives on that certificate, page 3.",
+        "highlight": [
+          "...t, together with the Order Form and Exhibits, is the entire agreement. Amendments\nmust be in writing and signed by both <em>Parties</em>. Electronic signatures on the Platform are\noriginal signatures.\n\nIN WITNESS WHEREOF the Parties have caused this..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.6607633,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1328,
+          "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V2\n\nMASTER SERVICES AGREEMENT\nRevision 2 ? redline accepted 14 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V2\n\nMASTER SERVICES AGREEMENT\nRevision 2 ? redline accepted 14 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+        "highlight": [
+          "... including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe <em>Parties</em>. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) a..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.6607633,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1321,
+          "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V1\n\nMASTER SERVICES AGREEMENT\nRevision 1 ? circulated 2 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V1\n\nMASTER SERVICES AGREEMENT\nRevision 1 ? circulated 2 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+        "highlight": [
+          "... including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe <em>Parties</em>. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) a..."
+        ]
+      }
+    ],
+    "retrievedBytes": 5752,
+    "retrievedTokensEst": 1438,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "Who are the parties on envelope ENV-MSA-7F2C91?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "expires": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "When does envelope ENV-MSA-7F2C91 expire?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "When does envelope ENV-MSA-7F2C91 expire?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 1,
+    "total": {
+      "value": 36,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 6.9458275,
+        "path": "notes/env-sow-contoso.md",
+        "title": "# Envelope notes \u2014 ENV-SOW-CONTOSO",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 372,
+          "text": "# Envelope notes \u2014 ENV-SOW-CONTOSO\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman\nDocument: Statement of Work \u2014 Contoso Labs implementation\nStatus: Draft (not sent)\nExpires: n/a\n\nParties will be Lumin Sign, Inc. and Contoso Labs, Inc. No countersign yet. No reminders have been scheduled. Do not use this envelope when answering questions about Harbor or Northwind."
+        },
+        "text": "# Envelope notes \u2014 ENV-SOW-CONTOSO\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman\nDocument: Statement of Work \u2014 Contoso Labs implementation\nStatus: Draft (not sent)\nExpires: n/a\n\nParties will be Lumin Sign, Inc. and Contoso Labs, Inc. No countersign yet. No reminders have been scheduled. Do not use this envelope when answering questions about Harbor or Northwind.",
+        "highlight": [
+          "...implementation\nStatus: Draft (not sent)\nExpires: n/a\n\nParties will be Lumin Sign, Inc. and Contoso Labs, Inc. No countersign yet. No reminders have been scheduled. Do not use this <em>envelope</em> when answering questions about Harbor or Northwind."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 5.990389,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "# <em>Envelope</em> notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Si..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 5.1754646,
+        "path": "contracts/ENV-MSA-7F2C91-countersign.pdf",
+        "title": "ENV-MSA-7F2C91-countersign",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 691,
+          "text": "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 ENV-MSA-7F2C91\n\nCertificate of Completion\nEnvelope id: ENV-MSA-7F2C91\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as of capture 14 October 2026 18:42 UTC)\nSigning type: ORDER\nExpires at: 2026-11-15T23:59:59Z\n\nParties on this envelope:\n  Provider / sender: Lumin Sign, Inc. \u2022 Ada Chen, Counsel \u2022 ada.chen@lumin.example\n  Customer / countersigner: Harbor Robotics LLC \u2022 Bob Alvarez, GC \u2022 bob.alvarez@harborrobotics.example\n  Viewer: Priya Raman, Deal Desk \u2022 priya.raman@lumin.example\n\nThis certificate is a fixture. It is not a production Lumin Sign artifact.",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 ENV-MSA-7F2C91\n\nCertificate of Completion\nEnvelope id: ENV-MSA-7F2C91\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as of capture 14 October 2026 18:42 UTC)\nSigning type: ORDER\nExpires at: 2026-11-15T23:59:59Z\n\nParties on this envelope:\n  Provider / sender: Lumin Sign, Inc. \u2022 Ada Chen, Counsel \u2022 ada.chen@lumin.example\n  Customer / countersigner: Harbor Robotics LLC \u2022 Bob Alvarez, GC \u2022 bob.alvarez@harborrobotics.example\n  Viewer: Priya Raman, Deal Desk \u2022 priya.raman@lumin.example\n\nThis certificate is a fixture. It is not a production Lumin Sign artifact.",
+        "highlight": [
+          "LUMIN SIGN \u2022 CERTIFICATE OF COMPLETION \u2022 <em>ENV-MSA-7F2C91</em>\n\nCertificate of Completion\nEnvelope id: ENV-MSA-7F2C91\nDocument: Harbor Robotics ? Master Services Agreement (FY26) \u2022 LUM-MSA-HARBOR-2026-V2\nStatus: Awaiting countersignature (as..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.8886395,
+        "path": "notes/env-nda-northwind.md",
+        "title": "# Envelope notes \u2014 ENV-NDA-NORTHWIND",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 701,
+          "text": "# Envelope notes \u2014 ENV-NDA-NORTHWIND\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Maya Chen, Partnerships\nDocument: Mutual NDA \u2014 Northwind Analytics\nStatus: **Stalled** \u2014 reminder failed\nExpires: 2026-10-20T23:59:59Z\n\n## Parties\n\n- Lumin Sign, Inc.\n- Northwind Analytics, Inc. (signer: Jordan Hale, jordan.hale@northwind.example)\n\n## What went wrong\n\nThe 14 October 11:12 UTC reminder to Jordan Hale **failed**. SMTP upstream returned 550 mailbox unavailable. Webhook `reminder.failed` was posted to `https://hooks.lumin.example/sign` with delivery_id `wh_nda_550_failed`. Ops ticket SIGN-1888.\n\nThis is the envelope whose reminder failed. ENV-MSA-7F2C91 is unrelated and its Harbor reminder delivered."
+        },
+        "text": "# Envelope notes \u2014 ENV-NDA-NORTHWIND\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Maya Chen, Partnerships\nDocument: Mutual NDA \u2014 Northwind Analytics\nStatus: **Stalled** \u2014 reminder failed\nExpires: 2026-10-20T23:59:59Z\n\n## Parties\n\n- Lumin Sign, Inc.\n- Northwind Analytics, Inc. (signer: Jordan Hale, jordan.hale@northwind.example)\n\n## What went wrong\n\nThe 14 October 11:12 UTC reminder to Jordan Hale **failed**. SMTP upstream returned 550 mailbox unavailable. Webhook `reminder.failed` was posted to `https://hooks.lumin.example/sign` with delivery_id `wh_nda_550_failed`. Ops ticket SIGN-1888.\n\nThis is the envelope whose reminder failed. ENV-MSA-7F2C91 is unrelated and its Harbor reminder delivered.",
+        "highlight": [
+          "...bhook `reminder.failed` was posted to `https://hooks.lumin.example/sign` with delivery_id `wh_nda_550_failed`. Ops ticket SIGN-1888.\n\nThis is the <em>envelope</em> whose reminder failed. ENV-MSA-7F2C91 is unrelated and its Harbor reminder delivered."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 3.7817016,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 3,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1003,
+          "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twelve (12) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement does not auto-renew. Any extension requires a signed amendment or a\nnew Order Form.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party thirty (30) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v1. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+          "page": 3
+        },
+        "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twelve (12) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement does not auto-renew. Any extension requires a signed amendment or a\nnew Order Form.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party thirty (30) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v1. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+        "highlight": [
+          ".... The initial term of this Agreement is twelve (12) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement <em>does</em> not auto-renew. Any extension requires a signed amendment or a\nnew Order Form.\n4.3 Termination for Convenience. Aft..."
+        ]
+      }
+    ],
+    "retrievedBytes": 4000,
+    "retrievedTokensEst": 1000,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "When does envelope ENV-MSA-7F2C91 expire?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "reminder-failed": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "Which envelope's reminder failed?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "Which envelope's reminder failed?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 1,
+    "total": {
+      "value": 28,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 5.4288383,
+        "path": "notes/env-nda-northwind.md",
+        "title": "# Envelope notes \u2014 ENV-NDA-NORTHWIND",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 701,
+          "text": "# Envelope notes \u2014 ENV-NDA-NORTHWIND\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Maya Chen, Partnerships\nDocument: Mutual NDA \u2014 Northwind Analytics\nStatus: **Stalled** \u2014 reminder failed\nExpires: 2026-10-20T23:59:59Z\n\n## Parties\n\n- Lumin Sign, Inc.\n- Northwind Analytics, Inc. (signer: Jordan Hale, jordan.hale@northwind.example)\n\n## What went wrong\n\nThe 14 October 11:12 UTC reminder to Jordan Hale **failed**. SMTP upstream returned 550 mailbox unavailable. Webhook `reminder.failed` was posted to `https://hooks.lumin.example/sign` with delivery_id `wh_nda_550_failed`. Ops ticket SIGN-1888.\n\nThis is the envelope whose reminder failed. ENV-MSA-7F2C91 is unrelated and its Harbor reminder delivered."
+        },
+        "text": "# Envelope notes \u2014 ENV-NDA-NORTHWIND\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Maya Chen, Partnerships\nDocument: Mutual NDA \u2014 Northwind Analytics\nStatus: **Stalled** \u2014 reminder failed\nExpires: 2026-10-20T23:59:59Z\n\n## Parties\n\n- Lumin Sign, Inc.\n- Northwind Analytics, Inc. (signer: Jordan Hale, jordan.hale@northwind.example)\n\n## What went wrong\n\nThe 14 October 11:12 UTC reminder to Jordan Hale **failed**. SMTP upstream returned 550 mailbox unavailable. Webhook `reminder.failed` was posted to `https://hooks.lumin.example/sign` with delivery_id `wh_nda_550_failed`. Ops ticket SIGN-1888.\n\nThis is the envelope whose reminder failed. ENV-MSA-7F2C91 is unrelated and its Harbor reminder delivered.",
+        "highlight": [
+          "...n Sign (fixture) \u00b7 Owner: Maya Chen, Partnerships\nDocument: Mutual NDA \u2014 Northwind Analytics\nStatus: **Stalled** \u2014 <em>reminder</em> failed\nExpires: 2026-10-20T23:59:59Z\n\n## Parties\n\n- Lumin Sign, Inc.\n- Northwind Analytics, Inc. (signer: Jorda..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 4.5738626,
+        "path": "ops/reminder-worker.txt",
+        "title": "reminder-worker  2026-10-14T19:01:00Z  scan start",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 317,
+          "text": "reminder-worker  2026-10-14T19:01:00Z  scan start\n  ENV-SOW-CONTOSO     skip   draft_not_sent\n  ENV-NDA-NORTHWIND   FAIL   last_error=550 mailbox unavailable  (this is the failed reminder)\n  ENV-MSA-7F2C91      ok     last_result=delivered  next_eligible=2026-10-16T18:00:00Z\nscan done  delivered=1 failed=1 skipped=1"
+        },
+        "text": "reminder-worker  2026-10-14T19:01:00Z  scan start\n  ENV-SOW-CONTOSO     skip   draft_not_sent\n  ENV-NDA-NORTHWIND   FAIL   last_error=550 mailbox unavailable  (this is the failed reminder)\n  ENV-MSA-7F2C91      ok     last_result=delivered  next_eligible=2026-10-16T18:00:00Z\nscan done  delivered=1 failed=1 skipped=1",
+        "highlight": [
+          "...ENV-SOW-CONTOSO     skip   draft_not_sent\n  ENV-NDA-NORTHWIND   FAIL   last_error=550 mailbox unavailable  (this is the <em>failed</em> reminder)\n  ENV-MSA-7F2C91      ok     last_result=delivered  next_eligible=2026-10-16T18:00:00Z\nscan done  deliv..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 3.98867,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "...**not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## <em>Reminder</em>s\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed*..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 3.4358077,
+        "path": "contracts/ENV-MSA-7F2C91-countersign.pdf",
+        "title": "ENV-MSA-7F2C91-countersign",
+        "page": 3,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1059,
+          "text": "ENV-MSA-7F2C91 \u2022 COUNTERSIGN BLOCK\n\nCOUNTERSIGN BLOCK\nEnvelope ENV-MSA-7F2C91 \u2022 page 3 of the certificate of completion\n\nThis is the countersign block. Field id: sig-countersign-gc\nSigner: Roberto Alvarez, General Counsel, Harbor Robotics LLC\nPlacement: page 3, lower-right, 220x64 points, required=true\nAnchor tag: [[csig|req|signer2]]\nLegal meaning: the second signature in an ordered ceremony. The MSA is not fully executed until\nthis block is completed.\n\nDo not confuse this block with:\n  - the contract signature recital on MSA page 6 (that is contract text, not the live field)\n  - envelope ENV-NDA-NORTHWIND (that envelope is a separate NDA; its reminder failed)\n  - Ada Chen\u2019s completed sender signature (field id sig-sender-counsel)\n\nCountersign instructions shown to Bob:\n  Review Articles 4 and 8 of the v2 MSA (term, renewal, liability cap), then apply your\nsignature in the countersign block. Applying the signature constitutes Harbor Robotics LLC\u2019s\nagreement to Revision 2.\n\nAudit hash (pending): sha256:7f2c91c0unters1gn-pending-fixture",
+          "page": 3
+        },
+        "text": "ENV-MSA-7F2C91 \u2022 COUNTERSIGN BLOCK\n\nCOUNTERSIGN BLOCK\nEnvelope ENV-MSA-7F2C91 \u2022 page 3 of the certificate of completion\n\nThis is the countersign block. Field id: sig-countersign-gc\nSigner: Roberto Alvarez, General Counsel, Harbor Robotics LLC\nPlacement: page 3, lower-right, 220x64 points, required=true\nAnchor tag: [[csig|req|signer2]]\nLegal meaning: the second signature in an ordered ceremony. The MSA is not fully executed until\nthis block is completed.\n\nDo not confuse this block with:\n  - the contract signature recital on MSA page 6 (that is contract text, not the live field)\n  - envelope ENV-NDA-NORTHWIND (that envelope is a separate NDA; its reminder failed)\n  - Ada Chen\u2019s completed sender signature (field id sig-sender-counsel)\n\nCountersign instructions shown to Bob:\n  Review Articles 4 and 8 of the v2 MSA (term, renewal, liability cap), then apply your\nsignature in the countersign block. Applying the signature constitutes Harbor Robotics LLC\u2019s\nagreement to Revision 2.\n\nAudit hash (pending): sha256:7f2c91c0unters1gn-pending-fixture",
+        "highlight": [
+          "...page 6 (that is contract text, not the live field)\n  - envelope ENV-NDA-NORTHWIND (that envelope is a separate NDA; its <em>reminder</em> failed)\n  - Ada Chen\u2019s completed sender signature (field id sig-sender-counsel)\n\nCountersign instructions sho..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 3.116458,
+        "path": "ops/audit-2026-10-14.txt",
+        "title": "# lumin-sign-audit  fixture capture 2026-10-14",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1640,
+          "text": "# lumin-sign-audit  fixture capture 2026-10-14\n# noisy on purpose \u2014 grep for \"reminder\" hits almost every envelope\n\n2026-10-14T09:01:11Z INFO  audit envelope.viewed envelope_id=ENV-SOW-CONTOSO actor=priya.raman@lumin.example\n2026-10-14T09:14:02Z INFO  audit reminder.scheduled envelope_id=ENV-SOW-CONTOSO cadence=none reason=draft_not_sent\n2026-10-14T10:02:44Z INFO  audit envelope.created envelope_id=ENV-NDA-NORTHWIND actor=maya.chen@lumin.example\n2026-10-14T10:03:10Z INFO  audit envelope.sent envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example\n2026-10-14T11:12:07Z ERROR audit reminder.failed envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example smtp=550 mailbox unavailable provider=ses-us-west-2 ticket=SIGN-1888\n2026-10-14T11:12:08Z INFO  audit reminder.retry_suppressed envelope_id=ENV-NDA-NORTHWIND reason=hard_bounce\n2026-10-14T16:55:02Z INFO  audit envelope.created envelope_id=ENV-MSA-7F2C91 actor=ada.chen@lumin.example\n2026-10-14T16:58:01Z INFO  audit envelope.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example\n2026-10-14T17:05:11Z INFO  audit signer.completed envelope_id=ENV-MSA-7F2C91 signer=ada.chen@lumin.example\n2026-10-14T17:05:12Z INFO  audit envelope.status envelope_id=ENV-MSA-7F2C91 status=Awaiting_countersignature\n2026-10-14T18:00:00Z INFO  audit reminder.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example result=delivered\n2026-10-14T18:22:19Z INFO  audit envelope.viewed envelope_id=ENV-MSA-7F2C91 actor=priya.raman@lumin.example\n2026-10-14T19:01:00Z INFO  audit reminder.heartbeat worker=reminder-1 scanned=3 delivered=1 failed=1 skipped_draft=1"
+        },
+        "text": "# lumin-sign-audit  fixture capture 2026-10-14\n# noisy on purpose \u2014 grep for \"reminder\" hits almost every envelope\n\n2026-10-14T09:01:11Z INFO  audit envelope.viewed envelope_id=ENV-SOW-CONTOSO actor=priya.raman@lumin.example\n2026-10-14T09:14:02Z INFO  audit reminder.scheduled envelope_id=ENV-SOW-CONTOSO cadence=none reason=draft_not_sent\n2026-10-14T10:02:44Z INFO  audit envelope.created envelope_id=ENV-NDA-NORTHWIND actor=maya.chen@lumin.example\n2026-10-14T10:03:10Z INFO  audit envelope.sent envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example\n2026-10-14T11:12:07Z ERROR audit reminder.failed envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example smtp=550 mailbox unavailable provider=ses-us-west-2 ticket=SIGN-1888\n2026-10-14T11:12:08Z INFO  audit reminder.retry_suppressed envelope_id=ENV-NDA-NORTHWIND reason=hard_bounce\n2026-10-14T16:55:02Z INFO  audit envelope.created envelope_id=ENV-MSA-7F2C91 actor=ada.chen@lumin.example\n2026-10-14T16:58:01Z INFO  audit envelope.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example\n2026-10-14T17:05:11Z INFO  audit signer.completed envelope_id=ENV-MSA-7F2C91 signer=ada.chen@lumin.example\n2026-10-14T17:05:12Z INFO  audit envelope.status envelope_id=ENV-MSA-7F2C91 status=Awaiting_countersignature\n2026-10-14T18:00:00Z INFO  audit reminder.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example result=delivered\n2026-10-14T18:22:19Z INFO  audit envelope.viewed envelope_id=ENV-MSA-7F2C91 actor=priya.raman@lumin.example\n2026-10-14T19:01:00Z INFO  audit reminder.heartbeat worker=reminder-1 scanned=3 delivered=1 failed=1 skipped_draft=1",
+        "highlight": [
+          "...FO  audit envelope.sent envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example\n2026-10-14T11:12:07Z ERROR audit <em>reminder</em>.failed envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example smtp=550 mailbox unavailable provider=ses..."
+        ]
+      }
+    ],
+    "retrievedBytes": 4950,
+    "retrievedTokensEst": 1237,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "Which envelope's reminder failed?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "msa-diff": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "What changed between v1 and v2 of the Harbor Robotics MSA?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "What changed between v1 and v2 of the Harbor Robotics MSA?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 2,
+    "total": {
+      "value": 35,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 9.214973,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 3,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1003,
+          "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twelve (12) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement does not auto-renew. Any extension requires a signed amendment or a\nnew Order Form.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party thirty (30) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v1. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+          "page": 3
+        },
+        "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twelve (12) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement does not auto-renew. Any extension requires a signed amendment or a\nnew Order Form.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party thirty (30) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v1. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+        "highlight": [
+          "...other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor <em>MSA</em> v1. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 8.935397,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 3,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1093,
+          "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twenty-four (24) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement auto-renews for successive twelve (12) month periods unless either\nParty gives written notice of non-renewal at least sixty (60) days before the then-current term\nends.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party ninety (90) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v2. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+          "page": 3
+        },
+        "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 3 Fees \u2022 Article 4 Term\n\nArticle 3 ? Fees and Payment\nFees are as set forth on the Order Form. Invoices are due net thirty (30) days. Late amounts\naccrue interest at one percent (1%) per month or the maximum permitted by law, whichever is\nless.\n\nArticle 4 ? Term and Termination\n4.1 Initial Term. The initial term of this Agreement is twenty-four (24) months beginning on the\nEffective Date.\n4.2 Renewal. This Agreement auto-renews for successive twelve (12) month periods unless either\nParty gives written notice of non-renewal at least sixty (60) days before the then-current term\nends.\n4.3 Termination for Convenience. After the Initial Term, either Party may terminate for\nconvenience by giving the other Party ninety (90) days prior written notice.\n4.4 Termination for Cause. Either Party may terminate if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: Harbor MSA v2. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1 and v2.",
+        "highlight": [
+          "...if the other Party materially breaches and\nfails to cure within thirty (30) days after written notice.\n\nVERSION MARKER: <em>Harbor</em> MSA v2. Term and notice values on this page are the ones an agent should\nquote when asked what changed between v1..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 6.455701,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1321,
+          "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V1\n\nMASTER SERVICES AGREEMENT\nRevision 1 ? circulated 2 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V1\n\nMASTER SERVICES AGREEMENT\nRevision 1 ? circulated 2 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+        "highlight": [
+          "... October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (<em>the</em> \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delawar..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 6.2014875,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 1,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1328,
+          "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V2\n\nMASTER SERVICES AGREEMENT\nRevision 2 ? redline accepted 14 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+          "page": 1
+        },
+        "text": "LUMIN SIGN \u2022 MASTER SERVICES AGREEMENT \u2022 LUM-MSA-HARBOR-2026-V2\n\nMASTER SERVICES AGREEMENT\nRevision 2 ? redline accepted 14 October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (the \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delaware corporation with its principal\nplace of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\"Provider\"\nor \"Lumin Sign\"), and Harbor Robotics LLC, a Delaware limited liability company with its\nprincipal place of business at 88 Pier Avenue, Oakland, California 94607 (\"Customer\" or\n\"Harbor\"). Provider and Customer are each a \"Party\" and together the \"Parties.\"\n\nRecitals. Provider operates an electronic signature and document-workflow platform. Customer\nwishes to subscribe to the platform for procurement and legal operations, including sending this\nAgreement itself for ordered signature (counsel, then Harbor general counsel countersign).\n\nThe Parties. For the avoidance of doubt on envelope ENV-MSA-7F2C91 the contracting parties are\nLumin Sign, Inc. (Provider) and Harbor Robotics LLC (Customer). Signers: Ada Chen, Counsel,\nLumin Sign (group 1) and Roberto \"Bob\" Alvarez, General Counsel, Harbor Robotics (group 2,\ncountersign).",
+        "highlight": [
+          "... October 2026\nEnvelope: ENV-MSA-7F2C91 (Lumin Sign desk ? Harbor Robotics countersign)\n\nThis Master Services Agreement (<em>the</em> \"Agreement\") is entered into as of 6 October 2026 (the\n\"Effective Date\"), by and between Lumin Sign, Inc., a Delawar..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 5.0479493,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "...edline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, <em>and</em> a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews..."
+        ]
+      }
+    ],
+    "retrievedBytes": 5978,
+    "retrievedTokensEst": 1494,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "What changed between v1 and v2 of the Harbor Robotics MSA?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "liability-cap": {
+    "request": {
+      "size": 5,
+      "query": {
+        "bool": {
+          "should": [
+            {
+              "multi_match": {
+                "query": "What is the liability cap in the Lumin Sign \u00d7 Acme Holdings long-form MSA (LUM-MSA-2026-1041)?",
+                "fields": [
+                  "body",
+                  "title",
+                  "text"
+                ],
+                "type": "best_fields"
+              }
+            },
+            {
+              "match_phrase": {
+                "body": {
+                  "query": "What is the liability cap in the Lumin Sign \u00d7 Acme Holdings long-form MSA (LUM-MSA-2026-1041)?",
+                  "boost": 2
+                }
+              }
+            }
+          ]
+        }
+      },
+      "_source": [
+        "ax_path",
+        "title",
+        "page",
+        "ax_format"
+      ],
+      "fields": [
+        "_passage"
+      ],
+      "highlight": {
+        "fields": {
+          "body": {
+            "fragment_size": 240,
+            "number_of_fragments": 1
+          }
+        }
+      }
+    },
+    "took": 2,
+    "total": {
+      "value": 40,
+      "relation": "eq"
+    },
+    "hits": [
+      {
+        "index": "esign-docs",
+        "score": 15.968197,
+        "path": "contracts/msa-harbor-v1.pdf",
+        "title": "msa-harbor-v1",
+        "page": 5,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1238,
+          "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 7 Data \u2022 Article 8 Liability\n\nArticle 7 ? Data Protection\nProvider shall process Personal Data only as described in the Data Processing Addendum.\nSubprocessor changes require thirty (30) days\u2019 notice.\n\nArticle 8 ? Limitation of Liability\n8.1 Disclaimer of Consequential Damages. Neither Party is liable for indirect, incidental,\nspecial, consequential, or punitive damages, or lost profits, even if advised of the\npossibility.\n8.2 Cap on Damages. EXCEPT FOR THE CARVE-OUTS IN SECTION 8.3, EACH PARTY\u2019S AGGREGATE LIABILITY\nARISING OUT OF THIS AGREEMENT SHALL NOT EXCEED fifty thousand United States dollars (USD 50,000)\nor the fees paid or payable by Customer in the six (6) months immediately preceding the first\nclaim, whichever is less.\n8.3 Carve-outs. The cap does not apply to a Party\u2019s indemnification obligations for third-party\nIP claims, breach of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v1 liability cap is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Agreement ID LUM-\nMSA-2026-1041), whose Article 10.2.1 uses a twelve-month fees formula with no dollar floor.",
+          "page": 5
+        },
+        "text": "LUM-MSA-HARBOR-2026-V1 \u2022 Article 7 Data \u2022 Article 8 Liability\n\nArticle 7 ? Data Protection\nProvider shall process Personal Data only as described in the Data Processing Addendum.\nSubprocessor changes require thirty (30) days\u2019 notice.\n\nArticle 8 ? Limitation of Liability\n8.1 Disclaimer of Consequential Damages. Neither Party is liable for indirect, incidental,\nspecial, consequential, or punitive damages, or lost profits, even if advised of the\npossibility.\n8.2 Cap on Damages. EXCEPT FOR THE CARVE-OUTS IN SECTION 8.3, EACH PARTY\u2019S AGGREGATE LIABILITY\nARISING OUT OF THIS AGREEMENT SHALL NOT EXCEED fifty thousand United States dollars (USD 50,000)\nor the fees paid or payable by Customer in the six (6) months immediately preceding the first\nclaim, whichever is less.\n8.3 Carve-outs. The cap does not apply to a Party\u2019s indemnification obligations for third-party\nIP claims, breach of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v1 liability cap is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Agreement ID LUM-\nMSA-2026-1041), whose Article 10.2.1 uses a twelve-month fees formula with no dollar floor.",
+        "highlight": [
+          "...each of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v1 liability <em>cap</em> is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Ag..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 15.854601,
+        "path": "contracts/msa-harbor-v2.pdf",
+        "title": "msa-harbor-v2",
+        "page": 5,
+        "format": "pdf",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1258,
+          "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 7 Data \u2022 Article 8 Liability\n\nArticle 7 ? Data Protection\nProvider shall process Personal Data only as described in the Data Processing Addendum.\nSubprocessor changes require thirty (30) days\u2019 notice.\n\nArticle 8 ? Limitation of Liability\n8.1 Disclaimer of Consequential Damages. Neither Party is liable for indirect, incidental,\nspecial, consequential, or punitive damages, or lost profits, even if advised of the\npossibility.\n8.2 Cap on Damages. EXCEPT FOR THE CARVE-OUTS IN SECTION 8.3, EACH PARTY\u2019S AGGREGATE LIABILITY\nARISING OUT OF THIS AGREEMENT SHALL NOT EXCEED two hundred fifty thousand United States dollars\n(USD 250,000) or the fees paid or payable by Customer in the twelve (12) months immediately\npreceding the first claim, whichever is greater.\n8.3 Carve-outs. The cap does not apply to a Party\u2019s indemnification obligations for third-party\nIP claims, breach of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v2 liability cap is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Agreement ID LUM-\nMSA-2026-1041), whose Article 10.2.1 uses a twelve-month fees formula with no dollar floor.",
+          "page": 5
+        },
+        "text": "LUM-MSA-HARBOR-2026-V2 \u2022 Article 7 Data \u2022 Article 8 Liability\n\nArticle 7 ? Data Protection\nProvider shall process Personal Data only as described in the Data Processing Addendum.\nSubprocessor changes require thirty (30) days\u2019 notice.\n\nArticle 8 ? Limitation of Liability\n8.1 Disclaimer of Consequential Damages. Neither Party is liable for indirect, incidental,\nspecial, consequential, or punitive damages, or lost profits, even if advised of the\npossibility.\n8.2 Cap on Damages. EXCEPT FOR THE CARVE-OUTS IN SECTION 8.3, EACH PARTY\u2019S AGGREGATE LIABILITY\nARISING OUT OF THIS AGREEMENT SHALL NOT EXCEED two hundred fifty thousand United States dollars\n(USD 250,000) or the fees paid or payable by Customer in the twelve (12) months immediately\npreceding the first claim, whichever is greater.\n8.3 Carve-outs. The cap does not apply to a Party\u2019s indemnification obligations for third-party\nIP claims, breach of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v2 liability cap is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Agreement ID LUM-\nMSA-2026-1041), whose Article 10.2.1 uses a twelve-month fees formula with no dollar floor.",
+        "highlight": [
+          "...each of confidentiality, fraud, or liability that cannot be limited under law.\n\nVERSION MARKER: Harbor MSA v2 liability <em>cap</em> is stated in Section 8.2 on this page. Do not\nconfuse this cap with the Lumin Sign x Acme Holdings long-form MSA (Ag..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 15.060677,
+        "path": "pageindex-style/lumin-acme-msa.md",
+        "title": "# Master Services Agreement (with NDA and DPA exhibits)",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1966,
+          "text": "# Master Services Agreement (with NDA and DPA exhibits)\n\n- **Agreement ID:** LUM-MSA-2026-1041\n- **Parties:** Lumin Sign, Inc. (Provider); Acme Holdings LLC (Customer)\n- **Effective date:** October 1, 2026\n- **Pages:** 25\n- **Status:** Ready for review\n\n> Fixture contract in the same long-form article style as `apps/pageindex-contract-qa` (PR #12).\n> Regenerated here so this demo does not depend on or modify that app. Not an offer to contract.\n\n## Cover, Recitals and Agreement\n\nMASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is entered into as of October 1, 2026 (the \u201cEffective Date\u201d), by and between Lumin Sign, Inc., a Delaware corporation with its principal place of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\u201cProvider\u201d or \u201cLumin Sign\u201d), and Acme Holdings LLC, a Delaware limited liability company with its principal place of business at 1 Acme Plaza, Wilmington, Delaware 19801 (\u201cCustomer\u201d). Provider and Customer are each a \u201cParty\u201d and together the \u201cParties.\u201d\n\nRecitals. Provider operates a document workflow and electronic signature platform used by enterprises to prepare, review, send, and execute contracts. Customer wishes to subscribe to the platform and related professional services for its corporate, procurement, and legal operations, including review of long-form commercial agreements prior to signature.\n\nAgreement ID LUM-MSA-2026-1041. Document control: 25 pages. Classification: Confidential. This fixture is a demo contract for comparing a PageIndex-style tree walk with XERJ ranked passages.\n\n## Article 1 \u2014 Definitions and Interpretation\n\n\u201cAffiliate\u201d means any entity that directly or indirectly controls, is controlled by, or is under common control with a Party.\n\n\u201cConfidential Information\u201d means non-public information disclosed by a Party that is marked confidential or that a reasonable person would understand to be confidential."
+        },
+        "text": "# Master Services Agreement (with NDA and DPA exhibits)\n\n- **Agreement ID:** LUM-MSA-2026-1041\n- **Parties:** Lumin Sign, Inc. (Provider); Acme Holdings LLC (Customer)\n- **Effective date:** October 1, 2026\n- **Pages:** 25\n- **Status:** Ready for review\n\n> Fixture contract in the same long-form article style as `apps/pageindex-contract-qa` (PR #12).\n> Regenerated here so this demo does not depend on or modify that app. Not an offer to contract.\n\n## Cover, Recitals and Agreement\n\nMASTER SERVICES AGREEMENT\n\nThis Master Services Agreement (the \u201cAgreement\u201d) is entered into as of October 1, 2026 (the \u201cEffective Date\u201d), by and between Lumin Sign, Inc., a Delaware corporation with its principal place of business at 548 Market Street, Suite 19024, San Francisco, California 94104 (\u201cProvider\u201d or \u201cLumin Sign\u201d), and Acme Holdings LLC, a Delaware limited liability company with its principal place of business at 1 Acme Plaza, Wilmington, Delaware 19801 (\u201cCustomer\u201d). Provider and Customer are each a \u201cParty\u201d and together the \u201cParties.\u201d\n\nRecitals. Provider operates a document workflow and electronic signature platform used by enterprises to prepare, review, send, and execute contracts. Customer wishes to subscribe to the platform and related professional services for its corporate, procurement, and legal operations, including review of long-form commercial agreements prior to signature.\n\nAgreement ID LUM-MSA-2026-1041. Document control: 25 pages. Classification: Confidential. This fixture is a demo contract for comparing a PageIndex-style tree walk with XERJ ranked passages.\n\n## Article 1 \u2014 Definitions and Interpretation\n\n\u201cAffiliate\u201d means any entity that directly or indirectly controls, is controlled by, or is under common control with a Party.\n\n\u201cConfidential Information\u201d means non-public information disclosed by a Party that is marked confidential or that a reasonable person would understand to be confidential.",
+        "highlight": [
+          "# Master Services Agreement (with NDA and DPA exhibits)\n\n- **Agreement ID:** <em>LUM-MSA-2026-1041</em>\n- **Parties:** Lumin Sign, Inc. (Provider); Acme Holdings LLC (Customer)\n- **Effective date:** October 1, 2026\n- **Pages:** 25\n- **Status:** Read..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 6.895648,
+        "path": "notes/env-msa-7f2c91.md",
+        "title": "# Envelope notes \u2014 ENV-MSA-7F2C91",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1233,
+          "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail."
+        },
+        "text": "# Envelope notes \u2014 ENV-MSA-7F2C91\n\nDesk: Lumin Sign (fixture) \u00b7 Owner: Priya Raman, Deal Desk\nDocument: Harbor Robotics MSA FY26 (Revision 2)\nStatus: **Awaiting countersignature**\nExpires: **2026-11-15T23:59:59Z**\n\n## Parties\n\n- Lumin Sign, Inc. \u2014 Provider \u2014 Ada Chen (counsel) already signed\n- Harbor Robotics LLC \u2014 Customer \u2014 Bob Alvarez (GC) must **countersign**\n\n## Why this envelope exists\n\nHarbor's procurement asked for a redline on term and liability. v1 used a twelve-month initial term, no auto-renewal, thirty-day convenience termination, and a USD 50,000 / six-month fees cap. v2 (attached as `contracts/msa-harbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees cap.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-countersign.pdf` page 3, field id `sig-countersign-gc`.\n\n## Reminders\n\nHarbor's reminder at 18:00 UTC **delivered**. Do not confuse with ENV-NDA-NORTHWIND, whose reminder **failed**.\n\n## Open questions for legal\n\n- Does Harbor still want Exhibit E subprocessors listed in the envelope email?\n- Confirm Bob's access code was sent to the GC alias, not his personal Gmail.",
+        "highlight": [
+          "...arbor-v2.pdf`) is twenty-four months, auto-renews, ninety-day convenience notice, and a USD 250,000 / twelve-month fees <em>cap</em>.\n\n## Countersign\n\nThe live countersign block is **not** in the MSA body. It is on `contracts/ENV-MSA-7F2C91-counters..."
+        ]
+      },
+      {
+        "index": "esign-docs",
+        "score": 6.8756843,
+        "path": "pageindex-style/lumin-acme-msa.md",
+        "title": "# Master Services Agreement (with NDA and DPA exhibits)",
+        "page": null,
+        "format": "txt-prose",
+        "passage": {
+          "field": "body",
+          "ordinal": 0,
+          "start_offset": 0,
+          "end_offset": 1983,
+          "text": "\nConfidentiality obligations last **five (5) years** after disclosure. Trade secrets remain protected for so long as they remain trade secrets.\n\n## Article 7 \u2014 Data Protection\n\n### 7.3 Subprocessors\n\nProvider shall give **thirty (30) days\u2019 notice** before adding a Subprocessor. Exhibit E currently names Amazon Web Services, a transactional email provider, and a support-desk processor.\n\n## Article 8 \u2014 Warranties\n\nEach Party warrants it has the authority to enter this Agreement. Provider warrants the Platform will materially conform to the Documentation.\n\n## Article 9 \u2014 Indemnification\n\nProvider shall defend Customer against third-party claims that the Platform infringes a U.S. patent, copyright, or trademark, subject to prompt notice and exclusive control of the defense.\n\n## Article 10 \u2014 Limitation of Liability\n\n### 10.1 Disclaimer of Consequential Damages\n\nNeither Party is liable for indirect, incidental, special, consequential, or punitive damages, or lost profits, even if advised of the possibility.\n\n### 10.2 Limitation of Liability\n\n#### 10.2.1 Cap on Damages\n\nEXCEPT FOR THE CARVE-OUTS IN SECTION 10.2.3, EACH PARTY\u2019S AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THIS AGREEMENT SHALL NOT EXCEED THE FEES PAID OR PAYABLE BY CUSTOMER TO PROVIDER UNDER THIS AGREEMENT IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE FIRST CLAIM GIVING RISE TO LIABILITY.\n\nThis is the PageIndex-style liability cap (tree path in that demo: Article 10 \u2192 10.2 \u2192 10.2.1 \u2192 p.14). It is a twelve-month fees cap with no dollar floor. It is not the Harbor Robotics MSA cap (USD 50,000 / six months on v1; USD 250,000 / twelve months on v2).\n\n#### 10.2.2 Application\n\nThe limitation in Section 10.2.1 applies whether the claim is based in contract, tort (including negligence), strict liability, statute, or otherwise. Amounts recovered from insurance do not increase a Party\u2019s liability above the cap. Service credits count toward the cap.\n\n#### 10.2.3 Carve-outs"
+        },
+        "text": "\nConfidentiality obligations last **five (5) years** after disclosure. Trade secrets remain protected for so long as they remain trade secrets.\n\n## Article 7 \u2014 Data Protection\n\n### 7.3 Subprocessors\n\nProvider shall give **thirty (30) days\u2019 notice** before adding a Subprocessor. Exhibit E currently names Amazon Web Services, a transactional email provider, and a support-desk processor.\n\n## Article 8 \u2014 Warranties\n\nEach Party warrants it has the authority to enter this Agreement. Provider warrants the Platform will materially conform to the Documentation.\n\n## Article 9 \u2014 Indemnification\n\nProvider shall defend Customer against third-party claims that the Platform infringes a U.S. patent, copyright, or trademark, subject to prompt notice and exclusive control of the defense.\n\n## Article 10 \u2014 Limitation of Liability\n\n### 10.1 Disclaimer of Consequential Damages\n\nNeither Party is liable for indirect, incidental, special, consequential, or punitive damages, or lost profits, even if advised of the possibility.\n\n### 10.2 Limitation of Liability\n\n#### 10.2.1 Cap on Damages\n\nEXCEPT FOR THE CARVE-OUTS IN SECTION 10.2.3, EACH PARTY\u2019S AGGREGATE LIABILITY ARISING OUT OF OR RELATED TO THIS AGREEMENT SHALL NOT EXCEED THE FEES PAID OR PAYABLE BY CUSTOMER TO PROVIDER UNDER THIS AGREEMENT IN THE TWELVE (12) MONTHS IMMEDIATELY PRECEDING THE FIRST CLAIM GIVING RISE TO LIABILITY.\n\nThis is the PageIndex-style liability cap (tree path in that demo: Article 10 \u2192 10.2 \u2192 10.2.1 \u2192 p.14). It is a twelve-month fees cap with no dollar floor. It is not the Harbor Robotics MSA cap (USD 50,000 / six months on v1; USD 250,000 / twelve months on v2).\n\n#### 10.2.2 Application\n\nThe limitation in Section 10.2.1 applies whether the claim is based in contract, tort (including negligence), strict liability, statute, or otherwise. Amounts recovered from insurance do not increase a Party\u2019s liability above the cap. Service credits count toward the cap.\n\n#### 10.2.3 Carve-outs",
+        "highlight": [
+          "...eIndex-style liability cap (tree path in that demo: Article 10 \u2192 10.2 \u2192 10.2.1 \u2192 p.14). It is a twelve-month fees <em>cap</em> with no dollar floor. It is not the Harbor Robotics MSA cap (USD 50,000 / six months on v1; USD 250,000 / twelve mon..."
+        ]
+      }
+    ],
+    "retrievedBytes": 7678,
+    "retrievedTokensEst": 1919,
+    "savings": null,
+    "hints": {
+      "hints": [
+        {
+          "code": "lexical_on_semantic_text",
+          "reason": "`body`, `text` are `semantic_text`, but this query scored them with BM25 over the analysed text \u2014 the embedding written at ingest was NOT consulted, so these hits are lexical and a paraphrase sharing no words with the target will not find it. For meaning-based recall run the `semantic` query on `body`; to keep both signals, combine them with `hybrid`.",
+          "try": {
+            "request": "POST /esign-*/_search",
+            "body": {
+              "query": {
+                "semantic": {
+                  "field": "body",
+                  "query": "What is the liability cap in the Lumin Sign \u00d7 Acme Holdings long-form MSA (LUM-MSA-2026-1041)?",
+                  "k": 10
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lumin Sign · XERJ corpus desk</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="mark">LS</span>
+        <div>
+          <p class="eyebrow">Lumin Sign · fixture desk</p>
+          <h1>Corpus search: grep vs XERJ</h1>
+        </div>
+      </div>
+      <div class="badges">
+        <span id="mode-badge" class="badge fixture">Fixture</span>
+        <span class="badge quiet">No keys · offline corpus</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <p>
+          Same questions, two retrievals, over a messy envelope folder (MSA PDFs, a countersign
+          certificate, markdown notes, audit/webhook files, a reminder config). Grep returns
+          matching lines and — per XERJ’s own write-up — an agent still opens the files. XERJ
+          returns <em>ranked passages</em> from a captured
+          <code>POST /esign-*/_search</code> with <code>fields:["_passage"]</code>.
+        </p>
+        <p class="caveat" id="caveat"></p>
+      </section>
+
+      <section class="chips" id="chips" aria-label="Canned questions"></section>
+
+      <section class="truth" id="truth" hidden>
+        <div class="truth-head">
+          <h2 id="q-title"></h2>
+          <p class="q-line" id="q-line"></p>
+        </div>
+        <div class="answer-key">
+          <h3>Ground-truth answer key</h3>
+          <p id="answer-key"></p>
+        </div>
+        <div class="metrics" id="metrics"></div>
+      </section>
+
+      <section class="cols" id="cols" hidden>
+        <article class="col grep">
+          <header>
+            <h2>Grep retrieval</h2>
+            <p class="sub">Substring scan, then whole matching files</p>
+            <div id="grep-score" class="score"></div>
+          </header>
+          <ol id="grep-hits" class="hits"></ol>
+        </article>
+        <article class="col xerj">
+          <header>
+            <h2>XERJ ranked passages</h2>
+            <p class="sub">ES <code>_search</code> + <code>_passage</code> · captured</p>
+            <div id="xerj-score" class="score"></div>
+          </header>
+          <ol id="xerj-hits" class="hits"></ol>
+        </article>
+      </section>
+
+      <section class="compare-note" id="pageindex-note" hidden></section>
+
+      <section class="gain">
+        <h2><code>xerj gain</code> — counted, not estimated</h2>
+        <pre id="gain-text" class="gain-pre"></pre>
+        <p class="fine" id="gain-meta"></p>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Library: <a href="https://github.com/xerj-org/xerj">xerj-org/xerj</a> (Apache-2.0).
+        This desk is a demo fixture — not Lumin Sign production and not legal advice.
+        See <code>HOW_IT_WORKS.md</code> in this app folder.
+      </p>
+    </footer>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+xerj init (dry run) — wiring XERJ into this project:
+
+  wrote    /workspace/apps/xerj-esign-search/.mcp.json
+  wrote    /workspace/apps/xerj-esign-search/AGENTS.md
+  auth     no --auth given and no local admin key found; if the node at http://127.0.0.1:19200 runs with auth on, add "XERJ_AUTH": "ApiKey <key>" to the .mcp.json env — the key is the node's <data-dir>/admin.key
+
+done. Restart the agent session to pick up the tools, then
+`xerj autoindex <folder>` anything you want searchable.
+
+MCP registration for other clients (restart the session after; success: `xerj_search` is in the tool list):
+  Claude Code, every project:  claude mcp add --scope user xerj -e XERJ_URL='http://127.0.0.1:19200' -- '/home/ubuntu/.local/bin/xerj' mcp
+  Cursor, Windsurf, Claude Desktop, Cline:  copy the "xerj" entry from .mcp.json; the root key is "mcpServers"
+  VS Code (.vscode/mcp.json):  root key "servers", not "mcpServers"; the entry needs "type": "stdio"

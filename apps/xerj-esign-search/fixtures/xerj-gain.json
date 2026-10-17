@@ -1,0 +1,21 @@
+{
+  "searches": 12,
+  "with_hits": 12,
+  "zero_hit": 0,
+  "hit_rate": 100.0,
+  "took_ms": {
+    "p50": 2,
+    "p95": 2
+  },
+  "top_indices": [
+    {
+      "index": "esign-*",
+      "searches": 12,
+      "with_hits": 12
+    }
+  ],
+  "excluded_machine_searches": {
+    "counting_probes": 4,
+    "catalog_sweeps": 5
+  }
+}

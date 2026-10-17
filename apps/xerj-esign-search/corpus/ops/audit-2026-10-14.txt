@@ -1,0 +1,16 @@
+# lumin-sign-audit  fixture capture 2026-10-14
+# noisy on purpose — grep for "reminder" hits almost every envelope
+
+2026-10-14T09:01:11Z INFO  audit envelope.viewed envelope_id=ENV-SOW-CONTOSO actor=priya.raman@lumin.example
+2026-10-14T09:14:02Z INFO  audit reminder.scheduled envelope_id=ENV-SOW-CONTOSO cadence=none reason=draft_not_sent
+2026-10-14T10:02:44Z INFO  audit envelope.created envelope_id=ENV-NDA-NORTHWIND actor=maya.chen@lumin.example
+2026-10-14T10:03:10Z INFO  audit envelope.sent envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example
+2026-10-14T11:12:07Z ERROR audit reminder.failed envelope_id=ENV-NDA-NORTHWIND to=jordan.hale@northwind.example smtp=550 mailbox unavailable provider=ses-us-west-2 ticket=SIGN-1888
+2026-10-14T11:12:08Z INFO  audit reminder.retry_suppressed envelope_id=ENV-NDA-NORTHWIND reason=hard_bounce
+2026-10-14T16:55:02Z INFO  audit envelope.created envelope_id=ENV-MSA-7F2C91 actor=ada.chen@lumin.example
+2026-10-14T16:58:01Z INFO  audit envelope.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example
+2026-10-14T17:05:11Z INFO  audit signer.completed envelope_id=ENV-MSA-7F2C91 signer=ada.chen@lumin.example
+2026-10-14T17:05:12Z INFO  audit envelope.status envelope_id=ENV-MSA-7F2C91 status=Awaiting_countersignature
+2026-10-14T18:00:00Z INFO  audit reminder.sent envelope_id=ENV-MSA-7F2C91 to=bob.alvarez@harbor-robotics.example result=delivered
+2026-10-14T18:22:19Z INFO  audit envelope.viewed envelope_id=ENV-MSA-7F2C91 actor=priya.raman@lumin.example
+2026-10-14T19:01:00Z INFO  audit reminder.heartbeat worker=reminder-1 scanned=3 delivered=1 failed=1 skipped_draft=1
