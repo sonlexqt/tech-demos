@@ -1,0 +1,13 @@
+Lumin Sign (fixture) — Harbor Legal desk
+
+Envelope ENV-MSA-7F2C91 · Harbor MSA v2.pdf
+Parties: Avery Chen (Harbor Legal, signer) · Jordan Hale (Northwind, countersigner)
+
+Flow the video depicts:
+1. Upload the MSA into the envelope.
+2. Place a signature field on the signature block.
+3. Avery Chen signs.
+4. Jordan Hale countersigns.
+5. The audit trail lists every event as an immutable record.
+
+This is a sticky-monorepo fixture for HyperFrames HTML-to-video. It is not the real Lumin Sign application.

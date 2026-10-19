@@ -34,15 +34,15 @@ What `apps/hyperframes-esign-video/README.md` must tell a reviewer:
 - Pass/fail checklist for fixture, videos, source, seek, determinism
 
 ## Acceptance criteria
-- [ ] `cd apps/hyperframes-esign-video && bun install && bun run dev` works
-- [ ] `PLAN.md`, `README.md` (run + manual test), and `HOW_IT_WORKS.md` (concepts + mermaid) are present
-- [ ] Fake Lumin Sign fixture covers upload MSA, place signature field, sign, countersign, audit trail — own fixtures only
-- [ ] ~30s launch video authored as HTML/CSS scenes via the product-launch-video flow and rendered with `npx hyperframes@0.8.174 render --skill=product-launch-video`
-- [ ] Bonus PR walkthrough MP4 for https://github.com/sonlexqt/tech-demos/pull/24 via `/pr-to-video` (live `gh` if available; otherwise a committed snapshot, documented honestly)
-- [ ] Bun app shows scene HTML next to MP4s, live seekable preview, and a determinism check with an honest result
-- [ ] Scene sources + reasonably small MP4s are committed; re-render is optional and documented; no keys
-- [ ] `tracking/seen-bookmarks.json` marks `gh-heygen-com-hyperframes` as proposed **and** built in this same PR
-- [ ] Demo PR includes at least one screenshot **and** at least one video of the running app (launch MP4 is additional)
+- [x] `cd apps/hyperframes-esign-video && bun install && bun run dev` works
+- [x] `PLAN.md`, `README.md` (run + manual test), and `HOW_IT_WORKS.md` (concepts + mermaid) are present
+- [x] Fake Lumin Sign fixture covers upload MSA, place signature field, sign, countersign, audit trail — own fixtures only
+- [x] ~30s launch video authored as HTML/CSS scenes via the product-launch-video flow and rendered with `npx hyperframes@0.8.174 render --skill=product-launch-video`
+- [x] Bonus PR walkthrough MP4 for https://github.com/sonlexqt/tech-demos/pull/24 via `/pr-to-video` (live `gh` if available; otherwise a committed snapshot, documented honestly)
+- [x] Bun app shows scene HTML next to MP4s, live seekable preview, and a determinism check with an honest result
+- [x] Scene sources + reasonably small MP4s are committed; re-render is optional and documented; no keys
+- [x] `tracking/seen-bookmarks.json` marks `gh-heygen-com-hyperframes` as proposed **and** built in this same PR
+- [x] Demo PR includes at least one screenshot **and** at least one video of the running app (launch MP4 is additional)
 
 ## Validation (PR)
 - Screenshot: App showing fixture + launch video + scene source (or seekable preview) in one frame

@@ -1,0 +1,259 @@
+{
+  "version": 1,
+  "historyId": "5c403952-bd8d-4957-824b-0915d0e48f3d",
+  "currentRevision": "50651ea6-5a01-41cc-8572-c3d05f72bc3b",
+  "pendingChanges": false,
+  "files": {
+    "AGENTS.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "BRIEF.md": {
+      "hash": "0f7606e3a66d44e8f50026d4737c70dc5cf6398d843ed3320be78e11bbefc757",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/0f/0f7606e3a66d44e8f50026d4737c70dc5cf6398d843ed3320be78e11bbefc757"
+    },
+    "CLAUDE.md": {
+      "hash": "1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/1d/1d4f0c8ca2507b94fd7c9df709fff01416adbd51a0f922b9d6ed2f40129147d5"
+    },
+    "HYPERFRAMES_VERSION.txt": {
+      "hash": "edb623ff9dee0b828280b23c8cd52939a677c4860e6dc15d15c726f6d669d80c",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/ed/edb623ff9dee0b828280b23c8cd52939a677c4860e6dc15d15c726f6d669d80c"
+    },
+    "SNAPSHOT.md": {
+      "hash": "c38440efbcdd1f5dfc5f3caa445bbb0176078e2956062ab9356e0de7decb2c03",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c3/c38440efbcdd1f5dfc5f3caa445bbb0176078e2956062ab9356e0de7decb2c03"
+    },
+    "STORYBOARD.md": {
+      "hash": "74a66c879537d0f8de58b6b594ed4e900f9f4c2eef92bde8c5e1ba1d24fb43ad",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/74/74a66c879537d0f8de58b6b594ed4e900f9f4c2eef92bde8c5e1ba1d24fb43ad"
+    },
+    "assets/cursoragent.png": {
+      "hash": "ed6a8a197406331194b3905affa16d4efaa411f37138deed20a679071a5d6829",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/ed/ed6a8a197406331194b3905affa16d4efaa411f37138deed20a679071a5d6829"
+    },
+    "assets/fonts/EBGaramond-400.woff2": {
+      "hash": "b63448e2680a0dbde70ebb2f3de78f6c515122835491f938e8a8595b46f29210",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/b6/b63448e2680a0dbde70ebb2f3de78f6c515122835491f938e8a8595b46f29210"
+    },
+    "assets/fonts/EBGaramond-700.woff2": {
+      "hash": "5d0f8a497a48fd2a3611d07acc844f65c9fbb35419eafa4e1295f5f0f95f86e4",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/5d/5d0f8a497a48fd2a3611d07acc844f65c9fbb35419eafa4e1295f5f0f95f86e4"
+    },
+    "assets/fonts/Inter-400.woff2": {
+      "hash": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/89/8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
+    },
+    "assets/fonts/Inter-700.woff2": {
+      "hash": "6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/6f/6f56409fd3d64bb85f7d070bce20749db2d66b6d63cec586cc22d1c761be2491"
+    },
+    "assets/fonts/JetBrainsMono-400.woff2": {
+      "hash": "14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/14/14425ba9c695763c1547f48a206b7aa60350a33ae23de09f0407877f3fcd89eb"
+    },
+    "assets/fonts/JetBrainsMono-700.woff2": {
+      "hash": "d0d4e818808f2a0ba39b2b09d1989366f63494e295f003c7ef436697378507e8",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/d0/d0d4e818808f2a0ba39b2b09d1989366f63494e295f003c7ef436697378507e8"
+    },
+    "assets/fonts/OFL-eb-garamond.txt": {
+      "hash": "f03c8eda63076cd52317dcd40aa04db8472d4cb592dfaafa385129dfdafc7f9c",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/f0/f03c8eda63076cd52317dcd40aa04db8472d4cb592dfaafa385129dfdafc7f9c"
+    },
+    "assets/fonts/OFL-inter.txt": {
+      "hash": "3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3b/3b0a5fca3d17942cde889069889dedbbbd075e9b599968c82a95f4d944e9b345"
+    },
+    "assets/fonts/OFL-jetbrains-mono.txt": {
+      "hash": "403581b69dac5cff4079205e01c6b467e56af449ecbd7247693ddb1baafa005b",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/40/403581b69dac5cff4079205e01c6b467e56af449ecbd7247693ddb1baafa005b"
+    },
+    "assets/sonlexqt.png": {
+      "hash": "2a322a260d496c61304adda42f8f609879089233152d603310a012d7a96e1b21",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/2a/2a322a260d496c61304adda42f8f609879089233152d603310a012d7a96e1b21"
+    },
+    "capture/diff.patch": {
+      "hash": "e07ba33b726afc70eb81daaa72f3857256314d74c790383082388cbb1aeb1a29",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/e0/e07ba33b726afc70eb81daaa72f3857256314d74c790383082388cbb1aeb1a29"
+    },
+    "capture/extracted/people.json": {
+      "hash": "c111e4555eb1e40b1025d4a66bf82df2f24e3c92ef77e8e462c52c730c77fb10",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c1/c111e4555eb1e40b1025d4a66bf82df2f24e3c92ef77e8e462c52c730c77fb10"
+    },
+    "capture/extracted/tokens.json": {
+      "hash": "b491cad0307a776c832998abd67090e9b996b81712798a52356d13a6e555c609",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/b4/b491cad0307a776c832998abd67090e9b996b81712798a52356d13a6e555c609"
+    },
+    "capture/extracted/visible-text.txt": {
+      "hash": "84819a8853943484213f94efd0e1b8cc76ea158f18837171054718c0a5c8a2bf",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/84/84819a8853943484213f94efd0e1b8cc76ea158f18837171054718c0a5c8a2bf"
+    },
+    "capture/pr.json": {
+      "hash": "b1d2d052017cf257f0e51f32657c164a1b807334b647f94ebd0031874bed2852",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/b1/b1d2d052017cf257f0e51f32657c164a1b807334b647f94ebd0031874bed2852"
+    },
+    "compositions/frames/01-hook.html": {
+      "hash": "a77eb0d484f23d9da82274e52d1d261954d1401e691c7c49959fdf33bbd5d7ba",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/a7/a77eb0d484f23d9da82274e52d1d261954d1401e691c7c49959fdf33bbd5d7ba"
+    },
+    "compositions/frames/02-change.html": {
+      "hash": "99cba37cf08c484fcf83708c9ed14fa69bbde1e58bb48f06a1eed708b87fac95",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/99/99cba37cf08c484fcf83708c9ed14fa69bbde1e58bb48f06a1eed708b87fac95"
+    },
+    "compositions/frames/03-diff.html": {
+      "hash": "dbf935e77f7c828c2d4195b78a63df7f021674b22b1c21ce2b523006ebf9e1b2",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/db/dbf935e77f7c828c2d4195b78a63df7f021674b22b1c21ce2b523006ebf9e1b2"
+    },
+    "compositions/frames/04-impact.html": {
+      "hash": "c9ab1fc9289ca081077c70248fefa7055dd3701f575ccc5d8ec6aef25cc79051",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c9/c9ab1fc9289ca081077c70248fefa7055dd3701f575ccc5d8ec6aef25cc79051"
+    },
+    "compositions/frames/05-credits.html": {
+      "hash": "4c21af04b5e9fb91b66186f6aede9d4f75f071394766c86306124d9e861dafbf",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/4c/4c21af04b5e9fb91b66186f6aede9d4f75f071394766c86306124d9e861dafbf"
+    },
+    "frame.md": {
+      "hash": "6a67c7b7ff3c016dcda9b5929bbe3d92c8e01e0ee69eb86bfea92df455da966d",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/6a/6a67c7b7ff3c016dcda9b5929bbe3d92c8e01e0ee69eb86bfea92df455da966d"
+    },
+    "hyperframes.json": {
+      "hash": "c29edfa52a9369eada335242d6bebff0ca990bb9834753f5e9f22720f7d979bb",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c2/c29edfa52a9369eada335242d6bebff0ca990bb9834753f5e9f22720f7d979bb"
+    },
+    "index.html": {
+      "hash": "3ba600afce2ed93d9646af52c1ea099111d92d66052fdede279779e137c6aa58",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3b/3ba600afce2ed93d9646af52c1ea099111d92d66052fdede279779e137c6aa58"
+    },
+    "meta.json": {
+      "hash": "bb36ae8d139d3c048e722d61ff9a75413de8254447bc1653e0e19db5f99b9882",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/bb/bb36ae8d139d3c048e722d61ff9a75413de8254447bc1653e0e19db5f99b9882"
+    },
+    "package.json": {
+      "hash": "c896df2e21dfbcc7a23029f60a6d20d9eba3443a34172f3dde017b1ee691d8eb",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c8/c896df2e21dfbcc7a23029f60a6d20d9eba3443a34172f3dde017b1ee691d8eb"
+    },
+    "vendor-gsap.min.js": {
+      "hash": "c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280",
+      "content": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c1/c174bfce53a729418d57a8ad8625e7247c793a22fef8e2851e3cfa3de9cd8280"
+    }
+  },
+  "revisions": {
+    "d955b0a4-1602-45b8-a257-adac55055e12": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792393057536,
+      "endedAt": 1792393057546,
+      "files": {
+        "compositions/frames/01-hook.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/84/84c0a851175f71a968564f602b6d49c0c6bc9ead8e895061baa2895fd7bee1c9",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/e0/e099c9f894504ffab816fabe3b1d9ac12f42279c45fba7783efb0ee8c9eb64f1"
+        },
+        "compositions/frames/02-change.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/5a/5ad7b551ccae097d4bc2aa34b681bd677c5a6e476c5db2d5b75f29e8fbd04176",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3f/3f032332433731117cc1ecc7f21abccd17d724f773719bd2579a1f5eb5e65a20"
+        },
+        "compositions/frames/03-diff.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/e1/e1e1fd5aa28e5081a26e4876694dc0baaba4304e3f313f313f95d73486ae47a4",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/d7/d78c908d06421676ffd20957654c8528703b7d535a64f23eb17e8fc38d01a5dd"
+        },
+        "compositions/frames/04-impact.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/ac/acbf99555f17da988139a430d20d74e52f45d7ffedc03b07d2f1de208af85209",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/51/5154b5f65f97d9b566d740371022a4d82b114c61aacd135c5aa7e58a55f5f35e"
+        },
+        "compositions/frames/05-credits.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/9f/9f934e5b5c2ccc8c808133d46539d0ef31e632b7fc3762bb7c93688f16aee48c",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3b/3bb09c6d401986cf240e9afad1c75224a06b79ab9e7d9c9392bb97773f1f7f3f"
+        }
+      }
+    },
+    "50651ea6-5a01-41cc-8572-c3d05f72bc3b": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792393165394,
+      "endedAt": 1792393165406,
+      "files": {
+        "compositions/frames/01-hook.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/e0/e099c9f894504ffab816fabe3b1d9ac12f42279c45fba7783efb0ee8c9eb64f1",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/a7/a77eb0d484f23d9da82274e52d1d261954d1401e691c7c49959fdf33bbd5d7ba"
+        },
+        "compositions/frames/02-change.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3f/3f032332433731117cc1ecc7f21abccd17d724f773719bd2579a1f5eb5e65a20",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/99/99cba37cf08c484fcf83708c9ed14fa69bbde1e58bb48f06a1eed708b87fac95"
+        },
+        "compositions/frames/03-diff.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/d7/d78c908d06421676ffd20957654c8528703b7d535a64f23eb17e8fc38d01a5dd",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/db/dbf935e77f7c828c2d4195b78a63df7f021674b22b1c21ce2b523006ebf9e1b2"
+        },
+        "compositions/frames/04-impact.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/51/5154b5f65f97d9b566d740371022a4d82b114c61aacd135c5aa7e58a55f5f35e",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/c9/c9ab1fc9289ca081077c70248fefa7055dd3701f575ccc5d8ec6aef25cc79051"
+        },
+        "compositions/frames/05-credits.html": {
+          "before": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/3b/3bb09c6d401986cf240e9afad1c75224a06b79ab9e7d9c9392bb97773f1f7f3f",
+          "after": "/home/ubuntu/.cache/hyperframes/history/5c403952-bd8d-4957-824b-0915d0e48f3d/blobs/4c/4c21af04b5e9fb91b66186f6aede9d4f75f071394766c86306124d9e861dafbf"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": {
+      "revision": null,
+      "id": "4ab234a8-07d3-493a-9952-105c477b8663"
+    },
+    "revisions": {},
+    "unversioned": [
+      {
+        "id": "4ab234a8-07d3-493a-9952-105c477b8663",
+        "scope": "project",
+        "report": "/workspace/apps/hyperframes-esign-video/videos/pr-24-walkthrough/.hyperframes/artifacts/checks/4ab234a8-07d3-493a-9952-105c477b8663.json",
+        "metadata": {
+          "ok": true,
+          "browserSkipped": false,
+          "options": {
+            "samples": 9,
+            "atTransitions": false,
+            "maxIssues": 80,
+            "collapseStatic": true,
+            "tolerance": 2,
+            "timeout": 3000,
+            "contrast": true,
+            "strict": false,
+            "snapshots": false,
+            "browserGpuMode": "auto"
+          }
+        },
+        "createdAt": 1792393005213,
+        "contentHash": "0c118f7194fcc50a9d976857d1ff945f6af0f768c910d62056e1c3d3d4eefb41",
+        "revision": null,
+        "inputFingerprint": "4036cb5b51873a38de247cead6ea880bccdbbad72c616f45935ce27d797f130c",
+        "inputScope": "local-project-files",
+        "attribution": "unversioned"
+      }
+    ]
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "64f469ff-6d68-4979-b09c-68b585347ae0",
+      "completedAt": 1792393190575,
+      "output": "/workspace/apps/hyperframes-esign-video/.determinism-tmp/pr-24-walkthrough-rerender.mp4",
+      "status": "completed",
+      "revision": "50651ea6-5a01-41cc-8572-c3d05f72bc3b"
+    },
+    "retainedRevisions": [
+      "50651ea6-5a01-41cc-8572-c3d05f72bc3b",
+      "d955b0a4-1602-45b8-a257-adac55055e12"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

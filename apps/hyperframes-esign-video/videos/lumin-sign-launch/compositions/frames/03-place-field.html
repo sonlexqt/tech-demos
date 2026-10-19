@@ -1,0 +1,127 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-400.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-700.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, ui-sans-serif, sans-serif;
+      color: #111111;
+      overflow: hidden;
+    }
+    #place-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    #place-content {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      padding: 48px 64px 0;
+    }
+    #place-kicker {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #place-h {
+      margin: 10px 0 24px;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    #place-page {
+      max-width: 1152px;
+      min-height: 360px;
+      background: #ffffff;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+      padding: 28px 32px;
+      box-sizing: border-box;
+    }
+    #place-doc {
+      color: #6b6b6b;
+      font-size: 15px;
+      line-height: 1.55;
+      max-width: 720px;
+    }
+    #place-block {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1.5px dashed rgba(30, 43, 250, 0.25);
+    }
+    #place-block-label {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9a9a9a;
+      font-weight: 700;
+    }
+    #place-field {
+      margin-top: 12px;
+      width: 360px;
+      height: 88px;
+      border: 2px solid #1e2bfa;
+      border-radius: 10px;
+      background: rgba(30, 43, 250, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+    #place-field-name {
+      font-weight: 700;
+      color: #1e2bfa;
+      font-size: 18px;
+    }
+    #place-field-role {
+      font-size: 13px;
+      color: #6b6b6b;
+      margin-top: 4px;
+    }
+  </style>
+  <div id="root" data-composition-id="03-place-field" data-width="1280" data-height="720" data-duration="5">
+    <div id="place-ground" class="clip" data-start="0" data-duration="5" data-track-index="0"></div>
+    <div id="place-content" class="clip" data-start="0" data-duration="5" data-track-index="1">
+      <div id="place-kicker">Step 02 · Fields</div>
+      <h1 id="place-h">Place the signature field</h1>
+      <div id="place-page">
+        <div id="place-doc">
+          Harbor Legal / Northwind MSA v2 · page 12 of 24. IN WITNESS WHEREOF the parties have
+          executed this Agreement as of the Effective Date.
+        </div>
+        <div id="place-block">
+          <div id="place-block-label">Signature block</div>
+          <div id="place-field">
+            <div id="place-field-name">Avery Chen</div>
+            <div id="place-field-role">Harbor Legal · Signer</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#place-kicker", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+    tl.fromTo("#place-h", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.14);
+    tl.fromTo("#place-page", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.28);
+    tl.fromTo("#place-field", { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)" }, 1.25);
+    tl.fromTo("#place-field-name", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.15);
+    tl.fromTo("#place-field-role", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 3.35);
+    window.__timelines["03-place-field"] = tl;
+  </script>
+</template>

@@ -1,0 +1,67 @@
+{
+  "hyperframes": "0.8.174",
+  "createdAt": "2026-10-19T06:59:31.781Z",
+  "notes": [
+    "Container SHA-256 often differs across encodes even when pixels match (MP4 metadata, encoder timestamps).",
+    "Frame PNG hashes at fixed timestamps are the visual check.",
+    "Re-render ran in this environment with hyperframes@0.8.174 --fps 24 --crf 28 --workers 1."
+  ],
+  "videos": [
+    {
+      "id": "lumin-sign-launch",
+      "committedPath": "public/renders/lumin-sign-launch.mp4",
+      "committedSha256": "3147223e9dc1dba64b006e0ad6d6cb0e1f9dca403c5e37b31a286feed2bcd816",
+      "rerenderPath": ".determinism-tmp/lumin-sign-launch-rerender.mp4",
+      "rerenderSha256": "a40bc2087760601a676f6fc1d15fe7ec57f6906c27f377043d3cc6b6454f78ff",
+      "containerMatch": false,
+      "frames": [
+        {
+          "timeSec": 1,
+          "committedSha256": "38428a0ddb8d849533f29e4a5c89396bff378c76b441d210abc599416ec1e3dc",
+          "rerenderSha256": "38428a0ddb8d849533f29e4a5c89396bff378c76b441d210abc599416ec1e3dc",
+          "match": true
+        },
+        {
+          "timeSec": 8,
+          "committedSha256": "64b38f6df78db4106f3eb7971c8913145dac9a1a61c16fc11303c71ac21dbfd3",
+          "rerenderSha256": "64b38f6df78db4106f3eb7971c8913145dac9a1a61c16fc11303c71ac21dbfd3",
+          "match": true
+        },
+        {
+          "timeSec": 16,
+          "committedSha256": "ff723a8bf04d6eefce89229b8a453f1b6c6642af952b31cf257edd17aa196fd1",
+          "rerenderSha256": "ff723a8bf04d6eefce89229b8a453f1b6c6642af952b31cf257edd17aa196fd1",
+          "match": true
+        },
+        {
+          "timeSec": 24,
+          "committedSha256": "e64a38a62024e0ec5c7a4c6b519b121f0240d29918bf6b66e18b58f32a92926d",
+          "rerenderSha256": "e64a38a62024e0ec5c7a4c6b519b121f0240d29918bf6b66e18b58f32a92926d",
+          "match": true
+        }
+      ]
+    },
+    {
+      "id": "pr-24-walkthrough",
+      "committedPath": "public/renders/pr-24-walkthrough.mp4",
+      "committedSha256": "1a34523a5d761577199463f281964be00ba4db07033270ed2927b5ab20539e82",
+      "rerenderPath": ".determinism-tmp/pr-24-walkthrough-rerender.mp4",
+      "rerenderSha256": "1a34523a5d761577199463f281964be00ba4db07033270ed2927b5ab20539e82",
+      "containerMatch": true,
+      "frames": [
+        {
+          "timeSec": 1,
+          "committedSha256": "abaa12d9260e6f3279297326ae73cf7bf3c75f753817df2e712e456b3e3ec050",
+          "rerenderSha256": "abaa12d9260e6f3279297326ae73cf7bf3c75f753817df2e712e456b3e3ec050",
+          "match": true
+        },
+        {
+          "timeSec": 8,
+          "committedSha256": "ab34688abe56b683ebd9acb057b4e2ba50dac6e40f32dc2e35e37ed94aa574df",
+          "rerenderSha256": "ab34688abe56b683ebd9acb057b4e2ba50dac6e40f32dc2e35e37ed94aa574df",
+          "match": true
+        }
+      ]
+    }
+  ]
+}

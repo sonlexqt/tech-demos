@@ -1,0 +1,155 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-400.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-700.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, ui-sans-serif, sans-serif;
+      color: #111111;
+      overflow: hidden;
+    }
+    #upload-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    #upload-content {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      padding: 48px 64px 0;
+    }
+    #upload-kicker {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #upload-h {
+      margin: 10px 0 28px;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    #upload-desk {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr;
+      gap: 24px;
+      max-width: 1152px;
+    }
+    #upload-drop,
+    #upload-meta {
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 14px;
+    }
+    #upload-drop {
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+    }
+    #upload-plus {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #1e2bfa;
+      color: #fdfae7;
+      font-size: 32px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #upload-hint {
+      color: #6b6b6b;
+      font-size: 16px;
+    }
+    #upload-file {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: #ffffff;
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      font-weight: 700;
+      color: #1e2bfa;
+    }
+    #upload-file-ico {
+      display: block;
+      width: 12px;
+      height: 16px;
+      border-radius: 2px;
+      background: #1e2bfa;
+    }
+    #upload-meta {
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .upload-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 16px;
+    }
+    .upload-k {
+      color: #6b6b6b;
+    }
+    #upload-status {
+      align-self: flex-start;
+      margin-top: auto;
+      padding: 8px 14px;
+      border-radius: 100px;
+      background: rgba(5, 150, 105, 0.12);
+      color: #047351;
+      font-weight: 700;
+      font-size: 14px;
+    }
+  </style>
+  <div id="root" data-composition-id="02-upload" data-width="1280" data-height="720" data-duration="5">
+    <div id="upload-ground" class="clip" data-start="0" data-duration="5" data-track-index="0"></div>
+    <div id="upload-content" class="clip" data-start="0" data-duration="5" data-track-index="1">
+      <div id="upload-kicker">Step 01 · Envelope</div>
+      <h1 id="upload-h">Upload the MSA</h1>
+      <div id="upload-desk">
+        <div id="upload-drop">
+          <div id="upload-plus">+</div>
+          <div id="upload-hint">Drop a document on the envelope</div>
+          <div id="upload-file"><span id="upload-file-ico"></span>Harbor MSA v2.pdf</div>
+        </div>
+        <div id="upload-meta">
+          <div class="upload-row"><span class="upload-k">Envelope</span><span>ENV-MSA-7F2C91</span></div>
+          <div class="upload-row"><span class="upload-k">Pages</span><span>24</span></div>
+          <div class="upload-row"><span class="upload-k">Sender</span><span>Harbor Legal</span></div>
+          <div id="upload-status">Uploaded</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#upload-kicker", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.05);
+    tl.fromTo("#upload-h", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+    tl.fromTo("#upload-drop", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.28);
+    tl.fromTo("#upload-meta", { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.4);
+    tl.fromTo("#upload-file", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 1.35);
+    tl.fromTo("#upload-status", { opacity: 0, scale: 0.86 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 3.05);
+    window.__timelines["02-upload"] = tl;
+  </script>
+</template>

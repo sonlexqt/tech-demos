@@ -1,0 +1,37 @@
+{
+  "authorLogin": "sonlexqt",
+  "reviewDecision": null,
+  "mergedBy": null,
+  "botsFiltered": [
+    "coderabbitai"
+  ],
+  "people": [
+    {
+      "login": "sonlexqt",
+      "name": "Son Le",
+      "roles": [
+        "author",
+        "committer"
+      ],
+      "commitCount": 1,
+      "reviewState": null,
+      "association": null,
+      "avatarUrl": "https://github.com/sonlexqt.png?size=200",
+      "avatarFile": "assets/sonlexqt.png",
+      "avatarFetched": true
+    },
+    {
+      "login": "cursoragent",
+      "name": "Cursor Agent",
+      "roles": [
+        "committer"
+      ],
+      "commitCount": 1,
+      "reviewState": null,
+      "association": null,
+      "avatarUrl": "https://github.com/cursoragent.png?size=200",
+      "avatarFile": "assets/cursoragent.png",
+      "avatarFetched": true
+    }
+  ]
+}

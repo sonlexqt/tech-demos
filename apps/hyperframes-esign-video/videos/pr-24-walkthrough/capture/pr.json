@@ -1,0 +1,285 @@
+{
+  "additions": 5519,
+  "assignees": [],
+  "author": {
+    "id": "MDQ6VXNlcjczNjA2Nzk=",
+    "is_bot": false,
+    "login": "sonlexqt",
+    "name": "Son Le"
+  },
+  "baseRefName": "main",
+  "body": "<!-- CURSOR_AGENT_PR_BODY_BEGIN -->\nLumin Sign–framed desk for [XERJ](https://github.com/xerj-org/xerj) (Apache-2.0). A messy envelope corpus is asked the same questions two ways: **grep** vs **XERJ ranked passages**, with a ground-truth answer key and measured byte/token counts.\n\n## What reviewers get\n- `apps/xerj-esign-search/` — `bun install && bun run dev` (offline fixtures, no binary, no keys)\n- Six canned questions: countersign block, parties, expiry, failed reminder, MSA v1 vs v2, and the PageIndex-style Acme liability cap\n- Side-by-side hits + correctness pills + file-bytes vs `_passage` bytes (tokens = bytes÷4, labeled estimates)\n- Real captured `xerj autoindex` / `POST /esign-*/_search` + `_passage` / `xerj gain` (v1.0.0-rc.96). `xerj gain` reports counted searches, hit rate, and latency — it does **not** print a dollar savings figure on this build\n- Honest CLI note: `xerj search` is the code/`defs` client and 400s on this docs corpus; the UI uses the documented ES `_search` + `_passage` path\n- Live re-index/re-query is optional (`XERJ_LIVE=1`); keys never committed\n- `PLAN.md`, `README.md` (run + manual test), `HOW_IT_WORKS.md` (indexing, ranking, MCP wiring, mermaid)\n- Tracking: `gh-xerj-org-xerj` (https://github.com/xerj-org/xerj, GitHub trending) marked **proposed and built** in the same PR\n\n## Honest findings from the capture\n- Countersign: XERJ ranks `ENV-MSA-7F2C91-countersign.pdf` page 3 first (7.4× fewer payload bytes than opening grep’s matching files)\n- Reminder failed: XERJ ranks `ENV-NDA-NORTHWIND` first\n- Liability cap (same long-MSA style as `apps/pageindex-contract-qa` / PR #12, **not modified**): Harbor §8 outranks Acme 10.2.1 because both say “cap”. PageIndex would walk the TOC to 10.2.1. That ranking is real, not gamed.\n- XERJ caveat (theirs): wins on private/niche/post-cutoff docs; neutral-to-harmful on memorized public libraries\n\n## Validation\nHeaded Chrome on `http://127.0.0.1:5173/`. Fixture badge. All six chips. Needles-found pills. Gain panel (12 searches, 100% hit rate, p50 2ms).\n\n[Countersign question: grep lines vs XERJ page-3 passage, Fixture badge, 7.4× byte ratio](https://cursor.com/agents/bc-68516293-42b2-5ad3-857e-1c04d02e82bb/artifacts?path=%2Fopt%2Fcursor%2Fartifacts%2Fscreenshots%2Fcountersign_side_by_side.png)\n\n[Reminder-failed question: Northwind 550 is the XERJ top hit](https://cursor.com/agents/bc-68516293-42b2-5ad3-857e-1c04d02e82bb/artifacts?path=%2Fopt%2Fcursor%2Fartifacts%2Fscreenshots%2Freminder_failed_side_by_side.png)\n\n[xerj_esign_grep_vs_passages_walkthrough.mp4](https://cursor.com/agents/bc-68516293-42b2-5ad3-857e-1c04d02e82bb/artifacts?path=%2Fopt%2Fcursor%2Fartifacts%2Fxerj_esign_grep_vs_passages_walkthrough.mp4)\n\n\n<sub>To show artifacts inline, <a href=\"https://cursor.com/dashboard/cloud-agents#team-pull-requests\">enable</a> in settings.</sub>\n<!-- CURSOR_AGENT_PR_BODY_END -->\n\n<div><a href=\"https://cursor.com/agents/bc-68516293-42b2-5ad3-857e-1c04d02e82bb?cursor_ref=pr_footer&cursor_cta=open_in_web\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-web-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-web-light.png\"><img alt=\"Open in Web\" width=\"114\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-web-dark.png\"></picture></a>&nbsp;<a href=\"https://cursor.com/background-agent?bcId=bc-68516293-42b2-5ad3-857e-1c04d02e82bb&cursor_ref=pr_footer&cursor_cta=open_in_cursor\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://cursor.com/assets/images/open-in-cursor-light.png\"><img alt=\"Open in Cursor\" width=\"131\" height=\"28\" src=\"https://cursor.com/assets/images/open-in-cursor-dark.png\"></picture></a>&nbsp;</div>\n\n",
+  "changedFiles": 36,
+  "comments": [
+    {
+      "id": "IC_kwDOUbVH_M8AAAABczLtvg",
+      "author": {
+        "login": "coderabbitai"
+      },
+      "authorAssociation": "NONE",
+      "body": "<!-- This is an auto-generated comment: summarize by coderabbit.ai -->\n<!-- This is an auto-generated comment: skip review by coderabbit.ai -->\n\n> [!IMPORTANT]\n> ## Draft PR not reviewed\n> \n> Draft PRs are not automatically reviewed by default.\n> \n> - [ ] <!-- {\"checkboxId\":\"e9bb8d72-00e8-4f67-9cb2-caf3b22574fe\"} --> Trigger a manual review\n> \n> To automatically review draft PRs, update your CodeRabbit configuration:\n> \n> ```yaml\n> reviews:\n>   auto_review:\n>     drafts: true\n> ```\n\n<!-- end of auto-generated comment: skip review by coderabbit.ai -->\n\n<!-- autopilot:start -->\n- [ ] <!-- {\"checkboxId\":\"2708ad07-9f24-4260-9c11-7dc76a49f2e3\"} --> <strong title=\"Keep fixing CodeRabbit findings and required CI, and resolving merge conflicts\">Autofix</strong> · Keep fixing CodeRabbit findings and required CI, and resolving merge conflicts\n<!-- autopilot:end -->\n<!-- tips_start -->\n\n\n\n\n\n\n<sub>Comment `@coderabbitai help` to get the list of available commands.</sub>\n\n<!-- tips_end -->",
+      "createdAt": "2026-10-17T01:00:23Z",
+      "includesCreatedEdit": false,
+      "isMinimized": false,
+      "minimizedReason": "",
+      "reactionGroups": [],
+      "url": "https://github.com/sonlexqt/tech-demos/pull/24#issuecomment-6227684798",
+      "viewerDidAuthor": false
+    }
+  ],
+  "commits": [
+    {
+      "authoredDate": "2026-10-17T01:00:00Z",
+      "authors": [
+        {
+          "email": "cursoragent@cursor.com",
+          "id": "U_kgDOC972lw",
+          "login": "cursoragent",
+          "name": "Cursor Agent"
+        },
+        {
+          "email": "sonlexqt@gmail.com",
+          "id": "MDQ6VXNlcjczNjA2Nzk=",
+          "login": "sonlexqt",
+          "name": "Son Le"
+        }
+      ],
+      "committedDate": "2026-10-17T01:00:00Z",
+      "messageBody": "Offline Lumin Sign desk at apps/xerj-esign-search compares grep\nretrieval with captured XERJ _search + _passage hits over a mixed\nMSA/countersign/notes/logs corpus. Real xerj autoindex/gain output\nis committed; live re-query is env-gated. Tracking marks\ngh-xerj-org-xerj proposed and built.\n\nCo-authored-by: Son Le <sonlexqt@gmail.com>",
+      "messageHeadline": "Add XERJ e-sign corpus search demo (grep vs ranked passages)",
+      "oid": "844cb9827ffec80dd62d2efe4a6dd669bce6645d"
+    }
+  ],
+  "deletions": 0,
+  "files": [
+    {
+      "additions": 7,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/.env.example",
+      "status": "added"
+    },
+    {
+      "additions": 4,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/.gitignore",
+      "status": "added"
+    },
+    {
+      "additions": 128,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/HOW_IT_WORKS.md",
+      "status": "added"
+    },
+    {
+      "additions": 65,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/PLAN.md",
+      "status": "added"
+    },
+    {
+      "additions": 91,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/README.md",
+      "status": "added"
+    },
+    {
+      "additions": 22,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/config/reminder-cadence.toml",
+      "status": "added"
+    },
+    {
+      "additions": 0,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/contracts/ENV-MSA-7F2C91-countersign.pdf",
+      "status": "added"
+    },
+    {
+      "additions": 0,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/contracts/msa-harbor-v1.pdf",
+      "status": "added"
+    },
+    {
+      "additions": 0,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/contracts/msa-harbor-v2.pdf",
+      "status": "added"
+    },
+    {
+      "additions": 28,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/notes/env-msa-7f2c91.md",
+      "status": "added"
+    },
+    {
+      "additions": 17,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/notes/env-nda-northwind.md",
+      "status": "added"
+    },
+    {
+      "additions": 8,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/notes/env-sow-contoso.md",
+      "status": "added"
+    },
+    {
+      "additions": 16,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/ops/audit-2026-10-14.txt",
+      "status": "added"
+    },
+    {
+      "additions": 5,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/ops/reminder-worker.txt",
+      "status": "added"
+    },
+    {
+      "additions": 6,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/ops/webhooks-2026-10-14.jsonl",
+      "status": "added"
+    },
+    {
+      "additions": 146,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/corpus/pageindex-style/lumin-acme-msa.md",
+      "status": "added"
+    },
+    {
+      "additions": 32,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/answers.json",
+      "status": "added"
+    },
+    {
+      "additions": 31,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/capture-meta.json",
+      "status": "added"
+    },
+    {
+      "additions": 1374,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/demo.json",
+      "status": "added"
+    },
+    {
+      "additions": 663,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/grep-results.json",
+      "status": "added"
+    },
+    {
+      "additions": 47,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/questions.json",
+      "status": "added"
+    },
+    {
+      "additions": 1051,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/xerj-es-passages.json",
+      "status": "added"
+    },
+    {
+      "additions": 21,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/xerj-gain.json",
+      "status": "added"
+    },
+    {
+      "additions": 15,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/xerj-gain.txt",
+      "status": "added"
+    },
+    {
+      "additions": 13,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/xerj-init-dry-run.txt",
+      "status": "added"
+    },
+    {
+      "additions": 128,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/fixtures/xerj-search.json",
+      "status": "added"
+    },
+    {
+      "additions": 13,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/package.json",
+      "status": "added"
+    },
+    {
+      "additions": 137,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/public/app.js",
+      "status": "added"
+    },
+    {
+      "additions": 87,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/public/index.html",
+      "status": "added"
+    },
+    {
+      "additions": 208,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/public/styles.css",
+      "status": "added"
+    },
+    {
+      "additions": 134,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/scripts/assemble_demo.py",
+      "status": "added"
+    },
+    {
+      "additions": 257,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/scripts/capture.py",
+      "status": "added"
+    },
+    {
+      "additions": 569,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/scripts/generate_corpus.py",
+      "status": "added"
+    },
+    {
+      "additions": 82,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/scripts/write_pdf.py",
+      "status": "added"
+    },
+    {
+      "additions": 100,
+      "deletions": 0,
+      "path": "apps/xerj-esign-search/src/server.ts",
+      "status": "added"
+    },
+    {
+      "additions": 14,
+      "deletions": 0,
+      "path": "tracking/seen-bookmarks.json",
+      "status": "modified"
+    }
+  ],
+  "headRefName": "cursor/xerj-esign-search-82bb",
+  "labels": [],
+  "latestReviews": [],
+  "mergedAt": null,
+  "mergedBy": null,
+  "number": 24,
+  "reviewDecision": "",
+  "reviews": [],
+  "state": "OPEN",
+  "title": "XERJ e-sign corpus search (grep vs ranked passages)",
+  "url": "https://github.com/sonlexqt/tech-demos/pull/24",
+  "shipped_version": null,
+  "version_source": null
+}
