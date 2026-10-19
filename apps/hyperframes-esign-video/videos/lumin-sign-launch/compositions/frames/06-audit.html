@@ -1,0 +1,108 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-400.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: "Inter";
+      src: url("assets/fonts/Inter-700.woff2") format("woff2");
+      font-weight: 700;
+      font-style: normal;
+    }
+    #root {
+      position: absolute;
+      inset: 0;
+      font-family: Inter, ui-sans-serif, sans-serif;
+      color: #111111;
+      overflow: hidden;
+    }
+    #audit-ground {
+      position: absolute;
+      inset: 0;
+      background: #fdfae7;
+    }
+    #audit-content {
+      position: absolute;
+      inset: 0;
+      box-sizing: border-box;
+      padding: 48px 64px 0;
+    }
+    #audit-kicker {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #1e2bfa;
+    }
+    #audit-h {
+      margin: 10px 0 20px;
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+    #audit-list {
+      max-width: 1152px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .audit-row {
+      display: grid;
+      grid-template-columns: 170px 1fr 220px;
+      gap: 16px;
+      align-items: center;
+      padding: 10px 16px;
+      background: rgba(30, 43, 250, 0.04);
+      border: 1.5px solid rgba(30, 43, 250, 0.2);
+      border-radius: 12px;
+      font-size: 15px;
+    }
+    .audit-t {
+      font-weight: 700;
+      color: #1e2bfa;
+      font-size: 13px;
+    }
+    .audit-who {
+      color: #6b6b6b;
+      text-align: right;
+      font-size: 13px;
+    }
+    #audit-end {
+      margin-top: 22px;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #1e2bfa;
+    }
+  </style>
+  <div id="root" data-composition-id="06-audit" data-width="1280" data-height="720" data-duration="5">
+    <div id="audit-ground" class="clip" data-start="0" data-duration="5" data-track-index="0"></div>
+    <div id="audit-content" class="clip" data-start="0" data-duration="5" data-track-index="1">
+      <div id="audit-kicker">Step 05 · Trail</div>
+      <h1 id="audit-h">Audit trail</h1>
+      <div id="audit-list">
+        <div class="audit-row" id="audit-r1"><span class="audit-t">09:02:11</span><span>MSA uploaded</span><span class="audit-who">Avery Chen</span></div>
+        <div class="audit-row" id="audit-r2"><span class="audit-t">09:06:44</span><span>Signature field placed · p.12</span><span class="audit-who">Avery Chen</span></div>
+        <div class="audit-row" id="audit-r3"><span class="audit-t">09:14:02</span><span>Signed</span><span class="audit-who">Avery Chen</span></div>
+        <div class="audit-row" id="audit-r4"><span class="audit-t">09:21:18</span><span>Countersigned</span><span class="audit-who">Jordan Hale</span></div>
+        <div class="audit-row" id="audit-r5"><span class="audit-t">09:21:19</span><span>Envelope complete</span><span class="audit-who">Lumin Sign</span></div>
+      </div>
+      <div id="audit-end">Immutable by default.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#audit-kicker", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+    tl.fromTo("#audit-h", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.14);
+    tl.fromTo("#audit-r1", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.9);
+    tl.fromTo("#audit-r2", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.25);
+    tl.fromTo("#audit-r3", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.6);
+    tl.fromTo("#audit-r4", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 1.95);
+    tl.fromTo("#audit-r5", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 2.3);
+    tl.fromTo("#audit-end", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 3.55);
+    window.__timelines["06-audit"] = tl;
+  </script>
+</template>

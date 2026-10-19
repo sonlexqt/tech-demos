@@ -1,0 +1,43 @@
+<template>
+  <div id="root" data-composition-id="04-impact" data-width="1280" data-height="720" data-duration="3">
+    <style>
+    @font-face { font-family: "EB Garamond"; src: url("assets/fonts/EBGaramond-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #141413; }
+    #imp-ground { position: absolute; inset: 0; background: #faf9f5; }
+    #imp-content { position: absolute; inset: 0; box-sizing: border-box; padding: 56px 72px 0; }
+    #imp-kicker {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #a5614a;
+    }
+    #imp-num {
+      margin-top: 8px;
+      font-family: "EB Garamond", ui-serif, serif;
+      font-size: 140px; line-height: 0.95; letter-spacing: -0.025em; color: #cc785c;
+    }
+    #imp-label {
+      margin-top: 8px; font-family: Inter, ui-sans-serif, sans-serif; font-size: 22px;
+    }
+    #imp-body {
+      margin-top: 22px; max-width: 820px;
+      font-family: Inter, ui-sans-serif, sans-serif; font-size: 18px; line-height: 1.45; opacity: 0.78;
+    }
+  </style>
+    <div id="imp-ground" class="clip" data-start="0" data-duration="3" data-track-index="0"></div>
+    <div id="imp-content" class="clip" data-start="0" data-duration="3" data-track-index="1">
+      <div id="imp-kicker">countersign question</div>
+      <div id="imp-num">7.4×</div>
+      <div id="imp-label">fewer payload bytes than opening grep’s files</div>
+      <div id="imp-body">XERJ ranks ENV-MSA-7F2C91-countersign.pdf page 3 first. That ranking is from the committed capture, not a restaged fixture.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#imp-kicker", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+    tl.fromTo("#imp-num", { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.18);
+    tl.fromTo("#imp-label", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.55);
+    tl.fromTo("#imp-body", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 1.15);
+    window.__timelines["04-impact"] = tl;
+  </script>
+</template>

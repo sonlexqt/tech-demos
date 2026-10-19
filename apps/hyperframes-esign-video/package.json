@@ -1,0 +1,17 @@
+{
+  "name": "hyperframes-esign-video",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "render": "bun scripts/render.ts",
+    "check:determinism": "bun scripts/check-determinism.ts"
+  },
+  "devDependencies": {
+    "typescript": "~5.7.2",
+    "vite": "^6.0.3"
+  }
+}

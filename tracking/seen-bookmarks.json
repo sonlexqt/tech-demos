@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "gh-heygen-com-hyperframes",
+      "title": "HyperFrames by HeyGen — HTML/CSS to deterministic MP4",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "date": "2026-10-19",
+      "notes": "GitHub trending; slug hyperframes-esign-video; Lumin Sign fixture + product-launch-video + pr-to-video"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "gh-heygen-com-hyperframes",
+      "title": "HyperFrames by HeyGen — HTML/CSS to deterministic MP4",
+      "url": "https://github.com/heygen-com/hyperframes",
+      "date": "2026-10-19",
+      "notes": "Built demo at apps/hyperframes-esign-video; HyperFrames 0.8.174; GitHub trending"
     }
   ]
 }

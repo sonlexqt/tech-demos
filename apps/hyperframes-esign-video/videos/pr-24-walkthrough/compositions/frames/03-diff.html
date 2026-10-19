@@ -1,0 +1,47 @@
+<template>
+  <div id="root" data-composition-id="03-diff" data-width="1280" data-height="720" data-duration="4">
+    <style>
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #faf9f5; }
+    #diff-ground { position: absolute; inset: 0; background: #181715; }
+    #diff-content { position: absolute; inset: 0; box-sizing: border-box; padding: 44px 56px 0; }
+    #diff-path {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px; letter-spacing: 0.04em; color: #e0a28c;
+    }
+    #diff-code {
+      margin-top: 18px; font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 16px; line-height: 1.55; white-space: pre; color: #efe9de;
+    }
+    .diff-add { color: #9ecea8; }
+    #diff-note {
+      margin-top: 18px; font-family: Inter, ui-sans-serif, sans-serif;
+      font-size: 14px; color: #efe9de; opacity: 0.7;
+    }
+  </style>
+    <div id="diff-ground" class="clip" data-start="0" data-duration="4" data-track-index="0"></div>
+    <div id="diff-content" class="clip" data-start="0" data-duration="4" data-track-index="1">
+      <div id="diff-path">apps/xerj-esign-search/public/app.js</div>
+      <pre id="diff-code"><span class="diff-add">+function renderHits(el, hits, kind) {</span>
+<span class="diff-add">+  el.innerHTML = hits.map((hit, i) => {</span>
+<span class="diff-add">+    const loc = kind === "grep"</span>
+<span class="diff-add">+      ? `line ${hit.line ?? "?"}`</span>
+<span class="diff-add">+      : [hit.page != null ? `page ${hit.page}` : null,</span>
+<span class="diff-add">+         hit.score != null ? `score ${Number(hit.score).toFixed(2)}` : null]</span>
+<span class="diff-add">+         .filter(Boolean).join(" · ");</span>
+<span class="diff-add">+</span>
+<span class="diff-add">+    return `&lt;li&gt;${escapeHtml(hitPath(hit))} · ${loc}&lt;/li&gt;`;</span>
+<span class="diff-add">+  }).join("");</span>
+<span class="diff-add">+}</span></pre>
+      <div id="diff-note">Hunk from capture/diff.patch — not invented.</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#diff-path", { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+    tl.fromTo("#diff-code", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, 0.35);
+    tl.fromTo("#diff-note", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 2.3);
+    window.__timelines["03-diff"] = tl;
+  </script>
+</template>

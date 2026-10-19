@@ -1,0 +1,61 @@
+<template>
+  <div id="root" data-composition-id="02-change" data-width="1280" data-height="720" data-duration="3">
+    <style>
+    @font-face { font-family: "EB Garamond"; src: url("assets/fonts/EBGaramond-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "Inter"; src: url("assets/fonts/Inter-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    @font-face { font-family: "JetBrains Mono"; src: url("assets/fonts/JetBrainsMono-400.woff2") format("woff2"); font-weight: 400; font-style: normal; }
+    #root { position: absolute; inset: 0; overflow: hidden; color: #141413; }
+    #chg-ground { position: absolute; inset: 0; background: #faf9f5; }
+    #chg-content { position: absolute; inset: 0; box-sizing: border-box; padding: 48px 64px 0; }
+    #chg-kicker {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: #a5614a;
+    }
+    #chg-h {
+      margin: 12px 0 24px;
+      font-family: "EB Garamond", ui-serif, serif;
+      font-size: 44px; font-weight: 400; letter-spacing: -0.022em;
+    }
+    #chg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1152px; }
+    .chg-card {
+      background: #efe9de; border: 1px solid rgba(20, 20, 19, 0.12);
+      border-radius: 6px; padding: 24px;
+      min-height: 250px; box-sizing: border-box;
+    }
+    .chg-label {
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: #985945;
+    }
+    .chg-body { margin-top: 16px; font-family: Inter, ui-sans-serif, sans-serif; font-size: 22px; line-height: 1.35; }
+    #chg-stat {
+      margin-top: 20px; font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 14px; color: #141413; opacity: 0.7;
+    }
+  </style>
+    <div id="chg-ground" class="clip" data-start="0" data-duration="3" data-track-index="0"></div>
+    <div id="chg-content" class="clip" data-start="0" data-duration="3" data-track-index="1">
+      <div id="chg-kicker">the change</div>
+      <h1 id="chg-h">One desk. Two arms.</h1>
+      <div id="chg-grid">
+        <div class="chg-card" id="chg-left">
+          <div class="chg-label">Grep</div>
+          <div class="chg-body">Open every file that matched a line.</div>
+        </div>
+        <div class="chg-card" id="chg-right">
+          <div class="chg-label">XERJ</div>
+          <div class="chg-body">Ranked `_passage` slices from `_search`.</div>
+        </div>
+      </div>
+      <div id="chg-stat">+5519 / −0 · 36 files · cursor/xerj-esign-search-82bb</div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#chg-kicker", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" }, 0.05);
+    tl.fromTo("#chg-h", { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.14);
+    tl.fromTo("#chg-left", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.35);
+    tl.fromTo("#chg-right", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.85);
+    tl.fromTo("#chg-stat", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 1.5);
+    window.__timelines["02-change"] = tl;
+  </script>
+</template>
