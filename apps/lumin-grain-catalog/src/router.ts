@@ -16,10 +16,16 @@ export function parsePath(pathname: string): Route {
 }
 
 export function startRouter(render: (route: Route) => void): void {
+  let firstPaint = true;
+
   const apply = (path: string) => {
     render(parsePath(path));
+    if (firstPaint) {
+      firstPaint = false;
+      return;
+    }
     const heading = document.querySelector<HTMLElement>("[data-focus-title]");
-    heading?.focus();
+    heading?.focus({ preventScroll: true });
   };
 
   document.addEventListener("click", (event) => {

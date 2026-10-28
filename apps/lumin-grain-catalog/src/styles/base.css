@@ -137,11 +137,6 @@ a:hover {
   outline: none;
 }
 
-[data-focus-title]:focus-visible {
-  outline: 1px solid var(--lumen);
-  outline-offset: 6px;
-}
-
 @media (max-width: 720px) {
   .site-foot {
     flex-direction: column;

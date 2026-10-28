@@ -43,6 +43,7 @@
   position: relative;
   background: var(--ink-raised);
   overflow: hidden;
+  border: 1px solid var(--hairline);
 }
 
 .card__link {

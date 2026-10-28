@@ -14,7 +14,7 @@ function makeNoiseDataUrl(): string {
   const image = ctx.createImageData(TILE, TILE);
   const { data } = image;
   for (let i = 0; i < data.length; i += 4) {
-    const value = 90 + Math.random() * 120;
+    const value = Math.random() > 0.5 ? 20 + Math.random() * 60 : 180 + Math.random() * 75;
     data[i] = value;
     data[i + 1] = value;
     data[i + 2] = value;
