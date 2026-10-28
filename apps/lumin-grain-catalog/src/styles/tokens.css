@@ -1,0 +1,25 @@
+:root {
+  --ink: #07080a;
+  --ink-raised: #101214;
+  --paper: #ebe6da;
+  --paper-dim: #b7b2a6;
+  --mute: #7d786e;
+  --lumen: #6fb6aa;
+  --lumen-deep: #2c5d56;
+  --ember: #c9a66b;
+  --hairline: rgba(235, 230, 218, 0.12);
+  --shadow: rgba(0, 0, 0, 0.45);
+
+  --sans: "Outfit", "Segoe UI", sans-serif;
+  --serif: "Cormorant Garamond", "Times New Roman", serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.75rem;
+  --space-4: 3rem;
+  --space-5: 6rem;
+
+  --content: 72rem;
+  --ease: cubic-bezier(0.76, 0, 0.18, 1);
+  --dur: 520ms;
+}
