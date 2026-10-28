@@ -1,0 +1,18 @@
+{
+  "language": "typescript",
+  "surface": "frontend",
+  "tsconfig": "tsconfig.json",
+  "routes": { "file": "src/routes.tsx" },
+  "roles": {
+    "global": [
+      "src/main.tsx",
+      "src/App.tsx",
+      "src/styles.css",
+      "package.json",
+      "vite.config.ts",
+      "tsconfig.json"
+    ],
+    "barrel": ["src/barrel/index.ts"],
+    "test": ["src/**/*.test.ts"]
+  }
+}

@@ -1,0 +1,63 @@
+# Envelope contract farol reads on the backend surface.
+# Scenario B renames Envelope.status → Envelope.envelopeStatus (breaking).
+
+enum EnvelopeStatus {
+  draft
+  awaiting_signature
+  completed
+  voided
+}
+
+enum PartyRole {
+  signer
+  countersigner
+}
+
+enum PartyStatus {
+  pending
+  signed
+  declined
+}
+
+type Party {
+  id: ID!
+  name: String!
+  email: String!
+  role: PartyRole!
+  status: PartyStatus!
+  signedAt: String
+}
+
+type AuditEvent {
+  id: ID!
+  at: String!
+  actor: String!
+  action: String!
+  detail: String!
+}
+
+type Envelope {
+  id: ID!
+  title: String!
+  documentKind: String!
+  envelopeStatus: EnvelopeStatus!
+  createdAt: String!
+  updatedAt: String!
+  parties: [Party!]!
+  body: [String!]!
+  audit: [AuditEvent!]!
+}
+
+type Query {
+  envelopes: [Envelope!]!
+  envelope(id: ID!): Envelope
+}
+
+input SignEnvelopeInput {
+  partyId: ID!
+  signatureName: String!
+}
+
+type Mutation {
+  signEnvelope(id: ID!, input: SignEnvelopeInput!): Envelope!
+}

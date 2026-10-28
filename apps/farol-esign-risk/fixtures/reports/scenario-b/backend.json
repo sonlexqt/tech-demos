@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 1,
+  "surface": "backend",
+  "tool": {
+    "name": "farol",
+    "version": "0.2.1"
+  },
+  "repo": null,
+  "pr": null,
+  "base": {
+    "ref": "baseline",
+    "sha": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac"
+  },
+  "mergeBase": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac",
+  "head": {
+    "ref": "HEAD",
+    "sha": "84219672adb405858f6667328126922c30291cda"
+  },
+  "analyzedAt": "2026-10-28T03:50:17.637Z",
+  "classification": "touches-existing",
+  "reasons": [
+    {
+      "code": "schema-not-additive",
+      "file": "server/schema.graphql",
+      "detail": "schema member Envelope.status was removed"
+    },
+    {
+      "code": "existing-file-modified",
+      "file": "server/serialize.ts",
+      "detail": "reached by 4 existing route(s): GET /api/envelopes via server/serialize.ts; GET /api/envelopes/:id via server/serialize.ts; POST /api/envelopes/:id/sign via server/serialize.ts; and 1 more"
+    },
+    {
+      "code": "existing-file-unreachable",
+      "file": "src/hooks/signatureStatus.ts",
+      "detail": "modified, and no route reaches it"
+    }
+  ],
+  "files": [
+    {
+      "path": "server/schema.graphql",
+      "status": "modified",
+      "role": "schema",
+      "additive": false,
+      "linesAdded": 1,
+      "linesRemoved": 1
+    },
+    {
+      "path": "server/serialize.ts",
+      "status": "modified",
+      "role": "source",
+      "linesAdded": 2,
+      "linesRemoved": 2
+    },
+    {
+      "path": "src/hooks/signatureStatus.ts",
+      "status": "modified",
+      "role": "source",
+      "linesAdded": 2,
+      "linesRemoved": 3
+    }
+  ],
+  "ignoredFiles": [],
+  "dependencies": {
+    "manifests": [],
+    "lockfiles": [],
+    "changes": [],
+    "summary": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "added": 0,
+      "removed": 0
+    }
+  },
+  "risk": {
+    "totalPages": 9,
+    "files": [
+      {
+        "path": "server/serialize.ts",
+        "change": "modified",
+        "level": "medium",
+        "directImporters": 1,
+        "transitiveDependents": 2,
+        "centrality": 0.074,
+        "pagesReached": 4,
+        "routesReached": 4,
+        "why": "used by 4 of 9 existing operations"
+      },
+      {
+        "path": "server/schema.graphql",
+        "change": "modified",
+        "level": "medium",
+        "directImporters": 0,
+        "transitiveDependents": 0,
+        "centrality": 0,
+        "pagesReached": 3,
+        "routesReached": 3,
+        "why": "used by 3 of 9 existing operations"
+      },
+      {
+        "path": "src/hooks/signatureStatus.ts",
+        "change": "modified",
+        "level": "low",
+        "directImporters": 1,
+        "transitiveDependents": 6,
+        "centrality": 0.222,
+        "pagesReached": 0,
+        "routesReached": 0,
+        "why": "6 file(s) depend on it, no operation reaches it"
+      }
+    ],
+    "summary": {
+      "high": 0,
+      "medium": 2,
+      "low": 1
+    }
+  },
+  "routes": {
+    "added": [],
+    "affected": [
+      {
+        "key": "GET /api/envelopes",
+        "path": "GET /api/envelopes",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/serialize.ts",
+            "chain": [
+              "server/serialize.ts"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "GET /api/envelopes/:id",
+        "path": "GET /api/envelopes/:id",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/serialize.ts",
+            "chain": [
+              "server/serialize.ts"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Mutation.signEnvelope",
+        "path": "Mutation.signEnvelope",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/schema.graphql",
+            "chain": [
+              "server/schema.graphql"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "POST /api/envelopes/:id/sign",
+        "path": "POST /api/envelopes/:id/sign",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/serialize.ts",
+            "chain": [
+              "server/serialize.ts"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "POST /api/reset",
+        "path": "POST /api/reset",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/serialize.ts",
+            "chain": [
+              "server/serialize.ts"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Query.envelope",
+        "path": "Query.envelope",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/schema.graphql",
+            "chain": [
+              "server/schema.graphql"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "Query.envelopes",
+        "path": "Query.envelopes",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "server/schema.graphql",
+            "chain": [
+              "server/schema.graphql"
+            ]
+          }
+        ]
+      }
+    ],
+    "disconnectedNewFiles": []
+  },
+  "signals": {
+    "coverage": {
+      "status": "not-provided",
+      "message": "no coverage report given (--coverage or signals.coverage)",
+      "files": [],
+      "total": null,
+      "ignoredFiles": []
+    },
+    "lint": {
+      "status": "not-provided",
+      "message": "no ESLint report given (--eslint or signals.eslint)",
+      "changedLines": null,
+      "otherLines": null,
+      "findings": [],
+      "omittedFindings": 0
+    },
+    "suppressions": {
+      "status": "ok",
+      "items": []
+    },
+    "testsModified": {
+      "status": "ok",
+      "files": []
+    },
+    "security": {
+      "status": "ok",
+      "findings": [],
+      "summary": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      }
+    },
+    "vulnerabilities": {
+      "status": "not-provided",
+      "message": "no audit report given (--audit or signals.audit)",
+      "related": [],
+      "total": null
+    }
+  },
+  "diagnostics": {
+    "unresolvedImports": [],
+    "dynamicRoutes": [],
+    "parseErrors": [],
+    "timingsMs": {
+      "diff": 22,
+      "readTree": 9,
+      "program": 453,
+      "graph": 143,
+      "routes": 45,
+      "base": 27,
+      "classify": 2,
+      "signals": 5,
+      "diffs": 4
+    },
+    "error": null
+  },
+  "review": null,
+  "diffs": [
+    {
+      "path": "server/serialize.ts",
+      "hunks": [
+        {
+          "header": "@@ -6,7 +6,7 @@ export function toApiEnvelope(envelope: Envelope) {",
+          "oldStart": 6,
+          "newStart": 6,
+          "lines": [
+            "     id: envelope.id,",
+            "     title: envelope.title,",
+            "     documentKind: envelope.documentKind,",
+            "-    status: envelope.status,",
+            "+    envelopeStatus: envelope.status,",
+            "     createdAt: envelope.createdAt,",
+            "     updatedAt: envelope.updatedAt,",
+            "     parties: envelope.parties,"
+          ]
+        },
+        {
+          "header": "@@ -20,7 +20,7 @@ export function toApiSummary(summary: EnvelopeSummary) {",
+          "oldStart": 20,
+          "newStart": 20,
+          "lines": [
+            "     id: summary.id,",
+            "     title: summary.title,",
+            "     documentKind: summary.documentKind,",
+            "-    status: summary.status,",
+            "+    envelopeStatus: summary.status,",
+            "     updatedAt: summary.updatedAt,",
+            "     waitingOn: summary.waitingOn,",
+            "   };"
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "path": "server/schema.graphql",
+      "hunks": [
+        {
+          "header": "@@ -40,7 +40,7 @@ type Envelope {",
+          "oldStart": 40,
+          "newStart": 40,
+          "lines": [
+            "   id: ID!",
+            "   title: String!",
+            "   documentKind: String!",
+            "-  status: EnvelopeStatus!",
+            "+  envelopeStatus: EnvelopeStatus!",
+            "   createdAt: String!",
+            "   updatedAt: String!",
+            "   parties: [Party!]!"
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "path": "src/hooks/signatureStatus.ts",
+      "hunks": [
+        {
+          "header": "@@ -66,9 +66,8 @@ export function deriveSignatureStatus(",
+          "oldStart": 66,
+          "newStart": 66,
+          "lines": [
+            "     };",
+            "   }",
+            " ",
+            "-  // Baseline gate: only an in-flight envelope can accept a signature.",
+            "-  // Scenario B flips this one line — see scenarios/B-blast-radius/.",
+            "-  const canSign = party.status === \"pending\" && envelope.status === \"awaiting_signature\";",
+            "+  // Quiet blast radius: drop the awaiting_signature check. Review & countersign both import this.",
+            "+  const canSign = party.status === \"pending\" && envelope.status !== \"voided\";",
+            " ",
+            "   return {",
+            "     party,"
+          ]
+        }
+      ],
+      "truncated": false
+    }
+  ],
+  "contracts": {
+    "readable": 3,
+    "entries": [
+      {
+        "key": "Mutation.signEnvelope",
+        "level": "breaking",
+        "changes": [
+          {
+            "level": "breaking",
+            "where": "Envelope.status",
+            "detail": "Envelope.status was removed."
+          }
+        ],
+        "omitted": 0
+      },
+      {
+        "key": "Query.envelope",
+        "level": "breaking",
+        "changes": [
+          {
+            "level": "breaking",
+            "where": "Envelope.status",
+            "detail": "Envelope.status was removed."
+          }
+        ],
+        "omitted": 0
+      },
+      {
+        "key": "Query.envelopes",
+        "level": "breaking",
+        "changes": [
+          {
+            "level": "breaking",
+            "where": "Envelope.status",
+            "detail": "Envelope.status was removed."
+          }
+        ],
+        "omitted": 0
+      }
+    ],
+    "summary": {
+      "breaking": 3,
+      "dangerous": 0,
+      "safe": 0
+    }
+  }
+}

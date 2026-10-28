@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "surface": "frontend",
+  "tool": {
+    "name": "farol",
+    "version": "0.2.1"
+  },
+  "repo": null,
+  "pr": null,
+  "base": {
+    "ref": "baseline",
+    "sha": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac"
+  },
+  "mergeBase": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac",
+  "head": {
+    "ref": "HEAD",
+    "sha": "5944e59d3052498545c972974bac51ab3b29139a"
+  },
+  "analyzedAt": "2026-10-28T03:50:11.485Z",
+  "classification": "touches-existing",
+  "reasons": [
+    {
+      "code": "existing-file-modified",
+      "file": "src/pages/EnvelopeList.tsx",
+      "detail": "func src/pages/EnvelopeList.tsx#EnvelopeList changed: reached by 1 existing route(s): / > (index)"
+    }
+  ],
+  "files": [
+    {
+      "path": "src/pages/EnvelopeList.tsx",
+      "status": "modified",
+      "role": "source",
+      "additive": false,
+      "linesAdded": 1,
+      "linesRemoved": 1
+    }
+  ],
+  "ignoredFiles": [],
+  "dependencies": {
+    "manifests": [],
+    "lockfiles": [],
+    "changes": [],
+    "summary": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "added": 0,
+      "removed": 0
+    }
+  },
+  "risk": {
+    "totalPages": 5,
+    "files": [
+      {
+        "path": "src/pages/EnvelopeList.tsx",
+        "change": "modified",
+        "level": "medium",
+        "directImporters": 1,
+        "transitiveDependents": 3,
+        "centrality": 0.111,
+        "pagesReached": 1,
+        "routesReached": 1,
+        "why": "used by 1 of 5 existing pages"
+      }
+    ],
+    "summary": {
+      "high": 0,
+      "medium": 1,
+      "low": 0
+    }
+  },
+  "routes": {
+    "added": [],
+    "affected": [
+      {
+        "key": "/ > (index)",
+        "path": "/",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "src/pages/EnvelopeList.tsx",
+            "chain": [
+              "src/pages/EnvelopeList.tsx"
+            ]
+          }
+        ]
+      }
+    ],
+    "disconnectedNewFiles": []
+  },
+  "signals": {
+    "coverage": {
+      "status": "not-provided",
+      "message": "no coverage report given (--coverage or signals.coverage)",
+      "files": [],
+      "total": null,
+      "ignoredFiles": []
+    },
+    "lint": {
+      "status": "not-provided",
+      "message": "no ESLint report given (--eslint or signals.eslint)",
+      "changedLines": null,
+      "otherLines": null,
+      "findings": [],
+      "omittedFindings": 0
+    },
+    "suppressions": {
+      "status": "ok",
+      "items": []
+    },
+    "testsModified": {
+      "status": "ok",
+      "files": []
+    },
+    "security": {
+      "status": "ok",
+      "findings": [],
+      "summary": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      }
+    },
+    "vulnerabilities": {
+      "status": "not-provided",
+      "message": "no audit report given (--audit or signals.audit)",
+      "related": [],
+      "total": null
+    }
+  },
+  "diagnostics": {
+    "unresolvedImports": [],
+    "dynamicRoutes": [],
+    "parseErrors": [],
+    "timingsMs": {
+      "diff": 22,
+      "readTree": 10,
+      "program": 461,
+      "graph": 138,
+      "routes": 2,
+      "base": 180,
+      "classify": 2,
+      "signals": 4,
+      "diffs": 5
+    },
+    "error": null
+  },
+  "review": null,
+  "diffs": [
+    {
+      "path": "src/pages/EnvelopeList.tsx",
+      "hunks": [
+        {
+          "header": "@@ -11,7 +11,7 @@ export function EnvelopeList() {",
+          "oldStart": 11,
+          "newStart": 11,
+          "lines": [
+            "       <div className=\"page-head\">",
+            "         <div>",
+            "           <p className=\"eyebrow\">Inbox</p>",
+            "-          <h2>Recieved for signature</h2>",
+            "+          <h2>Received for signature</h2>",
+            "           <p className=\"lede\">",
+            "             Four local envelopes. Start with the mutual NDA — the first party already signed, so",
+            "             countersign is the live step."
+          ]
+        }
+      ],
+      "truncated": false
+    }
+  ]
+}

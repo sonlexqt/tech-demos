@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "surface": "frontend",
+  "tool": {
+    "name": "farol",
+    "version": "0.2.1"
+  },
+  "repo": null,
+  "pr": null,
+  "base": {
+    "ref": "baseline",
+    "sha": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac"
+  },
+  "mergeBase": "1c9a49842992f6aaaa3f55f2663db10fa25de0ac",
+  "head": {
+    "ref": "HEAD",
+    "sha": "84219672adb405858f6667328126922c30291cda"
+  },
+  "analyzedAt": "2026-10-28T03:50:14.861Z",
+  "classification": "touches-existing",
+  "reasons": [
+    {
+      "code": "existing-file-modified",
+      "file": "src/hooks/signatureStatus.ts",
+      "detail": "func src/hooks/signatureStatus.ts#deriveSignatureStatus changed: reached by 2 existing route(s): / > envelopes/:id; / > envelopes/:id/countersign"
+    },
+    {
+      "code": "existing-file-unreachable",
+      "file": "server/schema.graphql",
+      "detail": "modified, and it is not part of the import graph"
+    },
+    {
+      "code": "existing-file-unreachable",
+      "file": "server/serialize.ts",
+      "detail": "func server/serialize.ts#toApiEnvelope changed; func server/serialize.ts#toApiSummary changed; no route reaches it"
+    }
+  ],
+  "files": [
+    {
+      "path": "server/schema.graphql",
+      "status": "modified",
+      "role": "source",
+      "linesAdded": 1,
+      "linesRemoved": 1
+    },
+    {
+      "path": "server/serialize.ts",
+      "status": "modified",
+      "role": "source",
+      "additive": false,
+      "linesAdded": 2,
+      "linesRemoved": 2
+    },
+    {
+      "path": "src/hooks/signatureStatus.ts",
+      "status": "modified",
+      "role": "source",
+      "additive": false,
+      "linesAdded": 2,
+      "linesRemoved": 3
+    }
+  ],
+  "ignoredFiles": [],
+  "dependencies": {
+    "manifests": [],
+    "lockfiles": [],
+    "changes": [],
+    "summary": {
+      "critical": 0,
+      "major": 0,
+      "minor": 0,
+      "patch": 0,
+      "added": 0,
+      "removed": 0
+    }
+  },
+  "risk": {
+    "totalPages": 5,
+    "files": [
+      {
+        "path": "src/hooks/signatureStatus.ts",
+        "change": "modified",
+        "level": "medium",
+        "directImporters": 1,
+        "transitiveDependents": 6,
+        "centrality": 0.222,
+        "pagesReached": 2,
+        "routesReached": 2,
+        "why": "used by 2 of 5 existing pages"
+      },
+      {
+        "path": "server/serialize.ts",
+        "change": "modified",
+        "level": "low",
+        "directImporters": 1,
+        "transitiveDependents": 2,
+        "centrality": 0.074,
+        "pagesReached": 0,
+        "routesReached": 0,
+        "why": "2 file(s) depend on it, no page reaches it"
+      },
+      {
+        "path": "server/schema.graphql",
+        "change": "modified",
+        "level": "low",
+        "directImporters": 0,
+        "transitiveDependents": 0,
+        "centrality": 0,
+        "pagesReached": 0,
+        "routesReached": 0,
+        "why": "nothing imports it"
+      }
+    ],
+    "summary": {
+      "high": 0,
+      "medium": 1,
+      "low": 2
+    }
+  },
+  "routes": {
+    "added": [],
+    "affected": [
+      {
+        "key": "/ > envelopes/:id",
+        "path": "/envelopes/:id",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "src/hooks/signatureStatus.ts",
+            "chain": [
+              "src/pages/ReviewSign.tsx",
+              "src/hooks/useSignatureStatus.ts",
+              "src/hooks/signatureStatus.ts"
+            ]
+          }
+        ]
+      },
+      {
+        "key": "/ > envelopes/:id/countersign",
+        "path": "/envelopes/:id/countersign",
+        "hasChildren": false,
+        "via": [
+          {
+            "file": "src/hooks/signatureStatus.ts",
+            "chain": [
+              "src/pages/Countersign.tsx",
+              "src/hooks/useSignatureStatus.ts",
+              "src/hooks/signatureStatus.ts"
+            ]
+          }
+        ]
+      }
+    ],
+    "disconnectedNewFiles": []
+  },
+  "signals": {
+    "coverage": {
+      "status": "ok",
+      "files": [
+        {
+          "path": "src/hooks/signatureStatus.ts",
+          "changedExecutableLines": 1,
+          "coveredLines": 0,
+          "uncovered": [
+            {
+              "start": 70,
+              "end": 70
+            }
+          ],
+          "missingFromReport": false
+        }
+      ],
+      "total": {
+        "changedExecutableLines": 1,
+        "coveredLines": 0
+      },
+      "ignoredFiles": [],
+      "excludedByProject": [
+        "server/serialize.ts"
+      ]
+    },
+    "lint": {
+      "status": "not-provided",
+      "message": "no ESLint report given (--eslint or signals.eslint)",
+      "changedLines": null,
+      "otherLines": null,
+      "findings": [],
+      "omittedFindings": 0
+    },
+    "suppressions": {
+      "status": "ok",
+      "items": []
+    },
+    "testsModified": {
+      "status": "ok",
+      "files": []
+    },
+    "security": {
+      "status": "ok",
+      "findings": [],
+      "summary": {
+        "high": 0,
+        "medium": 0,
+        "low": 0
+      }
+    },
+    "vulnerabilities": {
+      "status": "not-provided",
+      "message": "no audit report given (--audit or signals.audit)",
+      "related": [],
+      "total": null
+    }
+  },
+  "diagnostics": {
+    "unresolvedImports": [],
+    "dynamicRoutes": [],
+    "parseErrors": [],
+    "timingsMs": {
+      "diff": 23,
+      "readTree": 9,
+      "program": 456,
+      "graph": 138,
+      "routes": 2,
+      "base": 190,
+      "classify": 2,
+      "signals": 10,
+      "diffs": 5
+    },
+    "error": null
+  },
+  "review": null,
+  "diffs": [
+    {
+      "path": "src/hooks/signatureStatus.ts",
+      "hunks": [
+        {
+          "header": "@@ -66,9 +66,8 @@ export function deriveSignatureStatus(",
+          "oldStart": 66,
+          "newStart": 66,
+          "lines": [
+            "     };",
+            "   }",
+            " ",
+            "-  // Baseline gate: only an in-flight envelope can accept a signature.",
+            "-  // Scenario B flips this one line — see scenarios/B-blast-radius/.",
+            "-  const canSign = party.status === \"pending\" && envelope.status === \"awaiting_signature\";",
+            "+  // Quiet blast radius: drop the awaiting_signature check. Review & countersign both import this.",
+            "+  const canSign = party.status === \"pending\" && envelope.status !== \"voided\";",
+            " ",
+            "   return {",
+            "     party,"
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "path": "server/serialize.ts",
+      "hunks": [
+        {
+          "header": "@@ -6,7 +6,7 @@ export function toApiEnvelope(envelope: Envelope) {",
+          "oldStart": 6,
+          "newStart": 6,
+          "lines": [
+            "     id: envelope.id,",
+            "     title: envelope.title,",
+            "     documentKind: envelope.documentKind,",
+            "-    status: envelope.status,",
+            "+    envelopeStatus: envelope.status,",
+            "     createdAt: envelope.createdAt,",
+            "     updatedAt: envelope.updatedAt,",
+            "     parties: envelope.parties,"
+          ]
+        },
+        {
+          "header": "@@ -20,7 +20,7 @@ export function toApiSummary(summary: EnvelopeSummary) {",
+          "oldStart": 20,
+          "newStart": 20,
+          "lines": [
+            "     id: summary.id,",
+            "     title: summary.title,",
+            "     documentKind: summary.documentKind,",
+            "-    status: summary.status,",
+            "+    envelopeStatus: summary.status,",
+            "     updatedAt: summary.updatedAt,",
+            "     waitingOn: summary.waitingOn,",
+            "   };"
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    {
+      "path": "server/schema.graphql",
+      "hunks": [
+        {
+          "header": "@@ -40,7 +40,7 @@ type Envelope {",
+          "oldStart": 40,
+          "newStart": 40,
+          "lines": [
+            "   id: ID!",
+            "   title: String!",
+            "   documentKind: String!",
+            "-  status: EnvelopeStatus!",
+            "+  envelopeStatus: EnvelopeStatus!",
+            "   createdAt: String!",
+            "   updatedAt: String!",
+            "   parties: [Party!]!"
+          ]
+        }
+      ],
+      "truncated": false
+    }
+  ]
+}

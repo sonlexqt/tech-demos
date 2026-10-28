@@ -1,0 +1,11 @@
+
+ RUN  v5.0.5 /workspace/apps/farol-esign-risk/.farol-sandbox
+      Coverage enabled with v8
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  03:50:13
+   Duration  225ms (transform 43%, import 33%, worker 19%, tests 5%)
+
+
