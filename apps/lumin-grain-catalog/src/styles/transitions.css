@@ -1,0 +1,53 @@
+.shutter {
+  position: fixed;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+}
+
+.shutter__blade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: #050506;
+  transform: scaleY(0);
+  transition: transform var(--dur) var(--ease);
+}
+
+.shutter__blade--top {
+  top: 0;
+  transform-origin: top;
+  border-bottom: 1px solid rgba(111, 182, 170, 0.28);
+}
+
+.shutter__blade--bottom {
+  bottom: 0;
+  transform-origin: bottom;
+  border-top: 1px solid rgba(201, 166, 107, 0.22);
+}
+
+.shutter.is-covering {
+  pointer-events: auto;
+}
+
+.shutter.is-covering .shutter__blade {
+  transform: scaleY(1);
+}
+
+.shutter.is-revealing .shutter__blade--top {
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+.shutter.is-revealing .shutter__blade--bottom {
+  transform-origin: top;
+  transform: scaleY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shutter__blade {
+    transition: none;
+    transform: scaleY(0);
+  }
+}

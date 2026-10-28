@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "user-request-lumin-grain-catalog",
+      "title": "Lumin grain catalog (cinematic dark portfolio vibe)",
+      "url": "https://luminpdf.com",
+      "date": "2026-10-28",
+      "notes": "Direct owner request, not an X bookmark; slug lumin-grain-catalog"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "user-request-lumin-grain-catalog",
+      "title": "Lumin grain catalog (cinematic dark portfolio vibe)",
+      "url": "https://luminpdf.com",
+      "date": "2026-10-28",
+      "notes": "Direct owner request, not an X bookmark; inspired-from-scratch Lumin-themed catalog; slug lumin-grain-catalog"
     }
   ]
 }

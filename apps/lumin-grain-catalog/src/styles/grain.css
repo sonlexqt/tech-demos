@@ -1,0 +1,44 @@
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  background-image: var(--grain-tile);
+  background-size: 160px 160px;
+  background-repeat: repeat;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+.grain--still {
+  opacity: 0.16;
+}
+
+.grain--live {
+  animation: grain-breathe 6.5s ease-in-out infinite;
+}
+
+@keyframes grain-breathe {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.28;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain,
+  .grain--live {
+    animation: none;
+    opacity: 0.14;
+  }
+}
