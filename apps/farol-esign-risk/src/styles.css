@@ -1,0 +1,377 @@
+:root {
+  color-scheme: light;
+  --paper: #f3ead8;
+  --sheet: #fff8ec;
+  --ink: #1b2430;
+  --muted: #5c564c;
+  --navy: #1a2a44;
+  --navy-2: #243656;
+  --line: #d4c6ad;
+  --seal: #b8862f;
+  --wax: #8f2d2d;
+  --sage: #2f5d4a;
+  --ok: #2f5d4a;
+  --warn: #9a5b12;
+  --danger: #8f2d2d;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans: "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(900px 420px at 8% -10%, #e8d7b0 0%, transparent 55%),
+    var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+a {
+  color: var(--navy-2);
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  background: var(--navy);
+  color: #f6efe2;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+.brand {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.brand h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+}
+
+.seal {
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, #e8c36a, var(--seal) 55%, #7a5414);
+  box-shadow: inset 0 0 0 3px rgba(255, 248, 230, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 0.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--seal);
+}
+
+.top .eyebrow {
+  color: #e8c36a;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.nav a,
+.ghost,
+.pad button,
+.side-links a {
+  border-radius: 999px;
+  padding: 0.4rem 0.75rem;
+  text-decoration: none;
+}
+
+.nav a {
+  color: #f6efe2;
+  border: 1px solid transparent;
+}
+
+.nav a.active {
+  background: rgba(255, 248, 230, 0.12);
+  border-color: rgba(232, 195, 106, 0.5);
+}
+
+.nav-hint {
+  color: #c9c0b0;
+  font-size: 0.85rem;
+}
+
+.page {
+  width: min(1120px, calc(100% - 2rem));
+  margin: 1.4rem auto 3rem;
+}
+
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+}
+
+.page h2,
+.side h3,
+.card h3 {
+  font-family: var(--serif);
+  margin: 0.15rem 0 0.4rem;
+}
+
+.lede {
+  max-width: 40rem;
+  color: var(--muted);
+}
+
+.ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.inbox {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+}
+
+.inbox th,
+.inbox td {
+  text-align: left;
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.inbox th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.actions a {
+  font-size: 0.85rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  background: #ece3d1;
+}
+
+.pill-awaiting_signature {
+  background: #f3dfb5;
+  color: var(--warn);
+}
+
+.pill-completed {
+  background: #d7eadc;
+  color: var(--ok);
+}
+
+.pill-voided,
+.pill-declined {
+  background: #f3d4d0;
+  color: var(--danger);
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(16rem, 0.8fr);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.paper {
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  padding: 1.6rem 1.8rem 2rem;
+  box-shadow: 0 16px 40px rgba(36, 28, 16, 0.08);
+}
+
+.paper h2 {
+  font-size: 1.7rem;
+}
+
+.paper p {
+  line-height: 1.55;
+}
+
+.paper-kind,
+.paper-meta {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.paper-signers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.sign-role {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.sign-applied {
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: 1.4rem;
+  color: var(--wax);
+}
+
+.side,
+.card {
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  padding: 1.1rem 1.15rem 1.25rem;
+}
+
+.hook-note,
+.muted {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.pad {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.pad label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.85rem;
+}
+
+.pad input {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--line);
+  background: #fff;
+  font: inherit;
+}
+
+.signature-preview {
+  min-height: 3.2rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: "Brush Script MT", "Segoe Script", cursive;
+  font-size: 1.8rem;
+  color: var(--wax);
+}
+
+.pad button {
+  justify-self: start;
+  background: var(--navy);
+  color: #f6efe2;
+  border: 0;
+  cursor: pointer;
+}
+
+.pad button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.side-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.side-links a {
+  border: 1px solid var(--line);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.timeline li {
+  background: var(--sheet);
+  border-left: 4px solid var(--seal);
+  padding: 0.8rem 1rem;
+}
+
+.timeline .time {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.error {
+  color: var(--danger);
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.farol-page .lede {
+  margin-bottom: 1.2rem;
+}
+
+@media (max-width: 800px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .inbox {
+    display: block;
+    overflow-x: auto;
+  }
+}

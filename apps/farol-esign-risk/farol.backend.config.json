@@ -1,0 +1,10 @@
+{
+  "language": "typescript",
+  "surface": "backend",
+  "tsconfig": "tsconfig.json",
+  "backend": { "graphql": true, "rest": true },
+  "roles": {
+    "global": ["package.json", "server/index.ts"],
+    "test": ["src/**/*.test.ts"]
+  }
+}

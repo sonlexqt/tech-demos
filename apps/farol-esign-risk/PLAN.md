@@ -32,8 +32,8 @@ Documented patches + `bun run farol:scenarios` that copies the app into a throwa
 
 | | Change | What we hope farol shows |
 |---|---|---|
-| **A — Harmless** | Copy/typo tweak only (planted misspelling on the list page) | Fast track or otherwise low risk; no countersign reach, no contract break |
-| **B — Quiet blast radius** | One-line change to `useSignatureStatus` **and** rename a field on the envelope API/schema | Careful review (or honest actual verdict); reach map includes countersign; contract-break on the renamed field; changed hook line untested |
+| **A — Harmless** | Copy/typo tweak only (planted misspelling on the list page) | Low risk; no countersign reach, no contract break. Recorded: 16/100 quick review (farol does not fast-track existing page functions). |
+| **B — Quiet blast radius** | One-line change to `deriveSignatureStatus` (behind `useSignatureStatus`) **and** rename a field on the envelope API/schema | Reach map includes countersign; contract-break; untested hook line. Recorded: frontend 30/100 quick review + backend 66/100 careful review. |
 
 Committed JSON / Markdown / HTML reports live under `fixtures/reports/`. The script can regenerate them.
 

@@ -1,0 +1,175 @@
+# frontend
+{
+  "file": "src/routes.tsx",
+  "routes": [
+    {
+      "key": "/",
+      "path": "/",
+      "index": false,
+      "entry": "src/components/AppShell.tsx",
+      "modules": [
+        "src/components/AppShell.tsx"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "/ > (index)",
+      "path": "/",
+      "index": true,
+      "entry": "src/pages/EnvelopeList.tsx",
+      "modules": [
+        "src/pages/EnvelopeList.tsx"
+      ],
+      "layouts": [
+        "src/components/AppShell.tsx"
+      ]
+    },
+    {
+      "key": "/ > envelopes/:id",
+      "path": "/envelopes/:id",
+      "index": false,
+      "entry": "src/pages/ReviewSign.tsx",
+      "modules": [
+        "src/pages/ReviewSign.tsx"
+      ],
+      "layouts": [
+        "src/components/AppShell.tsx"
+      ]
+    },
+    {
+      "key": "/ > envelopes/:id/audit",
+      "path": "/envelopes/:id/audit",
+      "index": false,
+      "entry": "src/pages/AuditTrail.tsx",
+      "modules": [
+        "src/pages/AuditTrail.tsx"
+      ],
+      "layouts": [
+        "src/components/AppShell.tsx"
+      ]
+    },
+    {
+      "key": "/ > envelopes/:id/countersign",
+      "path": "/envelopes/:id/countersign",
+      "index": false,
+      "entry": "src/pages/Countersign.tsx",
+      "modules": [
+        "src/pages/Countersign.tsx"
+      ],
+      "layouts": [
+        "src/components/AppShell.tsx"
+      ]
+    },
+    {
+      "key": "/ > farol",
+      "path": "/farol",
+      "index": false,
+      "entry": "src/pages/FarolScenarios.tsx",
+      "modules": [
+        "src/pages/FarolScenarios.tsx"
+      ],
+      "layouts": [
+        "src/components/AppShell.tsx"
+      ]
+    }
+  ],
+  "dynamicRoutes": [],
+  "sources": [
+    "src/routes.tsx"
+  ]
+}
+
+# backend
+{
+  "file": "",
+  "routes": [
+    {
+      "key": "GET /api/envelopes",
+      "path": "GET /api/envelopes",
+      "index": false,
+      "entry": null,
+      "modules": [
+        "server/serialize.ts",
+        "server/store.ts"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "GET /api/envelopes/:id",
+      "path": "GET /api/envelopes/:id",
+      "index": false,
+      "entry": null,
+      "modules": [
+        "server/serialize.ts",
+        "server/store.ts"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "GET /api/envelopes/:id/audit",
+      "path": "GET /api/envelopes/:id/audit",
+      "index": false,
+      "entry": null,
+      "modules": [
+        "server/store.ts"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "GET /api/health",
+      "path": "GET /api/health",
+      "index": false,
+      "entry": null,
+      "modules": [],
+      "layouts": []
+    },
+    {
+      "key": "Mutation.signEnvelope",
+      "path": "Mutation.signEnvelope",
+      "index": false,
+      "entry": null,
+      "modules": [],
+      "layouts": []
+    },
+    {
+      "key": "POST /api/envelopes/:id/sign",
+      "path": "POST /api/envelopes/:id/sign",
+      "index": false,
+      "entry": null,
+      "modules": [
+        "server/serialize.ts",
+        "server/store.ts"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "POST /api/reset",
+      "path": "POST /api/reset",
+      "index": false,
+      "entry": null,
+      "modules": [
+        "server/serialize.ts",
+        "server/store.ts"
+      ],
+      "layouts": []
+    },
+    {
+      "key": "Query.envelope",
+      "path": "Query.envelope",
+      "index": false,
+      "entry": null,
+      "modules": [],
+      "layouts": []
+    },
+    {
+      "key": "Query.envelopes",
+      "path": "Query.envelopes",
+      "index": false,
+      "entry": null,
+      "modules": [],
+      "layouts": []
+    }
+  ],
+  "dynamicRoutes": [],
+  "sources": []
+}
