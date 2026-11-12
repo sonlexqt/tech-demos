@@ -1,0 +1,1457 @@
+{
+  "mock": false,
+  "generatedAt": "2026-11-12T20:26:08.554Z",
+  "runs": [
+    {
+      "fixtureId": "msa-clean",
+      "mode": "live",
+      "model": "gemini-3.5-flash-lite",
+      "latencyMs": 5238,
+      "usage": {
+        "total_input_tokens": 2981,
+        "input_tokens_by_modality": [
+          {
+            "modality": "mixed",
+            "tokens": 2981
+          }
+        ],
+        "total_output_tokens": 2040,
+        "total_tokens": 5021
+      },
+      "answers": {
+        "every_party_has_sig_block": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_printed_name_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_title_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_date_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "missing_witness_block": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "e_sign_permitted": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "counterparts_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "empty_date_fields": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "empty_initial_fields": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_effective_date": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_term_duration": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_counterparty_name": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_notice_addresses": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "parties_both_named": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "payment_terms_present": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "late_fee_terms": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "insurance_requirements": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "auto_renewal_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "confidentiality_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "indemnity_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "limitation_of_liability": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "assignment_without_consent": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "ip_ownership_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "force_majeure": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "entire_agreement": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "amendment_in_writing": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "severability": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "termination_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "referenced_exhibits_missing": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "governing_law_specified": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "venue_specified": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "defined_terms_undefined": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "conflicting_dates": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "governing_law": {
+          "type": "choice",
+          "choice": "delaware",
+          "probabilities": {
+            "california": 0,
+            "delaware": 0.99,
+            "new_york": 0,
+            "england_wales": 0,
+            "other": 0.01,
+            "unspecified": 0
+          },
+          "confidence": 0.99
+        },
+        "document_type": {
+          "type": "choice",
+          "choice": "msa",
+          "probabilities": {
+            "msa": 0.99,
+            "nda": 0,
+            "sow": 0,
+            "dpa": 0,
+            "other": 0.01
+          },
+          "confidence": 0.99
+        },
+        "renewal_type": {
+          "type": "choice",
+          "choice": "with_notice",
+          "probabilities": {
+            "none": 0,
+            "with_notice": 0.99,
+            "without_notice": 0,
+            "unclear": 0.01
+          },
+          "confidence": 0.99
+        },
+        "overall_risk": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "probabilities": {
+            "0": 0.99,
+            "1": 0.01,
+            "2": 0,
+            "3": 0
+          },
+          "confidence": 0.99
+        },
+        "sign_readiness": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.99
+          },
+          "confidence": 0.99
+        },
+        "completeness": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.01,
+            "3": 0.99
+          },
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "fixtureId": "msa-planted",
+      "mode": "live",
+      "model": "gemini-3.5-flash-lite",
+      "latencyMs": 6109,
+      "usage": {
+        "total_input_tokens": 2461,
+        "input_tokens_by_modality": [
+          {
+            "modality": "mixed",
+            "tokens": 2461
+          }
+        ],
+        "total_output_tokens": 2049,
+        "total_tokens": 4510
+      },
+      "answers": {
+        "every_party_has_sig_block": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_printed_name_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_title_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_date_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "missing_witness_block": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "e_sign_permitted": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "counterparts_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "empty_date_fields": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "empty_initial_fields": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_effective_date": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_term_duration": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_counterparty_name": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_notice_addresses": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "parties_both_named": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "payment_terms_present": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "late_fee_terms": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "insurance_requirements": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "auto_renewal_clause": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "confidentiality_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "indemnity_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "limitation_of_liability": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "assignment_without_consent": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "ip_ownership_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "force_majeure": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "entire_agreement": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "amendment_in_writing": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "severability": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "termination_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "referenced_exhibits_missing": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "governing_law_specified": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "venue_specified": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "defined_terms_undefined": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "conflicting_dates": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "governing_law": {
+          "type": "choice",
+          "choice": "unspecified",
+          "probabilities": {
+            "california": 0.01,
+            "delaware": 0.01,
+            "new_york": 0.01,
+            "england_wales": 0.01,
+            "other": 0.01,
+            "unspecified": 0.95
+          },
+          "confidence": 0.95
+        },
+        "document_type": {
+          "type": "choice",
+          "choice": "msa",
+          "probabilities": {
+            "msa": 0.95,
+            "nda": 0.01,
+            "sow": 0.01,
+            "dpa": 0.01,
+            "other": 0.02
+          },
+          "confidence": 0.95
+        },
+        "renewal_type": {
+          "type": "choice",
+          "choice": "without_notice",
+          "probabilities": {
+            "none": 0.01,
+            "with_notice": 0.01,
+            "without_notice": 0.95,
+            "unclear": 0.03
+          },
+          "confidence": 0.95
+        },
+        "overall_risk": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.05,
+            "3": 0.95
+          },
+          "confidence": 0.95
+        },
+        "sign_readiness": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "probabilities": {
+            "0": 0.95,
+            "1": 0.05,
+            "2": 0,
+            "3": 0
+          },
+          "confidence": 0.95
+        },
+        "completeness": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "probabilities": {
+            "0": 0.95,
+            "1": 0.05,
+            "2": 0,
+            "3": 0
+          },
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "fixtureId": "nda-clean",
+      "mode": "live",
+      "model": "gemini-3.5-flash-lite",
+      "latencyMs": 13862,
+      "usage": {
+        "total_input_tokens": 2461,
+        "input_tokens_by_modality": [
+          {
+            "modality": "mixed",
+            "tokens": 2461
+          }
+        ],
+        "total_output_tokens": 2066,
+        "total_tokens": 4527
+      },
+      "answers": {
+        "every_party_has_sig_block": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_printed_name_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_title_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "sig_date_lines": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "missing_witness_block": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "e_sign_permitted": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "counterparts_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "empty_date_fields": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "empty_initial_fields": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_effective_date": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_term_duration": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_counterparty_name": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "missing_notice_addresses": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "parties_both_named": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "payment_terms_present": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "late_fee_terms": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "insurance_requirements": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "auto_renewal_clause": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "confidentiality_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "indemnity_clause": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "limitation_of_liability": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "assignment_without_consent": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "ip_ownership_clause": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "force_majeure": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "entire_agreement": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "amendment_in_writing": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "severability": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "termination_clause": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "referenced_exhibits_missing": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "governing_law_specified": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "venue_specified": {
+          "type": "noul",
+          "noul": 0.99,
+          "confidence": 0.99
+        },
+        "defined_terms_undefined": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "conflicting_dates": {
+          "type": "noul",
+          "noul": 0.01,
+          "confidence": 0.99
+        },
+        "governing_law": {
+          "type": "choice",
+          "choice": "california",
+          "probabilities": {
+            "california": 0.99,
+            "delaware": 0.002,
+            "new_york": 0.002,
+            "england_wales": 0.002,
+            "other": 0.002,
+            "unspecified": 0.002
+          },
+          "confidence": 0.99
+        },
+        "document_type": {
+          "type": "choice",
+          "choice": "nda",
+          "probabilities": {
+            "msa": 0.01,
+            "nda": 0.95,
+            "sow": 0.01,
+            "dpa": 0.01,
+            "other": 0.02
+          },
+          "confidence": 0.99
+        },
+        "renewal_type": {
+          "type": "choice",
+          "choice": "none",
+          "probabilities": {
+            "none": 0.98,
+            "with_notice": 0.005,
+            "without_notice": 0.005,
+            "unclear": 0.01
+          },
+          "confidence": 0.99
+        },
+        "overall_risk": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "probabilities": {
+            "0": 0.99,
+            "1": 0.005,
+            "2": 0.003,
+            "3": 0.002
+          },
+          "confidence": 0.99
+        },
+        "sign_readiness": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "probabilities": {
+            "0": 0.005,
+            "1": 0.005,
+            "2": 0.01,
+            "3": 0.98
+          },
+          "confidence": 0.99
+        },
+        "completeness": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "probabilities": {
+            "0": 0.005,
+            "1": 0.005,
+            "2": 0.01,
+            "3": 0.98
+          },
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "fixtureId": "nda-planted",
+      "mode": "live",
+      "model": "gemini-3.5-flash-lite",
+      "latencyMs": 18656,
+      "usage": {
+        "total_input_tokens": 2461,
+        "input_tokens_by_modality": [
+          {
+            "modality": "mixed",
+            "tokens": 2461
+          }
+        ],
+        "total_output_tokens": 2035,
+        "total_tokens": 4496
+      },
+      "answers": {
+        "every_party_has_sig_block": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_printed_name_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_title_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "sig_date_lines": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "missing_witness_block": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "e_sign_permitted": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "counterparts_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "empty_date_fields": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "empty_initial_fields": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_effective_date": {
+          "type": "noul",
+          "noul": 0.1,
+          "confidence": 0.9
+        },
+        "missing_term_duration": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_counterparty_name": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "missing_notice_addresses": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "parties_both_named": {
+          "type": "noul",
+          "noul": 0.1,
+          "confidence": 0.9
+        },
+        "payment_terms_present": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "late_fee_terms": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "insurance_requirements": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "auto_renewal_clause": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "confidentiality_clause": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "indemnity_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "limitation_of_liability": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "assignment_without_consent": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "ip_ownership_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "force_majeure": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "entire_agreement": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "amendment_in_writing": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "severability": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "termination_clause": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "referenced_exhibits_missing": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "governing_law_specified": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "venue_specified": {
+          "type": "noul",
+          "noul": 0.05,
+          "confidence": 0.95
+        },
+        "defined_terms_undefined": {
+          "type": "noul",
+          "noul": 0.95,
+          "confidence": 0.95
+        },
+        "conflicting_dates": {
+          "type": "noul",
+          "noul": 0.9,
+          "confidence": 0.9
+        },
+        "governing_law": {
+          "type": "choice",
+          "choice": "england_wales",
+          "probabilities": {
+            "california": 0,
+            "delaware": 0,
+            "new_york": 0,
+            "england_wales": 0.99,
+            "other": 0.01,
+            "unspecified": 0
+          },
+          "confidence": 0.99
+        },
+        "document_type": {
+          "type": "choice",
+          "choice": "nda",
+          "probabilities": {
+            "msa": 0,
+            "nda": 0.99,
+            "sow": 0,
+            "dpa": 0,
+            "other": 0.01
+          },
+          "confidence": 0.99
+        },
+        "renewal_type": {
+          "type": "choice",
+          "choice": "without_notice",
+          "probabilities": {
+            "none": 0.01,
+            "with_notice": 0.02,
+            "without_notice": 0.95,
+            "unclear": 0.02
+          },
+          "confidence": 0.95
+        },
+        "overall_risk": {
+          "type": "score",
+          "score": 3,
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "probabilities": {
+            "0": 0,
+            "1": 0,
+            "2": 0.05,
+            "3": 0.95
+          },
+          "confidence": 0.95
+        },
+        "sign_readiness": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "probabilities": {
+            "0": 0.95,
+            "1": 0.05,
+            "2": 0,
+            "3": 0
+          },
+          "confidence": 0.95
+        },
+        "completeness": {
+          "type": "score",
+          "score": 0,
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "probabilities": {
+            "0": 0.9,
+            "1": 0.1,
+            "2": 0,
+            "3": 0
+          },
+          "confidence": 0.9
+        }
+      }
+    }
+  ],
+  "suite": {
+    "perCheck": [
+      {
+        "id": "every_party_has_sig_block",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_printed_name_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_title_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_date_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_witness_block",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "e_sign_permitted",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "counterparts_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "empty_date_fields",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "empty_initial_fields",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_effective_date",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_term_duration",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_counterparty_name",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_notice_addresses",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "parties_both_named",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "payment_terms_present",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "late_fee_terms",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "insurance_requirements",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "auto_renewal_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "confidentiality_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "indemnity_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "limitation_of_liability",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "assignment_without_consent",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "ip_ownership_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "force_majeure",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "entire_agreement",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "amendment_in_writing",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "severability",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "termination_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "referenced_exhibits_missing",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "governing_law_specified",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "venue_specified",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "defined_terms_undefined",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "conflicting_dates",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "governing_law",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "document_type",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "renewal_type",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "overall_risk",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "sign_readiness",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "completeness",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      }
+    ],
+    "overallAccuracy": 0.967948717948718,
+    "precision": 1,
+    "recall": 0.96875,
+    "f1": 0.9841269841269841,
+    "p50LatencyMs": 6109,
+    "p95LatencyMs": 18656,
+    "totalInputTokens": 10364,
+    "totalOutputTokens": 8190,
+    "totalUsd": 0.0235842,
+    "fixtures": [
+      {
+        "fixtureId": "msa-clean",
+        "correct": 39,
+        "total": 39,
+        "planted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 5238,
+        "inputTokens": 2981,
+        "outputTokens": 2040,
+        "usd": 0.0059943
+      },
+      {
+        "fixtureId": "msa-planted",
+        "correct": 37,
+        "total": 39,
+        "planted": [
+          "every_party_has_sig_block",
+          "sig_printed_name_lines",
+          "sig_title_lines",
+          "sig_date_lines",
+          "missing_witness_block",
+          "e_sign_permitted",
+          "counterparts_clause",
+          "empty_date_fields",
+          "empty_initial_fields",
+          "missing_effective_date",
+          "missing_term_duration",
+          "missing_counterparty_name",
+          "missing_notice_addresses",
+          "parties_both_named",
+          "payment_terms_present",
+          "late_fee_terms",
+          "insurance_requirements",
+          "confidentiality_clause",
+          "indemnity_clause",
+          "limitation_of_liability",
+          "assignment_without_consent",
+          "ip_ownership_clause",
+          "force_majeure",
+          "entire_agreement",
+          "amendment_in_writing",
+          "severability",
+          "termination_clause",
+          "referenced_exhibits_missing",
+          "governing_law_specified",
+          "venue_specified",
+          "defined_terms_undefined",
+          "conflicting_dates",
+          "governing_law",
+          "renewal_type",
+          "overall_risk",
+          "sign_readiness",
+          "completeness"
+        ],
+        "tp": 35,
+        "fp": 0,
+        "fn": 2,
+        "latencyMs": 6109,
+        "inputTokens": 2461,
+        "outputTokens": 2049,
+        "usd": 0.0058608
+      },
+      {
+        "fixtureId": "nda-clean",
+        "correct": 39,
+        "total": 39,
+        "planted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 13862,
+        "inputTokens": 2461,
+        "outputTokens": 2066,
+        "usd": 0.0059033
+      },
+      {
+        "fixtureId": "nda-planted",
+        "correct": 36,
+        "total": 39,
+        "planted": [
+          "every_party_has_sig_block",
+          "sig_printed_name_lines",
+          "sig_title_lines",
+          "sig_date_lines",
+          "missing_witness_block",
+          "e_sign_permitted",
+          "counterparts_clause",
+          "empty_date_fields",
+          "empty_initial_fields",
+          "missing_term_duration",
+          "missing_counterparty_name",
+          "missing_notice_addresses",
+          "parties_both_named",
+          "assignment_without_consent",
+          "force_majeure",
+          "entire_agreement",
+          "amendment_in_writing",
+          "severability",
+          "termination_clause",
+          "referenced_exhibits_missing",
+          "venue_specified",
+          "defined_terms_undefined",
+          "conflicting_dates",
+          "renewal_type",
+          "overall_risk",
+          "sign_readiness",
+          "completeness"
+        ],
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 18656,
+        "inputTokens": 2461,
+        "outputTokens": 2035,
+        "usd": 0.0058258
+      }
+    ]
+  }
+}
