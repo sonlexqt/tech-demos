@@ -28,9 +28,26 @@ function json(res: ServerResponse, status: number, body: unknown) {
   res.end(data);
 }
 
+class PayloadTooLarge extends Error {
+  constructor() {
+    super("Request body too large");
+  }
+}
+
+const MAX_JSON_BYTES = 8 * 1024 * 1024;
+
 async function readJson(req: IncomingMessage): Promise<Record<string, unknown>> {
   const chunks: Buffer[] = [];
-  for await (const chunk of req) chunks.push(Buffer.from(chunk));
+  let size = 0;
+  for await (const chunk of req) {
+    const buf = Buffer.from(chunk);
+    size += buf.byteLength;
+    if (size > MAX_JSON_BYTES) {
+      req.destroy();
+      throw new PayloadTooLarge();
+    }
+    chunks.push(buf);
+  }
   const raw = Buffer.concat(chunks).toString("utf8");
   if (!raw) return {};
   return JSON.parse(raw) as Record<string, unknown>;
@@ -110,7 +127,17 @@ async function handleApi(req: IncomingMessage, res: ServerResponse): Promise<voi
   }
 
   if (req.method === "POST" && route === "/api/preflight") {
-    const body = await readJson(req);
+    let body: Record<string, unknown>;
+    try {
+      body = await readJson(req);
+    } catch (err) {
+      if (err instanceof PayloadTooLarge) {
+        json(res, 413, { error: "Request body too large (8 MB encoded cap)" });
+        return;
+      }
+      json(res, 400, { error: "Invalid JSON body" });
+      return;
+    }
     let pdfBytes: Uint8Array;
     let fixtureId: string | undefined;
     if (typeof body.fixtureId === "string" && TRUTH_BY_ID[body.fixtureId]) {
@@ -154,7 +181,9 @@ async function handleApi(req: IncomingMessage, res: ServerResponse): Promise<voi
         outputTokensBilled: result.response.usage.total_output_tokens,
       });
     } catch (err) {
-      json(res, 502, { error: err instanceof Error ? err.message : String(err) });
+      const msg = err instanceof Error ? err.message : String(err);
+      const client = /cannot inspect this PDF/i.test(msg);
+      json(res, client ? 400 : 502, { error: msg });
     }
     return;
   }

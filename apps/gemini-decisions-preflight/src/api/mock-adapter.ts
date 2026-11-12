@@ -1,6 +1,6 @@
 import { CHECKS, QUESTION_MAP } from "../shared/questions.ts";
 import { estimateTokensFromChars } from "../shared/cost.ts";
-import { extractPdfText, fixtureIdFromText } from "../shared/extract-text.ts";
+import { extractPdfText } from "../shared/extract-text.ts";
 import { TRUTH_BY_ID } from "../fixtures/truth.ts";
 import type {
   Answer,
@@ -67,17 +67,11 @@ function scoreAnswer(criteria: string[], level: number, rng: () => number): Scor
   const top = 1 - rest;
   const probabilities: Record<string, number> = {};
   const legend: Record<string, string> = {};
-  let leftover = rest;
+  const others = Math.max(1, criteria.length - 1);
+  const slice = rest / others;
   for (let i = 0; i < criteria.length; i++) {
     legend[String(i)] = criteria[i];
-    if (i === idx) probabilities[String(i)] = top;
-    else if (i === criteria.length - 1 && idx !== i) {
-      probabilities[String(i)] = leftover;
-    } else if (i !== idx) {
-      const slice = leftover / Math.max(1, criteria.length - 1);
-      probabilities[String(i)] = slice;
-      leftover -= slice;
-    }
+    probabilities[String(i)] = i === idx ? top : slice;
   }
   let score = 0;
   for (let i = 0; i < criteria.length; i++) score += i * (probabilities[String(i)] ?? 0);
@@ -154,8 +148,9 @@ function heuristicTruth(text: string): GroundTruth {
 export function identifyFixture(pdfBytes: Uint8Array, hintId?: string): GroundTruth {
   if (hintId && TRUTH_BY_ID[hintId]) return TRUTH_BY_ID[hintId];
   const text = extractPdfText(pdfBytes);
-  const fromMark = fixtureIdFromText(text);
-  if (fromMark && TRUTH_BY_ID[fromMark]) return TRUTH_BY_ID[fromMark];
+  if (text.replace(/\s+/g, " ").trim().length < 80) {
+    throw new Error("Mock cannot inspect this PDF (no extractable text). Use a bundled fixture or live mode.");
+  }
   return heuristicTruth(text);
 }
 

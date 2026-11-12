@@ -53,10 +53,10 @@ export function scoreFixture(
   let total = 0;
   for (const check of CHECKS) {
     const expected = truth.expected[check.id];
+    if (!expected) continue;
     const answer = answers[check.id];
-    if (!expected || !answer) continue;
     total += 1;
-    const ok = answersMatchExpected(answer, expected);
+    const ok = Boolean(answer) && answersMatchExpected(answer, expected);
     perCheck[check.id] = ok;
     if (ok) correct += 1;
   }
@@ -67,11 +67,12 @@ export function scoreFixture(
   let fn = 0;
   for (const check of CHECKS) {
     const expected = truth.expected[check.id];
+    if (!expected) continue;
     const answer = answers[check.id];
-    if (!expected || !answer) continue;
-    const pred = predictedProblem(check.id, answer);
+    const pred = answer ? predictedProblem(check.id, answer) : false;
     const isPlanted = planted.has(check.id);
-    if (isPlanted && pred) tp += 1;
+    if (isPlanted && !answer) fn += 1;
+    else if (isPlanted && pred) tp += 1;
     else if (isPlanted && !pred) fn += 1;
     else if (!isPlanted && pred && expectedProblem(check.id, expected)) {
       // expected problem that is not in plantedIssues (e.g. auto-renewal on clean MSA) — not an FP

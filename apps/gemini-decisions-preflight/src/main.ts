@@ -58,6 +58,15 @@ const verdictLabel: Record<CheckRow["verdict"], string> = {
   na: "n/a",
 };
 
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function fmtProb(n: number | undefined): string {
   if (n == null || Number.isNaN(n)) return "—";
   return n.toFixed(2);
@@ -82,6 +91,7 @@ async function boot() {
   let running = false;
   let result: Preflight | null = null;
   let toast = "";
+  let docRev = 0;
 
   function pdfSrc(): string {
     if (upload) return `data:application/pdf;base64,${upload.pdfBase64}`;
@@ -120,16 +130,16 @@ async function boot() {
             ${fixtures
               .map(
                 (f) => `
-              <button class="fixture" type="button" data-id="${f.id}" aria-pressed="${!upload && selected === f.id}">
-                <b>${f.title}</b>
-                <span>${f.documentType.toUpperCase()} · ${f.planted ? `${f.plantedIssueCount} planted issues` : "clean"}</span>
+              <button class="fixture" type="button" data-id="${f.id}" aria-pressed="${!upload && selected === f.id}" ${running ? "disabled" : ""}>
+                <b>${escapeHtml(f.title)}</b>
+                <span>${escapeHtml(f.documentType.toUpperCase())} · ${f.planted ? `${f.plantedIssueCount} planted issues` : "clean"}</span>
               </button>`,
               )
               .join("")}
             <label class="drop">
               Or upload a PDF
-              <input id="file" type="file" accept="application/pdf" />
-              <div>${upload ? upload.filename : "Bundled fixtures are synthetic. No customer data."}</div>
+              <input id="file" type="file" accept="application/pdf" ${running ? "disabled" : ""} />
+              <div>${upload ? escapeHtml(upload.filename) : "Bundled fixtures are synthetic. No customer data."}</div>
             </label>
             <div class="preview">
               <iframe title="PDF preview" src="${pdfSrc()}"></iframe>
@@ -138,7 +148,7 @@ async function boot() {
               <button class="primary" id="run" ${running ? "disabled" : ""}>${running ? "Running…" : "Run preflight"}</button>
               <button class="send" id="send" ${result && result.counts.fail === 0 ? "" : "disabled"}>Send</button>
             </div>
-            ${toast ? `<div class="toast">${toast}</div>` : ""}
+            ${toast ? `<div class="toast">${escapeHtml(toast)}</div>` : ""}
           </aside>
           <section class="card results">
             <h2>Decisions results</h2>
@@ -153,7 +163,7 @@ async function boot() {
                 <div class="metric"><div class="k">Est. cost</div><div class="v">${result.costLabel}</div></div>
                 <div class="metric"><div class="k">Output tokens</div><div class="v">${result.outputTokensBilled}</div></div>
               </div>
-              <p class="sub">${result.mock ? "MOCK adapter — not a live Gemini call." : "LIVE Decisions API."} Model ${result.model}. ${result.usage.total_input_tokens} input tokens billed; output tokens are ${result.outputTokensBilled}.</p>
+              <p class="sub">${result.mock ? "MOCK adapter — not a live Gemini call." : "LIVE Decisions API."} Model ${escapeHtml(result.model)}. ${result.usage.total_input_tokens} input tokens billed; output tokens are ${result.outputTokensBilled}.</p>
               ${[...grouped.entries()]
                 .map(
                   ([group, rows]) => `
@@ -197,6 +207,7 @@ async function boot() {
 
     app.querySelectorAll<HTMLButtonElement>(".fixture").forEach((btn) => {
       btn.addEventListener("click", () => {
+        docRev += 1;
         selected = btn.dataset.id ?? selected;
         upload = null;
         result = null;
@@ -212,12 +223,14 @@ async function boot() {
       buf.forEach((b) => {
         binary += String.fromCharCode(b);
       });
+      docRev += 1;
       upload = { filename: file.name, pdfBase64: btoa(binary) };
       result = null;
       toast = "";
       render();
     });
     app.querySelector("#run")?.addEventListener("click", async () => {
+      const rev = docRev;
       running = true;
       toast = "";
       render();
@@ -231,13 +244,15 @@ async function boot() {
           body: JSON.stringify(payload),
         });
         const body = await res.json();
+        if (rev !== docRev) return;
         if (!res.ok) throw new Error(body.error ?? res.statusText);
         result = body as Preflight;
       } catch (err) {
+        if (rev !== docRev) return;
         toast = err instanceof Error ? err.message : String(err);
       } finally {
         running = false;
-        render();
+        if (rev === docRev) render();
       }
     });
     app.querySelector("#send")?.addEventListener("click", () => {

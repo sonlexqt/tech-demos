@@ -4,16 +4,19 @@ import type { Usage } from "./types.ts";
 export const DECISIONS_INPUT_USD_PER_MILLION = 0.1;
 export const DECISIONS_OUTPUT_USD_PER_MILLION = 0;
 
-/**
- * Paid Gemini 3.5 Flash-Lite rates (the committed live baseline):
- * $0.30 input / $2.50 output per 1M. Override if GENERATIVE_MODEL changes.
- */
-export const FLASH_INPUT_USD_PER_MILLION = Number(
-  process.env.FLASH_INPUT_USD_PER_M ?? 0.3,
-);
-export const FLASH_OUTPUT_USD_PER_MILLION = Number(
-  process.env.FLASH_OUTPUT_USD_PER_M ?? 2.5,
-);
+/** Paid Gemini 3.5 Flash-Lite defaults. Read env at call time so `.env` can load first. */
+export const DEFAULT_FLASH_INPUT_USD_PER_M = 0.3;
+export const DEFAULT_FLASH_OUTPUT_USD_PER_M = 2.5;
+
+export function flashRates(env: NodeJS.ProcessEnv = process.env): {
+  inputPerM: number;
+  outputPerM: number;
+} {
+  return {
+    inputPerM: Number(env.FLASH_INPUT_USD_PER_M ?? DEFAULT_FLASH_INPUT_USD_PER_M),
+    outputPerM: Number(env.FLASH_OUTPUT_USD_PER_M ?? DEFAULT_FLASH_OUTPUT_USD_PER_M),
+  };
+}
 
 export function usdFromUsage(
   usage: Usage,
@@ -33,8 +36,9 @@ export function decisionsUsd(usage: Usage): number {
   );
 }
 
-export function flashUsd(usage: Usage): number {
-  return usdFromUsage(usage, FLASH_INPUT_USD_PER_MILLION, FLASH_OUTPUT_USD_PER_MILLION);
+export function flashUsd(usage: Usage, env: NodeJS.ProcessEnv = process.env): number {
+  const rates = flashRates(env);
+  return usdFromUsage(usage, rates.inputPerM, rates.outputPerM);
 }
 
 export function formatUsd(n: number): string {

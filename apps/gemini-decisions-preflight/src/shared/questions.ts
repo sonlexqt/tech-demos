@@ -273,7 +273,7 @@ export const CHECKS: CheckDef[] = [
     id: "late_fee_terms",
     group: "Commercial",
     label: "Late fee terms",
-    hint: "Optional but expected on a send-ready MSA.",
+    hint: "On an MSA, missing late-fee language is a send flag in this demo.",
     appliesTo: "msa",
     ui: { kind: "noul_requirement" },
     question: {
@@ -525,9 +525,9 @@ export const CHECKS: CheckDef[] = [
     id: "document_type",
     group: "Meta",
     label: "Document type",
-    hint: "Used in code to skip MSA-only checks on NDAs.",
+    hint: "Used in code to skip MSA-only checks on NDAs. sow/dpa/other block Send.",
     appliesTo: "all",
-    ui: { kind: "choice", failValues: [] },
+    ui: { kind: "choice", failValues: ["sow", "dpa", "other"] },
     question: {
       type: "choice",
       instructions: "What type of agreement is this?",

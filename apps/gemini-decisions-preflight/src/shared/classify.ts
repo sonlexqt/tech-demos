@@ -41,12 +41,21 @@ export function documentTypeFromAnswers(
   return "other";
 }
 
+function documentTypeConfident(
+  answers: Record<string, Answer>,
+  threshold: number,
+): boolean {
+  const a = answers.document_type;
+  return a?.type === "choice" && a.confidence >= threshold;
+}
+
 export function classifyAnswers(
   answers: Record<string, Answer>,
   options: ClassifyOptions = {},
 ): ClassifiedCheck[] {
   const threshold = options.confidenceThreshold ?? CONFIDENCE_THRESHOLD;
   const doc = documentTypeFromAnswers(answers);
+  const typeOk = documentTypeConfident(answers, threshold);
   const rows: ClassifiedCheck[] = [];
 
   for (const check of CHECKS) {
@@ -54,12 +63,15 @@ export function classifyAnswers(
     if (!answer) continue;
 
     let verdict: Verdict = "human";
+    const needsType = check.appliesTo !== "all";
     const applicable =
       check.appliesTo === "all" ||
       (check.appliesTo === "msa" && doc === "msa") ||
       (check.appliesTo === "nda" && doc === "nda");
 
-    if (!applicable) {
+    if (needsType && !typeOk) {
+      verdict = "human";
+    } else if (!applicable) {
       verdict = "na";
     } else if (answer.confidence < threshold) {
       verdict = "human";

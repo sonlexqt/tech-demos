@@ -159,11 +159,8 @@ function normalizeAnswers(raw: Record<string, unknown>): Record<string, Answer> 
         sum = 1;
       }
       for (const k of levels) probabilities[k] = probabilities[k] / sum;
-      let score = Number(item.score);
-      if (Number.isNaN(score)) {
-        score = 0;
-        for (const k of levels) score += Number(k) * probabilities[k];
-      }
+      let score = 0;
+      for (const k of levels) score += Number(k) * probabilities[k];
       const legend: Record<string, string> = {};
       check.question.criteria.forEach((v, i) => {
         legend[String(i)] = v;
@@ -260,13 +257,17 @@ export async function createGenerativeDecisions(opts: {
   const usageMeta = (json.usageMetadata ?? {}) as {
     promptTokenCount?: number;
     candidatesTokenCount?: number;
+    thoughtsTokenCount?: number;
     totalTokenCount?: number;
   };
+  const outputTokens =
+    (usageMeta.candidatesTokenCount ?? 0) + (usageMeta.thoughtsTokenCount ?? 0);
   const usage: Usage = {
     total_input_tokens: usageMeta.promptTokenCount ?? 0,
     input_tokens_by_modality: [{ modality: "mixed", tokens: usageMeta.promptTokenCount ?? 0 }],
-    total_output_tokens: usageMeta.candidatesTokenCount ?? 0,
-    total_tokens: usageMeta.totalTokenCount ?? (usageMeta.promptTokenCount ?? 0) + (usageMeta.candidatesTokenCount ?? 0),
+    total_output_tokens: outputTokens,
+    total_tokens:
+      usageMeta.totalTokenCount ?? (usageMeta.promptTokenCount ?? 0) + outputTokens,
   };
   return {
     model,
