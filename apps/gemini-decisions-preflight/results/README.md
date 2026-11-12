@@ -1,4 +1,4 @@
 # Eval outputs
 
-- **`mock/`** — committed mock-adapter run. **Not** live model quality, latency, or cost. The UI and this folder are labeled MOCK until a live eval lands.
-- **Live** (`decisions.json`, `generative.json`, `SUMMARY.md` in this directory) — produced only when `GEMINI_API_KEY` is set. Do not invent these files.
+- **This directory** — live owner run (`mock: false`) with `GEMINI_API_KEY`: `decisions.json`, `generative.json`, `SUMMARY.md`. Decisions model `gemini-decision-1`; generative baseline `gemini-3.5-flash-lite`.
+- **`mock/`** — recorded mock-adapter run. **Not** live model quality, latency, or cost. Do not cite mock numbers as the bake-off.

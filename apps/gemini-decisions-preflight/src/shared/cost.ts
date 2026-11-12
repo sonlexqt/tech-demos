@@ -5,14 +5,14 @@ export const DECISIONS_INPUT_USD_PER_MILLION = 0.1;
 export const DECISIONS_OUTPUT_USD_PER_MILLION = 0;
 
 /**
- * Gemini 3.5 Flash paid standard rates used for the generative baseline
- * ($1.50 input / $9.00 output per 1M). Override via env if pricing moves.
+ * Paid Gemini 3.5 Flash-Lite rates (the committed live baseline):
+ * $0.30 input / $2.50 output per 1M. Override if GENERATIVE_MODEL changes.
  */
 export const FLASH_INPUT_USD_PER_MILLION = Number(
-  process.env.FLASH_INPUT_USD_PER_M ?? 1.5,
+  process.env.FLASH_INPUT_USD_PER_M ?? 0.3,
 );
 export const FLASH_OUTPUT_USD_PER_MILLION = Number(
-  process.env.FLASH_OUTPUT_USD_PER_M ?? 9.0,
+  process.env.FLASH_OUTPUT_USD_PER_M ?? 2.5,
 );
 
 export function usdFromUsage(

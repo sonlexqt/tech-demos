@@ -90,4 +90,26 @@ The PDF is sent once as `{ "type": "document", "data": "<base64>", "mime_type": 
 | Mock | `DECISIONS_MODE=mock` or no `GEMINI_API_KEY` | `results/mock/` only |
 | Live | key set and mode `auto`/`live` | `results/` |
 
-Mock responses use the same JSON shape as the docs (`answers` + `usage`) and are labeled **MOCK**. They are not a quality claim. The owner runs the live eval separately and commits those files.
+Mock responses use the same JSON shape as the docs (`answers` + `usage`) and are labeled **MOCK**. They are not a quality claim. Live numbers live in `results/` (keep `results/mock/` for the adapter wiring).
+
+## What our eval found
+
+Owner-run live bake-off, four synthetic fixtures, **156 checks** (39 × 4). Full tables: [`results/SUMMARY.md`](./results/SUMMARY.md).
+
+| | Decisions `gemini-decision-1` | Generative `gemini-3.5-flash-lite` |
+| --- | --- | --- |
+| Accuracy vs ground truth | **98.1%** | **96.8%** |
+| Planted-issue precision | 100% | 100% |
+| Planted-issue recall | **100%** | **96.9%** |
+| Latency p50 | **560 ms** | **6109 ms** |
+| Latency p95 | **720 ms** | **18656 ms** |
+| Est. cost per document | **~$0.0004** | **~$0.006** |
+
+Caveats, stated plainly:
+
+- The generative baseline is **Flash-Lite**, not Flash. `gemini-3.5-flash` and newer Flash models returned **503 high-demand** for this key, so the comparison is Decisions vs Flash-Lite structured JSON.
+- Generative p50/p95 **include 503 retry waits** on the two NDA fixtures. Those latencies are not a fair model-compute comparison.
+- Both models **missed the three rubric scores** (`overall_risk`, `sign_readiness`, `completeness`) on `nda-planted` (36/39 each). Boolean and choice checks were otherwise strong.
+- **Only four synthetic fixtures.** Directional, not a production quality claim.
+
+Set `GENERATIVE_MODEL` to try another Flash id on a re-run; do not overwrite `results/` unless you intend to replace the owner eval.

@@ -4,9 +4,20 @@ Send-ready checks for a contract PDF using Google’s [Gemini Decisions API](htt
 
 This is a demo of the API, not production Lumin Sign.
 
-**Bundled screenshots, screen recordings, and `results/mock/` are from mock mode.** There is no API key in the agent environment. Do not treat mock numbers as a real Decisions vs Flash bake-off. The repo owner runs `npm run eval` with `GEMINI_API_KEY` and commits live `results/` files later.
+Live eval numbers (owner-run, `mock: false`) are in [`results/SUMMARY.md`](./results/SUMMARY.md). **Screenshots, the screen recording, and `results/mock/` are still mock-mode UI evidence** — do not cite mock JSON as the bake-off.
 
-Mock walkthrough (do not read as live eval evidence):
+| | Decisions `gemini-decision-1` | Generative `gemini-3.5-flash-lite` |
+| --- | --- | --- |
+| Accuracy (156 checks / 4 fixtures) | **98.1%** | **96.8%** |
+| Planted-issue precision | 100% | 100% |
+| Planted-issue recall | **100%** | **96.9%** |
+| Latency p50 | **560 ms** | **6109 ms** |
+| Latency p95 | **720 ms** | **18656 ms** |
+| Est. cost per document | **~$0.0004** | **~$0.006** |
+
+Caveats: baseline is Flash-Lite because `gemini-3.5-flash` and newer Flash models returned 503 high-demand for this key; generative latencies include 503 retry waits on two NDA fixtures; both models missed the 3 rubric scores on `nda-planted`; only 4 synthetic fixtures, so this is directional. More in [HOW_IT_WORKS.md](./HOW_IT_WORKS.md#what-our-eval-found).
+
+Mock walkthrough (UI only, not live eval evidence):
 
 - `media/preflight_planted_msa_mock.png`
 - `media/preflight_mock_walkthrough.mp4`
@@ -53,9 +64,15 @@ Requires **Node** (no Docker). `bun run eval` is equivalent after install.
 | Mock (default here) | no key, or `DECISIONS_MODE=mock` | `results/mock/decisions.json`, `results/mock/generative.json`, `results/mock/SUMMARY.md` |
 | Live | `GEMINI_API_KEY` set, `DECISIONS_MODE` unset/`auto`/`live` | `results/decisions.json`, `results/generative.json`, `results/SUMMARY.md` |
 
-`SUMMARY.md` includes per-check accuracy vs ground truth, precision/recall on planted issues, p50/p95 latency, and token cost, side by side. Mock summaries open with an explicit **MOCK** banner.
+`SUMMARY.md` includes per-check accuracy vs ground truth, precision/recall on planted issues, p50/p95 latency, and token cost, side by side. Mock summaries open with an explicit **MOCK** banner. Committed live files are already in `results/`; re-running live eval overwrites them.
 
-Live generative model: `gemini-3.5-flash` (override with `GENERATIVE_MODEL`).
+Generative baseline model is **`GENERATIVE_MODEL`** (default `gemini-3.5-flash-lite`, matching the committed live run). Example:
+
+```bash
+GENERATIVE_MODEL=gemini-3.5-flash-lite npm run eval
+```
+
+Optional cost-rate overrides: `FLASH_INPUT_USD_PER_M`, `FLASH_OUTPUT_USD_PER_M`.
 
 ## Manual test checklist
 
@@ -65,8 +82,9 @@ Live generative model: `gemini-3.5-flash` (override with `GENERATIVE_MODEL`).
 - [ ] Planted MSA: multiple red checks aligned with `fixtures/msa-planted.truth.json`
 - [ ] Expanding a choice/score row shows a probability map
 - [ ] Send is demo-only and blocked when any row is red
-- [ ] `npm run eval` writes `results/mock/*` in this environment
+- [ ] `npm run eval` without a key writes `results/mock/*` and does not overwrite live `results/*.json`
 - [ ] `.env.example` has a placeholder only; no secrets in git
+- [ ] `results/SUMMARY.md` is the live owner eval (`mock: false`); `results/mock/SUMMARY.md` stays mocked
 
 ## Fixtures
 

@@ -1,0 +1,1473 @@
+{
+  "mock": false,
+  "generatedAt": "2026-11-12T20:26:08.552Z",
+  "runs": [
+    {
+      "fixtureId": "msa-clean",
+      "mode": "live",
+      "model": "gemini-decision-1",
+      "latencyMs": 560,
+      "usage": {
+        "total_tokens": 5130,
+        "total_input_tokens": 5130,
+        "input_tokens_by_modality": [
+          {
+            "modality": "text",
+            "tokens": 4090
+          },
+          {
+            "modality": "image",
+            "tokens": 1040
+          }
+        ],
+        "total_output_tokens": 0
+      },
+      "answers": {
+        "overall_risk": {
+          "confidence": 0.7807283478833456,
+          "score": 0.30828861683944886,
+          "probabilities": {
+            "0": 0.7807283478833456,
+            "1": 0.1540412575102798,
+            "2": 0.04144382448995516,
+            "3": 0.023786570116419596
+          },
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "type": "score"
+        },
+        "confidentiality_clause": {
+          "confidence": 0.9774176233017849,
+          "noul": 0.9774176233017849,
+          "type": "noul"
+        },
+        "e_sign_permitted": {
+          "confidence": 0.9577615253733182,
+          "noul": 0.9577615253733182,
+          "type": "noul"
+        },
+        "governing_law": {
+          "confidence": 0.999983361075886,
+          "choice": "delaware",
+          "probabilities": {
+            "california": 0.00000803764768142259,
+            "other": 0.0000030445939268619228,
+            "delaware": 0.999983361075886,
+            "new_york": 0.0000028675436924014353,
+            "unspecified": 0.0000016087226508864083,
+            "england_wales": 0.0000010804161622299273
+          },
+          "type": "choice"
+        },
+        "missing_witness_block": {
+          "confidence": 0.9628388484087653,
+          "noul": 0.03716115159123468,
+          "type": "noul"
+        },
+        "counterparts_clause": {
+          "confidence": 0.9776016119831387,
+          "noul": 0.9776016119831387,
+          "type": "noul"
+        },
+        "auto_renewal_clause": {
+          "confidence": 0.9585407965241141,
+          "noul": 0.9585407965241141,
+          "type": "noul"
+        },
+        "severability": {
+          "confidence": 0.9527168583989367,
+          "noul": 0.9527168583989367,
+          "type": "noul"
+        },
+        "entire_agreement": {
+          "confidence": 0.9749730847222339,
+          "noul": 0.9749730847222339,
+          "type": "noul"
+        },
+        "missing_counterparty_name": {
+          "confidence": 0.9703193330954993,
+          "noul": 0.029680666904500642,
+          "type": "noul"
+        },
+        "missing_notice_addresses": {
+          "confidence": 0.9893555966013556,
+          "noul": 0.010644403398644395,
+          "type": "noul"
+        },
+        "empty_initial_fields": {
+          "confidence": 0.9676356504459298,
+          "noul": 0.032364349554070235,
+          "type": "noul"
+        },
+        "termination_clause": {
+          "confidence": 0.9732275536275167,
+          "noul": 0.9732275536275167,
+          "type": "noul"
+        },
+        "renewal_type": {
+          "confidence": 0.9934482001321354,
+          "choice": "with_notice",
+          "probabilities": {
+            "unclear": 0.0021383450109893295,
+            "none": 0.001063842397998739,
+            "with_notice": 0.9934482001321354,
+            "without_notice": 0.003349612458876394
+          },
+          "type": "choice"
+        },
+        "completeness": {
+          "confidence": 0.7984504996757835,
+          "score": 2.7677116484069106,
+          "probabilities": {
+            "0": 0.002749999662783776,
+            "1": 0.0252388519433053,
+            "2": 0.17356064871812737,
+            "3": 0.7984504996757835
+          },
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "type": "score"
+        },
+        "insurance_requirements": {
+          "confidence": 0.9590569588990243,
+          "noul": 0.9590569588990243,
+          "type": "noul"
+        },
+        "defined_terms_undefined": {
+          "confidence": 0.8093666571526245,
+          "noul": 0.19063334284737557,
+          "type": "noul"
+        },
+        "sign_readiness": {
+          "confidence": 0.8376374369563365,
+          "score": 2.796826167265293,
+          "probabilities": {
+            "0": 0.008212926755711454,
+            "1": 0.024385416179620895,
+            "2": 0.12976422010833114,
+            "3": 0.8376374369563365
+          },
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "type": "score"
+        },
+        "missing_term_duration": {
+          "confidence": 0.99,
+          "noul": 0.01,
+          "type": "noul"
+        },
+        "amendment_in_writing": {
+          "confidence": 0.9612077383970308,
+          "noul": 0.9612077383970308,
+          "type": "noul"
+        },
+        "late_fee_terms": {
+          "confidence": 0.9678173344107052,
+          "noul": 0.9678173344107052,
+          "type": "noul"
+        },
+        "empty_date_fields": {
+          "confidence": 0.9740646646827069,
+          "noul": 0.02593533531729312,
+          "type": "noul"
+        },
+        "conflicting_dates": {
+          "confidence": 0.9750103220114857,
+          "noul": 0.02498967798851424,
+          "type": "noul"
+        },
+        "sig_title_lines": {
+          "confidence": 0.9560744188505675,
+          "noul": 0.9560744188505675,
+          "type": "noul"
+        },
+        "governing_law_specified": {
+          "confidence": 0.9718416199160808,
+          "noul": 0.9718416199160808,
+          "type": "noul"
+        },
+        "assignment_without_consent": {
+          "confidence": 0.9427395283562823,
+          "noul": 0.05726047164371778,
+          "type": "noul"
+        },
+        "limitation_of_liability": {
+          "confidence": 0.9747819054239117,
+          "noul": 0.9747819054239117,
+          "type": "noul"
+        },
+        "every_party_has_sig_block": {
+          "confidence": 0.9457044573887362,
+          "noul": 0.9457044573887362,
+          "type": "noul"
+        },
+        "parties_both_named": {
+          "confidence": 0.9696463581311574,
+          "noul": 0.9696463581311574,
+          "type": "noul"
+        },
+        "document_type": {
+          "confidence": 0.9977289570256188,
+          "choice": "msa",
+          "probabilities": {
+            "other": 0.0003177009898307673,
+            "nda": 0.00008090985983864344,
+            "msa": 0.9977289570256188,
+            "sow": 0.0016483226807539587,
+            "dpa": 0.00022410944395774758
+          },
+          "type": "choice"
+        },
+        "ip_ownership_clause": {
+          "confidence": 0.9693638468111339,
+          "noul": 0.9693638468111339,
+          "type": "noul"
+        },
+        "indemnity_clause": {
+          "confidence": 0.9735373281641527,
+          "noul": 0.9735373281641527,
+          "type": "noul"
+        },
+        "sig_printed_name_lines": {
+          "confidence": 0.9275488784526768,
+          "noul": 0.9275488784526768,
+          "type": "noul"
+        },
+        "payment_terms_present": {
+          "confidence": 0.9657309192604425,
+          "noul": 0.9657309192604425,
+          "type": "noul"
+        },
+        "sig_date_lines": {
+          "confidence": 0.9722969340320767,
+          "noul": 0.9722969340320767,
+          "type": "noul"
+        },
+        "missing_effective_date": {
+          "confidence": 0.9867263039550946,
+          "noul": 0.013273696044905336,
+          "type": "noul"
+        },
+        "force_majeure": {
+          "confidence": 0.9555362974725997,
+          "noul": 0.9555362974725997,
+          "type": "noul"
+        },
+        "referenced_exhibits_missing": {
+          "confidence": 0.9570730259482956,
+          "noul": 0.04292697405170437,
+          "type": "noul"
+        },
+        "venue_specified": {
+          "confidence": 0.9793460014861227,
+          "noul": 0.9793460014861227,
+          "type": "noul"
+        }
+      }
+    },
+    {
+      "fixtureId": "msa-planted",
+      "mode": "live",
+      "model": "gemini-decision-1",
+      "latencyMs": 640,
+      "usage": {
+        "total_tokens": 3897,
+        "total_input_tokens": 3897,
+        "input_tokens_by_modality": [
+          {
+            "modality": "text",
+            "tokens": 3377
+          },
+          {
+            "modality": "image",
+            "tokens": 520
+          }
+        ],
+        "total_output_tokens": 0
+      },
+      "answers": {
+        "empty_initial_fields": {
+          "confidence": 0.9492045369927482,
+          "noul": 0.9492045369927482,
+          "type": "noul"
+        },
+        "defined_terms_undefined": {
+          "confidence": 0.9681122225104771,
+          "noul": 0.9681122225104771,
+          "type": "noul"
+        },
+        "assignment_without_consent": {
+          "confidence": 0.9501005344871446,
+          "noul": 0.9501005344871446,
+          "type": "noul"
+        },
+        "missing_effective_date": {
+          "confidence": 0.9588485227000446,
+          "noul": 0.9588485227000446,
+          "type": "noul"
+        },
+        "venue_specified": {
+          "confidence": 0.9591669651871695,
+          "noul": 0.04083303481283047,
+          "type": "noul"
+        },
+        "payment_terms_present": {
+          "confidence": 0.9468521802846345,
+          "noul": 0.053147819715365516,
+          "type": "noul"
+        },
+        "confidentiality_clause": {
+          "confidence": 0.9646334117446882,
+          "noul": 0.03536658825531181,
+          "type": "noul"
+        },
+        "document_type": {
+          "confidence": 0.999560053433389,
+          "choice": "msa",
+          "probabilities": {
+            "sow": 0.00009757036610289388,
+            "other": 0.00025537473729781763,
+            "dpa": 0.00007380198772541835,
+            "nda": 0.00001319947548482571,
+            "msa": 0.999560053433389
+          },
+          "type": "choice"
+        },
+        "empty_date_fields": {
+          "confidence": 0.8794555679705043,
+          "noul": 0.8794555679705043,
+          "type": "noul"
+        },
+        "termination_clause": {
+          "confidence": 0.9639255875330915,
+          "noul": 0.036074412466908505,
+          "type": "noul"
+        },
+        "missing_counterparty_name": {
+          "confidence": 0.8679109610076855,
+          "noul": 0.8679109610076855,
+          "type": "noul"
+        },
+        "parties_both_named": {
+          "confidence": 0.9280538923279137,
+          "noul": 0.07194610767208627,
+          "type": "noul"
+        },
+        "ip_ownership_clause": {
+          "confidence": 0.9571885646392053,
+          "noul": 0.04281143536079467,
+          "type": "noul"
+        },
+        "insurance_requirements": {
+          "confidence": 0.9407569634251892,
+          "noul": 0.05924303657481078,
+          "type": "noul"
+        },
+        "governing_law": {
+          "confidence": 0.993380323619371,
+          "choice": "unspecified",
+          "probabilities": {
+            "unspecified": 0.993380323619371,
+            "england_wales": 0.00029645251688557427,
+            "new_york": 0.00027390196185516914,
+            "delaware": 0.0010316334736154243,
+            "california": 0.0005412437076922643,
+            "other": 0.004476444720580622
+          },
+          "type": "choice"
+        },
+        "late_fee_terms": {
+          "confidence": 0.9306555040772234,
+          "noul": 0.06934449592277657,
+          "type": "noul"
+        },
+        "severability": {
+          "confidence": 0.9578221716882676,
+          "noul": 0.0421778283117324,
+          "type": "noul"
+        },
+        "completeness": {
+          "confidence": 0.6856432726054087,
+          "score": 0.36716127063491383,
+          "probabilities": {
+            "0": 0.6856432726054087,
+            "1": 0.270458000697575,
+            "2": 0.034992910153710595,
+            "3": 0.008905816543305887
+          },
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "type": "score"
+        },
+        "indemnity_clause": {
+          "confidence": 0.9472751329006633,
+          "noul": 0.05272486709933663,
+          "type": "noul"
+        },
+        "missing_witness_block": {
+          "confidence": 0.9409602574286441,
+          "noul": 0.9409602574286441,
+          "type": "noul"
+        },
+        "force_majeure": {
+          "confidence": 0.9720923207424564,
+          "noul": 0.027907679257543512,
+          "type": "noul"
+        },
+        "limitation_of_liability": {
+          "confidence": 0.9542590414880738,
+          "noul": 0.045740958511926166,
+          "type": "noul"
+        },
+        "sign_readiness": {
+          "confidence": 0.7140365285780994,
+          "score": 0.32394595003766224,
+          "probabilities": {
+            "0": 0.7140365285780994,
+            "1": 0.2554068822100217,
+            "2": 0.023130699807995928,
+            "3": 0.007425889403882881
+          },
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "type": "score"
+        },
+        "governing_law_specified": {
+          "confidence": 0.965741378184799,
+          "noul": 0.03425862181520097,
+          "type": "noul"
+        },
+        "amendment_in_writing": {
+          "confidence": 0.9465468239852862,
+          "noul": 0.05345317601471378,
+          "type": "noul"
+        },
+        "missing_term_duration": {
+          "confidence": 0.9542180062333822,
+          "noul": 0.9542180062333822,
+          "type": "noul"
+        },
+        "overall_risk": {
+          "confidence": 0.8736264494564131,
+          "score": 2.8587440740970154,
+          "probabilities": {
+            "0": 0.0022485615390841858,
+            "1": 0.010385252281229499,
+            "2": 0.11373973672327327,
+            "3": 0.8736264494564131
+          },
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "type": "score"
+        },
+        "sig_date_lines": {
+          "confidence": 0.9499206798698995,
+          "noul": 0.05007932013010054,
+          "type": "noul"
+        },
+        "referenced_exhibits_missing": {
+          "confidence": 0.963826959162997,
+          "noul": 0.963826959162997,
+          "type": "noul"
+        },
+        "conflicting_dates": {
+          "confidence": 0.9495483006604976,
+          "noul": 0.9495483006604976,
+          "type": "noul"
+        },
+        "entire_agreement": {
+          "confidence": 0.9612873211257743,
+          "noul": 0.03871267887422566,
+          "type": "noul"
+        },
+        "sig_title_lines": {
+          "confidence": 0.9101665348863458,
+          "noul": 0.08983346511365423,
+          "type": "noul"
+        },
+        "missing_notice_addresses": {
+          "confidence": 0.9494332547959805,
+          "noul": 0.9494332547959805,
+          "type": "noul"
+        },
+        "e_sign_permitted": {
+          "confidence": 0.9645927885847938,
+          "noul": 0.03540721141520619,
+          "type": "noul"
+        },
+        "renewal_type": {
+          "confidence": 0.9880716975099598,
+          "choice": "without_notice",
+          "probabilities": {
+            "none": 0.000579086508584939,
+            "with_notice": 0.0039971795215213175,
+            "unclear": 0.007352036459933997,
+            "without_notice": 0.9880716975099598
+          },
+          "type": "choice"
+        },
+        "auto_renewal_clause": {
+          "confidence": 0.9481186606351677,
+          "noul": 0.9481186606351677,
+          "type": "noul"
+        },
+        "sig_printed_name_lines": {
+          "confidence": 0.9124571811713749,
+          "noul": 0.08754281882862511,
+          "type": "noul"
+        },
+        "counterparts_clause": {
+          "confidence": 0.9593119484226231,
+          "noul": 0.040688051577376906,
+          "type": "noul"
+        },
+        "every_party_has_sig_block": {
+          "confidence": 0.9341849359874266,
+          "noul": 0.06581506401257338,
+          "type": "noul"
+        }
+      }
+    },
+    {
+      "fixtureId": "nda-clean",
+      "mode": "live",
+      "model": "gemini-decision-1",
+      "latencyMs": 548,
+      "usage": {
+        "total_tokens": 4150,
+        "total_input_tokens": 4150,
+        "input_tokens_by_modality": [
+          {
+            "modality": "text",
+            "tokens": 3630
+          },
+          {
+            "modality": "image",
+            "tokens": 520
+          }
+        ],
+        "total_output_tokens": 0
+      },
+      "answers": {
+        "missing_effective_date": {
+          "confidence": 0.9828104402317104,
+          "noul": 0.017189559768289626,
+          "type": "noul"
+        },
+        "amendment_in_writing": {
+          "confidence": 0.9554249839589423,
+          "noul": 0.9554249839589423,
+          "type": "noul"
+        },
+        "missing_witness_block": {
+          "confidence": 0.9563649671683759,
+          "noul": 0.04363503283162405,
+          "type": "noul"
+        },
+        "completeness": {
+          "confidence": 0.8234984921087081,
+          "score": 2.800566588986815,
+          "probabilities": {
+            "0": 0.0019393170548112019,
+            "1": 0.019053269012270328,
+            "2": 0.1555089218242104,
+            "3": 0.8234984921087081
+          },
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "type": "score"
+        },
+        "parties_both_named": {
+          "confidence": 0.9488514635969912,
+          "noul": 0.9488514635969912,
+          "type": "noul"
+        },
+        "governing_law_specified": {
+          "confidence": 0.9537553532871156,
+          "noul": 0.9537553532871156,
+          "type": "noul"
+        },
+        "auto_renewal_clause": {
+          "confidence": 0.9582411263180425,
+          "noul": 0.041758873681957555,
+          "type": "noul"
+        },
+        "venue_specified": {
+          "confidence": 0.9531212899087704,
+          "noul": 0.9531212899087704,
+          "type": "noul"
+        },
+        "missing_counterparty_name": {
+          "confidence": 0.9718095573304674,
+          "noul": 0.02819044266953264,
+          "type": "noul"
+        },
+        "sig_title_lines": {
+          "confidence": 0.9386986450302172,
+          "noul": 0.9386986450302172,
+          "type": "noul"
+        },
+        "payment_terms_present": {
+          "confidence": 0.9674427022049428,
+          "noul": 0.0325572977950572,
+          "type": "noul"
+        },
+        "sign_readiness": {
+          "confidence": 0.8564131779946357,
+          "score": 2.8183709569316817,
+          "probabilities": {
+            "0": 0.007951911526051203,
+            "1": 0.022138398010851504,
+            "2": 0.11349651246846162,
+            "3": 0.8564131779946357
+          },
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "type": "score"
+        },
+        "force_majeure": {
+          "confidence": 0.9539652339687141,
+          "noul": 0.9539652339687141,
+          "type": "noul"
+        },
+        "confidentiality_clause": {
+          "confidence": 0.9549968043165198,
+          "noul": 0.9549968043165198,
+          "type": "noul"
+        },
+        "governing_law": {
+          "confidence": 0.9998937080022641,
+          "choice": "california",
+          "probabilities": {
+            "other": 0.000012791124737567765,
+            "unspecified": 0.00002131277840358088,
+            "california": 0.9998937080022641,
+            "england_wales": 0.00001724138583284152,
+            "new_york": 0.000008643887654814986,
+            "delaware": 0.00004630282110690936
+          },
+          "type": "choice"
+        },
+        "limitation_of_liability": {
+          "confidence": 0.958362851960623,
+          "noul": 0.041637148039377014,
+          "type": "noul"
+        },
+        "sig_date_lines": {
+          "confidence": 0.9354797602371867,
+          "noul": 0.9354797602371867,
+          "type": "noul"
+        },
+        "empty_initial_fields": {
+          "confidence": 0.9560570874473808,
+          "noul": 0.043942912552619215,
+          "type": "noul"
+        },
+        "entire_agreement": {
+          "confidence": 0.9514602314694628,
+          "noul": 0.9514602314694628,
+          "type": "noul"
+        },
+        "defined_terms_undefined": {
+          "confidence": 0.9135657140246989,
+          "noul": 0.08643428597530112,
+          "type": "noul"
+        },
+        "ip_ownership_clause": {
+          "confidence": 0.9628330294764098,
+          "noul": 0.037166970523590186,
+          "type": "noul"
+        },
+        "indemnity_clause": {
+          "confidence": 0.9648932710300615,
+          "noul": 0.03510672896993844,
+          "type": "noul"
+        },
+        "every_party_has_sig_block": {
+          "confidence": 0.9441114135231061,
+          "noul": 0.9441114135231061,
+          "type": "noul"
+        },
+        "missing_term_duration": {
+          "confidence": 0.99,
+          "noul": 0.01,
+          "type": "noul"
+        },
+        "e_sign_permitted": {
+          "confidence": 0.9633847703507016,
+          "noul": 0.9633847703507016,
+          "type": "noul"
+        },
+        "missing_notice_addresses": {
+          "confidence": 0.9778021658086937,
+          "noul": 0.022197834191306297,
+          "type": "noul"
+        },
+        "insurance_requirements": {
+          "confidence": 0.960558225944406,
+          "noul": 0.03944177405559406,
+          "type": "noul"
+        },
+        "overall_risk": {
+          "confidence": 0.7883269086163407,
+          "score": 0.28013685865313875,
+          "probabilities": {
+            "0": 0.7883269086163407,
+            "1": 0.16105341906394405,
+            "2": 0.03277557736995074,
+            "3": 0.0178440949497644
+          },
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "type": "score"
+        },
+        "conflicting_dates": {
+          "confidence": 0.9482487376054886,
+          "noul": 0.05175126239451143,
+          "type": "noul"
+        },
+        "assignment_without_consent": {
+          "confidence": 0.960447532366338,
+          "noul": 0.03955246763366199,
+          "type": "noul"
+        },
+        "renewal_type": {
+          "confidence": 0.9877428737139682,
+          "choice": "none",
+          "probabilities": {
+            "none": 0.9877428737139682,
+            "with_notice": 0.00543600970457041,
+            "without_notice": 0.0022056283391161165,
+            "unclear": 0.004615488242345245
+          },
+          "type": "choice"
+        },
+        "referenced_exhibits_missing": {
+          "confidence": 0.979623073289848,
+          "noul": 0.020376926710152045,
+          "type": "noul"
+        },
+        "severability": {
+          "confidence": 0.9624286076453575,
+          "noul": 0.9624286076453575,
+          "type": "noul"
+        },
+        "document_type": {
+          "confidence": 0.9998450688762385,
+          "choice": "nda",
+          "probabilities": {
+            "sow": 0.000007691941589178333,
+            "msa": 0.00006042200433229204,
+            "dpa": 0.000036653390585698485,
+            "nda": 0.9998450688762385,
+            "other": 0.00005016378725438534
+          },
+          "type": "choice"
+        },
+        "counterparts_clause": {
+          "confidence": 0.9603405962340156,
+          "noul": 0.9603405962340156,
+          "type": "noul"
+        },
+        "termination_clause": {
+          "confidence": 0.9618359843643771,
+          "noul": 0.9618359843643771,
+          "type": "noul"
+        },
+        "empty_date_fields": {
+          "confidence": 0.9698888726765296,
+          "noul": 0.030111127323470398,
+          "type": "noul"
+        },
+        "late_fee_terms": {
+          "confidence": 0.9578734407265272,
+          "noul": 0.0421265592734727,
+          "type": "noul"
+        },
+        "sig_printed_name_lines": {
+          "confidence": 0.9401930126037156,
+          "noul": 0.9401930126037156,
+          "type": "noul"
+        }
+      }
+    },
+    {
+      "fixtureId": "nda-planted",
+      "mode": "live",
+      "model": "gemini-decision-1",
+      "latencyMs": 720,
+      "usage": {
+        "total_tokens": 3816,
+        "total_input_tokens": 3816,
+        "input_tokens_by_modality": [
+          {
+            "modality": "text",
+            "tokens": 3296
+          },
+          {
+            "modality": "image",
+            "tokens": 520
+          }
+        ],
+        "total_output_tokens": 0
+      },
+      "answers": {
+        "completeness": {
+          "confidence": 0.7616717518059224,
+          "score": 0.2853844378794326,
+          "probabilities": {
+            "0": 0.7616717518059224,
+            "1": 0.20271063122805294,
+            "2": 0.024179044246694495,
+            "3": 0.011438572719330214
+          },
+          "legend": {
+            "0": "0 — Sparse: large sections or exhibits are missing.",
+            "1": "1 — Partial: several expected clauses or fields are absent.",
+            "2": "2 — Mostly complete: a few optional terms missing.",
+            "3": "3 — Complete for this document type."
+          },
+          "type": "score"
+        },
+        "every_party_has_sig_block": {
+          "confidence": 0.9339492252553546,
+          "noul": 0.06605077474464535,
+          "type": "noul"
+        },
+        "sig_date_lines": {
+          "confidence": 0.8961853179394874,
+          "noul": 0.10381468206051253,
+          "type": "noul"
+        },
+        "missing_counterparty_name": {
+          "confidence": 0.8972365038342287,
+          "noul": 0.8972365038342287,
+          "type": "noul"
+        },
+        "sign_readiness": {
+          "confidence": 0.8201894688186072,
+          "score": 0.20602286376278695,
+          "probabilities": {
+            "0": 0.8201894688186072,
+            "1": 0.15937048745245258,
+            "2": 0.014667754876486038,
+            "3": 0.005772288852454094
+          },
+          "legend": {
+            "0": "0 — Not sign-ready: missing signature blocks or party identity.",
+            "1": "1 — Major gaps: several send-blocking issues remain.",
+            "2": "2 — Minor gaps: send only after a human glances at flagged rows.",
+            "3": "3 — Ready to send: signature architecture and core terms look complete."
+          },
+          "type": "score"
+        },
+        "sig_printed_name_lines": {
+          "confidence": 0.9016264746714062,
+          "noul": 0.09837352532859384,
+          "type": "noul"
+        },
+        "conflicting_dates": {
+          "confidence": 0.5243774824222016,
+          "noul": 0.5243774824222016,
+          "type": "noul"
+        },
+        "payment_terms_present": {
+          "confidence": 0.9479550364478304,
+          "noul": 0.05204496355216956,
+          "type": "noul"
+        },
+        "force_majeure": {
+          "confidence": 0.9616551256454123,
+          "noul": 0.038344874354587714,
+          "type": "noul"
+        },
+        "missing_witness_block": {
+          "confidence": 0.9408107952002923,
+          "noul": 0.9408107952002923,
+          "type": "noul"
+        },
+        "termination_clause": {
+          "confidence": 0.9104305095653872,
+          "noul": 0.08956949043461285,
+          "type": "noul"
+        },
+        "assignment_without_consent": {
+          "confidence": 0.9436812817734371,
+          "noul": 0.9436812817734371,
+          "type": "noul"
+        },
+        "indemnity_clause": {
+          "confidence": 0.949090093104018,
+          "noul": 0.050909906895982016,
+          "type": "noul"
+        },
+        "missing_effective_date": {
+          "confidence": 0.7787760170193535,
+          "noul": 0.22122398298064647,
+          "type": "noul"
+        },
+        "governing_law": {
+          "confidence": 0.9997232331302479,
+          "choice": "england_wales",
+          "probabilities": {
+            "california": 0.00003395843196882927,
+            "new_york": 0.000009544021408887745,
+            "england_wales": 0.9997232331302479,
+            "other": 0.00007279140580540805,
+            "unspecified": 0.00010217570868785114,
+            "delaware": 0.000058297301880937505
+          },
+          "type": "choice"
+        },
+        "severability": {
+          "confidence": 0.9639646294401456,
+          "noul": 0.036035370559854445,
+          "type": "noul"
+        },
+        "insurance_requirements": {
+          "confidence": 0.9430020568187323,
+          "noul": 0.05699794318126776,
+          "type": "noul"
+        },
+        "defined_terms_undefined": {
+          "confidence": 0.9627932115163482,
+          "noul": 0.9627932115163482,
+          "type": "noul"
+        },
+        "empty_date_fields": {
+          "confidence": 0.9385390395418202,
+          "noul": 0.9385390395418202,
+          "type": "noul"
+        },
+        "parties_both_named": {
+          "confidence": 0.9323829210881086,
+          "noul": 0.06761707891189139,
+          "type": "noul"
+        },
+        "late_fee_terms": {
+          "confidence": 0.9391114136699082,
+          "noul": 0.0608885863300918,
+          "type": "noul"
+        },
+        "confidentiality_clause": {
+          "confidence": 0.9572213535268684,
+          "noul": 0.9572213535268684,
+          "type": "noul"
+        },
+        "limitation_of_liability": {
+          "confidence": 0.9281502866092194,
+          "noul": 0.07184971339078065,
+          "type": "noul"
+        },
+        "venue_specified": {
+          "confidence": 0.9232597241102926,
+          "noul": 0.07674027588970744,
+          "type": "noul"
+        },
+        "document_type": {
+          "confidence": 0.9969999064947515,
+          "choice": "nda",
+          "probabilities": {
+            "other": 0.0023746876346511657,
+            "msa": 0.00034720803274541375,
+            "sow": 0.00010545755364019635,
+            "nda": 0.9969999064947515,
+            "dpa": 0.0001727402842118614
+          },
+          "type": "choice"
+        },
+        "overall_risk": {
+          "confidence": 0.9034423774834631,
+          "score": 2.8884223794796062,
+          "probabilities": {
+            "0": 0.0023606049757879913,
+            "1": 0.010298788052280804,
+            "2": 0.08389822948846809,
+            "3": 0.9034423774834631
+          },
+          "legend": {
+            "0": "0 — Clean: ready to send; no material drafting gaps.",
+            "1": "1 — Minor: small hygiene issues a sender can ignore or fix later.",
+            "2": "2 — Material gaps: missing parties, exhibits, or core clauses; do not send blindly.",
+            "3": "3 — Do not send: signature blocks, identity, or conflicting terms are broken."
+          },
+          "type": "score"
+        },
+        "e_sign_permitted": {
+          "confidence": 0.9740398994045241,
+          "noul": 0.02596010059547598,
+          "type": "noul"
+        },
+        "missing_term_duration": {
+          "confidence": 0.9413040122612026,
+          "noul": 0.9413040122612026,
+          "type": "noul"
+        },
+        "empty_initial_fields": {
+          "confidence": 0.9322657142083172,
+          "noul": 0.9322657142083172,
+          "type": "noul"
+        },
+        "counterparts_clause": {
+          "confidence": 0.9465697528235157,
+          "noul": 0.05343024717648422,
+          "type": "noul"
+        },
+        "referenced_exhibits_missing": {
+          "confidence": 0.9586073115056248,
+          "noul": 0.9586073115056248,
+          "type": "noul"
+        },
+        "sig_title_lines": {
+          "confidence": 0.9341390016605784,
+          "noul": 0.06586099833942158,
+          "type": "noul"
+        },
+        "ip_ownership_clause": {
+          "confidence": 0.9523532717161417,
+          "noul": 0.04764672828385831,
+          "type": "noul"
+        },
+        "missing_notice_addresses": {
+          "confidence": 0.9118568534931304,
+          "noul": 0.9118568534931304,
+          "type": "noul"
+        },
+        "amendment_in_writing": {
+          "confidence": 0.9226810999056543,
+          "noul": 0.07731890009434576,
+          "type": "noul"
+        },
+        "governing_law_specified": {
+          "confidence": 0.9602525088936649,
+          "noul": 0.9602525088936649,
+          "type": "noul"
+        },
+        "entire_agreement": {
+          "confidence": 0.9426895146992549,
+          "noul": 0.05731048530074512,
+          "type": "noul"
+        },
+        "auto_renewal_clause": {
+          "confidence": 0.9464083678457377,
+          "noul": 0.9464083678457377,
+          "type": "noul"
+        },
+        "renewal_type": {
+          "confidence": 0.9038691872266303,
+          "choice": "without_notice",
+          "probabilities": {
+            "with_notice": 0.021053801971891457,
+            "unclear": 0.047201316398879124,
+            "without_notice": 0.9038691872266303,
+            "none": 0.02787569440259912
+          },
+          "type": "choice"
+        }
+      }
+    }
+  ],
+  "suite": {
+    "perCheck": [
+      {
+        "id": "every_party_has_sig_block",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_printed_name_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_title_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "sig_date_lines",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_witness_block",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "e_sign_permitted",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "counterparts_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "empty_date_fields",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "empty_initial_fields",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_effective_date",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_term_duration",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_counterparty_name",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "missing_notice_addresses",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "parties_both_named",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "payment_terms_present",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "late_fee_terms",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "insurance_requirements",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "auto_renewal_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "confidentiality_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "indemnity_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "limitation_of_liability",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "assignment_without_consent",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "ip_ownership_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "force_majeure",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "entire_agreement",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "amendment_in_writing",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "severability",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "termination_clause",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "referenced_exhibits_missing",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "governing_law_specified",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "venue_specified",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "defined_terms_undefined",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "conflicting_dates",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "governing_law",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "document_type",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "renewal_type",
+        "correct": 4,
+        "total": 4,
+        "accuracy": 1
+      },
+      {
+        "id": "overall_risk",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "sign_readiness",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      },
+      {
+        "id": "completeness",
+        "correct": 3,
+        "total": 4,
+        "accuracy": 0.75
+      }
+    ],
+    "overallAccuracy": 0.9807692307692307,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "p50LatencyMs": 560,
+    "p95LatencyMs": 720,
+    "totalInputTokens": 16993,
+    "totalOutputTokens": 0,
+    "totalUsd": 0.0016993,
+    "fixtures": [
+      {
+        "fixtureId": "msa-clean",
+        "correct": 39,
+        "total": 39,
+        "planted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 560,
+        "inputTokens": 5130,
+        "outputTokens": 0,
+        "usd": 0.000513
+      },
+      {
+        "fixtureId": "msa-planted",
+        "correct": 39,
+        "total": 39,
+        "planted": [
+          "every_party_has_sig_block",
+          "sig_printed_name_lines",
+          "sig_title_lines",
+          "sig_date_lines",
+          "missing_witness_block",
+          "e_sign_permitted",
+          "counterparts_clause",
+          "empty_date_fields",
+          "empty_initial_fields",
+          "missing_effective_date",
+          "missing_term_duration",
+          "missing_counterparty_name",
+          "missing_notice_addresses",
+          "parties_both_named",
+          "payment_terms_present",
+          "late_fee_terms",
+          "insurance_requirements",
+          "confidentiality_clause",
+          "indemnity_clause",
+          "limitation_of_liability",
+          "assignment_without_consent",
+          "ip_ownership_clause",
+          "force_majeure",
+          "entire_agreement",
+          "amendment_in_writing",
+          "severability",
+          "termination_clause",
+          "referenced_exhibits_missing",
+          "governing_law_specified",
+          "venue_specified",
+          "defined_terms_undefined",
+          "conflicting_dates",
+          "governing_law",
+          "renewal_type",
+          "overall_risk",
+          "sign_readiness",
+          "completeness"
+        ],
+        "tp": 37,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 640,
+        "inputTokens": 3897,
+        "outputTokens": 0,
+        "usd": 0.0003897
+      },
+      {
+        "fixtureId": "nda-clean",
+        "correct": 39,
+        "total": 39,
+        "planted": [],
+        "tp": 0,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 548,
+        "inputTokens": 4150,
+        "outputTokens": 0,
+        "usd": 0.000415
+      },
+      {
+        "fixtureId": "nda-planted",
+        "correct": 36,
+        "total": 39,
+        "planted": [
+          "every_party_has_sig_block",
+          "sig_printed_name_lines",
+          "sig_title_lines",
+          "sig_date_lines",
+          "missing_witness_block",
+          "e_sign_permitted",
+          "counterparts_clause",
+          "empty_date_fields",
+          "empty_initial_fields",
+          "missing_term_duration",
+          "missing_counterparty_name",
+          "missing_notice_addresses",
+          "parties_both_named",
+          "assignment_without_consent",
+          "force_majeure",
+          "entire_agreement",
+          "amendment_in_writing",
+          "severability",
+          "termination_clause",
+          "referenced_exhibits_missing",
+          "venue_specified",
+          "defined_terms_undefined",
+          "conflicting_dates",
+          "renewal_type",
+          "overall_risk",
+          "sign_readiness",
+          "completeness"
+        ],
+        "tp": 27,
+        "fp": 0,
+        "fn": 0,
+        "latencyMs": 720,
+        "inputTokens": 3816,
+        "outputTokens": 0,
+        "usd": 0.0003816
+      }
+    ]
+  }
+}

@@ -4,6 +4,12 @@ import type { Answer, DecisionsResponse, Question, Usage } from "../shared/types
 
 const GENERATE_BASE = "https://generativelanguage.googleapis.com/v1beta/models";
 
+const RETRYABLE = /high demand|try again later|resource exhausted|unavailable|overloaded|429|500|503/i;
+
+async function sleep(ms: number): Promise<void> {
+  await new Promise((r) => setTimeout(r, ms));
+}
+
 export type GenerativeCallResult = {
   response: DecisionsResponse;
   rawText: string;
@@ -26,20 +32,23 @@ function responseSchema() {
         required: ["type", "noul", "confidence"],
       };
     } else if (check.question.type === "choice") {
+      const optionKeys = Object.keys(check.question.criteria);
       properties[check.id] = {
         type: "object",
         properties: {
           type: { type: "string", enum: ["choice"] },
-          choice: { type: "string" },
+          choice: { type: "string", enum: optionKeys },
           confidence: { type: "number" },
           probabilities: {
             type: "object",
-            additionalProperties: { type: "number" },
+            properties: Object.fromEntries(optionKeys.map((k) => [k, { type: "number" }])),
+            required: optionKeys,
           },
         },
         required: ["type", "choice", "confidence", "probabilities"],
       };
     } else {
+      const levelKeys = check.question.criteria.map((_, i) => String(i));
       properties[check.id] = {
         type: "object",
         properties: {
@@ -48,7 +57,8 @@ function responseSchema() {
           confidence: { type: "number" },
           probabilities: {
             type: "object",
-            additionalProperties: { type: "number" },
+            properties: Object.fromEntries(levelKeys.map((k) => [k, { type: "number" }])),
+            required: levelKeys,
           },
         },
         required: ["type", "score", "confidence", "probabilities"],
@@ -180,44 +190,68 @@ export async function createGenerativeDecisions(opts: {
   const model = opts.model ?? generativeModel();
   const url = `${GENERATE_BASE}/${encodeURIComponent(model)}:generateContent`;
   const prompt = questionsPrompt(opts.questions);
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-goog-api-key": opts.apiKey,
-    },
-    body: JSON.stringify({
-      contents: [
-        {
-          role: "user",
-          parts: [
-            { text: prompt },
-            {
-              inlineData: {
-                mimeType: "application/pdf",
-                data: opts.pdfBase64,
-              },
+  const payload = {
+    contents: [
+      {
+        role: "user",
+        parts: [
+          { text: prompt },
+          {
+            inlineData: {
+              mimeType: "application/pdf",
+              data: opts.pdfBase64,
             },
-          ],
-        },
-      ],
-      generationConfig: {
-        responseMimeType: "application/json",
-        responseSchema: responseSchema(),
-        temperature: 0,
+          },
+        ],
       },
-    }),
-  });
-  const text = await res.text();
+    ],
+    generationConfig: {
+      responseMimeType: "application/json",
+      responseSchema: responseSchema(),
+      temperature: 0,
+    },
+  };
+
+  const maxAttempts = 8;
+  let res: Response | undefined;
+  let text = "";
   let json: Record<string, unknown> = {};
-  try {
-    json = text ? (JSON.parse(text) as Record<string, unknown>) : {};
-  } catch {
-    throw new Error(`Generative API returned non-JSON (${res.status}): ${text.slice(0, 400)}`);
-  }
-  if (!res.ok) {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": opts.apiKey,
+      },
+      body: JSON.stringify(payload),
+    });
+    text = await res.text();
+    json = {};
+    try {
+      json = text ? (JSON.parse(text) as Record<string, unknown>) : {};
+    } catch {
+      if (attempt < maxAttempts && RETRYABLE.test(text)) {
+        const wait = Math.min(60_000, 2000 * 2 ** (attempt - 1));
+        console.warn(`Generative API non-JSON HTTP ${res.status}, retry ${attempt}/${maxAttempts} in ${wait}ms`);
+        await sleep(wait);
+        continue;
+      }
+      throw new Error(`Generative API returned non-JSON (${res.status}): ${text.slice(0, 400)}`);
+    }
+    if (res.ok) break;
     const err = json.error as { message?: string } | undefined;
-    throw new Error(err?.message ?? `Generative API HTTP ${res.status}`);
+    const msg = err?.message ?? `Generative API HTTP ${res.status}`;
+    if (attempt < maxAttempts && (res.status === 429 || res.status === 500 || res.status === 503 || RETRYABLE.test(msg))) {
+      const wait = Math.min(60_000, 2000 * 2 ** (attempt - 1));
+      console.warn(`Generative API ${res.status}: ${msg}; retry ${attempt}/${maxAttempts} in ${wait}ms`);
+      await sleep(wait);
+      continue;
+    }
+    throw new Error(msg);
+  }
+  if (!res || !res.ok) {
+    const err = json.error as { message?: string } | undefined;
+    throw new Error(err?.message ?? `Generative API HTTP ${res?.status ?? "unknown"}`);
   }
   const candidates = json.candidates as Array<{ content?: { parts?: Array<{ text?: string }> } }> | undefined;
   const rawText = candidates?.[0]?.content?.parts?.map((p) => p.text ?? "").join("") ?? "";

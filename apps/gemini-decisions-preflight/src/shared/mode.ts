@@ -13,6 +13,9 @@ export function resolveMode(env: NodeJS.ProcessEnv = process.env): AdapterMode {
   return hasKey ? "live" : "mock";
 }
 
+/** Default matches the committed live eval. Override with GENERATIVE_MODEL. */
+export const DEFAULT_GENERATIVE_MODEL = "gemini-3.5-flash-lite";
+
 export function generativeModel(env: NodeJS.ProcessEnv = process.env): string {
-  return env.GENERATIVE_MODEL?.trim() || "gemini-3.5-flash";
+  return env.GENERATIVE_MODEL?.trim() || DEFAULT_GENERATIVE_MODEL;
 }
