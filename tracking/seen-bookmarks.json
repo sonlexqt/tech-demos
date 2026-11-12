@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "gemini-decisions-api-2026-11-11",
+      "title": "Gemini Decisions API — Lumin Sign send-ready preflight",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "date": "2026-11-12",
+      "notes": "approved; slug gemini-decisions-preflight"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "gemini-decisions-api-2026-11-11",
+      "title": "Gemini Decisions API — Lumin Sign send-ready preflight",
+      "url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemini-decisions-api/",
+      "date": "2026-11-12",
+      "notes": "Built demo at apps/gemini-decisions-preflight; docs https://aistudio.google.com/docs/decisions-api"
     }
   ]
 }

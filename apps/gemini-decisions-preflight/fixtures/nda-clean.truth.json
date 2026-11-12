@@ -1,0 +1,165 @@
+{
+  "id": "nda-clean",
+  "title": "NDA — Lumenora Labs × Cedar & Pine Design (clean)",
+  "documentType": "nda",
+  "planted": false,
+  "expected": {
+    "every_party_has_sig_block": {
+      "type": "noul",
+      "yes": true
+    },
+    "sig_printed_name_lines": {
+      "type": "noul",
+      "yes": true
+    },
+    "sig_title_lines": {
+      "type": "noul",
+      "yes": true
+    },
+    "sig_date_lines": {
+      "type": "noul",
+      "yes": true
+    },
+    "missing_witness_block": {
+      "type": "noul",
+      "yes": false
+    },
+    "e_sign_permitted": {
+      "type": "noul",
+      "yes": true
+    },
+    "counterparts_clause": {
+      "type": "noul",
+      "yes": true
+    },
+    "empty_date_fields": {
+      "type": "noul",
+      "yes": false
+    },
+    "empty_initial_fields": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_effective_date": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_term_duration": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_counterparty_name": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_notice_addresses": {
+      "type": "noul",
+      "yes": false
+    },
+    "parties_both_named": {
+      "type": "noul",
+      "yes": true
+    },
+    "payment_terms_present": {
+      "type": "noul",
+      "yes": false
+    },
+    "late_fee_terms": {
+      "type": "noul",
+      "yes": false
+    },
+    "insurance_requirements": {
+      "type": "noul",
+      "yes": false
+    },
+    "auto_renewal_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "confidentiality_clause": {
+      "type": "noul",
+      "yes": true
+    },
+    "indemnity_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "limitation_of_liability": {
+      "type": "noul",
+      "yes": false
+    },
+    "assignment_without_consent": {
+      "type": "noul",
+      "yes": false
+    },
+    "ip_ownership_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "force_majeure": {
+      "type": "noul",
+      "yes": true
+    },
+    "entire_agreement": {
+      "type": "noul",
+      "yes": true
+    },
+    "amendment_in_writing": {
+      "type": "noul",
+      "yes": true
+    },
+    "severability": {
+      "type": "noul",
+      "yes": true
+    },
+    "termination_clause": {
+      "type": "noul",
+      "yes": true
+    },
+    "referenced_exhibits_missing": {
+      "type": "noul",
+      "yes": false
+    },
+    "governing_law_specified": {
+      "type": "noul",
+      "yes": true
+    },
+    "venue_specified": {
+      "type": "noul",
+      "yes": true
+    },
+    "defined_terms_undefined": {
+      "type": "noul",
+      "yes": false
+    },
+    "conflicting_dates": {
+      "type": "noul",
+      "yes": false
+    },
+    "governing_law": {
+      "type": "choice",
+      "choice": "california"
+    },
+    "document_type": {
+      "type": "choice",
+      "choice": "nda"
+    },
+    "renewal_type": {
+      "type": "choice",
+      "choice": "none"
+    },
+    "overall_risk": {
+      "type": "score",
+      "level": 0
+    },
+    "sign_readiness": {
+      "type": "score",
+      "level": 3
+    },
+    "completeness": {
+      "type": "score",
+      "level": 3
+    }
+  },
+  "plantedIssues": []
+}

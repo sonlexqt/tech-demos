@@ -1,0 +1,193 @@
+{
+  "id": "nda-planted",
+  "title": "NDA — Lumenora Labs × blank Disclosing Party (planted problems)",
+  "documentType": "nda",
+  "planted": true,
+  "expected": {
+    "every_party_has_sig_block": {
+      "type": "noul",
+      "yes": false
+    },
+    "sig_printed_name_lines": {
+      "type": "noul",
+      "yes": false
+    },
+    "sig_title_lines": {
+      "type": "noul",
+      "yes": false
+    },
+    "sig_date_lines": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_witness_block": {
+      "type": "noul",
+      "yes": true
+    },
+    "e_sign_permitted": {
+      "type": "noul",
+      "yes": false
+    },
+    "counterparts_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "empty_date_fields": {
+      "type": "noul",
+      "yes": true
+    },
+    "empty_initial_fields": {
+      "type": "noul",
+      "yes": true
+    },
+    "missing_effective_date": {
+      "type": "noul",
+      "yes": false
+    },
+    "missing_term_duration": {
+      "type": "noul",
+      "yes": true
+    },
+    "missing_counterparty_name": {
+      "type": "noul",
+      "yes": true
+    },
+    "missing_notice_addresses": {
+      "type": "noul",
+      "yes": true
+    },
+    "parties_both_named": {
+      "type": "noul",
+      "yes": false
+    },
+    "payment_terms_present": {
+      "type": "noul",
+      "yes": false
+    },
+    "late_fee_terms": {
+      "type": "noul",
+      "yes": false
+    },
+    "insurance_requirements": {
+      "type": "noul",
+      "yes": false
+    },
+    "auto_renewal_clause": {
+      "type": "noul",
+      "yes": true
+    },
+    "confidentiality_clause": {
+      "type": "noul",
+      "yes": true
+    },
+    "indemnity_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "limitation_of_liability": {
+      "type": "noul",
+      "yes": false
+    },
+    "assignment_without_consent": {
+      "type": "noul",
+      "yes": true
+    },
+    "ip_ownership_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "force_majeure": {
+      "type": "noul",
+      "yes": false
+    },
+    "entire_agreement": {
+      "type": "noul",
+      "yes": false
+    },
+    "amendment_in_writing": {
+      "type": "noul",
+      "yes": false
+    },
+    "severability": {
+      "type": "noul",
+      "yes": false
+    },
+    "termination_clause": {
+      "type": "noul",
+      "yes": false
+    },
+    "referenced_exhibits_missing": {
+      "type": "noul",
+      "yes": true
+    },
+    "governing_law_specified": {
+      "type": "noul",
+      "yes": true
+    },
+    "venue_specified": {
+      "type": "noul",
+      "yes": false
+    },
+    "defined_terms_undefined": {
+      "type": "noul",
+      "yes": true
+    },
+    "conflicting_dates": {
+      "type": "noul",
+      "yes": true
+    },
+    "governing_law": {
+      "type": "choice",
+      "choice": "england_wales"
+    },
+    "document_type": {
+      "type": "choice",
+      "choice": "nda"
+    },
+    "renewal_type": {
+      "type": "choice",
+      "choice": "without_notice"
+    },
+    "overall_risk": {
+      "type": "score",
+      "level": 2
+    },
+    "sign_readiness": {
+      "type": "score",
+      "level": 1
+    },
+    "completeness": {
+      "type": "score",
+      "level": 1
+    }
+  },
+  "plantedIssues": [
+    "every_party_has_sig_block",
+    "sig_printed_name_lines",
+    "sig_title_lines",
+    "sig_date_lines",
+    "missing_witness_block",
+    "e_sign_permitted",
+    "counterparts_clause",
+    "empty_date_fields",
+    "empty_initial_fields",
+    "missing_term_duration",
+    "missing_counterparty_name",
+    "missing_notice_addresses",
+    "parties_both_named",
+    "assignment_without_consent",
+    "force_majeure",
+    "entire_agreement",
+    "amendment_in_writing",
+    "severability",
+    "termination_clause",
+    "referenced_exhibits_missing",
+    "venue_specified",
+    "defined_terms_undefined",
+    "conflicting_dates",
+    "renewal_type",
+    "overall_risk",
+    "sign_readiness",
+    "completeness"
+  ]
+}
