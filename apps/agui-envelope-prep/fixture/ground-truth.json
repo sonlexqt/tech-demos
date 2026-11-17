@@ -1,0 +1,138 @@
+{
+  "document": {
+    "id": "msa-northwind-acme-2026",
+    "title": "Master Services Agreement — Northwind Labs × Acme Dynamics",
+    "pageCount": 6,
+    "pageSize": {
+      "width": 612,
+      "height": 792,
+      "unit": "pt"
+    }
+  },
+  "recipients": [
+    {
+      "id": "jordan-hale",
+      "name": "Jordan Hale",
+      "email": "jordan.hale@acme-dynamics.example",
+      "title": "Chief Executive Officer",
+      "company": "Acme Dynamics LLC",
+      "role": "signer",
+      "order": 1
+    },
+    {
+      "id": "priya-shah",
+      "name": "Priya Shah",
+      "email": "priya.shah@northwind-labs.example",
+      "title": "General Counsel",
+      "company": "Northwind Labs Inc.",
+      "role": "signer",
+      "order": 2
+    }
+  ],
+  "fields": [
+    {
+      "id": "jordan-name",
+      "type": "name",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.4292929292929293,
+        "width": 0.35947712418300654,
+        "height": 0.027777777777777776
+      },
+      "label": "Printed name — Jordan Hale"
+    },
+    {
+      "id": "jordan-signature",
+      "type": "signature",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.4797979797979798,
+        "width": 0.35947712418300654,
+        "height": 0.050505050505050504
+      },
+      "label": "Signature — Jordan Hale"
+    },
+    {
+      "id": "jordan-date",
+      "type": "date",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.553030303030303,
+        "width": 0.22875816993464052,
+        "height": 0.027777777777777776
+      },
+      "label": "Date — Jordan Hale"
+    },
+    {
+      "id": "jordan-initials",
+      "type": "initials",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.6035353535353535,
+        "width": 0.11764705882352941,
+        "height": 0.027777777777777776
+      },
+      "label": "Initials — Jordan Hale"
+    },
+    {
+      "id": "priya-name",
+      "type": "name",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.4292929292929293,
+        "width": 0.35947712418300654,
+        "height": 0.027777777777777776
+      },
+      "label": "Printed name — Priya Shah"
+    },
+    {
+      "id": "priya-signature",
+      "type": "signature",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.4797979797979798,
+        "width": 0.35947712418300654,
+        "height": 0.050505050505050504
+      },
+      "label": "Signature — Priya Shah"
+    },
+    {
+      "id": "priya-date",
+      "type": "date",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.553030303030303,
+        "width": 0.22875816993464052,
+        "height": 0.027777777777777776
+      },
+      "label": "Date — Priya Shah"
+    },
+    {
+      "id": "priya-initials",
+      "type": "initials",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.6035353535353535,
+        "width": 0.11764705882352941,
+        "height": 0.027777777777777776
+      },
+      "label": "Initials — Priya Shah"
+    }
+  ]
+}

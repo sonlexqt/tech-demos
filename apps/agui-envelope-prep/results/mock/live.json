@@ -1,0 +1,340 @@
+{
+  "mode": "mock",
+  "startedAt": "2026-11-17T08:19:46.586Z",
+  "finishedAt": "2026-11-17T08:19:46.591Z",
+  "latencyMs": 5,
+  "eventCounts": {
+    "RUN_STARTED": 1,
+    "STEP_STARTED": 2,
+    "STATE_SNAPSHOT": 2,
+    "TEXT_MESSAGE_START": 10,
+    "TEXT_MESSAGE_CONTENT": 27,
+    "TEXT_MESSAGE_END": 10,
+    "STATE_DELTA": 9,
+    "STEP_FINISHED": 2,
+    "TOOL_CALL_START": 8,
+    "TOOL_CALL_ARGS": 26,
+    "TOOL_CALL_END": 8,
+    "TOOL_CALL_RESULT": 8,
+    "RUN_FINISHED": 1
+  },
+  "scoring": {
+    "iouThreshold": 0.5,
+    "totalTruth": 8,
+    "totalPredicted": 8,
+    "correct": 6,
+    "precision": 0.75,
+    "recall": 0.75,
+    "f1": 0.75,
+    "perType": {
+      "signature": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      },
+      "initials": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 1,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "date": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 1,
+        "precision": 0.5,
+        "recall": 0.5
+      },
+      "name": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      }
+    },
+    "fields": [
+      {
+        "truthId": "jordan-name",
+        "predictedId": "jordan-name",
+        "type": "name",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 1.000000000000001,
+        "correct": true,
+        "predictedConfidence": 0.96,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "jordan-signature",
+        "predictedId": "jordan-signature",
+        "type": "signature",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.9999999999999997,
+        "correct": true,
+        "predictedConfidence": 0.94,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "jordan-date",
+        "predictedId": "jordan-date",
+        "type": "date",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.0635359116022089,
+        "correct": false,
+        "predictedConfidence": 0.42,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "jordan-initials",
+        "predictedId": "jordan-initials",
+        "type": "initials",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 1.0000000000000009,
+        "correct": true,
+        "predictedConfidence": 0.91,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-name",
+        "predictedId": "priya-name",
+        "type": "name",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 1.0000000000000007,
+        "correct": true,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-signature",
+        "predictedId": "priya-signature",
+        "type": "signature",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.9999999999999992,
+        "correct": true,
+        "predictedConfidence": 0.93,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-date",
+        "predictedId": "priya-date",
+        "type": "date",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 1.0000000000000009,
+        "correct": true,
+        "predictedConfidence": 0.9,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-initials",
+        "predictedId": "priya-initials",
+        "type": "initials",
+        "signerId": "priya-shah",
+        "pageMatch": false,
+        "iou": 0,
+        "correct": false,
+        "predictedConfidence": 0.36,
+        "predictedPage": 5,
+        "humanCorrected": false
+      }
+    ],
+    "lowConfidence": {
+      "threshold": 0.55,
+      "flagged": 2,
+      "truePositives": 2,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "humanCorrections": []
+  },
+  "usage": null,
+  "summaryMarkdown": "# Envelope prep eval (mock)\n\n- Started: 2026-11-17T08:19:46.586Z\n- Latency: 5 ms\n- Events: RUN_STARTED=1, STEP_STARTED=2, STATE_SNAPSHOT=2, TEXT_MESSAGE_START=10, TEXT_MESSAGE_CONTENT=27, TEXT_MESSAGE_END=10, STATE_DELTA=9, STEP_FINISHED=2, TOOL_CALL_START=8, TOOL_CALL_ARGS=26, TOOL_CALL_END=8, TOOL_CALL_RESULT=8, RUN_FINISHED=1\n\n## Placement vs ground truth\n\n| Metric | Value |\n| --- | --- |\n| Correct (page + IoU ≥ 0.5) | 6 / 8 |\n| Precision | 75% |\n| Recall | 75% |\n| F1 | 0.75 |\n\n## Per field type\n\n| Type | Truth | Predicted | Correct | Precision | Recall |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| signature | 2 | 2 | 2 | 100% | 100% |\n| initials | 2 | 2 | 1 | 50% | 50% |\n| date | 2 | 2 | 1 | 50% | 50% |\n| name | 2 | 2 | 2 | 100% | 100% |\n\n## Low-confidence flags vs actual errors\n\n| Flagged | True positives (flagged & wrong) | False positives (flagged & right) | False negatives (unflagged & wrong) |\n| ---: | ---: | ---: | ---: |\n| 2 | 2 | 0 | 0 |\n\n## Tokens / cost estimate\n\nMock mode: no model calls.\n\n## After scripted human corrections (mock)\n\nCorrect 8/8 · precision 100% · recall 100%\n\n## Notes\n\n- Mock agent intentionally misplaces jordan-date (offset bbox, confidence 0.42) and priya-initials (page 5 instead of 6, confidence 0.36).\n- Scripted human corrections move those two fields onto ground truth; resume scoring is recorded separately.\n\n",
+  "notes": [
+    "Mock agent intentionally misplaces jordan-date (offset bbox, confidence 0.42) and priya-initials (page 5 instead of 6, confidence 0.36).",
+    "Scripted human corrections move those two fields onto ground truth; resume scoring is recorded separately."
+  ],
+  "afterFix": {
+    "iouThreshold": 0.5,
+    "totalTruth": 8,
+    "totalPredicted": 8,
+    "correct": 8,
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "perType": {
+      "signature": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      },
+      "initials": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      },
+      "date": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      },
+      "name": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 2,
+        "precision": 1,
+        "recall": 1
+      }
+    },
+    "fields": [
+      {
+        "truthId": "jordan-name",
+        "predictedId": "jordan-name",
+        "type": "name",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 1.000000000000001,
+        "correct": true,
+        "predictedConfidence": 0.96,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "jordan-signature",
+        "predictedId": "jordan-signature",
+        "type": "signature",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.9999999999999997,
+        "correct": true,
+        "predictedConfidence": 0.94,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "jordan-date",
+        "predictedId": "jordan-date",
+        "type": "date",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 1.0000000000000009,
+        "correct": true,
+        "predictedConfidence": 1,
+        "predictedPage": 6,
+        "humanCorrected": true
+      },
+      {
+        "truthId": "jordan-initials",
+        "predictedId": "jordan-initials",
+        "type": "initials",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 1.0000000000000009,
+        "correct": true,
+        "predictedConfidence": 0.91,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-name",
+        "predictedId": "priya-name",
+        "type": "name",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 1.0000000000000007,
+        "correct": true,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-signature",
+        "predictedId": "priya-signature",
+        "type": "signature",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.9999999999999992,
+        "correct": true,
+        "predictedConfidence": 0.93,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-date",
+        "predictedId": "priya-date",
+        "type": "date",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 1.0000000000000009,
+        "correct": true,
+        "predictedConfidence": 0.9,
+        "predictedPage": 6,
+        "humanCorrected": false
+      },
+      {
+        "truthId": "priya-initials",
+        "predictedId": "priya-initials",
+        "type": "initials",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 1.0000000000000016,
+        "correct": true,
+        "predictedConfidence": 1,
+        "predictedPage": 6,
+        "humanCorrected": true
+      }
+    ],
+    "lowConfidence": {
+      "threshold": 0.55,
+      "flagged": 0,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 0
+    },
+    "humanCorrections": [
+      {
+        "fieldId": "jordan-date",
+        "kind": "moved",
+        "detail": "Dragged Date — Jordan Hale on page 6"
+      },
+      {
+        "fieldId": "priya-initials",
+        "kind": "page-changed",
+        "detail": "Moved Initials — Priya Shah from page 5 to page 6"
+      }
+    ]
+  },
+  "corrections": [
+    {
+      "fieldId": "jordan-date",
+      "kind": "moved",
+      "detail": "Dragged Date — Jordan Hale on page 6"
+    },
+    {
+      "fieldId": "priya-initials",
+      "kind": "page-changed",
+      "detail": "Moved Initials — Priya Shah from page 5 to page 6"
+    }
+  ]
+}

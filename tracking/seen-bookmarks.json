@@ -12,7 +12,7 @@
       "title": "WorkOS auth.md — agent registration protocol",
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
-      "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+      "notes": "Daily scout pick; docs https://workos.com/auth.md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
     }
   ],
   "skipped": [],
@@ -29,7 +29,14 @@
       "title": "WorkOS auth.md — agent registration protocol",
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
-      "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+      "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth.md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "ag-ui-protocol-ag-ui",
+      "title": "AG-UI — Agent-User Interaction Protocol",
+      "url": "https://github.com/ag-ui-protocol/ag-ui",
+      "date": "2026-11-17",
+      "notes": "Built demo at apps/agui-envelope-prep; Lumin Sign envelope prep with shared state, tool calls, and interrupt-with-schema HITL"
     }
   ]
 }

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumin Sign · Prepare envelope</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/src/client/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top">
+        <div class="brand">
+          <img src="/favicon.svg" alt="" width="28" height="28" />
+          <div>
+            <h1>Lumin Sign</h1>
+            <p class="tagline">Prepare this envelope for me · AG-UI demo</p>
+          </div>
+        </div>
+        <div class="top-actions">
+          <label class="mode">
+            Mode
+            <select id="mode-select">
+              <option value="mock" selected>MOCK (deterministic)</option>
+              <option value="live">LIVE (Gemini)</option>
+            </select>
+          </label>
+          <span id="mode-hint" class="hint-pill">No API key needed</span>
+          <button type="button" id="prepare-btn" class="primary" data-testid="prepare-btn">
+            Prepare envelope
+          </button>
+          <button type="button" id="reset-btn" class="ghost">Reset</button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="doc-pane" aria-label="Document">
+          <div class="doc-toolbar">
+            <span id="doc-title">Master Services Agreement — Northwind Labs × Acme Dynamics</span>
+            <span id="field-count" class="muted">0 fields</span>
+          </div>
+          <div id="pages" class="pages"></div>
+        </section>
+
+        <aside class="side">
+          <section class="card" id="narration-card">
+            <h2>Agent</h2>
+            <p id="narration" class="narration">Click <strong>Prepare envelope</strong> to start an AG-UI run.</p>
+          </section>
+
+          <section class="card hidden" id="interrupt-card">
+            <h2>Human approval</h2>
+            <p id="interrupt-message" class="muted"></p>
+            <form id="interrupt-form" data-testid="interrupt-form"></form>
+            <div class="row">
+              <button type="submit" form="interrupt-form" id="approve-btn" class="primary" data-testid="approve-btn">
+                Approve &amp; finish
+              </button>
+              <button type="button" id="cancel-btn" class="ghost">Cancel send</button>
+            </div>
+          </section>
+
+          <section class="card" id="log-card">
+            <h2>Run log</h2>
+            <div id="run-meta" class="muted">No run yet.</div>
+            <ol id="event-timeline" class="timeline" data-testid="event-timeline"></ol>
+            <div id="score-panel" data-testid="run-log"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+    <script type="module" src="/src/client/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+.capture-frames/
+node_modules/
+dist/
+.env

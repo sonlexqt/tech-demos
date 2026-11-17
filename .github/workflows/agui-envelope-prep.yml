@@ -1,0 +1,41 @@
+name: agui-envelope-prep
+
+on:
+  push:
+    paths:
+      - "apps/agui-envelope-prep/**"
+      - ".github/workflows/agui-envelope-prep.yml"
+  pull_request:
+    paths:
+      - "apps/agui-envelope-prep/**"
+      - ".github/workflows/agui-envelope-prep.yml"
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/agui-envelope-prep
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Unit + mock smoke
+        run: bun test
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Build
+        run: bun run build
+      - name: Mock eval
+        run: bun run eval:mock
+      - name: Guard live secrets
+        run: |
+          if grep -RInE 'AIza[0-9A-Za-z_-]{20,}' --exclude-dir=node_modules .; then
+            echo "Refusing to ship what looks like a live API key"
+            exit 1
+          fi
+          test ! -f .env
