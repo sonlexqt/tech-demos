@@ -1,0 +1,326 @@
+{
+  "mode": "live",
+  "startedAt": "2026-11-17T08:35:42.000Z",
+  "finishedAt": "2026-11-17T08:35:56.847Z",
+  "latencyMs": 14847,
+  "eventCounts": {
+    "RUN_STARTED": 1,
+    "STEP_STARTED": 1,
+    "STATE_SNAPSHOT": 2,
+    "TEXT_MESSAGE_START": 2,
+    "TEXT_MESSAGE_CONTENT": 6,
+    "TEXT_MESSAGE_END": 2,
+    "TOOL_CALL_START": 10,
+    "TOOL_CALL_ARGS": 29,
+    "TOOL_CALL_END": 10,
+    "TOOL_CALL_RESULT": 10,
+    "STATE_DELTA": 9,
+    "STEP_FINISHED": 1,
+    "RUN_FINISHED": 1
+  },
+  "scoring": {
+    "iouThreshold": 0.5,
+    "totalTruth": 8,
+    "totalPredicted": 8,
+    "correct": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "perType": {
+      "signature": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 0,
+        "precision": 0,
+        "recall": 0
+      },
+      "initials": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 0,
+        "precision": 0,
+        "recall": 0
+      },
+      "date": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 0,
+        "precision": 0,
+        "recall": 0
+      },
+      "name": {
+        "truth": 2,
+        "predicted": 2,
+        "correct": 0,
+        "precision": 0,
+        "recall": 0
+      }
+    },
+    "fields": [
+      {
+        "truthId": "jordan-name",
+        "predictedId": "acme-name",
+        "type": "name",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.01125,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.00023529411764706964,
+        "dy": -0.034292929292929264
+      },
+      {
+        "truthId": "jordan-signature",
+        "predictedId": "acme-sig",
+        "type": "signature",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.17526,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.00023529411764706964,
+        "dy": -0.03479797979797977
+      },
+      {
+        "truthId": "jordan-date",
+        "predictedId": "acme-date",
+        "type": "date",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.02482,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.00023529411764706964,
+        "dy": -0.033030303030302965
+      },
+      {
+        "truthId": "jordan-initials",
+        "predictedId": "acme-init",
+        "type": "initials",
+        "signerId": "jordan-hale",
+        "pageMatch": true,
+        "iou": 0.02362,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.00023529411764706964,
+        "dy": -0.03353535353535353
+      },
+      {
+        "truthId": "priya-name",
+        "predictedId": "northwind-name",
+        "type": "name",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.01124,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.0004117647058823337,
+        "dy": -0.034292929292929264
+      },
+      {
+        "truthId": "priya-signature",
+        "predictedId": "northwind-sig",
+        "type": "signature",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.17516,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.0004117647058823337,
+        "dy": -0.03479797979797977
+      },
+      {
+        "truthId": "priya-date",
+        "predictedId": "northwind-date",
+        "type": "date",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.02482,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.0004117647058823337,
+        "dy": -0.033030303030302965
+      },
+      {
+        "truthId": "priya-initials",
+        "predictedId": "northwind-init",
+        "type": "initials",
+        "signerId": "priya-shah",
+        "pageMatch": true,
+        "iou": 0.02362,
+        "correct": false,
+        "predictedConfidence": 0.95,
+        "predictedPage": 6,
+        "humanCorrected": false,
+        "dx": -0.0004117647058823337,
+        "dy": -0.03353535353535353
+      }
+    ],
+    "lowConfidence": {
+      "threshold": 0.55,
+      "flagged": 0,
+      "truePositives": 0,
+      "falsePositives": 0,
+      "falseNegatives": 8
+    },
+    "humanCorrections": [],
+    "offset": {
+      "meanDx": -0.0003235294117647017,
+      "meanDy": -0.03391414141414138,
+      "pageMatchRate": 1,
+      "typeMatchRate": 1,
+      "signerMatchRate": 1
+    }
+  },
+  "usage": {
+    "provider": "google",
+    "model": "gemini-3.5-flash-lite",
+    "inputTokens": 15183,
+    "outputTokens": 848,
+    "totalTokens": 16031,
+    "estimatedUsd": 0.001393125
+  },
+  "summaryMarkdown": "# Envelope prep eval (live)\n\n- Started: 2026-11-17T08:35:42.000Z\n- Latency: 14847 ms\n- Events: RUN_STARTED=1, STEP_STARTED=1, STATE_SNAPSHOT=2, TEXT_MESSAGE_START=2, TEXT_MESSAGE_CONTENT=6, TEXT_MESSAGE_END=2, TOOL_CALL_START=10, TOOL_CALL_ARGS=29, TOOL_CALL_END=10, TOOL_CALL_RESULT=10, STATE_DELTA=9, STEP_FINISHED=1, RUN_FINISHED=1\n\n## Placement vs ground truth\n\n| Metric | Value |\n| --- | --- |\n| Correct (page + IoU ≥ 0.5) | 0 / 8 |\n| Precision | 0% |\n| Recall | 0% |\n| F1 | 0.00 |\n| Mean dx (page widths) | -0.00032 |\n| Mean dy (page heights) | -0.03391 |\n| Page / type / signer match | 100% / 100% / 100% |\n\n## Per field type\n\n| Type | Truth | Predicted | Correct | Precision | Recall |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| signature | 2 | 2 | 0 | 0% | 0% |\n| initials | 2 | 2 | 0 | 0% | 0% |\n| date | 2 | 2 | 0 | 0% | 0% |\n| name | 2 | 2 | 0 | 0% | 0% |\n\n## Low-confidence flags vs actual errors\n\n| Flagged | True positives (flagged & wrong) | False positives (flagged & right) | False negatives (unflagged & wrong) |\n| ---: | ---: | ---: | ---: |\n| 0 | 0 | 0 | 8 |\n\n## Tokens / cost estimate\n\n| Model | Input | Output | Est. USD |\n| --- | ---: | ---: | ---: |\n| gemini-3.5-flash-lite | 15183 | 848 | $0.0014 |\n\n## Notes\n\n- Live eval uses pdf.js text items (no page-image vision) and Gemini function calling.\n- No API key is committed. CI never runs this mode.\n- Primary model gemini-3.5-flash returned 503/429 on every attempt; this run used fallback gemini-3.5-flash-lite.\n\n",
+  "notes": [
+    "Live eval uses pdf.js text items (no page-image vision) and Gemini function calling.",
+    "No API key is committed. CI never runs this mode.",
+    "Primary model gemini-3.5-flash returned 503/429 on every attempt; this run used fallback gemini-3.5-flash-lite."
+  ],
+  "predictedFields": [
+    {
+      "id": "acme-name",
+      "type": "name",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.088,
+        "y": 0.395,
+        "width": 0.35,
+        "height": 0.035
+      },
+      "label": "Printed name",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "acme-sig",
+      "type": "signature",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.088,
+        "y": 0.445,
+        "width": 0.35,
+        "height": 0.05
+      },
+      "label": "Signature",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "acme-date",
+      "type": "date",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.088,
+        "y": 0.52,
+        "width": 0.35,
+        "height": 0.035
+      },
+      "label": "Date",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "acme-init",
+      "type": "initials",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.088,
+        "y": 0.57,
+        "width": 0.12,
+        "height": 0.035
+      },
+      "label": "Initials",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "northwind-name",
+      "type": "name",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.529,
+        "y": 0.395,
+        "width": 0.35,
+        "height": 0.035
+      },
+      "label": "Printed name",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "northwind-sig",
+      "type": "signature",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.529,
+        "y": 0.445,
+        "width": 0.35,
+        "height": 0.05
+      },
+      "label": "Signature",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "northwind-date",
+      "type": "date",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.529,
+        "y": 0.52,
+        "width": 0.35,
+        "height": 0.035
+      },
+      "label": "Date",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "northwind-init",
+      "type": "initials",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.529,
+        "y": 0.57,
+        "width": 0.12,
+        "height": 0.035
+      },
+      "label": "Initials",
+      "confidence": 0.95,
+      "source": "agent"
+    }
+  ],
+  "corrections": []
+}
