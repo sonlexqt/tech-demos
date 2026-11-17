@@ -156,13 +156,6 @@ export class PdfBoard {
     };
   }
 
-  private pageRectForField(fieldId: string): DOMRect | null {
-    const field = this.state?.fields.find((f) => f.id === fieldId);
-    if (!field) return null;
-    const wrap = this.pageWraps[field.page - 1];
-    return wrap?.getBoundingClientRect() ?? null;
-  }
-
   private pageAtPoint(clientX: number, clientY: number): number | null {
     for (const wrap of this.pageWraps) {
       const r = wrap.getBoundingClientRect();

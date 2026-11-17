@@ -71,9 +71,10 @@ console.log("interrupt visible");
 const signaturePage = await page.$('.page-wrap[data-page="6"]');
 if (signaturePage) {
   await signaturePage.evaluate((el) => {
-    const scroller = el.closest(".pages");
+    const node = el as HTMLElement;
+    const scroller = node.closest(".pages");
     if (scroller instanceof HTMLElement) {
-      scroller.scrollTop = Math.max(0, el.offsetTop - 24);
+      scroller.scrollTop = Math.max(0, node.offsetTop - 24);
     }
   });
 }
