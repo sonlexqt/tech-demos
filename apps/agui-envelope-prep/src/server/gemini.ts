@@ -27,11 +27,14 @@ export interface GeminiFunctionCall {
   name: string;
   args: Record<string, unknown>;
   id?: string;
+  thoughtSignature?: string;
 }
 
 export interface GeminiTurn {
   text: string;
   calls: GeminiFunctionCall[];
+  /** Candidate parts to echo back on the next turn, including thought signatures. */
+  modelParts: unknown[];
   model: string;
   usage: { inputTokens: number; outputTokens: number };
 }
@@ -139,15 +142,28 @@ export async function generateTurn(
             temperature: 0.2,
           },
         });
-        const calls: GeminiFunctionCall[] = (response.functionCalls ?? []).map((fc) => ({
-          name: fc.name ?? "",
-          args: (fc.args as Record<string, unknown>) ?? {},
-          id: fc.id,
-        }));
+        const modelParts = response.candidates?.[0]?.content?.parts ?? [];
+        const callsFromParts: GeminiFunctionCall[] = modelParts
+          .filter((part) => part.functionCall)
+          .map((part) => ({
+            name: part.functionCall?.name ?? "",
+            args: (part.functionCall?.args as Record<string, unknown>) ?? {},
+            id: part.functionCall?.id,
+            thoughtSignature: part.thoughtSignature,
+          }));
+        const calls: GeminiFunctionCall[] =
+          callsFromParts.length > 0
+            ? callsFromParts
+            : (response.functionCalls ?? []).map((fc) => ({
+                name: fc.name ?? "",
+                args: (fc.args as Record<string, unknown>) ?? {},
+                id: fc.id,
+              }));
         const usageMeta = response.usageMetadata;
         return {
           text: response.text ?? "",
           calls,
+          modelParts,
           model,
           usage: {
             inputTokens: usageMeta?.promptTokenCount ?? 0,

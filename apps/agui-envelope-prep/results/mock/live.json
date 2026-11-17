@@ -1,8 +1,8 @@
 {
   "mode": "mock",
-  "startedAt": "2026-11-17T08:19:46.586Z",
-  "finishedAt": "2026-11-17T08:19:46.591Z",
-  "latencyMs": 5,
+  "startedAt": "2026-11-17T08:39:48.553Z",
+  "finishedAt": "2026-11-17T08:39:48.557Z",
+  "latencyMs": 4,
   "eventCounts": {
     "RUN_STARTED": 1,
     "STEP_STARTED": 2,
@@ -67,7 +67,9 @@
         "correct": true,
         "predictedConfidence": 0.96,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "jordan-signature",
@@ -79,7 +81,9 @@
         "correct": true,
         "predictedConfidence": 0.94,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "jordan-date",
@@ -91,7 +95,9 @@
         "correct": false,
         "predictedConfidence": 0.42,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0.07843137254901959,
+        "dy": 0.022727272727272818
       },
       {
         "truthId": "jordan-initials",
@@ -103,7 +109,9 @@
         "correct": true,
         "predictedConfidence": 0.91,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-name",
@@ -115,7 +123,9 @@
         "correct": true,
         "predictedConfidence": 0.95,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-signature",
@@ -127,7 +137,9 @@
         "correct": true,
         "predictedConfidence": 0.93,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-date",
@@ -139,7 +151,9 @@
         "correct": true,
         "predictedConfidence": 0.9,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-initials",
@@ -151,7 +165,9 @@
         "correct": false,
         "predictedConfidence": 0.36,
         "predictedPage": 5,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0.21717171717171724
       }
     ],
     "lowConfidence": {
@@ -161,13 +177,142 @@
       "falsePositives": 0,
       "falseNegatives": 0
     },
-    "humanCorrections": []
+    "humanCorrections": [],
+    "offset": {
+      "meanDx": 0.009803921568627449,
+      "meanDy": 0.029987373737373757,
+      "pageMatchRate": 0.875,
+      "typeMatchRate": 1,
+      "signerMatchRate": 1
+    }
   },
   "usage": null,
-  "summaryMarkdown": "# Envelope prep eval (mock)\n\n- Started: 2026-11-17T08:19:46.586Z\n- Latency: 5 ms\n- Events: RUN_STARTED=1, STEP_STARTED=2, STATE_SNAPSHOT=2, TEXT_MESSAGE_START=10, TEXT_MESSAGE_CONTENT=27, TEXT_MESSAGE_END=10, STATE_DELTA=9, STEP_FINISHED=2, TOOL_CALL_START=8, TOOL_CALL_ARGS=26, TOOL_CALL_END=8, TOOL_CALL_RESULT=8, RUN_FINISHED=1\n\n## Placement vs ground truth\n\n| Metric | Value |\n| --- | --- |\n| Correct (page + IoU ≥ 0.5) | 6 / 8 |\n| Precision | 75% |\n| Recall | 75% |\n| F1 | 0.75 |\n\n## Per field type\n\n| Type | Truth | Predicted | Correct | Precision | Recall |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| signature | 2 | 2 | 2 | 100% | 100% |\n| initials | 2 | 2 | 1 | 50% | 50% |\n| date | 2 | 2 | 1 | 50% | 50% |\n| name | 2 | 2 | 2 | 100% | 100% |\n\n## Low-confidence flags vs actual errors\n\n| Flagged | True positives (flagged & wrong) | False positives (flagged & right) | False negatives (unflagged & wrong) |\n| ---: | ---: | ---: | ---: |\n| 2 | 2 | 0 | 0 |\n\n## Tokens / cost estimate\n\nMock mode: no model calls.\n\n## After scripted human corrections (mock)\n\nCorrect 8/8 · precision 100% · recall 100%\n\n## Notes\n\n- Mock agent intentionally misplaces jordan-date (offset bbox, confidence 0.42) and priya-initials (page 5 instead of 6, confidence 0.36).\n- Scripted human corrections move those two fields onto ground truth; resume scoring is recorded separately.\n\n",
+  "summaryMarkdown": "# Envelope prep eval (mock)\n\n- Started: 2026-11-17T08:39:48.553Z\n- Latency: 4 ms\n- Events: RUN_STARTED=1, STEP_STARTED=2, STATE_SNAPSHOT=2, TEXT_MESSAGE_START=10, TEXT_MESSAGE_CONTENT=27, TEXT_MESSAGE_END=10, STATE_DELTA=9, STEP_FINISHED=2, TOOL_CALL_START=8, TOOL_CALL_ARGS=26, TOOL_CALL_END=8, TOOL_CALL_RESULT=8, RUN_FINISHED=1\n\n## Placement vs ground truth\n\n| Metric | Value |\n| --- | --- |\n| Correct (page + IoU ≥ 0.5) | 6 / 8 |\n| Precision | 75% |\n| Recall | 75% |\n| F1 | 0.75 |\n| Mean dx (page widths) | 0.00980 |\n| Mean dy (page heights) | 0.02999 |\n| Page / type / signer match | 88% / 100% / 100% |\n\n## Per field type\n\n| Type | Truth | Predicted | Correct | Precision | Recall |\n| --- | ---: | ---: | ---: | ---: | ---: |\n| signature | 2 | 2 | 2 | 100% | 100% |\n| initials | 2 | 2 | 1 | 50% | 50% |\n| date | 2 | 2 | 1 | 50% | 50% |\n| name | 2 | 2 | 2 | 100% | 100% |\n\n## Low-confidence flags vs actual errors\n\n| Flagged | True positives (flagged & wrong) | False positives (flagged & right) | False negatives (unflagged & wrong) |\n| ---: | ---: | ---: | ---: |\n| 2 | 2 | 0 | 0 |\n\n## Tokens / cost estimate\n\nMock mode: no model calls.\n\n## After scripted human corrections (mock)\n\nCorrect 8/8 · precision 100% · recall 100%\n\n## Notes\n\n- Mock agent intentionally misplaces jordan-date (offset bbox, confidence 0.42) and priya-initials (page 5 instead of 6, confidence 0.36).\n- Scripted human corrections move those two fields onto ground truth; resume scoring is recorded separately.\n\n",
   "notes": [
     "Mock agent intentionally misplaces jordan-date (offset bbox, confidence 0.42) and priya-initials (page 5 instead of 6, confidence 0.36).",
     "Scripted human corrections move those two fields onto ground truth; resume scoring is recorded separately."
+  ],
+  "predictedFields": [
+    {
+      "id": "jordan-name",
+      "type": "name",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.4292929292929293,
+        "width": 0.35947712418300654,
+        "height": 0.027777777777777776
+      },
+      "label": "Printed name — Jordan Hale",
+      "confidence": 0.96,
+      "source": "agent"
+    },
+    {
+      "id": "jordan-signature",
+      "type": "signature",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.4797979797979798,
+        "width": 0.35947712418300654,
+        "height": 0.050505050505050504
+      },
+      "label": "Signature — Jordan Hale",
+      "confidence": 0.94,
+      "source": "agent"
+    },
+    {
+      "id": "jordan-date",
+      "type": "date",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.16666666666666666,
+        "y": 0.5757575757575758,
+        "width": 0.22875816993464052,
+        "height": 0.027777777777777776
+      },
+      "label": "Date — Jordan Hale",
+      "confidence": 0.42,
+      "source": "agent"
+    },
+    {
+      "id": "jordan-initials",
+      "type": "initials",
+      "signerId": "jordan-hale",
+      "page": 6,
+      "bbox": {
+        "x": 0.08823529411764706,
+        "y": 0.6035353535353535,
+        "width": 0.11764705882352941,
+        "height": 0.027777777777777776
+      },
+      "label": "Initials — Jordan Hale",
+      "confidence": 0.91,
+      "source": "agent"
+    },
+    {
+      "id": "priya-name",
+      "type": "name",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.4292929292929293,
+        "width": 0.35947712418300654,
+        "height": 0.027777777777777776
+      },
+      "label": "Printed name — Priya Shah",
+      "confidence": 0.95,
+      "source": "agent"
+    },
+    {
+      "id": "priya-signature",
+      "type": "signature",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.4797979797979798,
+        "width": 0.35947712418300654,
+        "height": 0.050505050505050504
+      },
+      "label": "Signature — Priya Shah",
+      "confidence": 0.93,
+      "source": "agent"
+    },
+    {
+      "id": "priya-date",
+      "type": "date",
+      "signerId": "priya-shah",
+      "page": 6,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.553030303030303,
+        "width": 0.22875816993464052,
+        "height": 0.027777777777777776
+      },
+      "label": "Date — Priya Shah",
+      "confidence": 0.9,
+      "source": "agent"
+    },
+    {
+      "id": "priya-initials",
+      "type": "initials",
+      "signerId": "priya-shah",
+      "page": 5,
+      "bbox": {
+        "x": 0.5294117647058824,
+        "y": 0.8207070707070707,
+        "width": 0.11764705882352941,
+        "height": 0.027777777777777776
+      },
+      "label": "Initials — Priya Shah",
+      "confidence": 0.36,
+      "source": "agent"
+    }
   ],
   "afterFix": {
     "iouThreshold": 0.5,
@@ -218,7 +363,9 @@
         "correct": true,
         "predictedConfidence": 0.96,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "jordan-signature",
@@ -230,7 +377,9 @@
         "correct": true,
         "predictedConfidence": 0.94,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "jordan-date",
@@ -242,7 +391,9 @@
         "correct": true,
         "predictedConfidence": 1,
         "predictedPage": 6,
-        "humanCorrected": true
+        "humanCorrected": true,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "jordan-initials",
@@ -254,7 +405,9 @@
         "correct": true,
         "predictedConfidence": 0.91,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-name",
@@ -266,7 +419,9 @@
         "correct": true,
         "predictedConfidence": 0.95,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-signature",
@@ -278,7 +433,9 @@
         "correct": true,
         "predictedConfidence": 0.93,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-date",
@@ -290,7 +447,9 @@
         "correct": true,
         "predictedConfidence": 0.9,
         "predictedPage": 6,
-        "humanCorrected": false
+        "humanCorrected": false,
+        "dx": 0,
+        "dy": 0
       },
       {
         "truthId": "priya-initials",
@@ -302,7 +461,9 @@
         "correct": true,
         "predictedConfidence": 1,
         "predictedPage": 6,
-        "humanCorrected": true
+        "humanCorrected": true,
+        "dx": 0,
+        "dy": 0
       }
     ],
     "lowConfidence": {
@@ -323,7 +484,14 @@
         "kind": "page-changed",
         "detail": "Moved Initials — Priya Shah from page 5 to page 6"
       }
-    ]
+    ],
+    "offset": {
+      "meanDx": 0,
+      "meanDy": 0,
+      "pageMatchRate": 1,
+      "typeMatchRate": 1,
+      "signerMatchRate": 1
+    }
   },
   "corrections": [
     {

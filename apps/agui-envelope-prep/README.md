@@ -74,13 +74,31 @@ export GEMINI_API_KEY=...
 bun run eval
 ```
 
-Writes `results/live.json` and `results/SUMMARY.md` (placement accuracy vs ground truth, per-type precision/recall, low-confidence calibration, latency, token/cost estimate).
+Writes `results/live.json` and `results/SUMMARY.md` (placement accuracy vs ground truth, per-type precision/recall, low-confidence calibration, mean dx/dy vs ground truth, latency, token/cost estimate). The JSON includes the raw `predictedFields` array so later runs keep the boxes.
 
 Mock (what CI and this PR commit):
 
 ```bash
 bun run eval:mock
 ```
+
+Committed mock output stays under `results/mock/`.
+
+## What our live eval found
+
+Run 3 (2026-11-17T08:35:42Z) used **gemini-3.5-flash-lite**. `gemini-3.5-flash` returned 503/429 on every attempt, so the fallback ran. The score was **0/8 at IoU ≥ 0.5**, identical across three runs.
+
+The **structure was perfect**: all eight fields, correct types and signers, page 6, x essentially exact. The miss is a **systematic vertical offset**. Predicted boxes sit on or above the label text instead of on the underline capture areas. Those underlines are vector lines, not pdf.js text items, so a text-only model has to guess where they are.
+
+Against the fixture ground truth, mean **dx = −0.00032** page widths and mean **dy = −0.03391** page heights (about −0.033 to −0.035 by field type). Best IoU was the signatures at ~0.18; the names were ~0.01.
+
+**Confidence was badly calibrated:** 0.95 on every miss, so the interrupt flagged none of them (low-confidence TP/FP/FN = 0/0/8).
+
+Clean run cost **~15 s** (`14847` ms) and **~$0.0014**. Earlier runs took 79–98 s because of Flash 503 retries.
+
+Caveats: one synthetic fixture, text-only (no vision), Flash-lite only.
+
+Takeaway for *agent prepares, human approves*: **model self-confidence cannot decide what the human reviews.** Show the human every placement, or snap boxes to detected underlines and form widgets.
 
 ## Tests & CI
 

@@ -66,6 +66,8 @@ export function scoreEnvelope(
       predictedConfidence: pred?.confidence ?? null,
       predictedPage: pred?.page ?? null,
       humanCorrected: pred ? correctedIds.has(pred.id) : correctedIds.has(t.id),
+      dx: pred ? pred.bbox.x - t.bbox.x : null,
+      dy: pred ? pred.bbox.y - t.bbox.y : null,
     });
   }
 
@@ -117,6 +119,19 @@ export function scoreEnvelope(
     }
   }
 
+  const paired = fields.filter((f) => f.dx !== null && f.dy !== null);
+  const meanDx =
+    paired.length === 0 ? 0 : paired.reduce((sum, f) => sum + (f.dx ?? 0), 0) / paired.length;
+  const meanDy =
+    paired.length === 0 ? 0 : paired.reduce((sum, f) => sum + (f.dy ?? 0), 0) / paired.length;
+  const pageMatches = fields.filter((f) => f.pageMatch).length;
+  const typeMatches = predicted.fields.filter((p) =>
+    truth.fields.some((t) => t.type === p.type),
+  ).length;
+  const signerMatches = predicted.fields.filter((p) =>
+    truth.fields.some((t) => t.signerId === p.signerId),
+  ).length;
+
   return {
     iouThreshold,
     totalTruth,
@@ -135,6 +150,13 @@ export function scoreEnvelope(
       falseNegatives,
     },
     humanCorrections,
+    offset: {
+      meanDx,
+      meanDy,
+      pageMatchRate: totalTruth === 0 ? 0 : pageMatches / totalTruth,
+      typeMatchRate: totalPredicted === 0 ? 0 : typeMatches / totalPredicted,
+      signerMatchRate: totalPredicted === 0 ? 0 : signerMatches / totalPredicted,
+    },
   };
 }
 

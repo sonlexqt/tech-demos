@@ -117,9 +117,13 @@ export async function runLiveAgent(input: RunAgentInput, send: EventSink): Promi
       break;
     }
 
-    const modelParts = result.calls.map((call) => ({
-      functionCall: { name: call.name, args: call.args },
-    }));
+    const modelParts =
+      result.modelParts.length > 0
+        ? result.modelParts
+        : result.calls.map((call) => ({
+            functionCall: { name: call.name, args: call.args, ...(call.id ? { id: call.id } : {}) },
+            ...(call.thoughtSignature ? { thoughtSignature: call.thoughtSignature } : {}),
+          }));
     contents.push({ role: "model", parts: modelParts });
 
     const fnResponses: unknown[] = [];

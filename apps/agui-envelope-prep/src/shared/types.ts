@@ -84,6 +84,9 @@ export interface FieldScore {
   predictedConfidence: number | null;
   predictedPage: number | null;
   humanCorrected: boolean;
+  /** Predicted minus truth, normalized page units. Null when unmatched. */
+  dx: number | null;
+  dy: number | null;
 }
 
 export interface ScoringReport {
@@ -107,6 +110,13 @@ export interface ScoringReport {
     falseNegatives: number;
   };
   humanCorrections: HumanCorrection[];
+  offset: {
+    meanDx: number;
+    meanDy: number;
+    pageMatchRate: number;
+    typeMatchRate: number;
+    signerMatchRate: number;
+  };
 }
 
 export interface HumanCorrection {
@@ -134,6 +144,7 @@ export interface EvalResult {
   usage: TokenUsageEstimate | null;
   summaryMarkdown: string;
   notes: string[];
+  predictedFields: EnvelopeField[];
 }
 
 export interface PdfTextItem {

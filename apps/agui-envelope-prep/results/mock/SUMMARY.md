@@ -1,7 +1,7 @@
 # Envelope prep eval (mock)
 
-- Started: 2026-11-17T08:19:46.586Z
-- Latency: 5 ms
+- Started: 2026-11-17T08:39:48.553Z
+- Latency: 4 ms
 - Events: RUN_STARTED=1, STEP_STARTED=2, STATE_SNAPSHOT=2, TEXT_MESSAGE_START=10, TEXT_MESSAGE_CONTENT=27, TEXT_MESSAGE_END=10, STATE_DELTA=9, STEP_FINISHED=2, TOOL_CALL_START=8, TOOL_CALL_ARGS=26, TOOL_CALL_END=8, TOOL_CALL_RESULT=8, RUN_FINISHED=1
 
 ## Placement vs ground truth
@@ -12,6 +12,9 @@
 | Precision | 75% |
 | Recall | 75% |
 | F1 | 0.75 |
+| Mean dx (page widths) | 0.00980 |
+| Mean dy (page heights) | 0.02999 |
+| Page / type / signer match | 88% / 100% / 100% |
 
 ## Per field type
 

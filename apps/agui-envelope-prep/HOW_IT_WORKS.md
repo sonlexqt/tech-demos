@@ -115,3 +115,15 @@ Signing flows fail in two opposite ways: a fully automatic agent that stamps the
 4. The run log closes the loop: what the agent got right vs ground truth, what the human moved, and how long the whole ceremony took.
 
 That is the product lesson for Lumin Sign: **prepare with an agent, bind with a human**, using a protocol both sides already speak.
+
+## What our live eval found
+
+A live Gemini run (run 3, 2026-11-17T08:35:42Z, `gemini-3.5-flash-lite` after Flash 503/429 on every attempt) scored **0/8 at IoU ≥ 0.5**. The same miss repeated across three runs.
+
+Structure was not the problem: eight fields, right types, right signers, page 6, x essentially exact (mean **dx = −0.00032** page widths). The boxes sit on or above the label text instead of the underline capture areas — a systematic **dy = −0.03391** page heights (about −0.033 to −0.035). Signatures were the best IoU (~0.18); names were ~0.01. Underlines in the fixture are vector lines, not pdf.js text items, so a text-only model has to guess the capture band.
+
+The agent reported **0.95 confidence on every miss**, so the low-confidence interrupt flagged none of them. A clean run cost ~15 s and ~$0.0014; earlier attempts spent 79–98 s retrying Flash.
+
+Caveats: one synthetic MSA, no page-image vision, Flash-lite only.
+
+So “agent prepares, human approves” cannot use the model’s self-confidence as the review gate. Either show every placement, or snap boxes to detected underlines and form widgets, then let the human confirm.
