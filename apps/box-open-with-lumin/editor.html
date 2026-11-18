@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumin · Open from Box</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/client/styles.css" />
+  </head>
+  <body>
+    <div class="lumin-shell">
+      <header class="lumin-top">
+        <div class="lumin-brand">
+          <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+            <circle cx="11" cy="11" r="11" fill="#0f9d94" />
+            <path d="M6 12.5 9.2 16 16 7" stroke="#04221f" stroke-width="2.2" fill="none" />
+          </svg>
+          Lumin
+        </div>
+        <span id="file-label" class="lumin-file">Opening from Box…</span>
+        <span id="mode-badge" class="mode-badge">MOCK MODE</span>
+        <span class="spacer"></span>
+        <a class="back" href="/">← Back to Box</a>
+      </header>
+      <div class="lumin-tools">
+        <button class="tool" data-tool="highlight" type="button">Highlight</button>
+        <button class="tool" data-tool="text" type="button">Text</button>
+        <button class="tool" data-tool="draw" type="button">Draw</button>
+        <button class="tool" data-tool="sign" type="button">Sign</button>
+        <button class="tool" data-tool="select" type="button">Select</button>
+        <button id="undo" class="tool" type="button">Undo</button>
+        <button id="prev" class="tool" type="button">Prev</button>
+        <span id="page-label">Page</span>
+        <button id="next" class="tool" type="button">Next</button>
+        <span class="spacer"></span>
+        <button id="simulate-conflict" class="danger" type="button">Simulate concurrent edit</button>
+        <button id="save" class="primary" type="button">Save to Box</button>
+      </div>
+      <div id="banner" class="banner"></div>
+      <div class="lumin-work">
+        <div class="stage">
+          <div id="page-stack" class="page-stack">
+            <canvas id="pdf-canvas"></canvas>
+            <canvas id="overlay" class="overlay"></canvas>
+          </div>
+        </div>
+        <aside class="side">
+          <h2>Open-with callback</h2>
+          <div id="callback-params" class="meta">Waiting for #file_id# / #auth_code# / #user_id#</div>
+          <h2>Box file</h2>
+          <div id="meta" class="meta">—</div>
+          <h2>Version history</h2>
+          <div id="versions" class="versions">Load a file to see versions.</div>
+        </aside>
+      </div>
+    </div>
+    <div id="sig-modal" class="modal">
+      <div class="modal-card">
+        <h3 style="margin: 0 0 8px">Signature stamp</h3>
+        <p style="margin: 0 0 12px; color: var(--muted); font-size: 14px">
+          Draw a signature, then click the PDF to place it. Flattened with pdf-lib on save.
+        </p>
+        <canvas id="sig-canvas" class="sig-canvas"></canvas>
+        <div class="modal-actions">
+          <button id="sig-clear" class="ghost" type="button">Clear</button>
+          <button id="sig-cancel" class="ghost" type="button">Cancel</button>
+          <button id="sig-use" class="primary" type="button">Use signature</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/client/editor.ts"></script>
+  </body>
+</html>

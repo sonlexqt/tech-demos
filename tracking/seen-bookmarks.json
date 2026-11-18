@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "user-request-box-open-with-lumin",
+      "title": "Box Open with Lumin (file versions)",
+      "url": "https://developer.box.com/guides/applications/web-app-integrations/",
+      "date": "2026-11-18",
+      "notes": "Owner request: Box Open-with as a new traffic channel vs Google Drive; slug box-open-with-lumin"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "user-request-box-open-with-lumin",
+      "title": "Box Open with Lumin (file versions)",
+      "url": "https://developer.box.com/guides/applications/web-app-integrations/",
+      "date": "2026-11-18",
+      "notes": "Built demo at apps/box-open-with-lumin; Box Open-with callback + versioned save-back with If-Match/412"
     }
   ]
 }
