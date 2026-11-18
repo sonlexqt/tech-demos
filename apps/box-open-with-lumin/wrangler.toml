@@ -1,0 +1,9 @@
+name = "box-open-with-lumin"
+compatibility_date = "2024-11-06"
+pages_build_output_dir = "dist"
+
+# Live Box credentials belong in the Pages dashboard (Settings → Environment variables),
+# never in this file. MOCK MODE is the default when they are unset.
+# BOX_CLIENT_ID
+# BOX_CLIENT_SECRET
+# BOX_REDIRECT_URI

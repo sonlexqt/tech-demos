@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Box · All Files (mock)</title>
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/client/styles.css" />
+  </head>
+  <body>
+    <div class="box-shell">
+      <header class="box-top">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect width="32" height="32" rx="8" fill="#0061d5" />
+            <path d="M8 14h6l2-3h8v10H8V14z" fill="#fff" />
+          </svg>
+          Box
+        </div>
+        <div class="search">Search All Files</div>
+        <span id="mode-badge" class="mode-badge">MOCK MODE</span>
+        <div class="user-chip">
+          <span class="avatar">AC</span>
+          <span id="user-name">Avery Chen</span>
+        </div>
+        <button id="reset" class="ghost" type="button">Reset demo</button>
+      </header>
+      <div class="box-body">
+        <nav class="box-nav">
+          <button class="active" type="button">All Files</button>
+          <button type="button">Recents</button>
+          <button type="button">Starred</button>
+        </nav>
+        <main class="box-main">
+          <p id="hint" class="hint">Loading mock Box…</p>
+          <div class="files">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Version</th>
+                  <th>Updated</th>
+                  <th>Size</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody id="files-body"></tbody>
+            </table>
+          </div>
+        </main>
+      </div>
+    </div>
+    <div id="context-menu" class="menu" role="menu">
+      <button type="button" data-action="preview">Preview</button>
+      <button type="button" data-action="download">Download</button>
+      <button class="lumin" type="button" data-action="open-lumin">Open with Lumin</button>
+    </div>
+    <script type="module" src="/src/client/browser.ts"></script>
+  </body>
+</html>

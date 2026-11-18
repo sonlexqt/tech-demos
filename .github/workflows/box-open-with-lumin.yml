@@ -1,0 +1,39 @@
+name: box-open-with-lumin
+
+on:
+  push:
+    paths:
+      - "apps/box-open-with-lumin/**"
+      - ".github/workflows/box-open-with-lumin.yml"
+  pull_request:
+    paths:
+      - "apps/box-open-with-lumin/**"
+      - ".github/workflows/box-open-with-lumin.yml"
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/box-open-with-lumin
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Unit tests (mock contract + save-back)
+        run: bun test
+      - name: Typecheck
+        run: bun run typecheck
+      - name: Build
+        run: bun run build
+      - name: Guard secrets
+        run: |
+          if grep -RInE 'BOX_CLIENT_SECRET=[A-Za-z0-9_-]{16,}' --exclude=.env.example --exclude-dir=node_modules --exclude-dir=dist --exclude='*.md' .; then
+            echo "Refusing to ship a committed Box client secret"
+            exit 1
+          fi
+          test ! -f .env
