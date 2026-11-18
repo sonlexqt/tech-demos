@@ -63,10 +63,12 @@ Live mode activates only when **both** `BOX_CLIENT_ID` and `BOX_CLIENT_SECRET` a
 4. Copy **Client ID** and **Client Secret** into `.env`:
 
 ```
-BOX_CLIENT_ID=...
-BOX_CLIENT_SECRET=...
+BOX_CLIENT_ID=
+BOX_CLIENT_SECRET=
 BOX_REDIRECT_URI=http://localhost:5173/api/auth/callback
 ```
+
+Fill the first two from the Developer Console. Do not commit `.env`.
 
 Restart `bun run dev`. The badge should read **LIVE MODE**.
 

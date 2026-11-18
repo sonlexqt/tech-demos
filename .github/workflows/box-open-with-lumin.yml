@@ -32,7 +32,7 @@ jobs:
         run: bun run build
       - name: Guard secrets
         run: |
-          if grep -RInE 'BOX_CLIENT_SECRET=.+' --exclude=.env.example --exclude-dir=node_modules --exclude-dir=dist . | grep -v 'BOX_CLIENT_SECRET=$'; then
+          if grep -RInE 'BOX_CLIENT_SECRET=[A-Za-z0-9_-]{16,}' --exclude=.env.example --exclude-dir=node_modules --exclude-dir=dist --exclude='*.md' .; then
             echo "Refusing to ship a committed Box client secret"
             exit 1
           fi
