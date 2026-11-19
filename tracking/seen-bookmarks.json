@@ -30,6 +30,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "dream-num-univer",
+      "title": "Univer quote-to-sign (Apache-2.0 sheets engine)",
+      "url": "https://github.com/dream-num/univer",
+      "date": "2026-11-19",
+      "notes": "Built demo at apps/univer-quote-to-sign; OSS Univer 1.5.x sheets only — no commercial PDF/Office/Server/AI SDK"
     }
   ]
 }
