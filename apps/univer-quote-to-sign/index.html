@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lumin Sign fixture — Univer quote-to-sign</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top">
+        <div class="brand">
+          <span class="logo">Lumin Sign</span>
+          <span class="fixture">fixture · not luminpdf.com</span>
+          <h1>MSA-2026-441 · Northwind Labs × Contoso Analytics</h1>
+        </div>
+        <div class="top-actions">
+          <span id="status-badge" class="badge draft">Draft</span>
+          <button type="button" id="btn-undo">Undo</button>
+          <button type="button" id="btn-sign" class="primary">Sign</button>
+        </div>
+      </header>
+
+      <div class="layout">
+        <main class="doc">
+          <article class="paper" id="contract-paper">
+            <p class="kicker">Master Services Agreement</p>
+            <h2>Quote and contract in one envelope</h2>
+            <p class="lede">
+              Exhibit A is a live Univer spreadsheet. Change seats or term; formulas recalculate in the
+              signing view. Sign freezes a snapshot, renders a PDF with pdf-lib, and binds them with SHA-256.
+            </p>
+            <div id="contract-sections"></div>
+            <section class="exhibit">
+              <div class="exhibit-head">
+                <h3>Exhibit A — Pricing (live Univer workbook)</h3>
+                <p>
+                  Edit only the green cells: seats (B6), term years (D6), Premium Support 0/1 (B7), SSO 0/1 (B8).
+                  Other cells are protected.
+                </p>
+              </div>
+              <div id="univer" class="univer-host"></div>
+              <dl class="hud" id="totals-hud"></dl>
+            </section>
+          </article>
+
+          <section id="signed-panel" class="signed-panel" hidden>
+            <h2>Signed record</h2>
+            <p id="signed-meta"></p>
+            <div class="hashes" id="hash-box"></div>
+            <div class="signed-actions">
+              <a id="download-pdf" download="msa-signed.pdf">Download signed PDF</a>
+              <a id="download-snapshot" download="msa-snapshot.json">Download snapshot JSON</a>
+              <button type="button" id="btn-verify">Verify (reload snapshot)</button>
+              <button type="button" id="btn-tamper">Tamper seats in snapshot</button>
+            </div>
+            <pre id="verify-out" class="output" aria-live="polite"></pre>
+            <iframe id="pdf-frame" title="Signed PDF preview" hidden></iframe>
+          </section>
+        </main>
+
+        <aside class="rail">
+          <section class="panel">
+            <h2>Agent panel</h2>
+            <p class="hint">
+              Commands go through Univer’s Facade API (<code>FRange.setValue</code>) so they share the
+              same undo/redo stack as typing in the sheet.
+            </p>
+            <p id="agent-mode" class="mode">Mode: mock parser (no API key)</p>
+            <label class="field">
+              Natural language
+              <textarea id="agent-input" rows="3" spellcheck="false">make it 40 seats, 2-year term</textarea>
+            </label>
+            <div class="chips">
+              <button type="button" data-prompt="make it 40 seats, 2-year term">40 seats, 2-year</button>
+              <button type="button" data-prompt="25 seats, 1 year">reset 25 / 1y</button>
+              <button type="button" data-prompt="enable premium support">+ support</button>
+              <button type="button" data-prompt="undo">undo</button>
+            </div>
+            <div class="row">
+              <button type="button" id="btn-agent" class="primary">Run command</button>
+              <button type="button" id="btn-agent-undo">Undo last</button>
+            </div>
+            <pre id="agent-out" class="output" aria-live="polite">Ready. Try “make it 40 seats, 2-year term”.</pre>
+          </section>
+
+          <section class="panel">
+            <h2>Edit audit log</h2>
+            <p class="hint">Who (signer / agent), cell, old → new, resulting total.</p>
+            <ol id="audit-list" class="audit"></ol>
+          </section>
+        </aside>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
