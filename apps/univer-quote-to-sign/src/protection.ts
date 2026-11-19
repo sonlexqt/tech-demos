@@ -1,10 +1,19 @@
-import { EDITABLE_SET, rowColToA1 } from "./cells";
-import { commandWritesCells, type CommandEvent, type UniverFacade, type WorkbookFacade } from "./sheet-io";
+import { EDITABLE_SET, isEditableA1, rowColToA1, type EditableA1 } from "./cells";
+import {
+  commandWritesCells,
+  extractEditableWrites,
+  type CommandEvent,
+  type UniverFacade,
+  type WorkbookFacade,
+} from "./sheet-io";
 
-const WRITE_COMMANDS = new Set([
+const VALUE_COMMANDS = new Set([
   "sheet.command.set-range-values",
   "sheet.command.set-range-value",
   "sheet.command.clear-selection-content",
+]);
+
+const STRUCTURAL_COMMANDS = new Set([
   "sheet.command.clear-selection-all",
   "sheet.command.delete-range-move-left",
   "sheet.command.delete-range-move-up",
@@ -16,26 +25,66 @@ const WRITE_COMMANDS = new Set([
   "sheet.command.numfmt.set.currency",
 ]);
 
-const ALWAYS_ALLOW = new Set([
-  "univer.command.undo",
-  "univer.command.redo",
-  "sheet.mutation.set-range-values",
-]);
+const UNDO_REDO = new Set(["univer.command.undo", "univer.command.redo"]);
+
+let frozen = false;
+
+export function setEnvelopeFrozen(value: boolean): void {
+  frozen = value;
+}
+
+export function isEnvelopeFrozen(): boolean {
+  return frozen;
+}
+
+function isStructural(id: string): boolean {
+  if (STRUCTURAL_COMMANDS.has(id)) return true;
+  return (
+    id.includes("delete-range") ||
+    id.includes("insert-range") ||
+    id.includes("move-range") ||
+    id.includes("insert-row") ||
+    id.includes("insert-col") ||
+    id.includes("remove-row") ||
+    id.includes("remove-col") ||
+    id.includes("paste") ||
+    id.includes("auto-fill")
+  );
+}
 
 export function installProtection(api: UniverFacade): { dispose(): void } {
   const disposable = api.addEvent(api.Event.BeforeCommandExecute, (event: CommandEvent) => {
     const id = event.id ?? "";
-    if (ALWAYS_ALLOW.has(id)) return;
-    if (!WRITE_COMMANDS.has(id) && !id.includes("set-range") && !id.includes("paste") && !id.includes("clear")) {
+    if (id.startsWith("sheet.mutation.")) return;
+    if (frozen) {
+      if (UNDO_REDO.has(id) || VALUE_COMMANDS.has(id) || isStructural(id) || id.includes("set-range")) {
+        event.cancel = true;
+      }
       return;
     }
+    if (UNDO_REDO.has(id)) return;
+    if (isStructural(id)) {
+      event.cancel = true;
+      return;
+    }
+    if (!VALUE_COMMANDS.has(id) && !id.includes("set-range") && !id.includes("clear")) return;
+
     const cells = commandWritesCells(event.params);
     if (cells.length === 0) {
-      if (WRITE_COMMANDS.has(id)) event.cancel = true;
+      event.cancel = true;
       return;
     }
     const locked = cells.some(({ row, col }) => !EDITABLE_SET.has(rowColToA1(row, col)));
-    if (locked) event.cancel = true;
+    if (locked) {
+      event.cancel = true;
+      return;
+    }
+    for (const write of extractEditableWrites(event.params)) {
+      if ((write.cell === "B7" || write.cell === "B8") && write.value !== 0 && write.value !== 1) {
+        event.cancel = true;
+        return;
+      }
+    }
   });
   return disposable;
 }
@@ -55,22 +104,28 @@ export async function protectLockedRanges(workbook: WorkbookFacade): Promise<voi
   }
 }
 
+/** Viewer-mode if the permission API exists; the frozen interceptor always blocks edits. */
 export async function freezeWorkbookReadOnly(api: UniverFacade): Promise<void> {
+  setEnvelopeFrozen(true);
   const workbook = api.getActiveWorkbook();
   if (!workbook) return;
   const permission = workbook.getWorkbookPermission?.();
-  if (permission) {
+  if (!permission) return;
+  try {
+    await permission.setMode("viewer");
+  } catch {
     try {
-      await permission.setMode("viewer");
-      return;
+      const editPoint = (api as unknown as { Enum?: { WorkbookPermissionPoint?: { Edit: unknown } } }).Enum
+        ?.WorkbookPermissionPoint?.Edit;
+      if (editPoint !== undefined) await permission.setPoint(editPoint, false);
     } catch {
-      try {
-        const editPoint = (api as unknown as { Enum?: { WorkbookPermissionPoint?: { Edit: unknown } } }).Enum
-          ?.WorkbookPermissionPoint?.Edit;
-        if (editPoint !== undefined) await permission.setPoint(editPoint, false);
-      } catch {
-        // Fall through to interceptor-only freeze.
-      }
+      // Interceptor freeze still holds.
     }
   }
+}
+
+export function toggleAllowed(cell: EditableA1, value: number): boolean {
+  if (!isEditableA1(cell)) return false;
+  if (cell === "B7" || cell === "B8") return value === 0 || value === 1;
+  return true;
 }

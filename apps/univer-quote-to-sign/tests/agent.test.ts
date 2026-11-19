@@ -1,10 +1,11 @@
-import { describe, expect, test } from "bun:test";
+import { afterEach, describe, expect, test } from "bun:test";
 import { AuditLog } from "../src/audit";
 import { parseMockCommand } from "../src/agent/mock-parser";
-import { executeTools } from "../src/agent/tools";
+import { executeTool, executeTools } from "../src/agent/tools";
 import { CELLS } from "../src/cells";
 import { bootHeadlessUniver } from "../src/headless-univer";
-import { readSheetValues, waitForFormulas } from "../src/sheet-io";
+import { extractEditableWrites, readSheetValues, waitForFormulas } from "../src/sheet-io";
+import { installProtection, setEnvelopeFrozen } from "../src/protection";
 
 describe("mock parser", () => {
   test("parses 40 seats, 2-year term", () => {
@@ -25,6 +26,8 @@ describe("mock parser", () => {
 });
 
 describe("agent edit + undo via Univer commands", () => {
+  afterEach(() => setEnvelopeFrozen(false));
+
   test("round trip", async () => {
     const api = bootHeadlessUniver();
     await waitForFormulas(api, 8000);
@@ -55,4 +58,47 @@ describe("agent edit + undo via Univer commands", () => {
     expect(undone.seats).toBe(25);
     expect(undone.termYears).toBe(1);
   }, 60_000);
+
+  test("rejects add-on values other than 0 or 1", async () => {
+    const api = bootHeadlessUniver();
+    await waitForFormulas(api, 8000);
+    const log = new AuditLog();
+    const result = await executeTool(api, log, { name: "set_cell", args: { cell: "B7", value: 2 } });
+    expect(result.ok).toBe(false);
+    expect(result.detail).toContain("0 or 1");
+  }, 30_000);
+
+  test("frozen envelope refuses agent writes", async () => {
+    const api = bootHeadlessUniver();
+    await waitForFormulas(api, 8000);
+    const log = new AuditLog();
+    setEnvelopeFrozen(true);
+    const result = await executeTool(api, log, { name: "set_cell", args: { cell: "B6", value: 40 } });
+    expect(result.ok).toBe(false);
+    expect(result.detail.toLowerCase()).toContain("frozen");
+    const seats = readSheetValues(api.getActiveWorkbook()!.getActiveSheet()).seats;
+    expect(seats).toBe(25);
+  }, 30_000);
+});
+
+describe("command interceptor", () => {
+  afterEach(() => setEnvelopeFrozen(false));
+
+  test("extractEditableWrites reads set-range params", () => {
+    const writes = extractEditableWrites({
+      range: { startRow: 5, startColumn: 1, endRow: 5, endColumn: 1 },
+      value: 40,
+    });
+    expect(writes).toEqual([{ cell: "B6", value: 40 }]);
+  });
+
+  test("frozen interceptor blocks live setValue", async () => {
+    const api = bootHeadlessUniver();
+    await waitForFormulas(api, 8000);
+    installProtection(api);
+    setEnvelopeFrozen(true);
+    api.getActiveWorkbook()!.getActiveSheet().getRange("B6").setValue(99);
+    await waitForFormulas(api, 4000);
+    expect(readSheetValues(api.getActiveWorkbook()!.getActiveSheet()).seats).toBe(25);
+  }, 30_000);
 });

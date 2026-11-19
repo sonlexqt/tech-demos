@@ -1,6 +1,7 @@
 import { CELLS, isEditableA1, type EditableA1 } from "../cells";
 import type { AgentToolResult } from "../types";
-import { readSheetValues, setEditableCell, waitForFormulas, type UniverFacade } from "../sheet-io";
+import { assertEditableValue, readSheetValues, setEditableCell, waitForFormulas, type UniverFacade } from "../sheet-io";
+import { isEnvelopeFrozen } from "../protection";
 import type { AuditLog } from "../audit";
 import { roundMoney } from "../quote-math";
 
@@ -27,6 +28,10 @@ export async function executeTool(
     };
   }
 
+  if (isEnvelopeFrozen()) {
+    return { name: call.name, ok: false, detail: "Envelope is frozen (signed)" };
+  }
+
   if (call.name === "undo") {
     log.actor = "agent";
     log.source = "undo";
@@ -48,8 +53,10 @@ export async function executeTool(
       detail: `Refused ${cell || "(empty)"} — only ${CELLS.seats}, ${CELLS.term}, ${CELLS.supportQty}, ${CELLS.ssoQty} are writable`,
     };
   }
-  if (!Number.isFinite(value)) {
-    return { name: "set_cell", ok: false, detail: "value must be a number" };
+  try {
+    assertEditableValue(cell as EditableA1, value);
+  } catch (error) {
+    return { name: "set_cell", ok: false, detail: String(error) };
   }
   log.actor = "agent";
   log.source = "agent";

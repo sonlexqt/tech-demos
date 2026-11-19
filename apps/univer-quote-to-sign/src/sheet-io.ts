@@ -1,4 +1,4 @@
-import { CELLS, a1ToRowCol, type EditableA1 } from "./cells";
+import { CELLS, a1ToRowCol, isEditableA1, rowColToA1, type EditableA1 } from "./cells";
 import { computeQuote, type QuoteTotals } from "./quote-math";
 import type { SheetValues } from "./types";
 
@@ -92,7 +92,11 @@ export function expectedTotalsFromSheet(values: Pick<SheetValues, "seats" | "ter
   return computeQuote(values);
 }
 
-export async function waitForFormulas(api: UniverFacade, timeoutMs = 4000): Promise<void> {
+export async function waitForFormulas(
+  api: UniverFacade,
+  timeoutMs = 4000,
+  opts: { required?: boolean } = {},
+): Promise<void> {
   try {
     api.getFormula().executeCalculation();
   } catch {
@@ -100,8 +104,20 @@ export async function waitForFormulas(api: UniverFacade, timeoutMs = 4000): Prom
   }
   try {
     await api.getFormula().onCalculationResultApplied(timeoutMs);
-  } catch {
-    // Idle engine, already-applied results, or timeout — read whatever is cached.
+  } catch (error) {
+    if (opts.required) {
+      throw new Error(`Formula calculation did not finish: ${String(error)}`);
+    }
+  }
+}
+
+export function assertEditableValue(cell: EditableA1, value: number): void {
+  if (!Number.isFinite(value)) throw new Error(`${cell} value must be a number`);
+  if ((cell === "B7" || cell === "B8") && value !== 0 && value !== 1) {
+    throw new Error(`${cell} must be 0 or 1`);
+  }
+  if ((cell === "B6" || cell === "D6") && (!Number.isInteger(value) || value < 0)) {
+    throw new Error(`${cell} must be a non-negative integer`);
   }
 }
 
@@ -110,12 +126,52 @@ export async function setEditableCell(
   cell: EditableA1,
   value: number,
 ): Promise<void> {
+  assertEditableValue(cell, value);
   const workbook = api.getActiveWorkbook();
   if (!workbook) throw new Error("No active workbook");
   const sheet = workbook.getActiveSheet();
   const pending = waitForFormulas(api);
   sheet.getRange(cell).setValue(value);
   await pending;
+}
+
+function numericFromCellPatch(patch: unknown): number | null {
+  if (patch === null || patch === undefined) return null;
+  if (typeof patch === "number" || typeof patch === "string" || typeof patch === "boolean") {
+    return asNumber(patch);
+  }
+  if (typeof patch === "object" && "v" in (patch as object)) {
+    return asNumber((patch as { v?: unknown }).v);
+  }
+  return null;
+}
+
+export function extractEditableWrites(params: unknown): { cell: EditableA1; value: number }[] {
+  const out: { cell: EditableA1; value: number }[] = [];
+  if (!params || typeof params !== "object") return out;
+  const p = params as Record<string, unknown>;
+  const cells = commandWritesCells(params);
+  const value = p.value;
+  const cellValue = p.cellValue;
+  for (const { row, col } of cells) {
+    const a1 = rowColToA1(row, col);
+    if (!isEditableA1(a1)) continue;
+    let n: number | null = null;
+    if (cellValue && typeof cellValue === "object" && !Array.isArray(cellValue)) {
+      const grid = cellValue as { [rowKey: string]: { [colKey: string]: unknown } };
+      n = numericFromCellPatch(grid[String(row)]?.[String(col)]);
+    } else if (Array.isArray(value) && p.range && typeof p.range === "object") {
+      const r = p.range as { startRow?: number; startColumn?: number };
+      const rr = row - (r.startRow ?? row);
+      const cc = col - (r.startColumn ?? col);
+      n = numericFromCellPatch((value as unknown[][])[rr]?.[cc]);
+    } else {
+      n = numericFromCellPatch(value);
+    }
+    if (n === null) continue;
+    out.push({ cell: a1, value: n });
+  }
+  return out;
 }
 
 export function commandWritesCells(params: unknown): { row: number; col: number }[] {

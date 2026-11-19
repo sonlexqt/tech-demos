@@ -84,18 +84,29 @@ async function geminiAvailable(): Promise<boolean> {
   }
 }
 
+function setDraftControlsDisabled(disabled: boolean): void {
+  for (const id of ["btn-sign", "btn-undo", "btn-agent", "btn-agent-undo"]) {
+    const el = document.getElementById(id) as HTMLButtonElement | null;
+    if (el) el.disabled = disabled;
+  }
+  document.querySelectorAll<HTMLButtonElement>("[data-prompt]").forEach((btn) => {
+    btn.disabled = disabled;
+  });
+}
+
 function showSigned(record: SignedRecord): void {
   const panel = $("signed-panel") as HTMLElement;
   panel.hidden = false;
   $("status-badge").className = "badge signed";
   $("status-badge").textContent = "Signed";
-  ($("btn-sign") as HTMLButtonElement).disabled = true;
+  setDraftControlsDisabled(true);
   $("signed-meta").textContent =
     `${record.envelopeId} · ${record.signerName} · ${record.signedAt} · total ${money(record.displayed.totals.total)}`;
   $("hash-box").innerHTML = `
     <div><strong>Snapshot SHA-256</strong><br>${record.snapshotSha256}</div>
     <div style="margin-top:8px"><strong>Content PDF SHA-256</strong><br>${record.contentPdfSha256}</div>
-    <div style="margin-top:8px"><strong>Binding SHA-256</strong> (canonical snapshot JSON || PDF bytes)<br>${record.bindingSha256}</div>`;
+    <div style="margin-top:8px"><strong>Signed PDF SHA-256</strong> (downloadable file)<br>${record.signedPdfSha256}</div>
+    <div style="margin-top:8px"><strong>Binding SHA-256</strong> (canonical snapshot JSON || content PDF bytes)<br>${record.bindingSha256}</div>`;
 
   const pdfBytes = bytesFromBase64(record.signedPdfBase64);
   const pdfBlob = new Blob([pdfBytes], { type: "application/pdf" });
@@ -114,7 +125,6 @@ async function runVerify(record: SignedRecord, snapshot: unknown, label: string)
   out.textContent = `${label}…`;
   const hidden = bootHiddenUniver(snapshot as IWorkbookData);
   try {
-    await waitForFormulas(hidden.api, 6000);
     const result = await verifyRecord(record, snapshot, hidden.api);
     if (result.ok) {
       out.className = "output verify-ok";
@@ -131,7 +141,7 @@ async function runVerify(record: SignedRecord, snapshot: unknown, label: string)
 async function main(): Promise<void> {
   renderContract();
   const host = $("univer");
-  const api = bootBrowserUniver(host);
+  const { api } = bootBrowserUniver(host);
   await waitForFormulas(api, 6000);
 
   const log = new AuditLog();
@@ -199,13 +209,14 @@ async function main(): Promise<void> {
   let record: SignedRecord | null = null;
 
   ($("btn-sign") as HTMLButtonElement).addEventListener("click", async () => {
-    ($("btn-sign") as HTMLButtonElement).disabled = true;
+    setDraftControlsDisabled(true);
+    $("verify-out").textContent = "Signing… sheet is frozen while the snapshot is captured.";
     try {
       record = await signEnvelope(api, log.entries);
       showSigned(record);
       $("verify-out").textContent = "Signed. Click Verify, then Tamper.";
     } catch (error) {
-      ($("btn-sign") as HTMLButtonElement).disabled = false;
+      setDraftControlsDisabled(false);
       $("verify-out").textContent = String(error);
       $("signed-panel").hidden = false;
     }

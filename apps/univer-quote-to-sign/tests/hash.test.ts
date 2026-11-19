@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { createPricingWorkbookData } from "../src/workbook-data";
-import { canonicalizeSnapshot, hashBinding, hashSnapshot } from "../src/sign/hash";
+import { canonicalizeSnapshot, hashBinding, hashSnapshot, sha256Hex } from "../src/sign/hash";
 import { renderContentPdf } from "../src/sign/pdf";
 import { computeQuote } from "../src/quote-math";
 import { tamperSeats, verifyRecord } from "../src/sign/verify";
@@ -49,6 +49,7 @@ describe("tamper detection", () => {
     };
     const pdf = await renderContentPdf(displayed);
     const hashes = await hashBinding(snap, pdf);
+    const signedPdfSha256 = await sha256Hex(pdf);
     const record: SignedRecord = {
       envelopeId: "t",
       signedAt: "2026-01-01T00:00:00.000Z",
@@ -60,6 +61,7 @@ describe("tamper detection", () => {
       signedPdfBase64: bytesToBase64(pdf),
       snapshotSha256: hashes.snapshotSha256,
       contentPdfSha256: hashes.contentPdfSha256,
+      signedPdfSha256,
       bindingSha256: hashes.bindingSha256,
     };
 
@@ -70,5 +72,40 @@ describe("tamper detection", () => {
     const bad = await verifyRecord(record, tampered, null);
     expect(bad.ok).toBe(false);
     expect(bad.reasons.some((r) => r.toLowerCase().includes("hash"))).toBe(true);
+  });
+
+  test("tampering the downloadable PDF bytes fails signedPdfSha256", async () => {
+    const snap = createPricingWorkbookData();
+    const displayed = {
+      seats: 25,
+      termYears: 1,
+      premiumSupport: false,
+      sso: false,
+      totals: computeQuote({ seats: 25, termYears: 1, premiumSupport: false, sso: false }),
+    };
+    const pdf = await renderContentPdf(displayed);
+    const other = await renderContentPdf({
+      ...displayed,
+      seats: 40,
+      totals: computeQuote({ seats: 40, termYears: 1, premiumSupport: false, sso: false }),
+    });
+    const hashes = await hashBinding(snap, pdf);
+    const record: SignedRecord = {
+      envelopeId: "t",
+      signedAt: "2026-01-01T00:00:00.000Z",
+      signerName: "test",
+      snapshot: snap,
+      displayed,
+      auditLog: [],
+      contentPdfBase64: bytesToBase64(pdf),
+      signedPdfBase64: bytesToBase64(other),
+      snapshotSha256: hashes.snapshotSha256,
+      contentPdfSha256: hashes.contentPdfSha256,
+      signedPdfSha256: await sha256Hex(pdf),
+      bindingSha256: hashes.bindingSha256,
+    };
+    const bad = await verifyRecord(record, snap, null);
+    expect(bad.ok).toBe(false);
+    expect(bad.reasons.some((r) => r.toLowerCase().includes("signed pdf"))).toBe(true);
   });
 });

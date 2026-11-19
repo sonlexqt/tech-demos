@@ -56,16 +56,18 @@ Cell protection: Univer range-protection APIs exist on the OSS sheets model, but
 
 Signing is not “export xlsx”. It is a **bind**:
 
-1. Wait for the formula engine (`onCalculationResultApplied`).
-2. Read displayed values (seats, term, add-ons, totals) from the live unit.
-3. `FWorkbook.save()` → snapshot JSON.
-4. Render a **content PDF** with pdf-lib from those displayed numbers (what the signer saw).
-5. Canonicalize the snapshot (sorted keys, drop volatile scroll/rev fields).
-6. `binding = SHA-256( utf8(canonical snapshot JSON) || content PDF bytes )`.
-7. Append an **audit-trail page** (edit log + the three hashes). The binding is over the content PDF *before* that page, so the hash is not circular.
-8. Put the workbook in viewer/read-only mode.
+1. **Freeze first.** The interceptor blocks every write (including previously editable cells and undo) *before* `save()`, so the snapshot cannot drift while pdf-lib runs.
+2. Wait for the formula engine (`onCalculationResultApplied`). Sign treats a timeout as failure, not success.
+3. Read displayed values (seats, term, add-ons, line totals, tax, grand total) from the live unit.
+4. `FWorkbook.save()` → snapshot JSON.
+5. Render a **content PDF** with pdf-lib from those displayed numbers (what the signer saw).
+6. Canonicalize the snapshot (sorted keys, drop volatile scroll/rev fields).
+7. `binding = SHA-256( utf8(canonical snapshot JSON) || content PDF bytes )`.
+8. Append an **audit-trail page** (edit log + snapshot / content-PDF / binding hashes). The binding is over the content PDF *before* that page, so the hash is not circular.
+9. Store `signedPdfSha256` of the **downloadable** PDF (content + audit page). Verify checks that digest too.
+10. Viewer-mode if the permission API exists; the frozen interceptor is the real lock. Sign failure unfreezes.
 
-Verify reloads the snapshot into a hidden Univer instance, lets formulas recompute, compares totals to the signed display, and recomputes the binding. Tamper: rewrite `B6` in the JSON → snapshot hash and binding fail, and recomputed seats/total disagree.
+Verify reloads the snapshot into a hidden Univer instance (disposed after), lets formulas recompute, compares **all** signed inputs and pricing lines to the live recompute, and recomputes both the binding and the signed-PDF digest. Tamper: rewrite `B6` in the JSON → snapshot hash and binding fail, and recomputed seats/total disagree.
 
 ```mermaid
 sequenceDiagram

@@ -29,6 +29,7 @@ export interface SignedRecord {
   signedPdfBase64: string;
   snapshotSha256: string;
   contentPdfSha256: string;
+  signedPdfSha256: string;
   bindingSha256: string;
 }
 

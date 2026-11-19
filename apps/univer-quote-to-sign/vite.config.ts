@@ -29,8 +29,9 @@ function geminiProxy(): Plugin {
             chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
           }
           const body = Buffer.concat(chunks).toString("utf8");
+          const model = process.env.GEMINI_MODEL || "gemini-2.5-flash";
           const upstream = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" +
+            `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent?key=` +
               encodeURIComponent(key),
             {
               method: "POST",
