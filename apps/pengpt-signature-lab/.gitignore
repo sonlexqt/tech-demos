@@ -1,0 +1,5 @@
+generate/.cache/
+__pycache__/
+*.npz
+*.npy
+*.pyc

@@ -13,6 +13,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Daily scout pick; docs https://workos.com/auth-md; related Claimable Neon https://neon.com/claimable-neon; slug auth-md-agent-signup"
+    },
+    {
+      "id": "pengpt-greydanus",
+      "title": "PenGPT — handwriting as pen stroke sequences",
+      "url": "https://github.com/greydanus/pengpt",
+      "date": "2026-11-25",
+      "notes": "Approved pick; slug pengpt-signature-lab; Apache-2.0 open weights ~6M numpy transformer"
     }
   ],
   "skipped": [],
@@ -30,6 +37,13 @@
       "url": "https://x.com/grinich/status/2098125592352931866",
       "date": "2026-09-16",
       "notes": "Built demo at apps/auth-md-agent-signup; docs https://workos.com/auth-md; inspired by Claimable Neon (no production APIs)"
+    },
+    {
+      "id": "pengpt-greydanus",
+      "title": "PenGPT — handwriting as pen stroke sequences",
+      "url": "https://github.com/greydanus/pengpt",
+      "date": "2026-11-25",
+      "notes": "Built demo at apps/pengpt-signature-lab; real hand.npz inference in the cloud run"
     }
   ]
 }
