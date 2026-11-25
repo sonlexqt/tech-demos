@@ -64,10 +64,15 @@ export async function renderPad(root: HTMLElement): Promise<void> {
 
   const refresh = () => {
     statsEl.innerHTML = stats(pad.file);
-    const mark = pad.file.synthetic
-      ? `<span class="badge-synth">SYNTHETIC</span>`
-      : `<span class="badge-human">PAD / FIXTURE</span>`;
-    meta.innerHTML = `${mark} ${pad.file.id} · ${pad.file.source} · ${pad.file.displayName}`;
+    const badge = document.createElement("span");
+    badge.className = pad.file.synthetic ? "badge-synth" : "badge-human";
+    badge.textContent = pad.file.synthetic ? "SYNTHETIC" : "PAD / FIXTURE";
+    meta.replaceChildren(
+      badge,
+      document.createTextNode(
+        ` ${pad.file.id} · ${pad.file.source} · ${pad.file.displayName}`,
+      ),
+    );
   };
   pad.onChange(refresh);
   refresh();
@@ -94,8 +99,8 @@ export async function renderPad(root: HTMLElement): Promise<void> {
     playStrokes(
       pts,
       (frame) => {
-        pad.replacePoints(frame.visible, { live: true });
-        if (frame.done) pad.replacePoints(pts);
+        pad.preview(frame.visible);
+        if (frame.done) pad.redraw();
       },
       { signal: abort.signal },
     );
@@ -115,7 +120,9 @@ export async function renderPad(root: HTMLElement): Promise<void> {
     const file = (e.target as HTMLInputElement).files?.[0];
     if (!file) return;
     try {
-      pad.setFile(parseStrokeFile(await file.text()));
+      const parsed = parseStrokeFile(await file.text());
+      stopReplay();
+      pad.setFile(parsed);
     } catch (err) {
       meta.textContent = String(err);
     }

@@ -31,11 +31,22 @@ for the demo (for example a nickname, not your legal signature on a live contrac
   production Lumin Sign / Lumin ID credential.
 - Weights and prompts will not be published with your legal name unless you
   initial here: ______ (optional, default is a code name).
+- **Named-writer and stroke-file (numpy) generation stays on the operator’s
+  machine.** The optional **photo → style** path is *not* local-only (see §5).
+  Initial here if you **allow** that path: ______ / leave blank to **exclude** it.
 
-## 5. Storage and deletion
+## 5. Storage, deletion, and external transfer
 
-Samples live on the operator’s laptop (and, if you agree, in a private fixture
-folder). You may ask for deletion at any time: ______________________________
+Stroke JSON captured on the pad stays on the operator’s laptop (and, if you
+agree, in a private fixture folder). You may ask for deletion at any time:
+______________________________
+
+**Photo transcription (optional, only if you initialled §4).** PenGPT’s
+`inference/hand.py` sends **the photo or cropped word images** to **Anthropic
+Claude** so the words can be labelled, using the operator’s `ANTHROPIC_API_KEY`.
+InkSight tracing and style fit then run locally. This lab does not control
+Anthropic’s retention; treat the photo as leaving the laptop. Pad JSON / named
+writer generation does **not** use Claude.
 
 ## 6. Consent
 

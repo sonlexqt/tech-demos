@@ -431,14 +431,13 @@ def build_fixtures(args):
             print(f"PenGPT write failed for {v['id']}: {exc}; using kinematic stand-in")
             used_model = False
             pengpt_ok = False
-            points = model_timing(
-                [
-                    (x, y, True)
-                    for stroke in human_paths(v["human_style"])
-                    for (x, y) in stroke
-                ],
-                np.random.default_rng(v["seed"]),
-            )
+            triples = []
+            for stroke in human_paths(v["human_style"]):
+                for x, y in stroke:
+                    triples.append((x, y, True))
+                if stroke:
+                    triples.append((stroke[-1][0], stroke[-1][1], False))
+            points = model_timing(triples, np.random.default_rng(v["seed"]))
 
         gen_id = f"{v['id']}-generated"
         gen = stroke_doc(
@@ -454,7 +453,7 @@ def build_fixtures(args):
                 "writer": writer if isinstance(writer, str) else "style-vector",
                 "seed": v["seed"],
                 "temperature": temp,
-                "weightsDownloaded": True,
+                "weightsDownloaded": pengpt_ok,
                 "timing": "model-regular",
             },
             points=points,

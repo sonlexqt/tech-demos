@@ -35,7 +35,10 @@ export async function renderNotes(root: HTMLElement): Promise<void> {
     const id = (root.querySelector("#pick") as HTMLSelectElement).value;
     const file = await loadStroke(id);
     pad.setFile(file);
-    status.innerHTML = `<span class="badge-synth">SYNTHETIC</span> ${file.text}`;
+    const badge = document.createElement("span");
+    badge.className = "badge-synth";
+    badge.textContent = "SYNTHETIC";
+    status.replaceChildren(badge, document.createTextNode(` ${file.text}`));
     return file;
   };
 
@@ -46,12 +49,12 @@ export async function renderNotes(root: HTMLElement): Promise<void> {
     const file = pad.file;
     abort?.abort();
     abort = new AbortController();
-    pad.replacePoints([]);
+    pad.preview([]);
     playStrokes(
       file.points,
       (f) => {
-        pad.replacePoints(f.visible, { live: true });
-        if (f.done) pad.replacePoints(file.points);
+        pad.preview(f.visible);
+        if (f.done) pad.redraw();
       },
       { signal: abort.signal },
     );
@@ -60,6 +63,12 @@ export async function renderNotes(root: HTMLElement): Promise<void> {
     status.textContent = "Building PDF…";
     const bytes = await notesPdf(pad.file);
     downloadPdf(bytes, `${pad.file.id}-notes.pdf`);
-    status.innerHTML = `<span class="badge-synth">SYNTHETIC</span> saved ${pad.file.id}-notes.pdf`;
+    const badge = document.createElement("span");
+    badge.className = "badge-synth";
+    badge.textContent = "SYNTHETIC";
+    status.replaceChildren(
+      badge,
+      document.createTextNode(` saved ${pad.file.id}-notes.pdf`),
+    );
   });
 }

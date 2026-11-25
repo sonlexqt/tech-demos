@@ -65,10 +65,14 @@ export async function renderForensics(root: HTMLElement): Promise<void> {
   const all = root.querySelector("#all") as HTMLElement;
 
   const show = (file: StrokeFile) => {
-    const mark = file.synthetic
-      ? `<span class="badge-synth">SYNTHETIC</span>`
-      : `<span class="badge-human">FIXTURE REAL</span>`;
-    one.innerHTML = `<h3>${file.displayName} ${mark}</h3>${featureRows(file)}`;
+    const heading = document.createElement("h3");
+    heading.append(document.createTextNode(`${file.displayName} `));
+    const badge = document.createElement("span");
+    badge.className = file.synthetic ? "badge-synth" : "badge-human";
+    badge.textContent = file.synthetic ? "SYNTHETIC" : "FIXTURE REAL";
+    heading.append(badge);
+    one.replaceChildren(heading);
+    one.insertAdjacentHTML("beforeend", featureRows(file));
   };
 
   const first = await loadStroke(manifest.volunteers[0].realId);

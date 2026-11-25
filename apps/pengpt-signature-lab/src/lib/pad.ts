@@ -52,6 +52,20 @@ export class SignaturePad {
     this.redraw();
   }
 
+  /** Override ink without changing the recorded file (blind test, pre-reveal). */
+  setInk(color: string): void {
+    this.ink = color;
+    this.redraw();
+  }
+
+  /**
+   * Paint a frame without replacing recorded points. Replay and cancel must not
+   * truncate the file used for export / later playback.
+   */
+  preview(points: StrokePoint[]): void {
+    this.redraw(points);
+  }
+
   clear(): void {
     this.file = {
       ...this.file,
@@ -76,11 +90,6 @@ export class SignaturePad {
     this.file = { ...this.file, points: pts.slice(0, i + 1) };
     this.redraw();
     this.emit();
-  }
-
-  replacePoints(points: StrokePoint[], opts?: { live?: boolean }): void {
-    this.file = { ...this.file, points };
-    this.redraw(opts?.live ? points : undefined);
   }
 
   resize(): void {

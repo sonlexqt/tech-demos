@@ -118,6 +118,8 @@ export async function renderBlind(root: HTMLElement): Promise<void> {
     padB.setFile({ ...right, points: [] });
     padA.setWatermark(null);
     padB.setWatermark(null);
+    padA.setInk("#1a2744");
+    padB.setInk("#1a2744");
     hideTags();
     current = { volunteer, left, right, leftWasReal, guessed: false };
     revealBtn.disabled = true;
@@ -133,19 +135,21 @@ export async function renderBlind(root: HTMLElement): Promise<void> {
     padB.setFile({ ...right, points: [] });
     padA.setWatermark(null);
     padB.setWatermark(null);
+    padA.setInk("#1a2744");
+    padB.setInk("#1a2744");
     playStrokes(
       left.points,
       (f) => {
-        padA.replacePoints(f.visible, { live: true });
-        if (f.done) padA.replacePoints(left.points);
+        padA.preview(f.visible);
+        if (f.done) padA.preview(left.points);
       },
       { signal: abort.signal },
     );
     playStrokes(
       right.points,
       (f) => {
-        padB.replacePoints(f.visible, { live: true });
-        if (f.done) padB.replacePoints(right.points);
+        padB.preview(f.visible);
+        if (f.done) padB.preview(right.points);
       },
       { signal: abort.signal },
     );

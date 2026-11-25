@@ -175,6 +175,16 @@ select,
   cursor: pointer;
 }
 
+.file-btn {
+  position: relative;
+  display: inline-block;
+}
+
+.file-btn:focus-within {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
 button.primary {
   background: var(--ink);
   border-color: #2c3d5c;
@@ -308,7 +318,15 @@ th {
 }
 
 .hidden-input {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .ok {
