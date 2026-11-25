@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PenGPT Signature Lab</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text y='14' font-size='14'>✒</text></svg>" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="mast">
+        <div>
+          <p class="kicker">Lumin Sign research bench · fixtures only</p>
+          <h1>PenGPT Signature Lab</h1>
+          <p class="lede">
+            How cheap is a drawn signature now — and can stroke telemetry catch it?
+          </p>
+        </div>
+        <div class="mast-flags">
+          <span class="pill pill-warn">LOCAL ONLY</span>
+          <span class="pill">NO CUSTOMER INK</span>
+        </div>
+      </header>
+      <nav class="tabs" aria-label="Lab sections">
+        <a href="#/" data-route="/">Brief</a>
+        <a href="#/pad" data-route="/pad">Draw pad</a>
+        <a href="#/blind" data-route="/blind">Blind test</a>
+        <a href="#/forensics" data-route="/forensics">Forensics</a>
+        <a href="#/notes" data-route="/notes">Notes PDF</a>
+      </nav>
+      <main id="view"></main>
+      <footer class="foot">
+        PenGPT is Apache-2.0 (~6M, numpy). This app never deploys: drawn signatures stay on the machine that captured them.
+      </footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+name: pengpt-signature-lab
+
+on:
+  push:
+    paths:
+      - "apps/pengpt-signature-lab/**"
+      - ".github/workflows/pengpt-signature-lab.yml"
+  pull_request:
+    paths:
+      - "apps/pengpt-signature-lab/**"
+      - ".github/workflows/pengpt-signature-lab.yml"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/pengpt-signature-lab
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - run: bun install --frozen-lockfile
+      - run: bun test
+      - run: bun run build

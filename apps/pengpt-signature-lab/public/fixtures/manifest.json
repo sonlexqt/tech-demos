@@ -1,0 +1,46 @@
+{
+  "generatedWithPengpt": true,
+  "model": "hand.npz (greydanus/pengpt release models-2026-11-16)",
+  "volunteers": [
+    {
+      "id": "vol-a",
+      "displayName": "Alex Rivera",
+      "text": "Alex Rivera",
+      "consentId": "fixture-stand-in-vol-a",
+      "realId": "vol-a-real",
+      "generatedId": "vol-a-generated",
+      "notesId": "vol-a-notes",
+      "notesText": "Ship the NDA by Friday"
+    },
+    {
+      "id": "vol-b",
+      "displayName": "Blair Chen",
+      "text": "Blair Chen",
+      "consentId": "fixture-stand-in-vol-b",
+      "realId": "vol-b-real",
+      "generatedId": "vol-b-generated",
+      "notesId": "vol-b-notes",
+      "notesText": "Need wet ink on page two"
+    },
+    {
+      "id": "vol-c",
+      "displayName": "Casey Okonkwo",
+      "text": "Casey Okonkwo",
+      "consentId": "fixture-stand-in-vol-c",
+      "realId": "vol-c-real",
+      "generatedId": "vol-c-generated",
+      "notesId": "vol-c-notes",
+      "notesText": "Countersign after lunch"
+    },
+    {
+      "id": "vol-d",
+      "displayName": "Devon Patel",
+      "text": "Devon Patel",
+      "consentId": "fixture-stand-in-vol-d",
+      "realId": "vol-d-real",
+      "generatedId": "vol-d-generated",
+      "notesId": "vol-d-notes",
+      "notesText": "Leave the annex unsigned"
+    }
+  ]
+}
